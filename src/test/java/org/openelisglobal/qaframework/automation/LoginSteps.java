@@ -7,15 +7,18 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
 import static org.junit.Assert.assertNotNull;
 
 import org.openelisglobal.qaframework.RunTest;
+import org.openelisglobal.qaframework.automation.page.HomePage;
+import org.openelisglobal.qaframework.automation.page.LoginPage;
+import org.openelisglobal.qaframework.automation.page.TestProperties;
+import org.openelisglobal.qaframework.automation.test.TestBase;
 
-public class LoginSteps extends Steps {
+public class LoginSteps extends TestBase {
+
+	private LoginPage loginPage;
+	protected TestProperties testProperties = TestProperties.instance();
 
 	@After(RunTest.HOOK.LOGIN)
 	public void destroy() {
@@ -23,29 +26,13 @@ public class LoginSteps extends Steps {
 	}
 
 	@Before(RunTest.HOOK.LOGIN)
-	public WebDriver getDriver() {
-		return getWebDriver();
-	}
-
-	private void enterUsername(String username) {
-		getDriver().findElement(By.id("loginName")).sendKeys(username);
-	}
-
-	private void enterPassword(String password) {
-		getDriver().findElement(By.id("password")).sendKeys(password);
-	}
-
-	private WebElement getLoginButton() {
-		return getElement(By.id("submitButton"));
-	}
-
-	private WebElement getLogOutLink() {
-		return getElement(By.id("logout-form"));
+	public void setLoginPage() {
+		loginPage = new LoginPage(getWebDriver());
 	}
 
 	@Given("User visits login page")
 	public void visitLoginPage() throws Exception {
-		goToLoginPage();
+		loginPage.go();
 	}
 
 	@When("User enters {string} username")
@@ -53,7 +40,7 @@ public class LoginSteps extends Steps {
 		if ("setupUser".equals(username)) {
 			username = testProperties.getUsername();
 		}
-		enterUsername(username);
+		loginPage.enterUsername(username);
 	}
 
 	@And("User enters {string} password")
@@ -61,20 +48,21 @@ public class LoginSteps extends Steps {
 		if ("setupPass".equals(password)) {
 			password = testProperties.getPassword();
 		}
-		enterPassword(password);
+		loginPage.enterPassword(password);
 	}
 
 	@And("User Logs in")
 	public void userLogsIn() {
-		getLoginButton().click();
+		loginPage.getLoginButton().click();
 	}
 
 	@Then("System Evaluates Login {string}")
 	public void evaluateLogin(String status) {
+		HomePage homePage = new HomePage(loginPage);
 		if (status.trim().endsWith("true")) {
-			assertNotNull(getLogOutLink());
+			assertNotNull(homePage.getLogOutLink());
 		} else if (status.trim().endsWith("false")) {
-			assertNotNull(getLoginButton());
+			assertNotNull(loginPage.getLoginButton());
 		}
 	}
 }

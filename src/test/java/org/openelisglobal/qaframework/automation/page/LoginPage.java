@@ -1,12 +1,8 @@
 package org.openelisglobal.qaframework.automation.page;
 
-import org.apache.commons.io.IOUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-
-import java.io.IOException;
-import java.io.InputStream;
+import org.openqa.selenium.WebElement;
 
 public class LoginPage extends Page {
 
@@ -38,8 +34,15 @@ public class LoginPage extends Page {
 		return LOGIN_PATH;
 	}
 
-	@Override
-	public String getPageRejectUrl() {
-		return "index.htm";
+	public void enterUsername(String username) {
+		findElement(By.id("loginName")).sendKeys(username);
+	}
+
+	public void enterPassword(String password) {
+		findElement(By.id("password")).sendKeys(password);
+	}
+
+	public WebElement getLoginButton() {
+		return findElement(By.id("submitButton"));
 	}
 }
