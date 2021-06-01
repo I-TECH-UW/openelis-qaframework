@@ -100,6 +100,11 @@ public class TestBase implements SauceOnDemandSessionIdProvider {
 			sauceLabsResultReportingTestWatcher = new SauceOnDemandTestWatcher(
 					this, sauceLabsAuthentication);
 		}
+		try {
+			startWebDriver();
+		} catch (Exception e) {
+			fail(e.getMessage());
+		}
 
 	}
 
@@ -198,34 +203,6 @@ public class TestBase implements SauceOnDemandSessionIdProvider {
 
 	private boolean isRunningOnSauceLabs() {
 		return sauceLabsAuthentication != null;
-	}
-
-	public LoginPage goToLoginPage() {
-		LoginPage loginPage = getLoginPage();
-
-		Response response = ClientBuilder.newClient()
-				.target(TestProperties.instance().getWebAppUrl())
-				.path(loginPage.getPageUrl()).request().get();
-
-		int status = response.getStatus();
-
-		if (status >= 400 && status <= 599) {
-			throw new ServerErrorException(response.getStatusInfo()
-					.getReasonPhrase(), status);
-		}
-
-		loginPage.go();
-		loginPage.waitForPage();
-
-		// refresh, just to be sure all css files and images are loaded properly
-		driver.navigate().refresh();
-		loginPage.waitForPage();
-
-		return loginPage;
-	}
-
-	protected LoginPage getLoginPage() {
-		return new LoginPage(driver);
 	}
 
 	WebDriver setupFirefoxDriver() {
@@ -341,13 +318,10 @@ public class TestBase implements SauceOnDemandSessionIdProvider {
 		}
 	}
 
-	/**
-	 * Returns the entire text of the "content" part of the current page
-	 * 
-	 * @return the entire text of the "content" part of the current page
-	 */
-	public String pageContent() {
-		return driver.findElement(By.id("content")).getText();
+	protected void quit() {
+		if (getWebDriver() != null) {
+			getWebDriver().quit();
+		}
 	}
 
 }

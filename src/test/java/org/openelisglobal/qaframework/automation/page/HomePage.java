@@ -1,6 +1,7 @@
 package org.openelisglobal.qaframework.automation.page;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 public class HomePage extends Page {
 
 	public HomePage(Page page) {
@@ -16,4 +17,7 @@ public class HomePage extends Page {
 		return "/Dashboard.do";
 	}
 
+	public WebElement getLogOutLink() {
+		return findElement(By.id("logout-form"));
+	}
 }
