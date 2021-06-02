@@ -30,4 +30,6 @@ jobs:
           echo "cucumber.publish.enabled=true" > src/test/resources/cucumber.properties
           mvn clean install -Dcucumber.filter.tags='@null' 
           mvn test
-          curl -sX POST -F messages=@target/cucumber.ndjson https://studio.cucumber.io/cucumber_project/results -H "project-access-token: ${{secrets.CUCUMBER_IO_TOKEN}}" -H "provider: github" -H "repo: ${{github.repository}}" -H "branch: master" -H "revision: ${{github.sha}}"
+      - name: publish cucmber report
+        run : |
+          curl -sX POST -F messages=@target/cucumber.ndjson https://studio.cucumber.io/cucumber_project/results -H "project-access-token: 105848784520100222315156788261075647722613709804734245626" -H "provider: github" -H "repo: ${{github.repository}}" -H "branch: master" -H "revision: ${{github.sha}}"
