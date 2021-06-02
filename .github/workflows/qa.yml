@@ -1,7 +1,7 @@
 name: BDD Firefox
 on:
-  #push:
-    #branches: [master]
+  push:
+    branches: [master]
   pull_request:
     branches: [master]
   #repository_dispatch:
