@@ -1,21 +1,13 @@
-name: BDD Firefox
+name: OpenELIS QA
 on:
   push:
     branches: [master]
   pull_request:
     branches: [master]
-  #repository_dispatch:
-    #types: [qa]
   workflow_dispatch:
 jobs:
   build:
-    runs-on: ubuntu-latest
-    services:
-      firefox:
-        image: selenium/node-firefox:3.141.59-gold
-        env:
-          HUB_HOST: hub
-          HUB_PORT: 4444
+    runs-on: ubuntu-latest         
     steps:
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
@@ -25,11 +17,16 @@ jobs:
         uses: actions/checkout@master
         with:
           repository: ${{github.repository}}
-      - name: Run qaframework on selenium
+      - name: Run and Publish Openelis QA
         run: |
           echo "cucumber.publish.enabled=true" > src/test/resources/cucumber.properties
           mvn clean install -Dcucumber.filter.tags='@null' 
-          mvn test
-      - name: publish cucmber report
-        run : |
-          curl -sX POST -F messages=@target/cucumber.ndjson https://studio.cucumber.io/cucumber_project/results -H "project-access-token: 105848784520100222315156788261075647722613709804734245626" -H "provider: github" -H "repo: ${{github.repository}}" -H "branch: master" -H "revision: ${{github.sha}}"
+          mvn test   
+          curl -X POST \
+          https://studio.cucumber.io/cucumber_project/results \
+          -F messages=@./target/cucumber.ndjson  \
+          -H "project-access-token: ${{secrets.CUCUMBER_IO_TOKEN}}" \
+          -H "provider: github" \
+          -H "repo: ${{github.repository}}" \
+          -H "branch: main" \
+          -H "revision: ${{github.sha}}"
