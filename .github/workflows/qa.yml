@@ -1,9 +1,9 @@
 name: OpenELIS QA
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
   workflow_dispatch:
 jobs:
   build:
@@ -14,7 +14,7 @@ jobs:
         with:
           java-version: 1.8
       - name: Checkout openelis qaframework
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
         with:
           repository: ${{github.repository}}
       - name: Run and Publish Openelis QA
