@@ -4,13 +4,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+/**
+ * This class represents the Login page
+ */
 public class LoginPage extends Page {
 
-	public static final String LOGIN_PATH = "/LoginPage.do";
-
-	static final By USERNAME = By.id("username");
-	static final By PASSWORD = By.id("password");
-	static final By LOGIN = By.id("loginButton");
+	private static final String LOGIN_PATH = "/LoginPage.do";
+	private static final By USERNAME = By.id("loginName");
+	private static final By PASSWORD = By.id("password");
+	private static final By SUBMIT = By.id("submitButton");
 
 	static final String LOGOUT_PATH = "/logout";
 
@@ -35,14 +37,22 @@ public class LoginPage extends Page {
 	}
 
 	public void enterUsername(String username) {
-		findElement(By.id("loginName")).sendKeys(username);
+		findElement(USERNAME).sendKeys(username);
 	}
 
 	public void enterPassword(String password) {
-		findElement(By.id("password")).sendKeys(password);
+		findElement(PASSWORD).sendKeys(password);
 	}
 
 	public WebElement getLoginButton() {
-		return findElement(By.id("submitButton"));
+		return findElement(SUBMIT);
+	}
+
+	public HomePage goToHomePage() {
+		go();
+		enterUsername(this.username);
+		enterPassword(this.password);
+		getLoginButton().click();
+		return new HomePage(this);
 	}
 }

@@ -21,3 +21,7 @@ This is the new  OpenELIS-Global2 Automated testing Framework thats integrates b
 2. login tests 
 
        mvn test -Dcucumber.filter.tags='@login'
+
+3. Add order tests 
+
+       mvn test -Dcucumber.filter.tags='@order'
