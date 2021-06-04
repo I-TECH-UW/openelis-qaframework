@@ -46,12 +46,6 @@ public class AddOrderSteps extends TestBase {
 		assertTrue(addOrderPage.containsTextRequest());
 	}
 
-	@Then("Accesion Number should be mandatory")
-	public void acessionNUmberShouldBeMandatory() throws Exception {
-		// addOrderPage.waitForLabNumber();
-		// assertTrue(addOrderPage.isAccesNumberMandatory());
-	}
-
 	@When("User enters Accesion Number {string}")
 	public void enterAcessionNumber(String accesionNumber) throws Exception {
 		addOrderPage.enterAccesionNumber(accesionNumber);
@@ -68,7 +62,7 @@ public class AddOrderSteps extends TestBase {
 		addOrderPage.clickGenerateButton();
 	}
 
-	@When("Generated Accesion Number should be a digit")
+	@Then("Generated Accesion Number should be a digit")
 	public void generatedAccesionNumbershouldBeDigit() throws Exception {
 		assertTrue(addOrderPage.GeneratedAssertionNumberIsDigit());
 	}
