@@ -48,13 +48,13 @@ public class AddOrderSteps extends TestBase {
 
 	@When("User enters Accesion Number {string}")
 	public void enterAcessionNumber(String accesionNumber) throws Exception {
-		addOrderPage.enterAccesionNumber(accesionNumber);
+		addOrderPage.enterAccessionNumber(accesionNumber);
 	}
 
 	@When("Assert AccesionNumber Entered {string}")
-	public void checkEnteredAcessionNumber(String accesionNumber)
+	public void checkEnteredAccessionNumber(String accesionNumber)
 			throws Exception {
-		assertTrue(addOrderPage.assertionNumberEntered(accesionNumber));
+		assertTrue(addOrderPage.accessionNumberEntered(accesionNumber));
 	}
 
 	@When("User clicks Generate Button")
@@ -64,6 +64,6 @@ public class AddOrderSteps extends TestBase {
 
 	@Then("Generated Accesion Number should be a digit")
 	public void generatedAccesionNumbershouldBeDigit() throws Exception {
-		assertTrue(addOrderPage.GeneratedAssertionNumberIsDigit());
+		assertTrue(addOrderPage.GeneratedAccessionNumberIsDigit());
 	}
 }

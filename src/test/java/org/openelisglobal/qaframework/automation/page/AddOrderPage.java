@@ -30,14 +30,14 @@ public class AddOrderPage extends Page {
 		waitForElementWithSpecifiedMaxTimeout(FIELD_LAB_NUMBER, 120);
 	}
 
-	public Boolean isAccesNumberMandatory() {
+	public Boolean isAccessionNumberMandatory() {
 		if (findElement(FIELD_LAB_NUMBER).getAttribute("class") == "requiredlabel") {
 			return true;
 		}
 		return false;
 	}
 
-	public WebElement getAccesionNumberField() {
+	public WebElement getAccessionNumberField() {
 		return findElement(FIELD_LAB_NUMBER);
 	}
 
@@ -45,13 +45,13 @@ public class AddOrderPage extends Page {
 		return findElement(BUTTON_GENERATE);
 	}
 
-	public void enterAccesionNumber(String accesionNumber) {
-		getAccesionNumberField().clear();
-		getAccesionNumberField().sendKeys(accesionNumber);
+	public void enterAccessionNumber(String accesionNumber) {
+		getAccessionNumberField().clear();
+		getAccessionNumberField().sendKeys(accesionNumber);
 	}
 
-	public Boolean assertionNumberEntered(String accesionNumber) {
-		if (getAccesionNumberField().getAttribute("value").equals(
+	public Boolean accessionNumberEntered(String accesionNumber) {
+		if (getAccessionNumberField().getAttribute("value").equals(
 				accesionNumber)) {
 			return true;
 		}
@@ -59,14 +59,14 @@ public class AddOrderPage extends Page {
 	}
 
 	public void clickGenerateButton() throws InterruptedException {
-		getAccesionNumberField().clear();
+		getAccessionNumberField().clear();
 		clickOn(BUTTON_GENERATE);
 		Thread.sleep(1000);
 	}
 
-	public Boolean GeneratedAssertionNumberIsDigit() {
-		if (StringUtils.isNumeric(getAccesionNumberField()
-				.getAttribute("value"))) {
+	public Boolean GeneratedAccessionNumberIsDigit() {
+		if (StringUtils.isNumeric(getAccessionNumberField().getAttribute(
+				"value"))) {
 			return true;
 		}
 		return false;
