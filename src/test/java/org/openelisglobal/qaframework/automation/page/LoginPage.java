@@ -4,13 +4,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+/**
+ * This class represents the Login page
+ */
 public class LoginPage extends Page {
 
-	public static final String LOGIN_PATH = "/LoginPage.do";
-
-	static final By USERNAME = By.id("username");
-	static final By PASSWORD = By.id("password");
-	static final By LOGIN = By.id("loginButton");
+	private static final String PATH_LOGIN = "/LoginPage.do";
+	private static final By FIELD_USERNAME = By.id("loginName");
+	private static final By FIELD_PASSWORD = By.id("password");
+	private static final By BUTTON_SUBMIT = By.id("submitButton");
 
 	static final String LOGOUT_PATH = "/logout";
 
@@ -26,23 +28,31 @@ public class LoginPage extends Page {
 
 	@Override
 	public void go() {
-		goToPage(LOGIN_PATH);
+		goToPage(PATH_LOGIN);
 	}
 
 	@Override
 	public String getPageUrl() {
-		return LOGIN_PATH;
+		return PATH_LOGIN;
 	}
 
 	public void enterUsername(String username) {
-		findElement(By.id("loginName")).sendKeys(username);
+		findElement(FIELD_USERNAME).sendKeys(username);
 	}
 
 	public void enterPassword(String password) {
-		findElement(By.id("password")).sendKeys(password);
+		findElement(FIELD_PASSWORD).sendKeys(password);
 	}
 
 	public WebElement getLoginButton() {
-		return findElement(By.id("submitButton"));
+		return findElement(BUTTON_SUBMIT);
+	}
+
+	public HomePage goToHomePage() {
+		go();
+		enterUsername(this.username);
+		enterPassword(this.password);
+		getLoginButton().click();
+		return new HomePage(this);
 	}
 }

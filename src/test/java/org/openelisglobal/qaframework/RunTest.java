@@ -15,5 +15,6 @@ public class RunTest {
 
 	public class HOOK {
 		public static final String LOGIN = "@login";
+		public static final String ORDER = "@order";
 	}
 }

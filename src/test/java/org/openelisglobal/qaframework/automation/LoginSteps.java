@@ -12,13 +12,11 @@ import static org.junit.Assert.assertNotNull;
 import org.openelisglobal.qaframework.RunTest;
 import org.openelisglobal.qaframework.automation.page.HomePage;
 import org.openelisglobal.qaframework.automation.page.LoginPage;
-import org.openelisglobal.qaframework.automation.page.TestProperties;
 import org.openelisglobal.qaframework.automation.test.TestBase;
 
 public class LoginSteps extends TestBase {
 
 	private LoginPage loginPage;
-	protected TestProperties testProperties = TestProperties.instance();
 
 	@After(RunTest.HOOK.LOGIN)
 	public void destroy() {
@@ -37,17 +35,11 @@ public class LoginSteps extends TestBase {
 
 	@When("User enters {string} username")
 	public void anyUsername(String username) {
-		if ("setupUser".equals(username)) {
-			username = testProperties.getUsername();
-		}
 		loginPage.enterUsername(username);
 	}
 
 	@And("User enters {string} password")
 	public void anyPassword(String password) {
-		if ("setupPass".equals(password)) {
-			password = testProperties.getPassword();
-		}
 		loginPage.enterPassword(password);
 	}
 

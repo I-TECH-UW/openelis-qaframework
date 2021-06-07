@@ -260,13 +260,6 @@ public abstract class Page {
 	 */
 	public abstract String getPageUrl();
 
-	public String getPatientUuidFromUrl() {
-		String url = driver.getCurrentUrl();
-
-		return StringUtils.substringBefore(
-				StringUtils.substringAfter(url, "patientId="), "&");
-	}
-
 	public String getPageAliasUrl() {
 		return null;
 	}
