@@ -9,9 +9,18 @@ import org.openqa.selenium.WebElement;
  */
 public class AddOrderPage extends Page {
 
+	private static final String PATH_ADD_ORDER = "/SamplePatientEntry.do";
 	private static final String LABEL_TEXT_REQUEST = "Test Reques";
 	private static final By FIELD_LAB_NUMBER = By.id("labNo");
+	private static final By FIELD_REQUEST_DATE = By.id("requestDate");
+	private static final By FIELD_RECIEVED_DATE = By
+			.id("receivedDateForDisplay");
+	private static final By FIELD_NEXT_VISIT_DATE = By.id("nextVisitDate");
 	private static final By BUTTON_GENERATE = By.id("generateAccessionButton");
+	private static final By REQUIRED_REQUEST_DATE = By
+			.xpath("//div[@id='orderDisplay']/table/tbody/tr/td/table/tbody/tr[2]/td/span");
+	private static final By REQUIRED_RECIEVED_DATE = By
+			.xpath("//div[@id='orderDisplay']/table/tbody/tr/td/table/tbody/tr[3]/td/span");
 
 	public AddOrderPage(Page parentPage) {
 		super(parentPage);
@@ -19,7 +28,7 @@ public class AddOrderPage extends Page {
 
 	@Override
 	public String getPageUrl() {
-		return "SamplePatientEntry.do";
+		return PATH_ADD_ORDER;
 	}
 
 	public Boolean containsTextRequest() {
@@ -43,6 +52,18 @@ public class AddOrderPage extends Page {
 
 	public WebElement getGenerateButton() {
 		return findElement(BUTTON_GENERATE);
+	}
+
+	public WebElement getRequestDateField() {
+		return findElement(FIELD_REQUEST_DATE);
+	}
+
+	public WebElement getRecievedDateField() {
+		return findElement(FIELD_RECIEVED_DATE);
+	}
+
+	public WebElement getNextVisitDateField() {
+		return findElement(FIELD_NEXT_VISIT_DATE);
 	}
 
 	public void enterAccessionNumber(String accesionNumber) {
@@ -70,5 +91,41 @@ public class AddOrderPage extends Page {
 			return true;
 		}
 		return false;
+	}
+
+	public String getRequestDateValue() {
+		return getRequestDateField().getAttribute("value");
+	}
+
+	public String getRecievedDateValue() {
+		return getRecievedDateField().getAttribute("value");
+	}
+
+	public String getRequestDateRequiredClass() {
+		return findElement(REQUIRED_REQUEST_DATE).getAttribute("class");
+	}
+
+	public String getRecievedDateRequiredClass() {
+		return findElement(REQUIRED_RECIEVED_DATE).getAttribute("class");
+	}
+
+	public void enterRecievedDate(String date) {
+		setText(FIELD_RECIEVED_DATE, date);
+	}
+
+	public void enterRequestDate(String date) {
+		setText(FIELD_REQUEST_DATE, date);
+	}
+
+	public void clickOnNextVisitDate() {
+		clickOn(FIELD_NEXT_VISIT_DATE);
+	}
+
+	public String getRecievedDateClass() {
+		return getRecievedDateField().getAttribute("class");
+	}
+
+	public String getRequestDateClass() {
+		return getRequestDateField().getAttribute("class");
 	}
 }

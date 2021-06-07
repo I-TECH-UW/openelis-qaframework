@@ -9,10 +9,10 @@ import org.openqa.selenium.WebElement;
  */
 public class LoginPage extends Page {
 
-	private static final String LOGIN_PATH = "/LoginPage.do";
-	private static final By USERNAME = By.id("loginName");
-	private static final By PASSWORD = By.id("password");
-	private static final By SUBMIT = By.id("submitButton");
+	private static final String PATH_LOGIN = "/LoginPage.do";
+	private static final By FIELD_USERNAME = By.id("loginName");
+	private static final By FIELD_PASSWORD = By.id("password");
+	private static final By BUTTON_SUBMIT = By.id("submitButton");
 
 	static final String LOGOUT_PATH = "/logout";
 
@@ -28,24 +28,24 @@ public class LoginPage extends Page {
 
 	@Override
 	public void go() {
-		goToPage(LOGIN_PATH);
+		goToPage(PATH_LOGIN);
 	}
 
 	@Override
 	public String getPageUrl() {
-		return LOGIN_PATH;
+		return PATH_LOGIN;
 	}
 
 	public void enterUsername(String username) {
-		findElement(USERNAME).sendKeys(username);
+		findElement(FIELD_USERNAME).sendKeys(username);
 	}
 
 	public void enterPassword(String password) {
-		findElement(PASSWORD).sendKeys(password);
+		findElement(FIELD_PASSWORD).sendKeys(password);
 	}
 
 	public WebElement getLoginButton() {
-		return findElement(SUBMIT);
+		return findElement(BUTTON_SUBMIT);
 	}
 
 	public HomePage goToHomePage() {

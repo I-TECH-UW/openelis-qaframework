@@ -1,5 +1,5 @@
 
-## OpenELIS-Global-2 Quality Assurance Framework.
+## OpenELIS-Global-2 Automated Testing Framework.
 This is the new  OpenELIS-Global2 Automated testing Framework thats integrates both BDD with Cucumber and Fuctional Testing with Selenium.
 
 ![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/qa.yml/badge.svg)

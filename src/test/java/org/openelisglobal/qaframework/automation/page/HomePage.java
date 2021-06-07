@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
  */
 public class HomePage extends Page {
 
-	private static final String HOME_PATH = "/Dashboard.do";
+	private static final String PATH_HOME = "/Dashboard.do";
 	private static final By FIRST_LEVEL_MENU = By
 			.xpath("//li/a[@id='menu_sample']");
 	private static final By SECOND_LEVEL_MENU = By
@@ -20,7 +20,7 @@ public class HomePage extends Page {
 
 	@Override
 	public String getPageUrl() {
-		return HOME_PATH;
+		return PATH_HOME;
 	}
 
 	public WebElement getLogOutLink() {
