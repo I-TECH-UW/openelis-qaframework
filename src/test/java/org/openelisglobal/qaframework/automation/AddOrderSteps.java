@@ -23,84 +23,90 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class AddOrderSteps extends TestBase {
-	
+
 	private LoginPage loginPage;
-	
+
 	private HomePage homePage;
-	
+
 	private AddOrderPage addOrderPage;
-	
+
 	protected TestProperties testProperties = TestProperties.instance();
-	
+
 	@After(RunTest.HOOK.ORDER)
 	public void destroy() {
 		quit();
 	}
-	
+
 	@Before(RunTest.HOOK.ORDER)
 	public void setLoginPage() {
 		loginPage = new LoginPage(getWebDriver());
 	}
-	
+
 	@Given("User logs in and visits Home page")
 	public void visitLoginPage() throws Exception {
 		homePage = loginPage.goToHomePage();
 	}
-	
+
 	@And("User clicks add order and goes to Add order Page")
 	public void goToAddOrderPage() throws Exception {
 		addOrderPage = homePage.goToAddOrderPage();
 	}
-	
+
 	@Then("Order form should appear")
 	public void orderFormShouldAppear() throws Exception {
 		assertTrue(addOrderPage.containsTextRequest());
 	}
-	
+
 	@When("User enters Accesion Number {string}")
 	public void enterAcessionNumber(String accesionNumber) throws Exception {
 		addOrderPage.enterAccessionNumber(accesionNumber);
 	}
-	
+
 	@Then("Assert AccesionNumber Entered {string}")
-	public void checkEnteredAccessionNumber(String accesionNumber) throws Exception {
+	public void checkEnteredAccessionNumber(String accesionNumber)
+			throws Exception {
 		assertTrue(addOrderPage.accessionNumberEntered(accesionNumber));
 	}
-	
+
 	@When("User clicks Generate Button")
 	public void clickGenerate() throws Exception {
 		addOrderPage.clickGenerateButton();
 	}
-	
+
 	@Then("Generated Accesion Number should be a digit")
 	public void generatedAccesionNumbershouldBeDigit() throws Exception {
 		assertTrue(addOrderPage.GeneratedAccessionNumberIsDigit());
 	}
-	
+
 	@Then("View page Request Date and Received Date Default to the current date")
-	public void requestAndRecievedDatesShouldDefaultToCurrent() throws Exception {
+	public void requestAndRecievedDatesShouldDefaultToCurrent()
+			throws Exception {
 		Date date = new Date();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		String strDate = formatter.format(date);
-		//this test will fail at times since the server and the testing framework run in different time zones
-		//assertEquals(addOrderPage.getRecievedDateValue(), strDate);
-		//assertEquals(addOrderPage.getRequestDateValue(), strDate);
+		// this test will fail at times since the server and the testing
+		// framework run in different time zones
+		// assertEquals(addOrderPage.getRecievedDateValue(), strDate);
+		// assertEquals(addOrderPage.getRequestDateValue(), strDate);
 	}
-	
+
 	@And("Both request and received date should be mandatory")
 	public void requestAndRecievedDatesShouldbeMandatory() throws Exception {
-		assertEquals(addOrderPage.getRequestDateRequiredClass(), "requiredlabel");
-		assertEquals(addOrderPage.getRecievedDateRequiredClass(), "requiredlabel");
+		assertEquals(addOrderPage.getRequestDateRequiredClass(),
+				"requiredlabel");
+		assertEquals(addOrderPage.getRecievedDateRequiredClass(),
+				"requiredlabel");
 	}
-	
+
 	@When("User enters incorrect Request and Received Date format {string}")
-	public void UserEntersIncorrectRequestAndRecievedDateFormat(String date) throws Exception {
+	public void UserEntersIncorrectRequestAndRecievedDateFormat(String date)
+			throws Exception {
 		assertEquals(addOrderPage.getRecievedDateClass(), "text required");
 		assertEquals(addOrderPage.getRequestDateClass(), "required");
 		addOrderPage.enterRecievedDate(date);
 		addOrderPage.enterRequestDate(date);
 	}
-	
+
 	@Then("Request and Received Date Fields should show error")
 	public void RequestAndRecievedDateFieldShouldThrowError() throws Exception {
 		// enter next Vist Date to triger field error
@@ -109,7 +115,7 @@ public class AddOrderSteps extends TestBase {
 		assertEquals(addOrderPage.getRecievedDateClass(), "text required error");
 		assertEquals(addOrderPage.getRequestDateClass(), "required error");
 	}
-	
+
 	@When("User enters Request Date in future")
 	public void UserEntersRequestInFuture() throws Exception {
 		Date date = new Date();
@@ -120,7 +126,7 @@ public class AddOrderSteps extends TestBase {
 		String strDate = formatter.format(cal.getTime());
 		addOrderPage.enterRequestDate(strDate);
 	}
-	
+
 	@Then("Alert should appear if date is in future")
 	public void alertShouldApperIfFutureDateIsEntered() throws Exception {
 		// enter next Vist Date to triger field error
@@ -129,9 +135,10 @@ public class AddOrderSteps extends TestBase {
 		addOrderPage.acceptAlert();
 		assertEquals(addOrderPage.getRequestDateClass(), "required error");
 	}
-	
+
 	@When("User enters correct Request and Received Date format")
-	public void UserEnterscorrectRequestAndRecievedDateFormat() throws Exception {
+	public void UserEnterscorrectRequestAndRecievedDateFormat()
+			throws Exception {
 		Date date = new Date();
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
@@ -141,23 +148,25 @@ public class AddOrderSteps extends TestBase {
 		addOrderPage.enterRecievedDate(strDate);
 		addOrderPage.enterRequestDate(strDate);
 	}
-	
+
 	@Then("Request and Received Date Fields should not show error")
-	public void RequestAndRecievedDateFieldShouldNotThrowError() throws Exception {
+	public void RequestAndRecievedDateFieldShouldNotThrowError()
+			throws Exception {
 		// enter next Vist Date to triger field error
 		addOrderPage.clickOnNextVisitDate();
 		Thread.sleep(1000);
 		assertEquals(addOrderPage.getRecievedDateClass(), "text required");
 		assertEquals(addOrderPage.getRequestDateClass(), "required");
 	}
-	
+
 	@When("User enters Reception time {string}")
 	public void userEntersRecievedTime(String time) {
 		addOrderPage.enterRecievedTime(time);
 	}
-	
+
 	@Then("Field Automatically corrects {string} straight numeric to proper format HH:MM {string}")
-	public void fieldAutoCorrectsTime(String action, String correctedTime) throws InterruptedException {
+	public void fieldAutoCorrectsTime(String action, String correctedTime)
+			throws InterruptedException {
 		// enter next Vist Date to triger field error
 		addOrderPage.clickOnNextVisitDate();
 		if (action.trim().equals("auto-correct")) {
@@ -167,7 +176,7 @@ public class AddOrderSteps extends TestBase {
 			assertEquals(addOrderPage.getRecievedTimeValue(), correctedTime);
 		}
 	}
-	
+
 	@And("Field validates {string} correct format")
 	public void fieldAcceptsCorrectFormat(String status) throws Exception {
 		if (status.trim().equals("accepted")) {
@@ -175,5 +184,37 @@ public class AddOrderSteps extends TestBase {
 		} else if (status.trim().equals("rejected")) {
 			assertEquals(addOrderPage.getRecievedTimeClass().trim(), "error");
 		}
+	}
+
+	@Then("Site Name is mandatory")
+	public void siteNameShoulBeMandatory() {
+		assertEquals(addOrderPage.getSiteNameRequiredClass(), "requiredlabel");
+	}
+
+	@And("Select Site Name from a Drop down Menu")
+	public void selectSiteNameFromDropDownMenu() throws InterruptedException {
+		addOrderPage.selectSiteNameFromDropDown();
+	}
+
+	@And("Select Program from a Drop down Menu")
+	public void selectProgramFromDropDownMenu() throws InterruptedException {
+		addOrderPage.selectProgramFromDropDown();
+	}
+
+	@Then("Requester's Last Name is mandatory")
+	public void requesterLastNameIsMandatory() throws InterruptedException {
+		assertEquals(addOrderPage.getLastNameRequiredClass(), "requiredlabel");
+	}
+
+	@And("Enter Requester's Last Name {string}")
+	public void enterLastName(String lastName) {
+		addOrderPage.enterLastName(lastName);
+		assertEquals(addOrderPage.getLastNameValue(), lastName);
+	}
+
+	@And("Enter Requester's First Name {string}")
+	public void enterFirstName(String firstName) {
+		addOrderPage.enterFirstName(firstName);
+		assertEquals(addOrderPage.getFistNameValue(), firstName);
 	}
 }
