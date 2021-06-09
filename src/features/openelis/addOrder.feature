@@ -40,6 +40,21 @@ Examples:
      | 1254      | auto-correct  |    12:54      | accepted |
      | 13:54     | none          |    13:54      | accepted |
 
+@order
+Scenario Outline: Site Name
+Then Site Name is mandatory
+And Select Site Name from a Drop down Menu
+And Select Program from a Drop down Menu
+
+
+@order
+Scenario Outline:  Requester's Name
+Then Requester's Last Name is mandatory
+And Enter Requester's Last Name "<lastName>" 
+And Enter Requester's First Name "<firstName>" 
+Examples:
+     | firstName  | lastName  | 
+     | Aliou      | SADIO     |    
 
 
          

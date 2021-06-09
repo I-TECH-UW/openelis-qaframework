@@ -1,5 +1,7 @@
 package org.openelisglobal.qaframework.automation.page;
 
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -21,6 +23,18 @@ public class AddOrderPage extends Page {
 	
 	private static final By FIELD_NEXT_VISIT_DATE = By.id("nextVisitDate");
 	
+	private static final By FIELD_RECIEVED_TIME = By.id("receivedTime");
+	
+	private static final By FIELD_SITE_NAME = By.id("requesterId");
+	
+	private static final By FIELD_PROGRAM = By.id("sampleOrderItems.program");
+	
+	private static final By FIELD_OPTION = By.tagName("option");
+	
+	private static final By FIELD_LAST_NAME = By.id("providerLastNameID");
+	
+	private static final By FIELD_FIRST_NAME = By.id("providerFirstNameID");
+	
 	private static final By BUTTON_GENERATE = By.id("generateAccessionButton");
 	
 	private static final By REQUIRED_REQUEST_DATE = By
@@ -29,7 +43,11 @@ public class AddOrderPage extends Page {
 	private static final By REQUIRED_RECIEVED_DATE = By
 	        .xpath("//div[@id='orderDisplay']/table/tbody/tr/td/table/tbody/tr[3]/td/span");
 	
-	private static final By FIELD_RECIEVED_TIME = By.id("receivedTime");
+	private static final By REQUIRED_SITE_NAME = By
+	        .xpath("//div[@id='orderDisplay']/table/tbody/tr/td/table/tbody/tr[6]/td/span");
+	
+	private static final By REQUIRED_LAST_NAME = By
+	        .xpath("//div[@id='orderDisplay']/table/tbody/tr/td/table/tbody/tr[11]/td/span");
 	
 	public AddOrderPage(Page parentPage) {
 		super(parentPage);
@@ -79,9 +97,20 @@ public class AddOrderPage extends Page {
 		return findElement(FIELD_RECIEVED_TIME);
 	}
 	
-	public void enterAccessionNumber(String accesionNumber) {
-		getAccessionNumberField().clear();
-		getAccessionNumberField().sendKeys(accesionNumber);
+	public WebElement getSiteNameField() {
+		return findElement(FIELD_SITE_NAME);
+	}
+	
+	public WebElement getProgramField() {
+		return findElement(FIELD_PROGRAM);
+	}
+	
+	public WebElement getLastNameField() {
+		return findElement(FIELD_LAST_NAME);
+	}
+	
+	public WebElement getFirstNameField() {
+		return findElement(FIELD_FIRST_NAME);
 	}
 	
 	public Boolean accessionNumberEntered(String accesionNumber) {
@@ -95,6 +124,33 @@ public class AddOrderPage extends Page {
 		getAccessionNumberField().clear();
 		clickOn(BUTTON_GENERATE);
 		Thread.sleep(1000);
+	}
+	
+	public void clickOnNextVisitDate() {
+		clickOn(FIELD_NEXT_VISIT_DATE);
+	}
+	
+	public void selectSiteNameFromDropDown() throws InterruptedException {
+		clickOn(FIELD_SITE_NAME);
+		List<WebElement> options = getSiteNameField().findElements(FIELD_OPTION);
+		int n = 0;
+		for (WebElement option : options) {
+			option.click();
+			Thread.sleep(100);
+			if (n == 5) {
+				break;
+			}
+			n = n + 1;
+		}
+	}
+	
+	public void selectProgramFromDropDown() throws InterruptedException {
+		clickOn(FIELD_PROGRAM);
+		List<WebElement> options = getProgramField().findElements(FIELD_OPTION);
+		for (WebElement option : options) {
+			option.click();
+			Thread.sleep(100);
+		}
 	}
 	
 	public Boolean GeneratedAccessionNumberIsDigit() {
@@ -116,16 +172,12 @@ public class AddOrderPage extends Page {
 		return getRecievedTimeField().getAttribute("value");
 	}
 	
-	public String getRequestDateRequiredClass() {
-		return findElement(REQUIRED_REQUEST_DATE).getAttribute("class");
+	public String getFistNameValue() {
+		return getFirstNameField().getAttribute("value");
 	}
 	
-	public String getRecievedDateRequiredClass() {
-		return findElement(REQUIRED_RECIEVED_DATE).getAttribute("class");
-	}
-	
-	public String getRecievedTimeClass() {
-		return getRecievedTimeField().getAttribute("class");
+	public String getLastNameValue() {
+		return getLastNameField().getAttribute("value");
 	}
 	
 	public void enterRecievedDate(String date) {
@@ -140,8 +192,28 @@ public class AddOrderPage extends Page {
 		setText(FIELD_RECIEVED_TIME, time);
 	}
 	
-	public void clickOnNextVisitDate() {
-		clickOn(FIELD_NEXT_VISIT_DATE);
+	public void enterAccessionNumber(String accesionNumber) {
+		setText(FIELD_LAB_NUMBER, accesionNumber);
+	}
+	
+	public void enterLastName(String lastName) {
+		setText(FIELD_LAST_NAME, lastName);
+	}
+	
+	public void enterFirstName(String firstName) {
+		setText(FIELD_FIRST_NAME, firstName);
+	}
+	
+	public String getRequestDateRequiredClass() {
+		return findElement(REQUIRED_REQUEST_DATE).getAttribute("class");
+	}
+	
+	public String getRecievedDateRequiredClass() {
+		return findElement(REQUIRED_RECIEVED_DATE).getAttribute("class");
+	}
+	
+	public String getRecievedTimeClass() {
+		return getRecievedTimeField().getAttribute("class");
 	}
 	
 	public String getRecievedDateClass() {
@@ -154,5 +226,13 @@ public class AddOrderPage extends Page {
 	
 	public String getReceievedTimeClass() {
 		return getRecievedTimeField().getAttribute("class");
+	}
+	
+	public String getSiteNameRequiredClass() {
+		return findElement(REQUIRED_SITE_NAME).getAttribute("class");
+	}
+	
+	public String getLastNameRequiredClass() {
+		return findElement(REQUIRED_LAST_NAME).getAttribute("class");
 	}
 }
