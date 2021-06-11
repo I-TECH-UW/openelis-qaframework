@@ -217,4 +217,19 @@ public class AddOrderSteps extends TestBase {
 		addOrderPage.enterFirstName(firstName);
 		assertEquals(addOrderPage.getFistNameValue(), firstName);
 	}
+
+	@Then("Enter Telephone Number {string}")
+	public void enterTelephone(String telephone) {
+		addOrderPage.enterTelephone(telephone);
+	}
+
+	@And("Enter Fax {string}")
+	public void enterFax(String fax) {
+		addOrderPage.enterFax(fax);
+	}
+
+	@And("Enter Email {string}")
+	public void enterEmail(String email) throws InterruptedException {
+		addOrderPage.enterEmail(email);
+	}
 }

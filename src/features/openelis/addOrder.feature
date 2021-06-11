@@ -56,5 +56,13 @@ Examples:
      | firstName  | lastName  | 
      | Aliou      | SADIO     |    
 
+@order
+Scenario Outline:  Requester Phone/Fax/Email
+Then Enter Telephone Number "<telephone>"
+And Enter Fax "<fax>"
+And Enter Email "<email>"
+Examples:
+|     telephone    |     fax   |      email      |
+| +225-33-45-87-88 | 682737882 | uwash@gmail.com | 
 
          
