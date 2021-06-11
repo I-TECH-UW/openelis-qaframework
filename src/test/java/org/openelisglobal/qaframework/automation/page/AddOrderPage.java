@@ -35,6 +35,12 @@ public class AddOrderPage extends Page {
 	
 	private static final By FIELD_FIRST_NAME = By.id("providerFirstNameID");
 	
+	private static final By FIELD_PHONE_NUMBER = By.id("providerWorkPhoneID");
+	
+	private static final By FIELD_FAX = By.id("providerFaxID");
+	
+	private static final By FIELD_EMAIL = By.id("providerEmailID");
+	
 	private static final By BUTTON_GENERATE = By.id("generateAccessionButton");
 	
 	private static final By REQUIRED_REQUEST_DATE = By
@@ -111,6 +117,18 @@ public class AddOrderPage extends Page {
 	
 	public WebElement getFirstNameField() {
 		return findElement(FIELD_FIRST_NAME);
+	}
+	
+	public WebElement getTelephoneField() {
+		return findElement(FIELD_PHONE_NUMBER);
+	}
+	
+	public WebElement getFaxField() {
+		return findElement(FIELD_FAX);
+	}
+	
+	public WebElement getEmailField() {
+		return findElement(FIELD_EMAIL);
 	}
 	
 	public Boolean accessionNumberEntered(String accesionNumber) {
@@ -202,6 +220,18 @@ public class AddOrderPage extends Page {
 	
 	public void enterFirstName(String firstName) {
 		setText(FIELD_FIRST_NAME, firstName);
+	}
+	
+	public void enterTelephone(String telephone) {
+		setText(FIELD_PHONE_NUMBER, telephone);
+	}
+	
+	public void enterFax(String fax) {
+		setText(FIELD_FAX, fax);
+	}
+	
+	public void enterEmail(String email) {
+		setText(FIELD_EMAIL, email);
 	}
 	
 	public String getRequestDateRequiredClass() {
