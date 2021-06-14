@@ -8,12 +8,13 @@ Background:
 Scenario Outline: Order Number
     Then Order form should appear
     When User enters Accesion Number "<accesionNumber>"
-    Then Assert AccesionNumber Entered "<accesionNumber>"
+    Then Validate "<status>" AccesionNumber Entered "<accesionNumber>"
     When User clicks Generate Button
     Then Generated Accesion Number should be a digit
     Examples:
-     | accesionNumber |
-     | 1234519000029  |
+     | accesionNumber     | status |
+     | 20210000000001004  | valid  |
+     | BETA119000047      |invalid |
 
 @order
 Scenario Outline: Request and Received Date
@@ -36,33 +37,46 @@ Then Field Automatically corrects "<action>" straight numeric to proper format H
 And Field validates "<status>" correct format 
 Examples:
      | entry     |    action     | correctedTime | status   |
-     | 1d2d77D   | auto-correct  |    12:77      | rejected |
-     | 1254      | auto-correct  |    12:54      | accepted |
-     | 13:54     | none          |    13:54      | accepted |
+     | 1d2d77D   | auto-correct  |    12:77      | invalid  |
+     | 1254      | auto-correct  |    12:54      | valid    |
+     | 13:54     | none          |    13:54      | valid    |
 
 @order
-Scenario Outline: Site Name
+Scenario: Site Name
 Then Site Name is mandatory
-And Select Site Name from a Drop down Menu
-And Select Program from a Drop down Menu
+And User Selects Site Name from a Drop down Menu
+And User Selects Program from a Drop down Menu
 
 
 @order
-Scenario Outline:  Requester's Name
+Scenario Outline: Requester's Name
 Then Requester's Last Name is mandatory
-And Enter Requester's Last Name "<lastName>" 
-And Enter Requester's First Name "<firstName>" 
+And User Enters Requester's Last Name "<lastName>" 
+And User Enters Requester's First Name "<firstName>" 
 Examples:
      | firstName  | lastName  | 
      | Aliou      | SADIO     |    
 
 @order
-Scenario Outline:  Requester Phone/Fax/Email
-Then Enter Telephone Number "<telephone>"
-And Enter Fax "<fax>"
-And Enter Email "<email>"
+Scenario Outline: Requester Phone/Fax/Email
+When User Enters Telephone Number "<telephone>"
+Then Validate "<status>" Telephone Number
+And User Enters Fax "<fax>"
+And User Enters Email "<email>"
 Examples:
-|     telephone    |     fax   |      email      |
-| +225-33-45-87-88 | 682737882 | uwash@gmail.com | 
+|     telephone    |     fax   |      email      | status |
+| +23063458788     | 682737882 | uwash@gmail.com | valid  |     
+| +225-33-45-87    |     -     |      -          |invalid | 
 
-         
+@order
+Scenario: Add samples 
+Then Sample addition is mandatory
+When User Clicks on + Button next to Sample
+Then Sample Selection Field appears 
+And Sample types display in drop-down list
+And User Selects Sample Type from Drop down menu 
+And User Selects Sample Conditions from Drop down menu  
+And User Clicks X to remove added Sample Conditions 
+And User Clicks remove button to remove added Sample 
+And User Re-adds Samples 
+And User Clicks to Remove all    

@@ -1,5 +1,8 @@
 package org.openelisglobal.qaframework.automation.page;
 
+import static org.junit.Assert.assertTrue;
+
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -43,6 +46,18 @@ public class AddOrderPage extends Page {
 	
 	private static final By BUTTON_GENERATE = By.id("generateAccessionButton");
 	
+	private static final By BUTTON_ADD_SAMPLE = By.id("samplesSectionId");
+	
+	private static final By BUTTON_REMOVE_CONDITION = By.className("asmListItemRemove");
+	
+	private static final By BUTTON_REMOVE_ALL = By.xpath("//input[@value='Remove All']");
+	
+	private static final By BUTTON_REMOVE_SAMPLE = By.id("removeButton_1");
+	
+	private static final By SELECT_SAMPLE = By.id("sampleTypeSelect");
+	
+	private static final By SELECT_CONDITION = By.id("asmSelect0");
+	
 	private static final By REQUIRED_REQUEST_DATE = By
 	        .xpath("//div[@id='orderDisplay']/table/tbody/tr/td/table/tbody/tr[2]/td/span");
 	
@@ -54,6 +69,9 @@ public class AddOrderPage extends Page {
 	
 	private static final By REQUIRED_LAST_NAME = By
 	        .xpath("//div[@id='orderDisplay']/table/tbody/tr/td/table/tbody/tr[11]/td/span");
+	
+	private static final By REQUIRED_SAMPLE_ADDITION = By
+	        .xpath("//input[@id='samplesSectionId']/following-sibling::span[1]");
 	
 	public AddOrderPage(Page parentPage) {
 		super(parentPage);
@@ -79,12 +97,20 @@ public class AddOrderPage extends Page {
 		return false;
 	}
 	
-	public WebElement getAccessionNumberField() {
-		return findElement(FIELD_LAB_NUMBER);
-	}
-	
 	public WebElement getGenerateButton() {
 		return findElement(BUTTON_GENERATE);
+	}
+	
+	public WebElement getAddSampleButton() {
+		return findElement(BUTTON_ADD_SAMPLE);
+	}
+	
+	public WebElement getRemoveAllButton() {
+		return findElement(BUTTON_REMOVE_ALL);
+	}
+	
+	public WebElement getAccessionNumberField() {
+		return findElement(FIELD_LAB_NUMBER);
 	}
 	
 	public WebElement getRequestDateField() {
@@ -131,6 +157,14 @@ public class AddOrderPage extends Page {
 		return findElement(FIELD_EMAIL);
 	}
 	
+	public WebElement getSampleSelectionField() {
+		return findElement(SELECT_SAMPLE);
+	}
+	
+	public WebElement getConditonSelectionField() {
+		return findElement(SELECT_CONDITION);
+	}
+	
 	public Boolean accessionNumberEntered(String accesionNumber) {
 		if (getAccessionNumberField().getAttribute("value").equals(accesionNumber)) {
 			return true;
@@ -146,6 +180,16 @@ public class AddOrderPage extends Page {
 	
 	public void clickOnNextVisitDate() {
 		clickOn(FIELD_NEXT_VISIT_DATE);
+	}
+	
+	public void clickAddSampleButton() {
+		if (getAddSampleButton().getAttribute("value") == "+") {
+			clickOn(BUTTON_ADD_SAMPLE);
+		}
+	}
+	
+	public void clickRemoveAllButton() {
+		clickOn(BUTTON_REMOVE_ALL);
 	}
 	
 	public void selectSiteNameFromDropDown() throws InterruptedException {
@@ -264,5 +308,92 @@ public class AddOrderPage extends Page {
 	
 	public String getLastNameRequiredClass() {
 		return findElement(REQUIRED_LAST_NAME).getAttribute("class");
+	}
+	
+	public String getAccesionNumberClass() {
+		return getAccessionNumberField().getAttribute("class");
+	}
+	
+	public String getTelephoneNumberClass() {
+		return getTelephoneField().getAttribute("class");
+	}
+	
+	public String getSampleRecquiredClass() {
+		return findElement(REQUIRED_SAMPLE_ADDITION).getAttribute("class");
+	}
+	
+	public void sampleTypesDisplayInDropDownMenu() {
+		String[] samples = { "Serum", "Plasma", "Urine", "DBS", "Fluid", "Blood", "Swab", "Respiratory Swab", "Sputum" };
+		clickOn(SELECT_SAMPLE);
+		int n = 0;
+		List<WebElement> options = getSampleSelectionField().findElements(FIELD_OPTION);
+		for (WebElement option : options) {
+			if (n >= 1) {
+				assertTrue(Arrays.asList(samples).contains(option.getText()));
+			}
+			if (n == 7) {
+				break;
+			}
+			n = n + 1;
+		}
+	}
+	
+	public void selectSampleTypeFromDropDownMenu() {
+		clickOn(SELECT_SAMPLE);
+		List<WebElement> options = getSampleSelectionField().findElements(FIELD_OPTION);
+		int n = 0;
+		for (WebElement option : options) {
+			if (n == 1) {
+				option.click();
+				break;
+			}
+			n = n + 1;
+		}
+	}
+	
+	public void selectSampleConditionFromDropDownMenu() {
+		clickOn(SELECT_CONDITION);
+		List<WebElement> options = getConditonSelectionField().findElements(FIELD_OPTION);
+		int n = 0;
+		for (WebElement option : options) {
+			if (n >= 1) {
+				option.click();
+			}
+			if (n == 5) {
+				break;
+			}
+			n = n + 1;
+		}
+	}
+	
+	public void removeAddedSampleConditionFromDropDownMenu() throws InterruptedException {
+		List<WebElement> options = getConditonSelectionField().findElements(FIELD_OPTION);
+		int n = 0;
+		for (WebElement option : options) {
+			if (n >= 1) {
+				clickOn(BUTTON_REMOVE_CONDITION);
+			}
+			if (n == 5) {
+				break;
+			}
+			n = n + 1;
+		}
+	}
+	
+	public void removeAddedSampleType() {
+		clickOn(BUTTON_REMOVE_SAMPLE);
+	}
+	
+	public void reAddSamples() {
+		clickOn(SELECT_SAMPLE);
+		List<WebElement> options = getSampleSelectionField().findElements(FIELD_OPTION);
+		int n = 0;
+		for (WebElement option : options) {
+			option.click();
+			if (n == 4) {
+				break;
+			}
+			n = n + 1;
+		}
 	}
 }

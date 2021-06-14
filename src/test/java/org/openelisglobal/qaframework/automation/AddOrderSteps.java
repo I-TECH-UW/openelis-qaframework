@@ -2,6 +2,7 @@ package org.openelisglobal.qaframework.automation;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.text.SimpleDateFormat;
@@ -62,10 +63,21 @@ public class AddOrderSteps extends TestBase {
 		addOrderPage.enterAccessionNumber(accesionNumber);
 	}
 
-	@Then("Assert AccesionNumber Entered {string}")
-	public void checkEnteredAccessionNumber(String accesionNumber)
+	@Then("Validate {string} AccesionNumber Entered {string}")
+	public void checkEnteredAccessionNumber(String status, String accesionNumber)
 			throws Exception {
-		assertTrue(addOrderPage.accessionNumberEntered(accesionNumber));
+		if (status.equals("valid")) {
+			addOrderPage.clickOnNextVisitDate();
+			Thread.sleep(1000);
+			assertTrue(addOrderPage.accessionNumberEntered(accesionNumber));
+			assertEquals(addOrderPage.getAccesionNumberClass(), "text");
+		} else if (status.equals("invalid")) {
+			addOrderPage.clickOnNextVisitDate();
+			Thread.sleep(1000);
+			addOrderPage.acceptAlert();
+			assertEquals(addOrderPage.getAccesionNumberClass(), "text error");
+		}
+
 	}
 
 	@When("User clicks Generate Button")
@@ -179,9 +191,9 @@ public class AddOrderSteps extends TestBase {
 
 	@And("Field validates {string} correct format")
 	public void fieldAcceptsCorrectFormat(String status) throws Exception {
-		if (status.trim().equals("accepted")) {
+		if (status.trim().equals("valid")) {
 			assertNotEquals(addOrderPage.getRecievedTimeClass(), "error");
-		} else if (status.trim().equals("rejected")) {
+		} else if (status.trim().equals("invalid")) {
 			assertEquals(addOrderPage.getRecievedTimeClass().trim(), "error");
 		}
 	}
@@ -191,12 +203,12 @@ public class AddOrderSteps extends TestBase {
 		assertEquals(addOrderPage.getSiteNameRequiredClass(), "requiredlabel");
 	}
 
-	@And("Select Site Name from a Drop down Menu")
+	@And("User Selects Site Name from a Drop down Menu")
 	public void selectSiteNameFromDropDownMenu() throws InterruptedException {
 		addOrderPage.selectSiteNameFromDropDown();
 	}
 
-	@And("Select Program from a Drop down Menu")
+	@And("User Selects Program from a Drop down Menu")
 	public void selectProgramFromDropDownMenu() throws InterruptedException {
 		addOrderPage.selectProgramFromDropDown();
 	}
@@ -206,30 +218,98 @@ public class AddOrderSteps extends TestBase {
 		assertEquals(addOrderPage.getLastNameRequiredClass(), "requiredlabel");
 	}
 
-	@And("Enter Requester's Last Name {string}")
+	@And("User Enters Requester's Last Name {string}")
 	public void enterLastName(String lastName) {
 		addOrderPage.enterLastName(lastName);
 		assertEquals(addOrderPage.getLastNameValue(), lastName);
 	}
 
-	@And("Enter Requester's First Name {string}")
+	@And("User Enters Requester's First Name {string}")
 	public void enterFirstName(String firstName) {
 		addOrderPage.enterFirstName(firstName);
 		assertEquals(addOrderPage.getFistNameValue(), firstName);
 	}
 
-	@Then("Enter Telephone Number {string}")
+	@When("User Enters Telephone Number {string}")
 	public void enterTelephone(String telephone) {
 		addOrderPage.enterTelephone(telephone);
 	}
 
-	@And("Enter Fax {string}")
+	@Then("Validate {string} Telephone Number")
+	public void validateTelephoneNumber(String status)
+			throws InterruptedException {
+		if (status.equals("valid")) {
+			addOrderPage.clickOnNextVisitDate();
+			Thread.sleep(1000);
+			assertEquals(addOrderPage.getTelephoneNumberClass(), "text");
+		} else if (status.equals("invalid")) {
+			addOrderPage.clickOnNextVisitDate();
+			Thread.sleep(1000);
+			addOrderPage.acceptAlert();
+			assertEquals(addOrderPage.getTelephoneNumberClass(), "text error");
+		}
+	}
+
+	@And("User Enters Fax {string}")
 	public void enterFax(String fax) {
 		addOrderPage.enterFax(fax);
 	}
 
-	@And("Enter Email {string}")
+	@And("User Enters Email {string}")
 	public void enterEmail(String email) throws InterruptedException {
 		addOrderPage.enterEmail(email);
 	}
+
+	@Then("Sample addition is mandatory")
+	public void sampleAdditionMandatory() {
+		assertEquals(addOrderPage.getSampleRecquiredClass(), "requiredlabel");
+	}
+
+	@When("User Clicks on + Button next to Sample")
+	public void clickAddSample() {
+		addOrderPage.clickAddSampleButton();
+	}
+
+	@Then("Sample Selection Field appears")
+	public void sampleSelectionFiedlAppears() {
+		assertNotNull(addOrderPage.getSampleSelectionField());
+	}
+
+	@And("Sample types display in drop-down list")
+	public void sampleTypesDisplayInDropDownMenu() {
+		addOrderPage.sampleTypesDisplayInDropDownMenu();
+	}
+
+	@And("User Selects Sample Type from Drop down menu")
+	public void selectSampleTypeFromDropDownMenu() {
+		addOrderPage.selectSampleTypeFromDropDownMenu();
+	}
+
+	@And("User Selects Sample Conditions from Drop down menu")
+	public void selectSampleConditionFromDropDownMenu() {
+		addOrderPage.selectSampleConditionFromDropDownMenu();
+	}
+
+	@And("User Clicks X to remove added Sample Conditions")
+	public void removeAddedSampleConditionFromDropDownMenu()
+			throws InterruptedException {
+		addOrderPage.removeAddedSampleConditionFromDropDownMenu();
+	}
+
+	@And("User Clicks remove button to remove added Sample")
+	public void removeAddedSampleTypeFromDropDownMenu() {
+		addOrderPage.removeAddedSampleType();
+	}
+
+	@And("User Re-adds Samples")
+	public void readdSamples() {
+		addOrderPage.reAddSamples();
+		assertNotNull(addOrderPage.getRemoveAllButton());
+	}
+
+	@And("User Clicks to Remove all")
+	public void removesAllSamples() {
+		addOrderPage.clickRemoveAllButton();
+	}
+
 }
