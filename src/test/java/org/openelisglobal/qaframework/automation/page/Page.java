@@ -388,4 +388,12 @@ public abstract class Page {
 				"document.querySelector('%s').%s = '%s'", cssHandle, attribute,
 				value));
 	}
+
+	public String getClass(By by) {
+		return findElement(by).getAttribute("class");
+	}
+
+	public String getValue(By by) {
+		return findElement(by).getAttribute("value");
+	}
 }

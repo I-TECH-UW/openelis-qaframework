@@ -177,8 +177,8 @@ public class AddOrderSteps extends TestBase {
 	}
 
 	@Then("Field Automatically corrects {string} straight numeric to proper format HH:MM {string}")
-	public void fieldAutoCorrectsTime(String action, String correctedTime)
-			throws InterruptedException {
+	public void fieldAutomaticallyCorrectsReceptionTime(String action,
+			String correctedTime) throws InterruptedException {
 		// enter next Vist Date to triger field error
 		addOrderPage.clickOnNextVisitDate();
 		if (action.trim().equals("auto-correct")) {
@@ -190,7 +190,8 @@ public class AddOrderSteps extends TestBase {
 	}
 
 	@And("Field validates {string} correct format")
-	public void fieldAcceptsCorrectFormat(String status) throws Exception {
+	public void fieldValidatesRecetionTimeFormat(String status)
+			throws Exception {
 		if (status.trim().equals("valid")) {
 			assertNotEquals(addOrderPage.getRecievedTimeClass(), "error");
 		} else if (status.trim().equals("invalid")) {
@@ -312,4 +313,109 @@ public class AddOrderSteps extends TestBase {
 		addOrderPage.clickRemoveAllButton();
 	}
 
+	@When("User enters Incorrect Date format {string}")
+	public void enterIncorrectDateFormat(String date) {
+		addOrderPage.enterCollectionDate(date);
+	}
+
+	@Then("Text field hightlights in red")
+	public void textFieldHighlightsInRed() throws InterruptedException {
+		addOrderPage.clickOnCollectionTime();
+		Thread.sleep(1000);
+		assertEquals(addOrderPage.getCollectionDateClass(), "text error");
+	}
+
+	@When("User enters Date In the future")
+	public void enterDateInTheFuture() {
+		Date date = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		cal.add(Calendar.DATE, 1);
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		String strDate = formatter.format(cal.getTime());
+		addOrderPage.enterCollectionDate(strDate);
+	}
+
+	@Then("Pop-up alert appears if date is in the future")
+	public void poppAlertAppears() throws InterruptedException {
+		addOrderPage.clickOnCollectionTime();
+		Thread.sleep(1000);
+		addOrderPage.acceptAlert();
+		assertEquals(addOrderPage.getCollectionDateClass(), "text error");
+	}
+
+	@When("User enters correct Date")
+	public void entercorrectDateFormat() {
+		Date date = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		cal.add(Calendar.DAY_OF_MONTH, -1);
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		String strDate = formatter.format(cal.getTime());
+		addOrderPage.enterCollectionDate(strDate);
+	}
+
+	@Then("Text field accepts the correct date format")
+	public void textFieldAcceptsCorrectDate() throws InterruptedException {
+		addOrderPage.clickOnCollectionTime();
+		Thread.sleep(1000);
+		assertEquals(addOrderPage.getCollectionDateClass(), "text");
+	}
+
+	@When("User enters Collection time {string}")
+	public void userEntersCollectionTime(String time) {
+		addOrderPage.enterCollectionTime(time);
+	}
+
+	@Then("Field Automatically corrects {string} straight numeric to proper Collection Time format HH:MM {string}")
+	public void fieldAutomatocallyCorrectsCollectionTime(String action,
+			String correctedTime) throws InterruptedException {
+		addOrderPage.clickCollectorField();
+		if (action.trim().equals("auto-correct")) {
+			Thread.sleep(1000);
+			assertEquals(addOrderPage.getCollectionTimeValue(), correctedTime);
+		} else if (action.trim().equals("none")) {
+			assertEquals(addOrderPage.getCollectionTimeValue(), correctedTime);
+		}
+	}
+
+	@And("Field validates {string} Collection Time")
+	public void fieldvalidatesCollectionTimeFormat(String status)
+			throws Exception {
+		if (status.trim().equals("valid")) {
+			assertNotEquals(addOrderPage.getCollectionTimeClass(), "text error");
+		} else if (status.trim().equals("invalid")) {
+			assertEquals(addOrderPage.getCollectionTimeClass(), "text error");
+		}
+	}
+
+	@When("User Enters Collector {string}")
+	public void enterCollector(String name) {
+		addOrderPage.enterCollector(name);
+	}
+
+	@Then("Field Acceps text {string}")
+	public void assertTextEntered(String name) {
+		assertEquals(addOrderPage.getCollectorValue(), name);
+	}
+
+	@Then("Tests entry is marked mandatory")
+	public void testIsMarkedMandatory() {
+		assertEquals(addOrderPage.getTestReqcuiredClass(), "requiredlabel");
+	}
+
+	@Then("Available Tests exists")
+	public void hasAvailableTest() {
+		assertTrue(addOrderPage.containsText("Available Tests"));
+	}
+
+	@When("User Checks checkbox next to test name")
+	public void checkTestNameCheckBox() {
+		addOrderPage.clickTestCheckBox();;
+	}
+
+	@Then("Checkbox sticks, test name appears under Tests box")
+	public void testNameAppearsUnderTestBox() {
+		assertEquals(addOrderPage.getTestValue(), "SWAB (M/C/S)");
+	}
 }
