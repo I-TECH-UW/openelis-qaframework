@@ -60,6 +60,7 @@ public class AddOrderSteps extends TestBase {
 
 	@When("User enters Accesion Number {string}")
 	public void enterAcessionNumber(String accesionNumber) throws Exception {
+		addOrderPage.turnOnAcessionValidation();
 		addOrderPage.enterAccessionNumber(accesionNumber);
 	}
 
@@ -233,6 +234,7 @@ public class AddOrderSteps extends TestBase {
 
 	@When("User Enters Telephone Number {string}")
 	public void enterTelephone(String telephone) {
+		addOrderPage.turnOnTelephoneValidation();
 		addOrderPage.enterTelephone(telephone);
 	}
 
@@ -278,7 +280,7 @@ public class AddOrderSteps extends TestBase {
 
 	@And("Sample types display in drop-down list")
 	public void sampleTypesDisplayInDropDownMenu() {
-		addOrderPage.sampleTypesDisplayInDropDownMenu();
+		assertTrue(addOrderPage.sampleTypesDisplayInDropDownMenu());
 	}
 
 	@And("User Selects Sample Type from Drop down menu")
@@ -411,11 +413,93 @@ public class AddOrderSteps extends TestBase {
 
 	@When("User Checks checkbox next to test name")
 	public void checkTestNameCheckBox() {
-		addOrderPage.clickTestCheckBox();;
+		addOrderPage.clickTestCheckBox();
 	}
 
 	@Then("Checkbox sticks, test name appears under Tests box")
 	public void testNameAppearsUnderTestBox() {
 		assertEquals(addOrderPage.getTestValue(), "SWAB (M/C/S)");
+	}
+
+	@When("User unChecks checkbox next to test name")
+	public void unCheckTestNameCheckBox() {
+		addOrderPage.clickTestCheckBox();
+	}
+
+	@Then("Name disappears from Tests box")
+	public void testNameDisppearsFromTestBox() {
+		assertEquals(addOrderPage.getTestValue(), "");
+	}
+
+	@When("User Checks checkbox next to Panel name")
+	public void checkPannelNameCheckBox() {
+		addOrderPage.clickPannelCheckBox();
+	}
+
+	@Then("All applicable panel tests apear in the Testsbox")
+	public void AllApplicableTestNameAppearsUnderTestBox() {
+		assertEquals(addOrderPage.getTestValue(), "Antigen Covid,COVID-19 PCR");
+	}
+
+	@When("User unChecks checkbox next to Panel name")
+	public void unCheckPannelNameCheckBox() {
+		addOrderPage.clickPannelCheckBox();
+	}
+
+	@Then("All Test Names disappears from Tests box")
+	public void allTestNameDisppearsFromTestBox() {
+		assertEquals(addOrderPage.getTestValue(), "");
+	}
+
+	@When("User enters Text in Tests Box")
+	public void enterTests() {
+		try {
+			addOrderPage.enterTest("Test A");
+		} catch (Exception e) {
+
+		}
+	}
+
+	@Then("Text cannot be entered in Tests Box")
+	public void textDoesNotEnterTestBox() {
+		assertNotEquals(addOrderPage.getTestValue(), "Test A");
+		assertEquals(addOrderPage.getTestValue(), "");
+	}
+
+	@When("User deletes Text in Tests Box")
+	public void deleteTests() {
+		addOrderPage.clickTestCheckBox();
+		try {
+			addOrderPage.clearTestsField();
+		} catch (Exception e) {
+
+		}
+	}
+
+	@Then("Text cannot be cleared in Tests Box")
+	public void textCanNotBeDeletedFromTestBox() {
+		assertNotEquals(addOrderPage.getTestValue(), "");
+		assertEquals(addOrderPage.getTestValue(), "SWAB (M/C/S)");
+	}
+
+	@Then("Patient information form is marked mandatory")
+	public void patientInformationIsMarkedMandatory() {
+		assertEquals(addOrderPage.getPatientInformationRecquiredClass(),
+				"requiredlabel");
+	}
+
+	@When("User Expands Patient information form by clicking the + button next to Patient")
+	public void expandPatientInformatio() {
+		addOrderPage.clickAddPatientInformation();
+	}
+
+	@Then("Patient Search appears")
+	public void patientSearchAppears() {
+		assertTrue(addOrderPage.containsText("Search"));
+	}
+
+	@Then("Search button deactivated until search criteria selected and text entered.")
+	public void patientSerachButtonDeactivated() {
+		assertEquals(addOrderPage.getPatientSerchDisabledAttribute(), "true");
 	}
 }

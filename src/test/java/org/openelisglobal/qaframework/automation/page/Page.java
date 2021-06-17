@@ -192,6 +192,10 @@ public abstract class Page {
 		setText(findElement(by), text);
 	}
 
+	public void clearText(By by) {
+		findElement(by).clear();
+	}
+
 	public void setText(String id, String text) {
 		setText(findElement(By.id(id)), text);
 	}

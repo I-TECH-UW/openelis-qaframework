@@ -121,10 +121,27 @@ Examples:
      | Aliou  SADIO    |       
 
 @order
-Scenario Outline: Available Tests and Panels
+Scenario: Available Tests and Panels
 And User Clicks on + Button next to Sample
 And User Selects Sample Type from Drop down menu
 Then Tests entry is marked mandatory
 Then Available Tests exists
 When User Checks checkbox next to test name
 Then Checkbox sticks, test name appears under Tests box
+When User unChecks checkbox next to test name
+Then Name disappears from Tests box
+When User Checks checkbox next to Panel name 
+Then All applicable panel tests apear in the Testsbox
+When User unChecks checkbox next to Panel name
+Then All Test Names disappears from Tests box
+When User enters Text in Tests Box
+Then Text cannot be entered in Tests Box
+When User deletes Text in Tests Box
+Then Text cannot be cleared in Tests Box
+
+@order
+Scenario: Patient Search
+Then Patient information form is marked mandatory
+When User Expands Patient information form by clicking the + button next to Patient
+Then Patient Search appears
+Then Search button deactivated until search criteria selected and text entered.

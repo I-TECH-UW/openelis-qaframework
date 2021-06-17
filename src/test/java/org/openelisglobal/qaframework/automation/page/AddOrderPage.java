@@ -65,6 +65,15 @@ public class AddOrderPage extends Page {
 
 	private static final By BUTTON_REMOVE_SAMPLE = By.id("removeButton_1");
 
+	private static final By BUTTON_SAVE_VALIDATION = By
+			.xpath("//*[@id='mainForm']/table/tbody/tr[5]/td/center/table/tbody/tr/td[1]/button");
+
+	private static final By BUTTON_ADD_PATIENT_SECTION = By
+			.xpath("//td/input[@id='orderSectionId']");
+
+	private static final By BUTTON_PATIENT_SEARCH = By
+			.id("enhancedSearchButton");
+
 	private static final By SELECT_SAMPLE = By.id("sampleTypeSelect");
 
 	private static final By SELECT_CONDITION = By.id("asmSelect0");
@@ -87,7 +96,14 @@ public class AddOrderPage extends Page {
 	private static final By REQUIRED_TEST = By
 			.xpath("//*[@id='samplesAddedTable']/tbody/tr[1]/th[9]/span");
 
+	private static final By REQUIRED_PATIENT_INFORMATION = By
+			.xpath("//td/input[@id='orderSectionId']/following-sibling::span[1]");
+
 	private static final By CHECK_BOX_TEST = By.id("test_0");
+
+	private static final By CHECK_BOX_PANNEL = By.id("panel_0");
+
+	private static final By RADIO_BUTTON_VALIDATE_TRUE = By.id("value1");
 
 	public AddOrderPage(Page parentPage) {
 		super(parentPage);
@@ -212,6 +228,11 @@ public class AddOrderPage extends Page {
 			clickOn(BUTTON_ADD_SAMPLE);
 		}
 	}
+	public void clickAddPatientInformation() {
+		if (getValue(BUTTON_ADD_PATIENT_SECTION) == "+") {
+			clickOn(BUTTON_ADD_PATIENT_SECTION);
+		}
+	}
 
 	public void clickRemoveAllButton() {
 		clickOn(BUTTON_REMOVE_ALL);
@@ -223,6 +244,10 @@ public class AddOrderPage extends Page {
 
 	public void clickTestCheckBox() {
 		clickOn(CHECK_BOX_TEST);
+	}
+
+	public void clickPannelCheckBox() {
+		clickOn(CHECK_BOX_PANNEL);
 	}
 
 	public void selectSiteNameFromDropDown() throws InterruptedException {
@@ -337,6 +362,14 @@ public class AddOrderPage extends Page {
 		setText(FIELD_COLLECTOR, name);
 	}
 
+	public void enterTest(String test) {
+		setText(FIELD_TEST, test);
+	}
+
+	public void clearTestsField() {
+		clearText(FIELD_TEST);
+	}
+
 	public String getRequestDateRequiredClass() {
 		return findElement(REQUIRED_REQUEST_DATE).getAttribute("class");
 	}
@@ -393,22 +426,35 @@ public class AddOrderPage extends Page {
 		return findElement(REQUIRED_SAMPLE_ADDITION).getAttribute("class");
 	}
 
-	public void sampleTypesDisplayInDropDownMenu() {
+	public String getPatientInformationRecquiredClass() {
+		return getClass(REQUIRED_PATIENT_INFORMATION);
+	}
+
+	public String getPatientSerchDisabledAttribute() {
+		return findElement(BUTTON_PATIENT_SEARCH).getAttribute("disabled");
+	}
+	public boolean sampleTypesDisplayInDropDownMenu() {
 		String[] samples = {"Serum", "Plasma", "Urine", "DBS", "Fluid",
 				"Blood", "Swab", "Respiratory Swab", "Sputum"};
 		clickOn(SELECT_SAMPLE);
 		int n = 0;
+		Boolean b = false;
 		List<WebElement> options = getSampleSelectionField().findElements(
 				FIELD_OPTION);
 		for (WebElement option : options) {
 			if (n >= 1) {
-				assertTrue(Arrays.asList(samples).contains(option.getText()));
+				if (Arrays.asList(samples).contains(option.getText())) {
+					b = true;
+				} else {
+					b = false;
+				}
 			}
 			if (n == 7) {
 				break;
 			}
 			n = n + 1;
 		}
+		return b;
 	}
 
 	public void selectSampleTypeFromDropDownMenu() {
@@ -473,5 +519,19 @@ public class AddOrderPage extends Page {
 			}
 			n = n + 1;
 		}
+	}
+
+	public void turnOnAcessionValidation() {
+		goToPage("SampleEntryConfig.do?ID=116&startingRecNo=1");
+		clickOn(RADIO_BUTTON_VALIDATE_TRUE);
+		clickOn(BUTTON_SAVE_VALIDATION);
+		this.go();
+	}
+
+	public void turnOnTelephoneValidation() {
+		goToPage("SiteInformation.do?ID=71&startingRecNo=1");
+		clickOn(RADIO_BUTTON_VALIDATE_TRUE);
+		clickOn(BUTTON_SAVE_VALIDATION);
+		this.go();
 	}
 }
