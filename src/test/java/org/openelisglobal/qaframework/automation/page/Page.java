@@ -192,6 +192,10 @@ public abstract class Page {
 		setText(findElement(by), text);
 	}
 
+	public void clearText(By by) {
+		findElement(by).clear();
+	}
+
 	public void setText(String id, String text) {
 		setText(findElement(By.id(id)), text);
 	}
@@ -387,5 +391,13 @@ public abstract class Page {
 		((JavascriptExecutor) driver).executeScript(String.format(
 				"document.querySelector('%s').%s = '%s'", cssHandle, attribute,
 				value));
+	}
+
+	public String getClass(By by) {
+		return findElement(by).getAttribute("class");
+	}
+
+	public String getValue(By by) {
+		return findElement(by).getAttribute("value");
 	}
 }
