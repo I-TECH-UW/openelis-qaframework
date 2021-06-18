@@ -1,7 +1,5 @@
 package org.openelisglobal.qaframework.automation.page;
 
-import static org.junit.Assert.assertTrue;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -53,6 +51,53 @@ public class AddOrderPage extends Page {
 
 	private static final By FIELD_TEST = By.id("tests_1");
 
+	private static final By FIELD_LAB_NUMBER_SEARCH = By
+			.id("patientLabNoSearchValue");
+
+	private static final By FIELD_PATIENT_ID_SEARCH = By
+			.id("patientIdNumberSearchValue");
+
+	private static final By FIELD_LAST_NAME_SEARCH = By
+			.id("lastNameSearchValue");
+
+	private static final By FIELD_FIRST_NAME_SEARCH = By
+			.id("firstNameSearchValue");
+
+	private static final By FIELD_DOB_SEARCH = By.id("dateOfBirthSearchValue");
+
+	private static final By FIELD_SUBJECT_NUMBER = By.id("subjectNumberID");
+
+	private static final By FIELD_NATIONAL_ID = By.id("nationalID");
+
+	private static final By FIELD_PATIENT_LAST_NAME = By.id("lastNameID");
+
+	private static final By FIELD_PATIENT_FIRST_NAME = By.id("firstNameID");
+
+	private static final By FIELD_CONTACT_LAST_NAME = By
+			.id("contactLastNameID");
+
+	private static final By FIELD_CONTACT_FIRST_NAME = By
+			.id("contactFirstNameID");
+
+	private static final By FIELD_CONTACT_PHONE = By.id("contactPhoneID");
+
+	private static final By FIELD_CONTACT_EMAIL = By.id("contactEmailID");
+
+	private static final By FIELD_PATIENT_STREET = By.id("streetID");
+
+	private static final By FIELD_PATIENT_COMMUNE = By.id("communeID");
+
+	private static final By FIELD_PATIENT_TOWN = By.id("cityID");
+
+	private static final By FIELD_PATIENT_PHONE = By.id("patientPhone");
+
+	private static final By FIELD_PATIENT_DOB = By.id("dateOfBirthID");
+
+	private static final By FIELD_PATIENT_EMAIL = By.id("patientEmail");
+
+	private static final By FIELD_PATIENT_NATIONALITY_OTHER = By
+			.id("nationalityOtherId");
+
 	private static final By BUTTON_GENERATE = By.id("generateAccessionButton");
 
 	private static final By BUTTON_ADD_SAMPLE = By.id("samplesSectionId");
@@ -74,9 +119,21 @@ public class AddOrderPage extends Page {
 	private static final By BUTTON_PATIENT_SEARCH = By
 			.id("enhancedSearchButton");
 
+	private static final By BUTTON_NEW_PATIENT = By
+			.xpath("//input[@value='New Patient']");
+
 	private static final By SELECT_SAMPLE = By.id("sampleTypeSelect");
 
 	private static final By SELECT_CONDITION = By.id("asmSelect0");
+
+	private static final By SELECT_PATIENT_DISTRICT = By.id("healthRegionID");
+
+	private static final By SELECT_PATIENT_GENDER = By.id("genderID");
+
+	private static final By SELECT_PATIENT_EDUCATION = By.id("educationID");
+
+	private static final By SELECT_PATIENT_MARITAL_STATUS = By
+			.id("maritialStatusID");
 
 	private static final By REQUIRED_REQUEST_DATE = By
 			.xpath("//div[@id='orderDisplay']/table/tbody/tr/td/table/tbody/tr[2]/td/span");
@@ -104,6 +161,9 @@ public class AddOrderPage extends Page {
 	private static final By CHECK_BOX_PANNEL = By.id("panel_0");
 
 	private static final By RADIO_BUTTON_VALIDATE_TRUE = By.id("value1");
+
+	private static final By LABEL_VALIDATE_PATIENT_DOB = By
+			.id("patientProperties.birthDateForDisplayMessage");
 
 	public AddOrderPage(Page parentPage) {
 		super(parentPage);
@@ -250,6 +310,13 @@ public class AddOrderPage extends Page {
 		clickOn(CHECK_BOX_PANNEL);
 	}
 
+	public void clickNewPatientButton() {
+		clickOn(BUTTON_NEW_PATIENT);
+	}
+
+	public void clickOtherNationality() {
+		clickOn(FIELD_PATIENT_NATIONALITY_OTHER);
+	}
 	public void selectSiteNameFromDropDown() throws InterruptedException {
 		clickOn(FIELD_SITE_NAME);
 		List<WebElement> options = getSiteNameField()
@@ -366,6 +433,86 @@ public class AddOrderPage extends Page {
 		setText(FIELD_TEST, test);
 	}
 
+	public void enterLabNumberSearch(String accesionNumber) {
+		setText(FIELD_LAB_NUMBER_SEARCH, accesionNumber);
+	}
+
+	public void enterPatientIdSearch(String patientId) {
+		setText(FIELD_PATIENT_ID_SEARCH, patientId);
+	}
+
+	public void enterLastNameSearch(String lastName) {
+		setText(FIELD_LAST_NAME_SEARCH, lastName);
+	}
+
+	public void enterFirstNameSearch(String firstName) {
+		setText(FIELD_FIRST_NAME_SEARCH, firstName);
+	}
+
+	public void enterDateOfBirthSearch(String dateOfBirth) {
+		setText(FIELD_DOB_SEARCH, dateOfBirth);
+	}
+
+	public void enterSubjectNumber(String subJectNumber) {
+		setText(FIELD_SUBJECT_NUMBER, subJectNumber);
+	}
+
+	public void enterNationalId(String nationalID) {
+		setText(FIELD_NATIONAL_ID, nationalID);
+	}
+
+	public void enterPatientLastName(String lastName) {
+		setText(FIELD_PATIENT_LAST_NAME, lastName);
+	}
+
+	public void enterPatientFirstName(String firstName) {
+		setText(FIELD_PATIENT_FIRST_NAME, firstName);
+	}
+
+	public void enterContactLastName(String lastName) {
+		setText(FIELD_CONTACT_LAST_NAME, lastName);
+	}
+
+	public void enterContactFirstName(String firstName) {
+		setText(FIELD_CONTACT_FIRST_NAME, firstName);
+	}
+
+	public void enterContactEmail(String email) {
+		setText(FIELD_CONTACT_EMAIL, email);
+	}
+
+	public void enterContactPhone(String phone) {
+		setText(FIELD_CONTACT_PHONE, phone);
+	}
+
+	public void enterPatientStreet(String street) {
+		setText(FIELD_PATIENT_STREET, street);
+	}
+
+	public void enterPatientCommune(String commune) {
+		setText(FIELD_PATIENT_COMMUNE, commune);
+	}
+
+	public void enterPatientTown(String town) {
+		setText(FIELD_PATIENT_TOWN, town);
+	}
+
+	public void enterPatientPhone(String phone) {
+		setText(FIELD_PATIENT_PHONE, phone);
+	}
+
+	public void enterPatientEmail(String email) {
+		setText(FIELD_PATIENT_EMAIL, email);
+	}
+
+	public void enterPatientDateofBirth(String dob) {
+		setText(FIELD_PATIENT_DOB, dob);
+	}
+
+	public void enterPatientOtherNationality(String nationality) {
+		setText(FIELD_PATIENT_NATIONALITY_OTHER, nationality);
+	}
+
 	public void clearTestsField() {
 		clearText(FIELD_TEST);
 	}
@@ -430,6 +577,22 @@ public class AddOrderPage extends Page {
 		return getClass(REQUIRED_PATIENT_INFORMATION);
 	}
 
+	public String getContactEmailFieldClass() {
+		return getClass(FIELD_CONTACT_EMAIL);
+	}
+
+	public String getPatientPhoneFieldClass() {
+		return getClass(FIELD_PATIENT_PHONE);
+	}
+
+	public String getPatientEmailFieldClass() {
+		return getClass(FIELD_PATIENT_EMAIL);
+	}
+
+	public String getPatientDoBValidateLabelClass() {
+		return getClass(LABEL_VALIDATE_PATIENT_DOB);
+	}
+
 	public String getPatientSerchDisabledAttribute() {
 		return findElement(BUTTON_PATIENT_SEARCH).getAttribute("disabled");
 	}
@@ -458,17 +621,7 @@ public class AddOrderPage extends Page {
 	}
 
 	public void selectSampleTypeFromDropDownMenu() {
-		clickOn(SELECT_SAMPLE);
-		List<WebElement> options = getSampleSelectionField().findElements(
-				FIELD_OPTION);
-		int n = 0;
-		for (WebElement option : options) {
-			if (n == 1) {
-				option.click();
-				break;
-			}
-			n = n + 1;
-		}
+		selectOptionFromDropDown(SELECT_SAMPLE);
 	}
 
 	public void selectSampleConditionFromDropDownMenu() {
@@ -485,6 +638,22 @@ public class AddOrderPage extends Page {
 			}
 			n = n + 1;
 		}
+	}
+
+	public void selectPatientHelathRegionFromDropDownMenu() {
+		selectOptionFromDropDown(SELECT_PATIENT_DISTRICT);
+	}
+
+	public void selectPatientGenderFromDropDownMenu() {
+		selectOptionFromDropDown(SELECT_PATIENT_GENDER);
+	}
+
+	public void selectPatientEducationFromDropDownMenu() {
+		selectOptionFromDropDown(SELECT_PATIENT_EDUCATION);
+	}
+
+	public void selectPatientMaritalStatusFromDropDownMenu() {
+		selectOptionFromDropDown(SELECT_PATIENT_MARITAL_STATUS);
 	}
 
 	public void removeAddedSampleConditionFromDropDownMenu()
@@ -533,5 +702,9 @@ public class AddOrderPage extends Page {
 		clickOn(RADIO_BUTTON_VALIDATE_TRUE);
 		clickOn(BUTTON_SAVE_VALIDATION);
 		this.go();
+	}
+
+	public void serchPatient() {
+		clickOn(BUTTON_PATIENT_SEARCH);
 	}
 }

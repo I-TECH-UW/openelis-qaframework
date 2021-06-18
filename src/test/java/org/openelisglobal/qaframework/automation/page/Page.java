@@ -400,4 +400,18 @@ public abstract class Page {
 	public String getValue(By by) {
 		return findElement(by).getAttribute("value");
 	}
+
+	public void selectOptionFromDropDown(By by) {
+		By FIELD_OPTION = By.tagName("option");
+		clickOn(by);
+		List<WebElement> options = findElement(by).findElements(FIELD_OPTION);
+		int n = 0;
+		for (WebElement option : options) {
+			if (n == 1) {
+				option.click();
+				break;
+			}
+			n = n + 1;
+		}
+	}
 }
