@@ -3,6 +3,7 @@ package org.openelisglobal.qaframework.automation;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.text.SimpleDateFormat;
@@ -498,8 +499,206 @@ public class AddOrderSteps extends TestBase {
 		assertTrue(addOrderPage.containsText("Search"));
 	}
 
-	@Then("Search button deactivated until search criteria selected and text entered.")
+	@Then("Search button deactivated until search criteria selected and text entered")
 	public void patientSerachButtonDeactivated() {
 		assertEquals(addOrderPage.getPatientSerchDisabledAttribute(), "true");
+	}
+
+	@And("User Searches by Accesion Number {string}")
+	public void searchByAccesionNumber(String accesionNumber) {
+		addOrderPage.enterLabNumberSearch(accesionNumber);
+		assertNull(addOrderPage.getPatientSerchDisabledAttribute());
+		addOrderPage.serchPatient();
+	}
+
+	@And("User Searches by Patient Id {string}")
+	public void searchByPatientId(String patientId) {
+		addOrderPage.enterPatientIdSearch(patientId);
+		assertNull(addOrderPage.getPatientSerchDisabledAttribute());
+		addOrderPage.serchPatient();
+	}
+
+	@And("User Searches by Last Name {string}")
+	public void searchByLastName(String lastName) {
+		addOrderPage.enterLastNameSearch(lastName);
+		assertNull(addOrderPage.getPatientSerchDisabledAttribute());
+		addOrderPage.serchPatient();
+	}
+
+	@And("User Searches by First Name {string}")
+	public void searchByFirstName(String firstName) {
+		addOrderPage.enterFirstNameSearch(firstName);
+		assertNull(addOrderPage.getPatientSerchDisabledAttribute());
+		addOrderPage.serchPatient();
+	}
+
+	@And("User Searches by Date of Birth {string}")
+	public void searchByDateOfBirth(String dateOfBirth) {
+		addOrderPage.enterDateOfBirthSearch(dateOfBirth);
+		assertNull(addOrderPage.getPatientSerchDisabledAttribute());
+		addOrderPage.serchPatient();
+	}
+
+	@And("User Clicks New Patient Button")
+	public void clickNewPatient() throws InterruptedException {
+
+		// innitializing data
+		addOrderPage.clickGenerateButton();
+		Thread.sleep(1000);
+		addOrderPage.selectSiteNameFromDropDown();
+		Thread.sleep(1000);
+		addOrderPage.enterLastName("SADDIO");
+		addOrderPage.clickAddSampleButton();
+		addOrderPage.selectSampleTypeFromDropDownMenu();
+		addOrderPage.clickPannelCheckBox();
+
+		addOrderPage.clickNewPatientButton();
+	}
+
+	@And("User Enters Subject Number {string}")
+	public void enterPatientSubjectNumber(String subJectNumber) {
+		addOrderPage.enterSubjectNumber(subJectNumber);
+	}
+
+	@And("User Enters National ID {string}")
+	public void enterPatientNationalId(String nationalID) {
+		addOrderPage.enterNationalId(nationalID);
+	}
+
+	@And("User Enters Patient Last Name {string}")
+	public void enterPatientLastName(String lastName) {
+		addOrderPage.enterPatientLastName(lastName);
+	}
+
+	@And("User Enters Patient First Name {string}")
+	public void enterPatientFirstName(String firstName) {
+		addOrderPage.enterPatientFirstName(firstName);
+	}
+
+	@And("User Enters Contact Last Name {string}")
+	public void enterContactLastName(String lastName) {
+		addOrderPage.enterContactLastName(lastName);
+	}
+
+	@And("User Enters Contact First Name {string}")
+	public void enterContactFirstName(String firstName) {
+		addOrderPage.enterContactFirstName(firstName);
+	}
+
+	@And("User Enters Contact Email {string}")
+	public void enterContactEmail(String email) {
+		addOrderPage.enterContactEmail(email);
+	}
+
+	@And("Field validates {string} Contact Email")
+	public void validateContactEmail(String status) throws InterruptedException {
+		addOrderPage.clickOtherNationality();
+		Thread.sleep(1000);
+		if (status.equals("valid")) {
+			assertEquals(addOrderPage.getContactEmailFieldClass(), "text");
+		} else if (status.equals("invalid")) {
+			assertEquals(addOrderPage.getContactEmailFieldClass(), "text error");
+		}
+	}
+
+	@And("User Enters Contact Phone {string}")
+	public void enterContactPhone(String phone) {
+		addOrderPage.enterContactPhone(phone);
+	}
+
+	@And("User Enters Patient Street {string}")
+	public void enterPatientStreet(String street) {
+		addOrderPage.enterPatientStreet(street);
+	}
+
+	@And("User Enters Patient Commune {string}")
+	public void enterPatientCommune(String commune) {
+		addOrderPage.enterPatientCommune(commune);
+	}
+
+	@And("User Enters Patient Town {string}")
+	public void enterPatientTown(String town) {
+		addOrderPage.enterPatientTown(town);
+	}
+
+	@And("User Enters Patient Phone {string}")
+	public void enterPatientPhone(String phone) {
+		addOrderPage.enterPatientPhone(phone);
+	}
+
+	@Then("Field validates {string} Patient Phone")
+	public void validatePatientPhone(String status) throws InterruptedException {
+		addOrderPage.clickOtherNationality();
+		Thread.sleep(1000);
+		if (status.equals("valid")) {
+			assertNotEquals(addOrderPage.getPatientPhoneFieldClass().trim(),
+					"error");
+		} else if (status.equals("invalid")) {
+			addOrderPage.acceptAlert();
+			assertEquals(addOrderPage.getPatientPhoneFieldClass().trim(),
+					"error");
+		}
+	}
+
+	@And("User Enters Patient Email {string}")
+	public void enterPatientEmail(String email) {
+		addOrderPage.enterPatientEmail(email);
+	}
+
+	@And("Field validates {string} Patient Email")
+	public void validatePatientEmail(String status) throws InterruptedException {
+		addOrderPage.clickOtherNationality();
+		Thread.sleep(1000);
+		if (status.equals("valid")) {
+			assertNotEquals(addOrderPage.getPatientEmailFieldClass().trim(),
+					"error");
+		} else if (status.equals("invalid")) {
+			assertEquals(addOrderPage.getPatientEmailFieldClass().trim(),
+					"error");
+		}
+	}
+
+	@And("User Selects Patient Health Region")
+	public void selectPatientDistrict() {
+		addOrderPage.selectPatientHelathRegionFromDropDownMenu();
+	}
+
+	@And("User Enters Patient Date of Birth {string}")
+	public void enterPatientDateOfBirth(String dob) {
+		addOrderPage.enterPatientDateofBirth(dob);
+	}
+
+	@Then("Field validates {string} Patient Date Of Birth")
+	public void validatePatientDateOfBirth(String status)
+			throws InterruptedException {
+		addOrderPage.clickOtherNationality();
+		Thread.sleep(1000);
+		if (status.equals("valid")) {
+			assertNotEquals(addOrderPage.getPatientDoBValidateLabelClass(),
+					"badmessage");
+		} else if (status.equals("invalid")) {
+			assertEquals(addOrderPage.getPatientDoBValidateLabelClass(),
+					"badmessage");
+		}
+	}
+
+	@And("User Selects Patient Gender")
+	public void selectPatientGender() {
+		addOrderPage.selectPatientGenderFromDropDownMenu();
+	}
+
+	@And("User Selects Patient Education")
+	public void selectPatientEducation() {
+		addOrderPage.selectPatientEducationFromDropDownMenu();
+	}
+
+	@And("User Selects Patient Marital Status")
+	public void selectPatientMaritalStatus() {
+		addOrderPage.selectPatientMaritalStatusFromDropDownMenu();
+	}
+
+	@And("User Enters Patient Other Nationality {string}")
+	public void enterPatientOtherNationality(String nationality) {
+		addOrderPage.enterPatientOtherNationality(nationality);
 	}
 }

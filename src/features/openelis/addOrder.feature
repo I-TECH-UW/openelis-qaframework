@@ -140,8 +140,48 @@ When User deletes Text in Tests Box
 Then Text cannot be cleared in Tests Box
 
 @order
-Scenario: Patient Search
+Scenario Outline: Patient Search
 Then Patient information form is marked mandatory
 When User Expands Patient information form by clicking the + button next to Patient
 Then Patient Search appears
-Then Search button deactivated until search criteria selected and text entered.
+Then Search button deactivated until search criteria selected and text entered
+And User Searches by Accesion Number "<accesionNumber>"
+And User Searches by Patient Id "<patientId>"
+And User Searches by Last Name "<lastName>"
+And User Searches by First Name "<firstName>"
+And User Searches by Date of Birth "<dateOfBirth>"
+Examples:
+| accesionNumber    | patientId  | lastName | firstName  | dateOfBirth |
+| 20210000000001004 | 201507D33  |   Aliou  | SADIO      | 09/02/2019  |
+
+@order
+Scenario Outline: Patient Information
+And User Expands Patient information form by clicking the + button next to Patient
+And User Clicks New Patient Button
+And User Enters Subject Number "<subjectNumber>"
+And User Enters National ID "<nationalId>"
+And User Enters Patient Last Name "<pLastName>"
+And User Enters Patient First Name "<pFirstName>"
+And User Enters Contact Last Name "<cLastName>"
+And User Enters Contact First Name "<cFirstName>"
+And User Enters Contact Email "<cEmail>"
+Then Field validates "<status>" Contact Email
+And User Enters Contact Phone "<cPhone>"
+And User Enters Patient Street "<street>"
+And User Enters Patient Commune "<commune>"
+And User Enters Patient Town "<town>"
+And User Enters Patient Phone "<pPhone>"
+Then Field validates "<status>" Patient Phone
+And User Enters Patient Email "<pEmail>"
+Then Field validates "<status>" Patient Email
+And User Selects Patient Health Region
+And User Enters Patient Date of Birth "<dateOfBirth>"
+Then Field validates "<status>" Patient Date Of Birth
+And User Selects Patient Gender
+And User Selects Patient Education
+And User Selects Patient Marital Status
+And User Enters Patient Other Nationality "<nationality>"
+Examples:
+|subjectNumber|nationalId |pLastName|pFirstName|cLastName|cFirstname|  cEmail         | cPhone        |        street              |commune   |town  |pPhone       |pEmail        |dateOfBirth |nationality|status  |
+| 201807D9P   | 201507D35 |   Aliou | SADIO    |  moses  | mutes    | wrongEmail      | +23063458788  | New York city, street 3334 |Grand yoff| Dakar|ff223377     |wrongEmail    |09/02/dd    |American   |invalid |
+| 201807D9P   | 201507D35 |   Aliou | SADIO    |  moses  | mutes    |contact@gmail.com| +23063458788  | New York city, street 3334 |Grand yoff| Dakar|+23063458788 |pat@gmail.com |09/02/2019  |American   |valid   |
