@@ -177,11 +177,29 @@ Then Field validates "<status>" Patient Email
 And User Selects Patient Health Region
 And User Enters Patient Date of Birth "<dateOfBirth>"
 Then Field validates "<status>" Patient Date Of Birth
+When User Enters Patient Date of Birth in future
+Then Alert appears if Date is in the Future
+When Date of Birth is left blank and Age "<age>" is filled
+Then Field generates Date of Birth with correct year for the Age "<age>"
+And Alert Appears if Age entered is -1 , 100 and >100
 And User Selects Patient Gender
 And User Selects Patient Education
 And User Selects Patient Marital Status
 And User Enters Patient Other Nationality "<nationality>"
 Examples:
-|subjectNumber|nationalId |pLastName|pFirstName|cLastName|cFirstname|  cEmail         | cPhone        |        street              |commune   |town  |pPhone       |pEmail        |dateOfBirth |nationality|status  |
-| 201807D9P   | 201507D35 |   Aliou | SADIO    |  moses  | mutes    | wrongEmail      | +23063458788  | New York city, street 3334 |Grand yoff| Dakar|ff223377     |wrongEmail    |09/02/dd    |American   |invalid |
-| 201807D9P   | 201507D35 |   Aliou | SADIO    |  moses  | mutes    |contact@gmail.com| +23063458788  | New York city, street 3334 |Grand yoff| Dakar|+23063458788 |pat@gmail.com |09/02/2019  |American   |valid   |
+|subjectNumber|nationalId |pLastName|pFirstName|cLastName|cFirstName|  cEmail         | cPhone        |        street              |commune   |town  |pPhone       |pEmail        |dateOfBirth |nationality|age|status  |
+| 201807D9P   | 201507D35 |   Aliou | SADIO    |  moses  | mutes    | wrongEmail      | +23063458788  | New York city, street 3334 |Grand yoff| Dakar|ff223377     |wrongEmail    |09/02/dd    |American   |20 |invalid |
+| 201807D9P   | 201507D35 |   Aliou | SADIO    |  moses  | mutes    |contact@gmail.com| +23063458788  | New York city, street 3334 |Grand yoff| Dakar|+23063458788 |pat@gmail.com |09/02/2019  |American   |20 |valid   |
+
+
+@order
+Scenario: Overall Page
+Then Save button deactivated until all mandatory fields are completed
+When User Completes all mandatory fields
+Then Save is button Activated when all mandatory fields are completed
+When User Clicks Cancel
+And User Click Stay on Page
+Then Patient Information form remains on screen
+When User Clicks Save
+Then New blank Add Order form appears with green Save was successful message on the top
+And User Clicks Cancel and Returns to Home Page 

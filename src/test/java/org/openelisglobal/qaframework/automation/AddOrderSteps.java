@@ -1,14 +1,18 @@
 package org.openelisglobal.qaframework.automation;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.UUID;
 
 import org.openelisglobal.qaframework.RunTest;
 import org.openelisglobal.qaframework.automation.page.AddOrderPage;
@@ -348,7 +352,7 @@ public class AddOrderSteps extends TestBase {
 	}
 
 	@When("User enters correct Date")
-	public void entercorrectDateFormat() {
+	public void enterCorrectDateFormat() {
 		Date date = new Date();
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
@@ -557,12 +561,16 @@ public class AddOrderSteps extends TestBase {
 
 	@And("User Enters Subject Number {string}")
 	public void enterPatientSubjectNumber(String subJectNumber) {
-		addOrderPage.enterSubjectNumber(subJectNumber);
+		UUID uuid = UUID.randomUUID();
+		String uuidAsString = uuid.toString();
+		addOrderPage.enterSubjectNumber(subJectNumber + uuidAsString);
 	}
 
 	@And("User Enters National ID {string}")
 	public void enterPatientNationalId(String nationalID) {
-		addOrderPage.enterNationalId(nationalID);
+		UUID uuid = UUID.randomUUID();
+		String uuidAsString = uuid.toString();
+		addOrderPage.enterNationalId(nationalID + uuidAsString);
 	}
 
 	@And("User Enters Patient Last Name {string}")
@@ -682,6 +690,63 @@ public class AddOrderSteps extends TestBase {
 		}
 	}
 
+	@When("User Enters Patient Date of Birth in future")
+	public void enterPatientDateOfBirthInFuture() {
+		Date date = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		cal.add(Calendar.DATE, 1);
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		String strDate = formatter.format(cal.getTime());
+		addOrderPage.enterPatientDateofBirth(strDate);
+	}
+
+	@Then("Alert appears if Date is in the Future")
+	public void alertAppearsIfFutureDateIsEntered() throws InterruptedException {
+		addOrderPage.clickOtherNationality();
+		Thread.sleep(1000);
+		addOrderPage.acceptAlert();
+		assertEquals(addOrderPage.getPatientDoBValidateLabelClass(),
+				"badmessage");
+	}
+
+	@When("Date of Birth is left blank and Age {string} is filled")
+	public void enterPatientAgeWithoutDateOfBirth(String age) {
+		addOrderPage.clearPatientDateOfBirth();
+		addOrderPage.enterPatientAgeInYears(age);
+	}
+
+	@Then("Field generates Date of Birth with correct year for the Age {string}")
+	public void generateDateOfBirth(String age) throws InterruptedException {
+		addOrderPage.clickOtherNationality();
+		Thread.sleep(1000);
+		Date date = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		int currentAge = Integer.parseInt(age.trim());
+		cal.add(Calendar.YEAR, -currentAge);
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
+		String strDate = formatter.format(cal.getTime());
+		assertEquals(addOrderPage.getPatientDateOfBirthValue(), "xx/xx/"
+				+ strDate);
+	}
+
+	@And("Alert Appears if Age entered is -1 , 100 and >100")
+	public void showAlertIfAgeIsInvalid() throws InterruptedException {
+		List<String> invalidAge = new ArrayList<String>();
+		invalidAge.add("-1");
+		invalidAge.add("100");
+		invalidAge.add("101");
+		for (String age : invalidAge) {
+			addOrderPage.clearPatientDateOfBirth();
+			addOrderPage.enterPatientAgeInYears(age);
+			addOrderPage.clickOtherNationality();
+			Thread.sleep(1000);
+			assertEquals(addOrderPage.getPatientAgeValidateLabelClass(),
+					"badmessage");
+		}
+	}
+
 	@And("User Selects Patient Gender")
 	public void selectPatientGender() {
 		addOrderPage.selectPatientGenderFromDropDownMenu();
@@ -700,5 +765,78 @@ public class AddOrderSteps extends TestBase {
 	@And("User Enters Patient Other Nationality {string}")
 	public void enterPatientOtherNationality(String nationality) {
 		addOrderPage.enterPatientOtherNationality(nationality);
+	}
+
+	@Then("Save button deactivated until all mandatory fields are completed")
+	public void saveButtonDeactivated() {
+		assertTrue(addOrderPage.saveButtonDeactivated());
+	}
+
+	@When("User Completes all mandatory fields")
+	public void completeAllMandatoryFiels() throws InterruptedException {
+		UUID uuid = UUID.randomUUID();
+		String uuidAsString = uuid.toString();
+		// innitializing data
+		addOrderPage.clickGenerateButton();
+		Thread.sleep(1000);
+		addOrderPage.selectSiteNameFromDropDown();
+		Thread.sleep(1000);
+		addOrderPage.enterLastName("SADDIO");
+		addOrderPage.clickAddSampleButton();
+		addOrderPage.selectSampleTypeFromDropDownMenu();
+		addOrderPage.clickPannelCheckBox();
+		addOrderPage.clickNewPatientButton();
+		addOrderPage.enterSubjectNumber("201807D9P" + uuidAsString);
+		addOrderPage.enterNationalId("201507D35" + uuidAsString);
+		addOrderPage.enterPatientLastName("lastName");
+		addOrderPage.enterPatientFirstName("firstName");
+		addOrderPage.enterPatientStreet("street");
+		addOrderPage.enterPatientCommune("commune");
+		addOrderPage.enterPatientEmail("email@gmail.com");
+		addOrderPage.enterPatientPhone("+23063458788");
+		addOrderPage.selectPatientHelathRegionFromDropDownMenu();
+		addOrderPage.enterPatientDateofBirth("09/02/2019");
+		addOrderPage.selectPatientGenderFromDropDownMenu();
+		addOrderPage.selectPatientEducationFromDropDownMenu();
+		addOrderPage.selectPatientMaritalStatusFromDropDownMenu();
+		addOrderPage.enterPatientOtherNationality("nationality");
+	}
+	@Then("Save is button Activated when all mandatory fields are completed")
+	public void saveButtonActivated() {
+		assertFalse(addOrderPage.saveButtonDeactivated());
+	}
+
+	@When("User Clicks Cancel")
+	public void clickCancel() {
+		addOrderPage.clickCancel();
+	}
+
+	@When("User Click Stay on Page")
+	public void ClickStayOnPage() {
+		addOrderPage.dismissAlert();
+	}
+
+	@Then("Patient Information form remains on screen")
+	public void patientFormRemains() {
+		assertFalse(addOrderPage.saveButtonDeactivated());
+	}
+
+	@When("User Clicks Save")
+	public void clickSave() throws InterruptedException {
+		addOrderPage.clickSave();
+	}
+
+	@Then("New blank Add Order form appears with green Save was successful message on the top")
+	public void saveSuccesful() throws InterruptedException {
+		Thread.sleep(1000);
+		assertTrue(addOrderPage.containsText("Save was successful"));
+		assertTrue(addOrderPage.containsText("Test Request"));
+	}
+
+	@Then("User Clicks Cancel and Returns to Home Page")
+	public void clickCancelAndLeave() {
+		addOrderPage.clickCancel();
+		homePage = new HomePage(addOrderPage);
+		assertFalse(homePage.containsText("Test Request"));
 	}
 }

@@ -336,6 +336,12 @@ public abstract class Page {
 		alert.accept();
 	}
 
+	public void dismissAlert() {
+		waiter.until(ExpectedConditions.alertIsPresent());
+		Alert alert = driver.switchTo().alert();
+		alert.dismiss();
+	}
+
 	boolean hasFocus(String id) {
 		return (Boolean) ((JavascriptExecutor) driver).executeScript(
 				"return jQuery('#" + id + "').is(':focus')", new Object[]{});
