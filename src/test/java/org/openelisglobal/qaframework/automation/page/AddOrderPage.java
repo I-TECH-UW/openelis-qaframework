@@ -98,6 +98,8 @@ public class AddOrderPage extends Page {
 	private static final By FIELD_PATIENT_NATIONALITY_OTHER = By
 			.id("nationalityOtherId");
 
+	private static final By FIELD_PATIENT_AGE_YEARS = By.id("ageYears");
+
 	private static final By BUTTON_GENERATE = By.id("generateAccessionButton");
 
 	private static final By BUTTON_ADD_SAMPLE = By.id("samplesSectionId");
@@ -121,6 +123,11 @@ public class AddOrderPage extends Page {
 
 	private static final By BUTTON_NEW_PATIENT = By
 			.xpath("//input[@value='New Patient']");
+
+	private static final By BUTTON_SAVE = By.id("saveButtonId");
+
+	private static final By BUTTON_CANCEL = By
+			.xpath("//input[@value='Cancel']");
 
 	private static final By SELECT_SAMPLE = By.id("sampleTypeSelect");
 
@@ -164,6 +171,9 @@ public class AddOrderPage extends Page {
 
 	private static final By LABEL_VALIDATE_PATIENT_DOB = By
 			.id("patientProperties.birthDateForDisplayMessage");
+
+	private static final By LABEL_VALIDATE_PATIENT_AGE = By
+			.id("ageYearsMessage");
 
 	public AddOrderPage(Page parentPage) {
 		super(parentPage);
@@ -317,6 +327,15 @@ public class AddOrderPage extends Page {
 	public void clickOtherNationality() {
 		clickOn(FIELD_PATIENT_NATIONALITY_OTHER);
 	}
+
+	public void clickCancel() {
+		clickOn(BUTTON_CANCEL);
+	}
+
+	public void clickSave() {
+		clickOn(BUTTON_SAVE);
+	}
+
 	public void selectSiteNameFromDropDown() throws InterruptedException {
 		clickOn(FIELD_SITE_NAME);
 		List<WebElement> options = getSiteNameField()
@@ -379,6 +398,10 @@ public class AddOrderPage extends Page {
 
 	public String getTestValue() {
 		return getValue(FIELD_TEST);
+	}
+
+	public String getPatientDateOfBirthValue() {
+		return getValue(FIELD_PATIENT_DOB);
 	}
 
 	public void enterRecievedDate(String date) {
@@ -513,8 +536,16 @@ public class AddOrderPage extends Page {
 		setText(FIELD_PATIENT_NATIONALITY_OTHER, nationality);
 	}
 
+	public void enterPatientAgeInYears(String age) {
+		setText(FIELD_PATIENT_AGE_YEARS, age);
+	}
+
 	public void clearTestsField() {
 		clearText(FIELD_TEST);
+	}
+
+	public void clearPatientDateOfBirth() {
+		clearText(FIELD_PATIENT_DOB);
 	}
 
 	public String getRequestDateRequiredClass() {
@@ -591,6 +622,10 @@ public class AddOrderPage extends Page {
 
 	public String getPatientDoBValidateLabelClass() {
 		return getClass(LABEL_VALIDATE_PATIENT_DOB);
+	}
+
+	public String getPatientAgeValidateLabelClass() {
+		return getClass(LABEL_VALIDATE_PATIENT_AGE);
 	}
 
 	public String getPatientSerchDisabledAttribute() {
@@ -706,5 +741,16 @@ public class AddOrderPage extends Page {
 
 	public void serchPatient() {
 		clickOn(BUTTON_PATIENT_SEARCH);
+	}
+
+	public Boolean saveButtonDeactivated() {
+		Boolean deactivated = false;
+		try {
+			deactivated = findElement(BUTTON_SAVE).getAttribute("disabled")
+					.equals("true") ? true : false;
+		} catch (NullPointerException e) {
+			deactivated = false;
+		}
+		return deactivated;
 	}
 }
