@@ -196,7 +196,7 @@ Examples:
 Scenario: Overall Page
 Then Save button deactivated until all mandatory fields are completed
 When User Completes all mandatory fields
-Then Save is button Activated when all mandatory fields are completed
+Then Save button is Activated when all mandatory fields are completed
 When User Clicks Cancel
 And User Click Stay on Page
 Then Patient Information form remains on screen

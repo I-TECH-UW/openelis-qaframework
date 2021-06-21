@@ -801,7 +801,7 @@ public class AddOrderSteps extends TestBase {
 		addOrderPage.selectPatientMaritalStatusFromDropDownMenu();
 		addOrderPage.enterPatientOtherNationality("nationality");
 	}
-	@Then("Save is button Activated when all mandatory fields are completed")
+	@Then("Save button is Activated when all mandatory fields are completed")
 	public void saveButtonActivated() {
 		assertFalse(addOrderPage.saveButtonDeactivated());
 	}
