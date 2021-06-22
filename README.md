@@ -3,9 +3,11 @@
 This is the new  OpenELIS-Global2 Automated testing Framework thats integrates both BDD with Cucumber and Fuctional Testing with Selenium.
 
 ![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/qa.yml/badge.svg)
-## Installing dependencies wthout running tests
 
 See [Wiki](https://github.com/I-TECH-UW/openelis-qaframework/wiki) for the Project SetUp
+
+## Installing dependencies wthout running tests
+
 
     mvn clean install -Dcucumber.filter.tags='@null'
 
