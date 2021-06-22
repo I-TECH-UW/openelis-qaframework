@@ -26,10 +26,8 @@ import org.junit.rules.TestName;
 import org.junit.rules.TestRule;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
-import org.openelisglobal.qaframework.automation.page.LoginPage;
 import org.openelisglobal.qaframework.automation.page.Page;
 import org.openelisglobal.qaframework.automation.page.TestProperties;
-import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.UnexpectedAlertBehaviour;
@@ -42,10 +40,6 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
-import jakarta.ws.rs.ServerErrorException;
-import jakarta.ws.rs.client.ClientBuilder;
-import jakarta.ws.rs.core.Response;
 
 /**
  * Superclass for all UI Tests. Contains lots of handy "utilities" needed to
