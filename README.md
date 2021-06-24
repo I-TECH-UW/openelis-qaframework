@@ -2,7 +2,7 @@
 ## OpenELIS-Global-2 Automated Testing Framework.
 This is the new  OpenELIS-Global2 Automated testing Framework thats integrates both BDD with Cucumber and Fuctional Testing with Selenium.
 
-![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/qa.yml/badge.svg)
+[![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/qa.yml/badge.svg)](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/qa.yml)
 
 See [Wiki](https://github.com/I-TECH-UW/openelis-qaframework/wiki) for the Project SetUp
 
@@ -29,3 +29,7 @@ See [Wiki](https://github.com/I-TECH-UW/openelis-qaframework/wiki) for the Proje
 3. Add order tests 
 
        mvn test -Dcucumber.filter.tags='@order'
+
+4. Results Entry tests 
+
+       mvn test -Dcucumber.filter.tags='@results'       
