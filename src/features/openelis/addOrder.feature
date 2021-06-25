@@ -125,7 +125,7 @@ Scenario: Available Tests and Panels
 And User Clicks on + Button next to Sample
 And User Selects Sample Type from Drop down menu
 Then Tests entry is marked mandatory
-Then Available Tests exists
+And Available Tests exists
 When User Checks checkbox next to test name
 Then Checkbox sticks, test name appears under Tests box
 When User unChecks checkbox next to test name

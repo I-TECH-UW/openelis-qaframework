@@ -18,8 +18,8 @@ import org.openelisglobal.qaframework.RunTest;
 import org.openelisglobal.qaframework.automation.page.AddOrderPage;
 import org.openelisglobal.qaframework.automation.page.HomePage;
 import org.openelisglobal.qaframework.automation.page.LoginPage;
-import org.openelisglobal.qaframework.automation.page.TestProperties;
 import org.openelisglobal.qaframework.automation.test.TestBase;
+import org.openelisglobal.qaframework.automation.test.TestProperties;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;

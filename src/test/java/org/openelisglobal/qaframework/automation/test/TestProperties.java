@@ -1,4 +1,4 @@
-package org.openelisglobal.qaframework.automation.page;
+package org.openelisglobal.qaframework.automation.test;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,8 +23,6 @@ public class TestProperties {
 	public static final String WEBAPP_URL_PROPERTY = "webapp.url";
 
 	public static final String DEFAULT_WEBAPP_URL = "http://localhost:8443/OpenELIS-Global";
-
-	public static final String AUTO_LOGIN_AT_STARTUP_PROPERTY = "login.auto";
 
 	public static final String HEADLESS_PROPERTY = "headless";
 
@@ -70,11 +68,6 @@ public class TestProperties {
 
 	public String getHeadless() {
 		return getProperty(HEADLESS_PROPERTY, DEFAULT_HEADLESS);
-	}
-
-	public boolean automaticallyLoginAtStartup() {
-		return Boolean.parseBoolean(getProperty(AUTO_LOGIN_AT_STARTUP_PROPERTY,
-				"true"));
 	}
 
 	public String getBrowser() {

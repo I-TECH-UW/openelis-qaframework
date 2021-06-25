@@ -17,8 +17,20 @@ public class HomePage extends Page {
 
 	private static final By FIRST_LEVEL_MENU_RESULTS = By.id("menu_results");
 
-	private static final By SECOND_LEVEL_MENU_ENTER_BY_UNIT = By
+	private static final By SECOND_LEVEL_MENU_RESULTS_ENTER_BY_UNIT = By
 			.id("menu_results_logbook");
+
+	private static final By SECOND_LEVEL_MENU_RESULTS_SEARCH = By
+			.id("menu_results_search");
+
+	private static final By THIRD_LEVEL_MENU_RESULTS_SEARCH_PATIENT = By
+			.id("menu_results_patient");
+
+	private static final By THIRD_LEVEL_MENU_RESULTS_SEARCH_ORDER = By
+			.id("menu_results_accession");
+
+	private static final By THIRD_LEVEL_MENU_RESULTS_SEARCH_STATUS = By
+			.id("menu_results_status");
 
 	public HomePage(Page page) {
 		super(page);
@@ -47,9 +59,30 @@ public class HomePage extends Page {
 		return new AddOrderPage(this);
 	}
 
-	public ResultsEntryPage selectsResultAndClickEnterByUnit() {
+	public ResultsUnitTypePage selectsResultAndClickEnterByUnit() {
 		hoverOn(FIRST_LEVEL_MENU_RESULTS);
-		clickOn(SECOND_LEVEL_MENU_ENTER_BY_UNIT);
-		return new ResultsEntryPage(this);
+		clickOn(SECOND_LEVEL_MENU_RESULTS_ENTER_BY_UNIT);
+		return new ResultsUnitTypePage(this);
+	}
+
+	public SearchResultsByPatientPage goToSearchResultsByPatient() {
+		hoverOn(FIRST_LEVEL_MENU_RESULTS);
+		hoverOn(SECOND_LEVEL_MENU_RESULTS_SEARCH);
+		clickOn(THIRD_LEVEL_MENU_RESULTS_SEARCH_PATIENT);
+		return new SearchResultsByPatientPage(this);
+	}
+
+	public SearchResultsByOrderPage goToSearchResultsByOrder() {
+		hoverOn(FIRST_LEVEL_MENU_RESULTS);
+		hoverOn(SECOND_LEVEL_MENU_RESULTS_SEARCH);
+		clickOn(THIRD_LEVEL_MENU_RESULTS_SEARCH_ORDER);
+		return new SearchResultsByOrderPage(this);
+	}
+
+	public SearchResultsByStatusPage goToSearchResultsByStatus() {
+		hoverOn(FIRST_LEVEL_MENU_RESULTS);
+		hoverOn(SECOND_LEVEL_MENU_RESULTS_SEARCH);
+		clickOn(THIRD_LEVEL_MENU_RESULTS_SEARCH_STATUS);
+		return new SearchResultsByStatusPage(this);
 	}
 }
