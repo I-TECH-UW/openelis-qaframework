@@ -5,6 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.openelisglobal.qaframework.automation.page.exception.PageRejectedException;
 import org.openelisglobal.qaframework.automation.test.TestBase;
+import org.openelisglobal.qaframework.automation.test.TestProperties;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -156,13 +157,11 @@ public abstract class Page {
 
 	public void go() {
 		driver.get(getAbsolutePageUrl());
-
 		waitForPage();
 	}
 
 	public WebElement findElement(By by) {
 		waiter.until(ExpectedConditions.visibilityOfElementLocated(by));
-
 		return driver.findElement(by);
 	}
 
@@ -419,5 +418,16 @@ public abstract class Page {
 			}
 			n = n + 1;
 		}
+	}
+
+	public Boolean dropDownHasOptions(By by) {
+		By FIELD_OPTION = By.tagName("option");
+		clickOn(by);
+		List<WebElement> options = findElement(by).findElements(FIELD_OPTION);
+		return options.size() > 0 ? true : false;
+	}
+
+	public Boolean hasElement(By by) {
+		return findElement(by) != null ? true : false;
 	}
 }
