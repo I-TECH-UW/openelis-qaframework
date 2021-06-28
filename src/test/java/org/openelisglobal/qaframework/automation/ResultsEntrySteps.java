@@ -17,6 +17,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.openelisglobal.qaframework.RunTest;
@@ -77,7 +78,9 @@ public class ResultsEntrySteps extends TestBase {
 
 	@When("User Selects Results --> Search --> By Patient")
 	public void goToSelectResultByPatient() {
-		homePage = resutlsEntryPage.goToHomePage();
+		if (resutlsEntryPage != null) {
+			homePage = resutlsEntryPage.goToHomePage();
+		}
 		searchByPatientPage = homePage.goToSearchResultsByPatient();
 	}
 
@@ -89,7 +92,9 @@ public class ResultsEntrySteps extends TestBase {
 
 	@When("User Selects Results --> Search --> By Order")
 	public void goToSelectResultByOrder() {
-		homePage = searchByPatientPage.goToHomePage();
+		if (searchByPatientPage != null) {
+			homePage = searchByPatientPage.goToHomePage();
+		}
 		searchByOrderPage = homePage.goToSearchResultsByOrder();
 	}
 
@@ -102,7 +107,9 @@ public class ResultsEntrySteps extends TestBase {
 
 	@When("User Selects Results --> Search --> By Test Name, Date, or Status")
 	public void goToSelectResultByStatus() {
-		homePage = searchByOrderPage.goToHomePage();
+		if (searchByOrderPage != null) {
+			homePage = searchByOrderPage.goToHomePage();
+		}
 		searchResultsByStatusPage = homePage.goToSearchResultsByStatus();
 	}
 
@@ -115,6 +122,61 @@ public class ResultsEntrySteps extends TestBase {
 		assertTrue(searchResultsByStatusPage.containsText("Analysis Status"));
 		assertTrue(searchResultsByStatusPage.containsText("Sample Status"));
 		assertTrue(searchResultsByStatusPage.hasSearchForm());
+	}
+
+	@Then("Search button deactivated until search text entered")
+	public void searchButtonDeactivated() throws InterruptedException {
+		assertTrue(searchByPatientPage.searchButtonDeactivated());
+		searchByPatientPage.enterLabNoSearch("labNumber");
+		Thread.sleep(100);
+		assertFalse(searchByPatientPage.searchButtonDeactivated());
+	}
+
+	@When("User Searches by Last name {string}")
+	public void searchByLastName(String lastName) {
+		searchByPatientPage.go();
+		searchByPatientPage.enterLastNameSearch(lastName);
+		searchByPatientPage.clickSearchButton();
+	}
+
+	@Then("Search by Last name yields all patients with matching last name")
+	public void returnSearchResultsByLastName() {
+		assertTrue(searchByPatientPage.noPatientLabelDisplays());
+	}
+
+	@When("User Searches by First name {string}")
+	public void searchByFirstName(String firstName) {
+		searchByPatientPage.go();
+		searchByPatientPage.enterFirstNameSearch(firstName);
+		searchByPatientPage.clickSearchButton();
+	}
+
+	@Then("Search by First name yields all patients with matching first name")
+	public void returnSearchResultsByFirstName() {
+		assertTrue(searchByPatientPage.noPatientLabelDisplays());
+	}
+
+	@When("User Searches by Patient Identification Code {string}")
+	public void searchByPatientId(String patientId) {
+		searchByPatientPage.go();
+		searchByPatientPage.enterPatientIdSearch(patientId);
+		searchByPatientPage.clickSearchButton();
+	}
+
+	@Then("Search by Patient Id yields all patients with matching patient id")
+	public void returnSearchResultsByPatientId() {
+		assertTrue(searchByPatientPage.noPatientLabelDisplays());
+	}
+
+	@When("User Searches by AccesionNumber {string}")
+	public void searchByAccesionNumber(String acesionNumber) {
+		searchByOrderPage.enterAccesionNUmber(acesionNumber);;
+		searchByOrderPage.clickAccesionNumberSearch();
+	}
+
+	@Then("Search by Lab Number yields results for known accession number")
+	public void returnSearchResultsByAccesionNumber() {
+		assertTrue(searchByOrderPage.accesionNumberNotFoundDisplays());
 	}
 
 }

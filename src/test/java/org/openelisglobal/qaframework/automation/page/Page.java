@@ -367,10 +367,6 @@ public abstract class Page {
 				text));
 	}
 
-	public boolean containsTextWithoutWait(String text) {
-		return driver.getPageSource().contains(text);
-	}
-
 	public Boolean containsText(String text) {
 		return driver.getPageSource().contains(text);
 	}
@@ -429,5 +425,16 @@ public abstract class Page {
 
 	public Boolean hasElement(By by) {
 		return findElement(by) != null ? true : false;
+	}
+
+	public Boolean isDisabled(By by) {
+		Boolean disabled = false;
+		String disabledAttribute = findElement(by).getAttribute("disabled");
+		if (disabledAttribute != null) {
+			if (disabledAttribute.equals("true")) {
+				disabled = true;
+			}
+		}
+		return disabled;
 	}
 }
