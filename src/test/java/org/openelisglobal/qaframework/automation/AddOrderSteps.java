@@ -99,13 +99,10 @@ public class AddOrderSteps extends TestBase {
 	@Then("View page Request Date and Received Date Default to the current date")
 	public void requestAndRecievedDatesShouldDefaultToCurrent()
 			throws Exception {
-		Date date = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-		String strDate = formatter.format(date);
-		// this test will fail at times since the server and the testing
+		// this test will fail at times if the server and the testing
 		// framework run in different time zones
-		// assertEquals(addOrderPage.getRecievedDateValue(), strDate);
-		// assertEquals(addOrderPage.getRequestDateValue(), strDate);
+		assertEquals(addOrderPage.getRecievedDateValue(), getCurrentDate());
+		assertEquals(addOrderPage.getRequestDateValue(), getCurrentDate());
 	}
 
 	@And("Both request and received date should be mandatory")
@@ -285,7 +282,8 @@ public class AddOrderSteps extends TestBase {
 
 	@And("Sample types display in drop-down list")
 	public void sampleTypesDisplayInDropDownMenu() {
-		assertTrue(addOrderPage.sampleTypesDisplayInDropDownMenu());
+		assertTrue(addOrderPage
+				.sampleTypesDropDownMenuContainsSampleTypesOptions());
 	}
 
 	@And("User Selects Sample Type from Drop down menu")

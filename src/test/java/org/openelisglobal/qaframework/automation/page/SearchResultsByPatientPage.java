@@ -26,6 +26,8 @@ public class SearchResultsByPatientPage extends Page {
 
 	private static final By LABEL_NO_PATIENT_FOUND = By.id("noPatientFound");
 
+	private static final By SEARCH_RESULT_TABLE = By.id("searchResultTable");
+
 	public SearchResultsByPatientPage(Page parent) {
 		super(parent);
 	}
@@ -70,5 +72,9 @@ public class SearchResultsByPatientPage extends Page {
 
 	public Boolean noPatientLabelDisplays() {
 		return hasElement(LABEL_NO_PATIENT_FOUND);
+	}
+
+	public Boolean searchResultsDisplay() {
+		return hasElement(SEARCH_RESULT_TABLE);
 	}
 }
