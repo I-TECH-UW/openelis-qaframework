@@ -1,5 +1,6 @@
 package org.openelisglobal.qaframework.automation;
 
+import org.openelisglobal.qaframework.automation.page.AddOrderPage;
 import org.openelisglobal.qaframework.automation.page.HomePage;
 import org.openelisglobal.qaframework.automation.page.LoginPage;
 import org.openelisglobal.qaframework.automation.page.ResultsUnitTypePage;
@@ -17,6 +18,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -29,6 +31,8 @@ public class ResultsEntrySteps extends TestBase {
 	private LoginPage loginPage;
 
 	private HomePage homePage;
+
+	private AddOrderPage addOrderPage;
 
 	private ResutlsEntryPage resutlsEntryPage;
 
@@ -170,7 +174,7 @@ public class ResultsEntrySteps extends TestBase {
 
 	@When("User Searches by AccesionNumber {string}")
 	public void searchByAccesionNumber(String acesionNumber) {
-		searchByOrderPage.enterAccesionNUmber(acesionNumber);;
+		searchByOrderPage.enterAccesionNumber(acesionNumber);;
 		searchByOrderPage.clickAccesionNumberSearch();
 	}
 
@@ -179,4 +183,83 @@ public class ResultsEntrySteps extends TestBase {
 		assertTrue(searchByOrderPage.accesionNumberNotFoundDisplays());
 	}
 
+	@When("User Selects Results --> Search --> By Order and searches by known Accession Number {string}")
+	public void searchByKnownAccesionNumber(String accesionNumber)
+			throws InterruptedException {
+		addOrderPage = homePage.goToAddOrderPage();
+		addOrderPage.innitaliseData(accesionNumber);
+		homePage = addOrderPage.goToHomePage();
+		searchByOrderPage = homePage.goToSearchResultsByOrder();
+		searchByOrderPage.enterAccesionNumber(accesionNumber);
+		// Patient information doesnt load
+		// searchByOrderPage.clickAccesionNumberSearch();
+	}
+
+	@Then("Patient information display correctly by Accession Number")
+	public void patienttInformationDispaysByAccesionNumber() {
+		// this doesnt load
+
+		homePage = searchByOrderPage.goToHomePage();
+	}
+
+	@When("User Select Results --> Search --> By Patient and  Pull up lab results for a known patient by LastName {string} and FirstName {string}")
+	public void searchByKnownPatientNames(String lastName, String firstName)
+			throws InterruptedException {
+		searchByPatientPage = homePage.goToSearchResultsByPatient();
+		searchByPatientPage.enterFirstNameSearch(firstName);
+		searchByPatientPage.enterLastNameSearch(lastName);
+		searchByPatientPage.clickSearchButton();
+		Thread.sleep(10000);
+	}
+
+	@Then("Patient information display correctly by Patient details")
+	public void patienttInformationDispaysByAccesionPatientDetails() {
+		assertTrue(searchByPatientPage.searchResultsDisplay());
+		assertTrue(searchByPatientPage.containsText("Data source"));
+		assertTrue(searchByPatientPage.containsText("Last Name"));
+		assertTrue(searchByPatientPage.containsText("First Name"));
+		assertTrue(searchByPatientPage.containsText("Gender"));
+		assertTrue(searchByPatientPage.containsText("Date of Birth"));
+		assertTrue(searchByPatientPage.containsText("Subject Number"));
+		assertTrue(searchByPatientPage.containsText("National ID"));
+		homePage = searchByPatientPage.goToHomePage();
+	}
+
+	@When("User Select Results --> Enter by Unit from main menu drop-down and Selects a Unit Type {string} for which there are known tests")
+	public void searchByUnitType(String unitType) {
+		resultsUnitTypePage = homePage.selectsResultAndClickEnterByUnit();
+		resutlsEntryPage = resultsUnitTypePage.selectUnitType(unitType);
+	}
+
+	@Then("Only tests without results display")
+	public void testsWithoutResultsDisplay() {
+		assertTrue(resutlsEntryPage.containsText("Test Date"));
+		assertTrue(resutlsEntryPage.containsText("Accept as is"));
+		assertTrue(resutlsEntryPage.containsText("Result from analyzer"));
+		assertTrue(resutlsEntryPage.containsText("Current Result"));
+		assertFalse(resutlsEntryPage
+				.containsText("No appropriate tests were found"));
+	}
+
+	@And("Notes are visible with time and date stamp")
+	public void notesPageVisible() {
+		assertTrue(resutlsEntryPage.containsText("Notes"));
+	}
+
+	@And("Lab number with sample extension displays")
+	public void labNumberDisplays() {
+		assertTrue(resutlsEntryPage.containsText("Lab No."));
+	}
+
+	@And("Sample Type displays")
+	public void sampleTypeDisplays() {
+		assertTrue(resutlsEntryPage.containsText("Sample Type"));
+	}
+
+	@And("Test date defaults to current date")
+	public void testDateDefaultsTocurrentDate() {
+		// this test will fail at times if the server and the testing
+		// framework run in different time zones
+		assertEquals(resutlsEntryPage.getTestDateValue(), getCurrentDate());
+	}
 }

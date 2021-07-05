@@ -35,7 +35,7 @@ public class SearchResultsByOrderPage extends Page {
 		return new HomePage(this);
 	}
 
-	public void enterAccesionNUmber(String accesionNumber) {
+	public void enterAccesionNumber(String accesionNumber) {
 		setText(FIELD_LAB_NO_SEARCH, accesionNumber);
 	}
 

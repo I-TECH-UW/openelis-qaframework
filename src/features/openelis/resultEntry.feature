@@ -37,3 +37,19 @@ Then Search by Lab Number yields results for known accession number
 Examples:
 |patientId  |lastName|FirstName|accesionNumber|
 |HT7823DAAAZ|Foxy    | McGee   |1234519000002 |
+
+@results
+Scenario Outline:Results Entry Set-up
+When User Selects Results --> Search --> By Order and searches by known Accession Number "<accesionNumber>"
+Then Patient information display correctly by Accession Number
+When User Select Results --> Search --> By Patient and  Pull up lab results for a known patient by LastName "<lastName>" and FirstName "<firstName>"
+Then Patient information display correctly by Patient details
+When User Select Results --> Enter by Unit from main menu drop-down and Selects a Unit Type "<unitType>" for which there are known tests
+Then Only tests without results display
+And Notes are visible with time and date stamp
+And Lab number with sample extension displays 
+And Sample Type displays
+And Test date defaults to current date
+Examples:
+|accesionNumber   |lastName|firstName  |unitType         |
+|20210000000002247|moses   | mutesasira|Molecular Biology|

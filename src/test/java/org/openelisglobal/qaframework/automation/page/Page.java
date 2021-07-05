@@ -341,6 +341,18 @@ public abstract class Page {
 		alert.dismiss();
 	}
 
+	public Boolean alertPresent() throws InterruptedException {
+		Thread.sleep(1000);
+		Boolean booelan = false;
+		try {
+			Alert alert = driver.switchTo().alert();
+			alert.accept();
+			booelan = true;
+		} catch (Exception e) {
+		};
+		return booelan;
+	}
+
 	boolean hasFocus(String id) {
 		return (Boolean) ((JavascriptExecutor) driver).executeScript(
 				"return jQuery('#" + id + "').is(':focus')", new Object[]{});

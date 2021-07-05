@@ -1,7 +1,7 @@
 package org.openelisglobal.qaframework.automation.page;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
@@ -13,6 +13,8 @@ import org.openqa.selenium.WebElement;
 public class AddOrderPage extends Page {
 
 	private static final String PATH_ADD_ORDER = "/SamplePatientEntry.do";
+
+	private static final String PATH_HOME = "/Dashboard.do";
 
 	private static final String LABEL_TEXT_REQUEST = "Test Reques";
 
@@ -631,28 +633,8 @@ public class AddOrderPage extends Page {
 	public String getPatientSerchDisabledAttribute() {
 		return findElement(BUTTON_PATIENT_SEARCH).getAttribute("disabled");
 	}
-	public boolean sampleTypesDisplayInDropDownMenu() {
-		String[] samples = {"Serum", "Plasma", "Urine", "DBS", "Fluid",
-				"Blood", "Swab", "Respiratory Swab", "Sputum"};
-		clickOn(SELECT_SAMPLE);
-		int n = 0;
-		Boolean b = false;
-		List<WebElement> options = getSampleSelectionField().findElements(
-				FIELD_OPTION);
-		for (WebElement option : options) {
-			if (n >= 1) {
-				if (Arrays.asList(samples).contains(option.getText())) {
-					b = true;
-				} else {
-					b = false;
-				}
-			}
-			if (n == 7) {
-				break;
-			}
-			n = n + 1;
-		}
-		return b;
+	public boolean sampleTypesDropDownMenuContainsSampleTypesOptions() {
+		return dropDownHasOptions(SELECT_SAMPLE);
 	}
 
 	public void selectSampleTypeFromDropDownMenu() {
@@ -752,5 +734,44 @@ public class AddOrderPage extends Page {
 			deactivated = false;
 		}
 		return deactivated;
+	}
+
+	public void innitaliseData(String accesionNumber)
+			throws InterruptedException {
+		UUID uuid = UUID.randomUUID();
+		String uuidAsString = uuid.toString();
+		enterAccessionNumber(accesionNumber);
+		clickOnNextVisitDate();
+		if (alertPresent()) {
+			return;
+		}
+		Thread.sleep(1000);
+		selectSiteNameFromDropDown();
+		Thread.sleep(1000);
+		enterLastName("SADDIO");
+		clickAddSampleButton();
+		selectSampleTypeFromDropDownMenu();
+		clickPannelCheckBox();
+		clickNewPatientButton();
+		enterSubjectNumber("201807D9P" + uuidAsString);
+		enterNationalId("201507D35" + uuidAsString);
+		enterPatientLastName("moses");
+		enterPatientFirstName("mutesasira");
+		enterPatientStreet("street");
+		enterPatientCommune("commune");
+		enterPatientEmail("email@gmail.com");
+		enterPatientPhone("+23063458788");
+		selectPatientHelathRegionFromDropDownMenu();
+		enterPatientDateofBirth("09/02/2019");
+		selectPatientGenderFromDropDownMenu();
+		selectPatientEducationFromDropDownMenu();
+		selectPatientMaritalStatusFromDropDownMenu();
+		enterPatientOtherNationality("nationality");
+		clickSave();
+	}
+
+	public HomePage goToHomePage() {
+		this.goToPage(PATH_HOME);
+		return new HomePage(this);
 	}
 }
