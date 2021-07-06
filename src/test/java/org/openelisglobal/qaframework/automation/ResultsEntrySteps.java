@@ -4,7 +4,7 @@ import org.openelisglobal.qaframework.automation.page.AddOrderPage;
 import org.openelisglobal.qaframework.automation.page.HomePage;
 import org.openelisglobal.qaframework.automation.page.LoginPage;
 import org.openelisglobal.qaframework.automation.page.ResultsUnitTypePage;
-import org.openelisglobal.qaframework.automation.page.ResutlsEntryPage;
+import org.openelisglobal.qaframework.automation.page.ResultsEntryPage;
 
 import org.openelisglobal.qaframework.automation.page.SearchResultsByOrderPage;
 import org.openelisglobal.qaframework.automation.page.SearchResultsByPatientPage;
@@ -34,7 +34,7 @@ public class ResultsEntrySteps extends TestBase {
 
 	private AddOrderPage addOrderPage;
 
-	private ResutlsEntryPage resutlsEntryPage;
+	private ResultsEntryPage resultsEntryPage;
 
 	private SearchResultsByPatientPage searchByPatientPage;
 
@@ -75,15 +75,15 @@ public class ResultsEntrySteps extends TestBase {
 
 	@And("User Can select unit {string} from drop down menu and redirects to entry page")
 	public void selectUnitType(String unitType) throws InterruptedException {
-		resutlsEntryPage = resultsUnitTypePage.selectUnitType(unitType);
+		resultsEntryPage = resultsUnitTypePage.selectUnitType(unitType);
 		Thread.sleep(2000);
-		assertTrue(resutlsEntryPage.containsText(unitType));
+		assertTrue(resultsEntryPage.containsText(unitType));
 	}
 
 	@When("User Selects Results --> Search --> By Patient")
 	public void goToSelectResultByPatient() {
-		if (resutlsEntryPage != null) {
-			homePage = resutlsEntryPage.goToHomePage();
+		if (resultsEntryPage != null) {
+			homePage = resultsEntryPage.goToHomePage();
 		}
 		searchByPatientPage = homePage.goToSearchResultsByPatient();
 	}
@@ -181,6 +181,7 @@ public class ResultsEntrySteps extends TestBase {
 	@Then("Search by Lab Number yields results for known accession number")
 	public void returnSearchResultsByAccesionNumber() {
 		assertTrue(searchByOrderPage.accesionNumberNotFoundDisplays());
+		assertTrue(searchByOrderPage.containsText("Accession number not found"));
 	}
 
 	@When("User Selects Results --> Search --> By Order and searches by known Accession Number {string}")
@@ -188,6 +189,11 @@ public class ResultsEntrySteps extends TestBase {
 			throws InterruptedException {
 		addOrderPage = homePage.goToAddOrderPage();
 		addOrderPage.innitaliseData(accesionNumber);
+		homePage = addOrderPage.goToHomePage();
+		// load data twice
+		addOrderPage = homePage.goToAddOrderPage();
+		addOrderPage.innitaliseData(accesionNumber);
+		addOrderPage.innitaliseData("20210000000002250");
 		homePage = addOrderPage.goToHomePage();
 		searchByOrderPage = homePage.goToSearchResultsByOrder();
 		searchByOrderPage.enterAccesionNumber(accesionNumber);
@@ -198,18 +204,15 @@ public class ResultsEntrySteps extends TestBase {
 	@Then("Patient information display correctly by Accession Number")
 	public void patienttInformationDispaysByAccesionNumber() {
 		// this doesnt load
-
 		homePage = searchByOrderPage.goToHomePage();
 	}
 
 	@When("User Select Results --> Search --> By Patient and  Pull up lab results for a known patient by LastName {string} and FirstName {string}")
-	public void searchByKnownPatientNames(String lastName, String firstName)
-			throws InterruptedException {
+	public void searchByKnownPatientNames(String lastName, String firstName) {
 		searchByPatientPage = homePage.goToSearchResultsByPatient();
 		searchByPatientPage.enterFirstNameSearch(firstName);
 		searchByPatientPage.enterLastNameSearch(lastName);
 		searchByPatientPage.clickSearchButton();
-		Thread.sleep(10000);
 	}
 
 	@Then("Patient information display correctly by Patient details")
@@ -228,38 +231,102 @@ public class ResultsEntrySteps extends TestBase {
 	@When("User Select Results --> Enter by Unit from main menu drop-down and Selects a Unit Type {string} for which there are known tests")
 	public void searchByUnitType(String unitType) {
 		resultsUnitTypePage = homePage.selectsResultAndClickEnterByUnit();
-		resutlsEntryPage = resultsUnitTypePage.selectUnitType(unitType);
+		resultsEntryPage = resultsUnitTypePage.selectUnitType(unitType);
 	}
 
 	@Then("Only tests without results display")
 	public void testsWithoutResultsDisplay() {
-		assertTrue(resutlsEntryPage.containsText("Test Date"));
-		assertTrue(resutlsEntryPage.containsText("Accept as is"));
-		assertTrue(resutlsEntryPage.containsText("Result from analyzer"));
-		assertTrue(resutlsEntryPage.containsText("Current Result"));
-		assertFalse(resutlsEntryPage
+		assertTrue(resultsEntryPage.containsText("Test Date"));
+		assertTrue(resultsEntryPage.containsText("Accept as is"));
+		assertTrue(resultsEntryPage.containsText("Result from analyzer"));
+		assertTrue(resultsEntryPage.containsText("Current Result"));
+		assertFalse(resultsEntryPage
 				.containsText("No appropriate tests were found"));
 	}
 
 	@And("Notes are visible with time and date stamp")
 	public void notesPageVisible() {
-		assertTrue(resutlsEntryPage.containsText("Notes"));
+		assertTrue(resultsEntryPage.containsText("Notes"));
 	}
 
 	@And("Lab number with sample extension displays")
 	public void labNumberDisplays() {
-		assertTrue(resutlsEntryPage.containsText("Lab No."));
+		assertTrue(resultsEntryPage.containsText("Lab No."));
 	}
 
 	@And("Sample Type displays")
 	public void sampleTypeDisplays() {
-		assertTrue(resutlsEntryPage.containsText("Sample Type"));
+		assertTrue(resultsEntryPage.containsText("Sample Type"));
 	}
 
 	@And("Test date defaults to current date")
 	public void testDateDefaultsTocurrentDate() {
 		// this test will fail at times if the server and the testing
 		// framework run in different time zones
-		assertEquals(resutlsEntryPage.getTestDateValue(), getCurrentDate());
+		assertEquals(resultsEntryPage.getTestDateValue(), getCurrentDate());
+	}
+
+	@When("User Overwrites Test Date {string}")
+	public void overWriteTestDate(String date) {
+		resultsEntryPage.enterTestDate(date);
+	}
+
+	@Then("Field accepts text {string}")
+	public void testDateFiedlAccesptsText(String date) {
+		assertEquals(resultsEntryPage.getTestDateValue(), date);
+	}
+
+	@And("Non-conforming samples appear with a red flag symbol")
+	public void nonConforminSampleAppear() {
+		assertTrue(resultsEntryPage.hasNonConformingFlag());
+	}
+
+	@When("User Enters known lab number {string} in Lab no. search field at top right and Clicks search")
+	public void enterKnownAccesionNumber(String accesionNumber) {
+		resultsEntryPage.enterSearchAccesionNumber(accesionNumber);
+		// Accesion Result page doesnt Load
+		// resultsEntryPage.clickOnLabNumberSearch();
+	}
+
+	@Then("Page goes to correct lab number and order is highlighted in yellow")
+	public void getKnownResultPage() {
+		// results do not load
+	}
+
+	@And("Message appears ,Accession number not found, if the format is incorrect or number is not in use")
+	public void getUnknownResultPage() {
+		resultsEntryPage.enterSearchAccesionNumber("12769");
+		searchByOrderPage = resultsEntryPage.clickOnLabNumberSearch();
+		searchByOrderPage.acceptAlert();
+		assertTrue(searchByOrderPage.accesionNumberNotFoundDisplays());
+		assertTrue(searchByOrderPage.containsText("Accession number not found"));
+	}
+
+	@Then("Reference range or value displays under test name")
+	public void referenceRangeDisplays() {
+		assertTrue(resultsEntryPage.containsText("10.00 - 10000000.00"));
+	}
+
+	@When("User Enters type-in result {string} for a selected test")
+	public void enterTypeInResults(String value) {
+		resultsEntryPage.enterTestResult(value);;
+	}
+
+	@Then("Type-in result {string} can be entered in the field")
+	public void resultEntered(String Value) {
+		assertEquals(resultsEntryPage.getTestResultValue(), Value);
+	}
+
+	@Then("Result units display correctly")
+	public void resultUnitsDisplayCorrectly() {
+		// cant see units anywahere on the results page
+	}
+
+	@Then("Result converts to correct decimal {string}")
+	public void resultValueConverted(String convertedValue)
+			throws InterruptedException {
+		resultsEntryPage.clickOnDateField();
+		Thread.sleep(1000);
+		assertEquals(resultsEntryPage.getTestResultValue(), convertedValue);
 	}
 }

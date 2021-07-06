@@ -27,9 +27,8 @@ public class ResultsUnitTypePage extends Page {
 		return dropDownHasOptions(DROP_DOWN_UNIT_TYPE);
 	}
 
-	public ResutlsEntryPage selectUnitType(String unitType) {
+	public ResultsEntryPage selectUnitType(String unitType) {
 		selectFrom(DROP_DOWN_UNIT_TYPE, unitType);
-		return new ResutlsEntryPage(this);
+		return new ResultsEntryPage(this);
 	}
-
 }
