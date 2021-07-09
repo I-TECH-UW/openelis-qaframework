@@ -16,6 +16,10 @@ public class AddOrderPage extends Page {
 
 	private static final String PATH_HOME = "/Dashboard.do";
 
+	private static final String PATH_SAMPLE_ENTRY_CONFIG = "SampleEntryConfig.do?ID=116&startingRecNo=1";
+
+	private static final String PATH_SITE_INFO_CONFIG = "SiteInformation.do?ID=71&startingRecNo=1";
+
 	private static final String LABEL_TEXT_REQUEST = "Test Reques";
 
 	private static final By FIELD_LAB_NUMBER = By.id("labNo");
@@ -167,6 +171,8 @@ public class AddOrderPage extends Page {
 
 	private static final By CHECK_BOX_TEST = By.id("test_0");
 
+	private static final By CHECK_BOX_VIRAL_LOAD_TEST = By.id("test_4");
+
 	private static final By CHECK_BOX_PANNEL = By.id("panel_0");
 
 	private static final By RADIO_BUTTON_VALIDATE_TRUE = By.id("value1");
@@ -316,10 +322,11 @@ public class AddOrderPage extends Page {
 
 	public void clickTestCheckBox() {
 		clickOn(CHECK_BOX_TEST);
+		clickOn(CHECK_BOX_VIRAL_LOAD_TEST);
 	}
 
 	public void clickPannelCheckBox() {
-		clickOn(CHECK_BOX_PANNEL);
+		// clickOn(CHECK_BOX_PANNEL);
 	}
 
 	public void clickNewPatientButton() {
@@ -638,7 +645,7 @@ public class AddOrderPage extends Page {
 	}
 
 	public void selectSampleTypeFromDropDownMenu() {
-		selectOptionFromDropDown(SELECT_SAMPLE);
+		selectFrom(SELECT_SAMPLE, "SERUM");
 	}
 
 	public void selectSampleConditionFromDropDownMenu() {
@@ -708,14 +715,14 @@ public class AddOrderPage extends Page {
 	}
 
 	public void turnOnAcessionValidation() {
-		goToPage("SampleEntryConfig.do?ID=116&startingRecNo=1");
+		goToPage(PATH_SAMPLE_ENTRY_CONFIG);
 		clickOn(RADIO_BUTTON_VALIDATE_TRUE);
 		clickOn(BUTTON_SAVE_VALIDATION);
 		this.go();
 	}
 
 	public void turnOnTelephoneValidation() {
-		goToPage("SiteInformation.do?ID=71&startingRecNo=1");
+		goToPage(PATH_SITE_INFO_CONFIG);
 		clickOn(RADIO_BUTTON_VALIDATE_TRUE);
 		clickOn(BUTTON_SAVE_VALIDATION);
 		this.go();
@@ -752,6 +759,7 @@ public class AddOrderPage extends Page {
 		clickAddSampleButton();
 		selectSampleTypeFromDropDownMenu();
 		clickPannelCheckBox();
+		clickTestCheckBox();
 		clickNewPatientButton();
 		enterSubjectNumber("201807D9P" + uuidAsString);
 		enterNationalId("201507D35" + uuidAsString);

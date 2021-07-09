@@ -414,6 +414,10 @@ public abstract class Page {
 		return findElement(by).getAttribute("value");
 	}
 
+	public String getStyle(By by) {
+		return findElement(by).getAttribute("style");
+	}
+
 	public void selectOptionFromDropDown(By by) {
 		By FIELD_OPTION = By.tagName("option");
 		clickOn(by);

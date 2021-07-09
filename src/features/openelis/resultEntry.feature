@@ -58,7 +58,7 @@ Then Page goes to correct lab number and order is highlighted in yellow
 And Message appears ,Accession number not found, if the format is incorrect or number is not in use
 Examples:
 |accesionNumber   |lastName|firstName  |unitType         |date      |
-|20210000000002247|moses   | mutesasira|Molecular Biology|03/07/2021|  
+|20210000000002249|moses   | mutesasira|Molecular Biology|03/07/2021|  
 
 @results
 Scenario Outline:Entering Test Results 
@@ -68,6 +68,12 @@ When User Enters type-in result "<value>" for a selected test
 Then Type-in result "<convertedValue>" can be entered in the field
 Then Result units display correctly
 Then Result converts to correct decimal "<convertedValue>"
+When User Enters a result "<lowValue>" that is below the normal range 
+Then Results Field Turn Yellow
+When User Enters a result "<highValue>" that is above the normal range 
+Then Results Field Turn Yellow
+When User Clicks on Add Note icon
+Then Note field displays
 Examples:
-|unitType         |value |convertedValue|
-|Molecular Biology|3     |3.00          |
+|unitType         |value |convertedValue|lowValue|highValue|
+|Molecular Biology|3     |3.00          |3       |20000000 |

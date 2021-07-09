@@ -55,6 +55,7 @@ public class ResultsEntrySteps extends TestBase {
 	@Given("User visits Home page")
 	public void visitLoginPage() throws Exception {
 		homePage = loginPage.goToHomePage();
+		homePage.turnOnResultsEntryValidation();
 	}
 
 	@And("User selects Results and clicks Enter By unit")
@@ -192,7 +193,6 @@ public class ResultsEntrySteps extends TestBase {
 		homePage = addOrderPage.goToHomePage();
 		// load data twice
 		addOrderPage = homePage.goToAddOrderPage();
-		addOrderPage.innitaliseData(accesionNumber);
 		addOrderPage.innitaliseData("20210000000002250");
 		homePage = addOrderPage.goToHomePage();
 		searchByOrderPage = homePage.goToSearchResultsByOrder();
@@ -328,5 +328,36 @@ public class ResultsEntrySteps extends TestBase {
 		resultsEntryPage.clickOnDateField();
 		Thread.sleep(1000);
 		assertEquals(resultsEntryPage.getTestResultValue(), convertedValue);
+	}
+
+	@When("User Enters a result {string} that is below the normal range")
+	public void enterTestResultBelowNormalRange(String lowValue)
+			throws InterruptedException {
+		resultsEntryPage.enterTestResult(lowValue);
+		resultsEntryPage.clickOnDateField();
+		Thread.sleep(100);
+	}
+
+	@Then("Results Field Turn Yellow")
+	public void fieldTurnYellow() {
+		assertTrue(resultsEntryPage.resultFieldHasYellowBackground());
+	}
+
+	@When("User Enters a result {string} that is above the normal range")
+	public void enterTestResultABoveNormalRange(String highValue)
+			throws InterruptedException {
+		resultsEntryPage.enterTestResult(highValue);
+		resultsEntryPage.clickOnDateField();
+		Thread.sleep(100);
+	}
+
+	@When("User Clicks on Add Note icon")
+	public void clickonAddNoteButton() {
+		resultsEntryPage.clickShowHideButton();
+	}
+
+	@Then("Note field displays")
+	public void NoteFieldAppears() {
+		assertTrue(resultsEntryPage.notesTextAreaDisplays());
 	}
 }
