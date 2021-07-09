@@ -421,7 +421,7 @@ public class AddOrderSteps extends TestBase {
 
 	@Then("Checkbox sticks, test name appears under Tests box")
 	public void testNameAppearsUnderTestBox() {
-		assertEquals(addOrderPage.getTestValue(), "SWAB (M/C/S)");
+		assertEquals(addOrderPage.getTestValue(), "COVID-19 ANTIBODY IgG,HEPATITIS C VIRAL LOAD");
 	}
 
 	@When("User unChecks checkbox next to test name")
