@@ -8,9 +8,9 @@ public class ResultsEntryPage extends Page {
 
 	private static final String PATH_HOME = "/Dashboard.do";
 
-	private static final By FIELD_TEST_DATE = By.id("testDate_0");
+	private static final By FIELD_TEST_DATE = By.id("testDate_3");
 
-	private static final By FIELD_TEST_RESULT = By.id("results_0");
+	private static final By FIELD_TEST_RESULT = By.id("results_3");
 
 	private static final By LABEL_IMAGE_NON_CONFORMING = By
 			.xpath("//img[contains(@src,'nonconforming')]");
@@ -19,6 +19,10 @@ public class ResultsEntryPage extends Page {
 
 	private static final By BUTTON_LAB_NUMBER_SEARCH = By
 			.xpath("//*[@id='mainForm']/table/tbody/tr[4]/td/div[3]/div[1]/input[2]");
+
+	private static final By BUTTON_SHOW_HIDE_NOTES = By.id("showHideButton_3");
+
+	private static final By TEXT_AREA_NOTES = By.id("note_3");
 
 	public ResultsEntryPage(Page parent) {
 		super(parent);
@@ -67,4 +71,16 @@ public class ResultsEntryPage extends Page {
 		clickOn(FIELD_TEST_DATE);
 	}
 
+	public Boolean resultFieldHasYellowBackground() {
+		String yellowBackground = "background: rgb(255, 255, 160);";
+		return getStyle(FIELD_TEST_RESULT).contains(yellowBackground) ? true : false;
+	}
+
+	public void clickShowHideButton() {
+		clickOn(BUTTON_SHOW_HIDE_NOTES);
+	}
+
+	public Boolean notesTextAreaDisplays() {
+		return hasElement(TEXT_AREA_NOTES);
+	}
 }

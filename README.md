@@ -16,20 +16,26 @@ See [Wiki](https://github.com/I-TECH-UW/openelis-qaframework/wiki) for the Proje
 
 - See Feature files under [src/features/openelis](./src/features/openelis)
 
-### Running test projects
+### Running tests
 
-1. All OE-tests
+1. All Automation tests
 
         mvn test
 
-2. login tests 
+2. To run individual Test Features/categories ,You need to filter them by the feature filter tag.
 
-       mvn test -Dcucumber.filter.tags='@login'
+        mvn test -Dcucumber.filter.tags='<@tag>'   
 
-3. Add order tests 
+    Example , to run Login Feature tests  
 
-       mvn test -Dcucumber.filter.tags='@order'
+         mvn test -Dcucumber.filter.tags='@login'   
 
-4. Results Entry tests 
+ See All test features bellow with their coresponding filter tags      
 
-       mvn test -Dcucumber.filter.tags='@results'       
+
+| Test Feature |Filter Tag     |
+|:----------:  |:-------------:|
+| Login        |  @login       | 
+| Add order    |  @order       |  
+| Results Entry| @results      | 
+       

@@ -10,6 +10,8 @@ public class HomePage extends Page {
 
 	private static final String PATH_HOME = "/Dashboard.do";
 
+	private static final String PATH_RESULT_ENTRY_CONFIG = "ResultConfiguration.do?ID=43&startingRecNo=1";
+
 	private static final By FIRST_LEVEL_MENU_ORDER = By.id("menu_sample");
 
 	private static final By SECOND_LEVEL_MENU_ADD_ORDER = By
@@ -31,6 +33,11 @@ public class HomePage extends Page {
 
 	private static final By THIRD_LEVEL_MENU_RESULTS_SEARCH_STATUS = By
 			.id("menu_results_status");
+
+	private static final By RADIO_BUTTON_VALIDATE_TRUE = By.id("value1");
+
+	private static final By BUTTON_SAVE_VALIDATION = By
+			.xpath("//*[@id='mainForm']/table/tbody/tr[5]/td/center/table/tbody/tr/td[1]/button");
 
 	public HomePage(Page page) {
 		super(page);
@@ -84,5 +91,12 @@ public class HomePage extends Page {
 		hoverOn(SECOND_LEVEL_MENU_RESULTS_SEARCH);
 		clickOn(THIRD_LEVEL_MENU_RESULTS_SEARCH_STATUS);
 		return new SearchResultsByStatusPage(this);
+	}
+
+	public void turnOnResultsEntryValidation() {
+		goToPage(PATH_RESULT_ENTRY_CONFIG);
+		clickOn(RADIO_BUTTON_VALIDATE_TRUE);
+		clickOn(BUTTON_SAVE_VALIDATION);
+		this.go();
 	}
 }
