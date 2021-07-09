@@ -784,6 +784,7 @@ public class AddOrderSteps extends TestBase {
 		addOrderPage.clickAddSampleButton();
 		addOrderPage.selectSampleTypeFromDropDownMenu();
 		addOrderPage.clickPannelCheckBox();
+		addOrderPage.clickTestCheckBox();
 		addOrderPage.clickNewPatientButton();
 		addOrderPage.enterSubjectNumber("201807D9P" + uuidAsString);
 		addOrderPage.enterNationalId("201507D35" + uuidAsString);
