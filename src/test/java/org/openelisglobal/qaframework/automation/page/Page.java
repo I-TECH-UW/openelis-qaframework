@@ -353,6 +353,18 @@ public abstract class Page {
 		return booelan;
 	}
 
+	public Boolean promptPresent() throws InterruptedException {
+		Thread.sleep(1000);
+		Boolean booelan = false;
+		try {
+			Alert alert = driver.switchTo().alert();
+			alert.dismiss();
+			booelan = true;
+		} catch (Exception e) {
+		};
+		return booelan;
+	}
+
 	boolean hasFocus(String id) {
 		return (Boolean) ((JavascriptExecutor) driver).executeScript(
 				"return jQuery('#" + id + "').is(':focus')", new Object[]{});
@@ -453,4 +465,16 @@ public abstract class Page {
 		}
 		return disabled;
 	}
+
+	public Boolean isChecked(By by) {
+		Boolean disabled = false;
+		String disabledAttribute = findElement(by).getAttribute("checked");
+		if (disabledAttribute != null) {
+			if (disabledAttribute.equals("true")) {
+				disabled = true;
+			}
+		}
+		return disabled;
+	}
+
 }

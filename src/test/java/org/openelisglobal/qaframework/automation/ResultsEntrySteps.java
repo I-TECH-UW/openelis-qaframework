@@ -357,7 +357,56 @@ public class ResultsEntrySteps extends TestBase {
 	}
 
 	@Then("Note field displays")
-	public void NoteFieldAppears() {
+	public void noteFieldAppears() {
 		assertTrue(resultsEntryPage.notesTextAreaDisplays());
 	}
+
+	@When("User Enters text {string} in Note field , then click on the Note Arrow icon")
+	public void enterNotes(String notes) {
+		resultsEntryPage.enterNotes(notes);
+		resultsEntryPage.clickShowHideButton();
+	}
+
+	@Then("Note field collapses, displays Notepad icon")
+	public void hasNoteEDitIcon() {
+		assertTrue(resultsEntryPage.hasNoteEditIcon());
+	}
+
+	@When("User selects list result")
+	public void selectResultFromDropDown() {
+		resultsEntryPage.clickResultList();
+	}
+
+	@Then("Results can be chosen from the drop-down list")
+	public void resultListhasOptions() {
+		assertTrue(resultsEntryPage.resultListContainsOptions());
+		resultsEntryPage.selectResultFromResultList();
+	}
+
+	@When("User Clicks checkbox under Result From Analyzer")
+	public void clieckCheckBoxUnderResultFromAnalyser() {
+		resultsEntryPage.clickAnalyserCheckBox();
+	}
+
+	@Then("Uncheck sticks")
+	public void unCheckSticks() {
+		assertTrue(resultsEntryPage.analyserCheckBoxMarked());
+	}
+
+	@And("User Clicks Cancel button")
+	public void clicksCancel() {
+		resultsEntryPage.enterTestResult("12");
+		resultsEntryPage.clickCancelButton();
+	}
+
+	@Then("Triggers message ,Leave Site? Changes you made may not be saved")
+	public void alertAppears() throws InterruptedException {
+		assertTrue(resultsEntryPage.promptPresent());
+	}
+
+	@And("User Clicks Cancel and Stays on page {string}")
+	public void staysOnTheSamePage(String text) {
+		resultsEntryPage.containsText(text);
+	}
+
 }
