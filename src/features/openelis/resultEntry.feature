@@ -74,6 +74,22 @@ When User Enters a result "<highValue>" that is above the normal range
 Then Results Field Turn Yellow
 When User Clicks on Add Note icon
 Then Note field displays
+When User Enters text "<notes>" in Note field , then click on the Note Arrow icon
+Then Note field collapses, displays Notepad icon
+When User selects list result
+Then Results can be chosen from the drop-down list
+When User Clicks checkbox under Result From Analyzer
+Then Uncheck sticks
 Examples:
-|unitType         |value |convertedValue|lowValue|highValue|
-|Molecular Biology|3     |3.00          |3       |20000000 |
+|unitType         |value |convertedValue|lowValue|highValue|notes       |
+|Molecular Biology|3     |3.00          |3       |20000000 |Sample Notes|
+
+@results
+Scenario Outline:Overall Page
+When User Select Results --> Enter by Unit from main menu drop-down and Selects a Unit Type "<unitType>" for which there are known tests
+And User Clicks Cancel button 
+Then Triggers message ,Leave Site? Changes you made may not be saved
+And User Clicks Cancel and Stays on page "<unitType>"
+Examples:
+|unitType         |
+|Molecular Biology|
