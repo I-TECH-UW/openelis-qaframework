@@ -12,6 +12,8 @@ public class ResultsEntryPage extends Page {
 
 	private static final By FIELD_TEST_RESULT = By.id("results_3");
 
+	private static final By FIELD_TEST_RESULT_2 = By.id("results_4");
+
 	private static final By DROP_DOWN_TEST_RESULT = By.id("resultId_2");
 
 	private static final By LABEL_IMAGE_NON_CONFORMING = By
@@ -24,12 +26,14 @@ public class ResultsEntryPage extends Page {
 
 	private static final By BUTTON_CANCEL = By.id("cancelButtonId");
 
+	private static final By BUTTON_SAVE = By.id("saveButtonId");
+
 	private static final By BUTTON_SHOW_HIDE_NOTES = By.id("showHideButton_3");
 
 	private static final By TEXT_AREA_NOTES = By.id("note_3");
 
 	private static final By ICON_NOTES_EDIT = By.xpath("//img[contains(@src,'note-edit')]");
-	
+
 	private static final By CHECK_BOX_RESULT_ANALYSER = By.id("testResult3.analysisMethod1");
 
 	public ResultsEntryPage(Page parent) {
@@ -122,5 +126,15 @@ public class ResultsEntryPage extends Page {
 
 	public void clickCancelButton() {
 		clickOn(BUTTON_CANCEL);
+	}
+
+	public void clickSaveButton() {
+		clickOn(BUTTON_SAVE);
+	}
+
+	public void refreshAndEnterTestResult() {
+		refreshPage();
+		acceptAlert();
+		setText(FIELD_TEST_RESULT_2, "40");
 	}
 }

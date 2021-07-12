@@ -10,7 +10,8 @@ public class SearchResultsByPatientPage extends Page {
 
 	private static final By SEARCH_FORM = By.id("searchDiv");
 
-	private static final By SEARCH_BUTTON = By.id("enhancedSearchButton");
+	private static final By BUTTON_SEARCH_PATIENT_RESULTS = By
+			.id("enhancedSearchButton");
 
 	private static final By FIELD_LAB_NO_SEARCH = By
 			.id("patientLabNoSearchValue");
@@ -27,6 +28,11 @@ public class SearchResultsByPatientPage extends Page {
 	private static final By LABEL_NO_PATIENT_FOUND = By.id("noPatientFound");
 
 	private static final By SEARCH_RESULT_TABLE = By.id("searchResultTable");
+
+	private static final By CHECK_BOX_PATIENT_RESULT = By.id("sel_1");
+
+	private static final By BUTTON_GET_PATIENT_TESTS = By
+			.id("selectPatientButtonID");
 
 	public SearchResultsByPatientPage(Page parent) {
 		super(parent);
@@ -47,7 +53,7 @@ public class SearchResultsByPatientPage extends Page {
 	}
 
 	public Boolean searchButtonDeactivated() {
-		return isDisabled(SEARCH_BUTTON);
+		return isDisabled(BUTTON_SEARCH_PATIENT_RESULTS);
 	}
 
 	public void enterLabNoSearch(String labNo) {
@@ -67,7 +73,7 @@ public class SearchResultsByPatientPage extends Page {
 	}
 
 	public void clickSearchButton() {
-		clickOn(SEARCH_BUTTON);
+		clickOn(BUTTON_SEARCH_PATIENT_RESULTS);
 	}
 
 	public Boolean noPatientLabelDisplays() {
@@ -76,5 +82,13 @@ public class SearchResultsByPatientPage extends Page {
 
 	public Boolean searchResultsDisplay() {
 		return hasElement(SEARCH_RESULT_TABLE);
+	}
+
+	public void clickPatientResultCheckBox() {
+		clickOn(CHECK_BOX_PATIENT_RESULT);
+	}
+
+	public void clickGetPatientTestsButon() {
+		clickOn(BUTTON_GET_PATIENT_TESTS);
 	}
 }

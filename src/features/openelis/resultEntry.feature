@@ -55,6 +55,7 @@ Then Field accepts text "<date>"
 And Non-conforming samples appear with a red flag symbol
 When User Enters known lab number "<accesionNumber>" in Lab no. search field at top right and Clicks search
 Then Page goes to correct lab number and order is highlighted in yellow
+And User Select Results --> Enter by Unit from main menu drop-down and Selects a Unit Type "<unitType>" for which there are known tests
 And Message appears ,Accession number not found, if the format is incorrect or number is not in use
 Examples:
 |accesionNumber   |lastName|firstName  |unitType         |date      |
@@ -90,6 +91,25 @@ When User Select Results --> Enter by Unit from main menu drop-down and Selects 
 And User Clicks Cancel button 
 Then Triggers message ,Leave Site? Changes you made may not be saved
 And User Clicks Cancel and Stays on page "<unitType>"
+When User Clicks save
+Then Save results in new page and green ,Save was successful, message appears
+When User Select Results --> Enter by Unit from main menu drop-down and Selects a Unit Type "<unitType>" for which there are known tests
+And User Enter another result
+And User Clicks Cancel button 
+And User Clicks Leave 
+Then User is returned to home page
 Examples:
 |unitType         |
 |Molecular Biology|
+
+@results
+Scenario Outline:Verification
+When User Reload Results Page By Results --> Search --> By Patient LastName "<lastName>" and FirstName "<firstName>"
+Then Results appear on the Search By Patient Page as entered 
+When User Reload Results Page By Results --> Search --> By Order Number "<accesionNumber>"
+Then Results appear on Search By Order Page as entered
+When User Reload Results Page By Results --> Search --> By Test "<test>"
+Then Results appear on Search By Test Page as entered 
+Examples:
+|accesionNumber   |lastName|firstName  |         test                 |
+|20210000000002249|moses   | mutesasira|HEPATITIS C VIRAL LOAD(SERUM) |

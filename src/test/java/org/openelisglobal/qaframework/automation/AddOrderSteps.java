@@ -441,8 +441,9 @@ public class AddOrderSteps extends TestBase {
 
 	@Then("All applicable panel tests apear in the Testsbox")
 	public void AllApplicableTestNameAppearsUnderTestBox() {
-		//ignore since pannel checkbox doesnt show up
-		//assertEquals(addOrderPage.getTestValue(), "Antigen Covid,COVID-19 PCR");
+		// ignore since pannel checkbox doesnt show up
+		// assertEquals(addOrderPage.getTestValue(),
+		// "Antigen Covid,COVID-19 PCR");
 	}
 
 	@When("User unChecks checkbox next to Panel name")
@@ -773,9 +774,9 @@ public class AddOrderSteps extends TestBase {
 
 	@When("User Completes all mandatory fields")
 	public void completeAllMandatoryFiels() throws InterruptedException {
+		// innitializing data
 		UUID uuid = UUID.randomUUID();
 		String uuidAsString = uuid.toString();
-		// innitializing data
 		addOrderPage.clickGenerateButton();
 		Thread.sleep(1000);
 		addOrderPage.selectSiteNameFromDropDown();
