@@ -1,24 +1,28 @@
 package org.openelisglobal.qaframework.automation.page;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.time.Duration;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import com.google.common.collect.Iterables;
-import org.apache.commons.lang3.StringUtils;
+
 import org.junit.Assert;
 import org.openelisglobal.qaframework.automation.page.exception.PageRejectedException;
 import org.openelisglobal.qaframework.automation.test.TestBase;
 import org.openelisglobal.qaframework.automation.test.TestProperties;
-import org.openqa.selenium.*;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
  * A superclass for "real" pages. Has lots of handy methods for accessing
@@ -288,27 +292,6 @@ public abstract class Page {
 		return By.xpath("//a[@href='" + href + "']");
 	}
 
-	public void waitForFocusById(final String id) {
-		waiter.until(new ExpectedCondition<Boolean>() {
-
-			@Override
-			public Boolean apply(WebDriver driver) {
-				return hasFocus(id);
-			}
-		});
-	}
-
-	public void waitForFocusByCss(final String tag, final String attr,
-			final String value) {
-		waiter.until(new ExpectedCondition<Boolean>() {
-
-			@Override
-			public Boolean apply(WebDriver driver) {
-				return hasFocus(tag, attr, value);
-			}
-		});
-	}
-
 	public void waitForJsVariable(final String varName) {
 		waiter.until(new ExpectedCondition<Boolean>() {
 
@@ -365,24 +348,7 @@ public abstract class Page {
 		return booelan;
 	}
 
-	boolean hasFocus(String id) {
-		return (Boolean) ((JavascriptExecutor) driver).executeScript(
-				"return jQuery('#" + id + "').is(':focus')", new Object[]{});
-	}
-
-	boolean hasFocus(String tag, String attr, String value) {
-		return (Boolean) ((JavascriptExecutor) driver).executeScript(
-				"return jQuery('" + tag + "[" + attr + "=" + value
-						+ "]').is(':focus')", new Object[]{});
-	}
-
 	public void waitForElement(By by) {
-		waiter.until(ExpectedConditions.visibilityOfElementLocated(by));
-	}
-
-	public void waitForElementWithSpecifiedMaxTimeout(By by, long secs) {
-		WebDriverWait waiter = new WebDriverWait(driver, secs);
-		waiter.until(pageReady);
 		waiter.until(ExpectedConditions.visibilityOfElementLocated(by));
 	}
 
@@ -393,29 +359,6 @@ public abstract class Page {
 
 	public Boolean containsText(String text) {
 		return driver.getPageSource().contains(text);
-	}
-
-	public List<String> getValidationErrors() {
-		List<String> validationErrors = new ArrayList<String>();
-		for (WebElement webElement : driver.findElements(By.className("error"))) {
-			if (StringUtils.isNotBlank(webElement.getText())) {
-				validationErrors.add(webElement.getText());
-			}
-		}
-		return validationErrors;
-	}
-
-	public String queryJsForAttribute(String cssHandle, String attribute) {
-		return (String) ((JavascriptExecutor) driver).executeScript(String
-				.format("return document.querySelector('%s').%s", cssHandle,
-						attribute));
-	}
-
-	public void setAttributeWithJs(String cssHandle, String attribute,
-			String value) {
-		((JavascriptExecutor) driver).executeScript(String.format(
-				"document.querySelector('%s').%s = '%s'", cssHandle, attribute,
-				value));
 	}
 
 	public String getClass(By by) {
@@ -477,4 +420,7 @@ public abstract class Page {
 		return disabled;
 	}
 
+	public void refreshPage() {
+		driver.navigate().refresh();
+	}
 }

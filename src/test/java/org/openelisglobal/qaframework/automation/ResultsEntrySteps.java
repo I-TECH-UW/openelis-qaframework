@@ -188,23 +188,32 @@ public class ResultsEntrySteps extends TestBase {
 	@When("User Selects Results --> Search --> By Order and searches by known Accession Number {string}")
 	public void searchByKnownAccesionNumber(String accesionNumber)
 			throws InterruptedException {
+		// Innitialise data
 		addOrderPage = homePage.goToAddOrderPage();
 		addOrderPage.innitaliseData(accesionNumber);
 		homePage = addOrderPage.goToHomePage();
-		// load data twice
+
+		addOrderPage = homePage.goToAddOrderPage();
+		addOrderPage.innitialiseRandomData();
+		homePage = addOrderPage.goToHomePage();
+
 		addOrderPage = homePage.goToAddOrderPage();
 		addOrderPage.innitaliseData("20210000000002250");
 		homePage = addOrderPage.goToHomePage();
+
 		searchByOrderPage = homePage.goToSearchResultsByOrder();
 		searchByOrderPage.enterAccesionNumber(accesionNumber);
-		// Patient information doesnt load
-		// searchByOrderPage.clickAccesionNumberSearch();
+		searchByOrderPage.clickAccesionNumberSearch();
 	}
 
 	@Then("Patient information display correctly by Accession Number")
 	public void patienttInformationDispaysByAccesionNumber() {
-		// this doesnt load
+		assertTrue(searchByOrderPage.containsText("Test Date"));
+		assertTrue(searchByOrderPage.containsText("Accept as is"));
+		assertTrue(searchByOrderPage.containsText("Result from analyzer"));
+		assertTrue(searchByOrderPage.containsText("Current Result"));
 		homePage = searchByOrderPage.goToHomePage();
+		searchByOrderPage.acceptAlert();
 	}
 
 	@When("User Select Results --> Search --> By Patient and  Pull up lab results for a known patient by LastName {string} and FirstName {string}")
@@ -284,13 +293,17 @@ public class ResultsEntrySteps extends TestBase {
 	@When("User Enters known lab number {string} in Lab no. search field at top right and Clicks search")
 	public void enterKnownAccesionNumber(String accesionNumber) {
 		resultsEntryPage.enterSearchAccesionNumber(accesionNumber);
-		// Accesion Result page doesnt Load
-		// resultsEntryPage.clickOnLabNumberSearch();
+		searchByOrderPage = resultsEntryPage.clickOnLabNumberSearch();
+		resultsEntryPage.acceptAlert();
 	}
 
 	@Then("Page goes to correct lab number and order is highlighted in yellow")
 	public void getKnownResultPage() {
-		// results do not load
+		assertTrue(searchByOrderPage.containsText("Test Date"));
+		assertTrue(searchByOrderPage.containsText("Accept as is"));
+		assertTrue(searchByOrderPage.containsText("Result from analyzer"));
+		assertTrue(searchByOrderPage.containsText("Current Result"));
+		homePage = searchByOrderPage.goToHomePage();
 	}
 
 	@And("Message appears ,Accession number not found, if the format is incorrect or number is not in use")
@@ -409,4 +422,85 @@ public class ResultsEntrySteps extends TestBase {
 		resultsEntryPage.containsText(text);
 	}
 
+	@When("User Clicks save")
+	public void clickSave() {
+		resultsEntryPage.refreshAndEnterTestResult();
+		resultsEntryPage.clickSaveButton();
+	}
+
+	@Then("Save results in new page and green ,Save was successful, message appears")
+	public void saveSuccesMessageAppears() throws InterruptedException {
+		assertTrue(resultsEntryPage.containsText("Save was successful"));
+	}
+
+	@And("User Enter another result")
+	public void goToresultEntryPage() {
+		resultsEntryPage.enterTestResult("20");
+	}
+
+	@And("User Clicks Leave")
+	public void acceptPrompt() {
+		resultsEntryPage.acceptAlert();
+	}
+
+	@Then("User is returned to home page")
+	public void userReturnsToHomePage() {
+		assertFalse(resultsEntryPage.containsText("Test Date"));
+		assertFalse(resultsEntryPage.containsText("Accept as is"));
+		assertFalse(resultsEntryPage.containsText("Result from analyzer"));
+		assertFalse(resultsEntryPage.containsText("Current Result"));
+	}
+
+	@When("User Reload Results Page By Results --> Search --> By Patient LastName {string} and FirstName {string}")
+	public void reloadResultsByPatientNames(String lastName, String firstName) {
+		searchByPatientPage = homePage.goToSearchResultsByPatient();
+		searchByPatientPage.enterFirstNameSearch(firstName);
+		searchByPatientPage.enterLastNameSearch(lastName);
+		searchByPatientPage.clickSearchButton();
+		searchByPatientPage.clickPatientResultCheckBox();
+		searchByPatientPage.clickGetPatientTestsButon();
+	}
+
+	@Then("Results appear on the Search By Patient Page as entered")
+	public void resultsAppearOnThePatientsResultsPageAsEntered() {
+		assertTrue(searchByPatientPage.containsText("Test Date"));
+		assertTrue(searchByPatientPage.containsText("Accept as is"));
+		assertTrue(searchByPatientPage.containsText("Result from analyzer"));
+		assertTrue(searchByPatientPage.containsText("Current Result"));
+		homePage = searchByPatientPage.goToHomePage();
+	}
+
+	@When("User Reload Results Page By Results --> Search --> By Order Number {string}")
+	public void reloadResultsByOrderNumber(String accesionNumber) {
+		searchByOrderPage = homePage.goToSearchResultsByOrder();
+		searchByOrderPage.enterAccesionNumber(accesionNumber);
+		searchByOrderPage.clickAccesionNumberSearch();
+	}
+
+	@Then("Results appear on Search By Order Page as entered")
+	public void resultsAppearAsEntered() {
+		assertTrue(searchByOrderPage.containsText("Test Date"));
+		assertTrue(searchByOrderPage.containsText("Accept as is"));
+		assertTrue(searchByOrderPage.containsText("Result from analyzer"));
+		assertTrue(searchByOrderPage.containsText("Current Result"));
+		homePage = searchByOrderPage.goToHomePage();
+		searchByOrderPage.acceptAlert();
+	}
+
+	@When("User Reload Results Page By Results --> Search --> By Test {string}")
+	public void reloadResultsByTest(String test) {
+		searchResultsByStatusPage = homePage.goToSearchResultsByStatus();
+		searchResultsByStatusPage.selectTest(test);
+		searchResultsByStatusPage.clickSearch();
+	}
+
+	@Then("Results appear on Search By Test Page as entered")
+	public void resultsAppearOnSerchByStatusPageAsEntered() {
+		assertTrue(searchResultsByStatusPage.containsText("Test Date"));
+		assertTrue(searchResultsByStatusPage.containsText("Accept as is"));
+		assertTrue(searchResultsByStatusPage
+				.containsText("Result from analyzer"));
+		assertTrue(searchResultsByStatusPage.containsText("Current Result"));
+		homePage = searchResultsByStatusPage.goToHomePage();
+	}
 }

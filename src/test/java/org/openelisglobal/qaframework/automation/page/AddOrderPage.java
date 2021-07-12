@@ -196,10 +196,6 @@ public class AddOrderPage extends Page {
 		return containsText(LABEL_TEXT_REQUEST);
 	}
 
-	public void waitForLabNumber() {
-		waitForElementWithSpecifiedMaxTimeout(FIELD_LAB_NUMBER, 120);
-	}
-
 	public Boolean isAccessionNumberMandatory() {
 		if (findElement(FIELD_LAB_NUMBER).getAttribute("class") == "requiredlabel") {
 			return true;
@@ -765,6 +761,36 @@ public class AddOrderPage extends Page {
 		enterNationalId("201507D35" + uuidAsString);
 		enterPatientLastName("moses");
 		enterPatientFirstName("mutesasira");
+		enterPatientStreet("street");
+		enterPatientCommune("commune");
+		enterPatientEmail("email@gmail.com");
+		enterPatientPhone("+23063458788");
+		selectPatientHelathRegionFromDropDownMenu();
+		enterPatientDateofBirth("09/02/2019");
+		selectPatientGenderFromDropDownMenu();
+		selectPatientEducationFromDropDownMenu();
+		selectPatientMaritalStatusFromDropDownMenu();
+		enterPatientOtherNationality("nationality");
+		clickSave();
+	}
+
+	public void innitialiseRandomData() throws InterruptedException {
+		UUID uuid = UUID.randomUUID();
+		String uuidAsString = uuid.toString();
+		clickGenerateButton();
+		Thread.sleep(1000);
+		selectSiteNameFromDropDown();
+		Thread.sleep(1000);
+		enterLastName("SADDIO");
+		clickAddSampleButton();
+		selectSampleTypeFromDropDownMenu();
+		clickPannelCheckBox();
+		clickTestCheckBox();
+		clickNewPatientButton();
+		enterSubjectNumber("201807D9P" + uuidAsString);
+		enterNationalId("201507D35" + uuidAsString);
+		enterPatientLastName("lastName");
+		enterPatientFirstName("firstName");
 		enterPatientStreet("street");
 		enterPatientCommune("commune");
 		enterPatientEmail("email@gmail.com");
