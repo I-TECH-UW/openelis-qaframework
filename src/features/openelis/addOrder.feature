@@ -83,9 +83,9 @@ And User Clicks to Remove all
 
 @order
 Scenario Outline: Collection Date
-And User Clicks on + Button next to Sample
+When User Clicks on + Button next to Sample
 And User Selects Sample Type from Drop down menu 
-When User enters Incorrect Date format "<incorrectDateValue>"
+And User enters Incorrect Date format "<incorrectDateValue>"
 Then Text field hightlights in red
 When User enters Date In the future
 Then Pop-up alert appears if date is in the future
@@ -98,9 +98,9 @@ Examples:
 
 @order
 Scenario Outline: Collection Time
-And User Clicks on + Button next to Sample
+When User Clicks on + Button next to Sample
 And User Selects Sample Type from Drop down menu
-When User enters Collection time "<entry>"
+And User enters Collection time "<entry>"
 Then Field Automatically corrects "<action>" straight numeric to proper Collection Time format HH:MM "<correctedTime>"
 And Field validates "<status>" Collection Time 
 Examples:
@@ -112,9 +112,9 @@ Examples:
 
 @order
 Scenario Outline: Collector
-And User Clicks on + Button next to Sample
+When User Clicks on + Button next to Sample
 And User Selects Sample Type from Drop down menu
-When User Enters Collector "<collectorName>"
+And User Enters Collector "<collectorName>"
 Then Field Acceps text "<collectorName>"
 Examples:
      | collectorName   |  
@@ -122,7 +122,7 @@ Examples:
 
 @order
 Scenario: Available Tests and Panels
-And User Clicks on + Button next to Sample
+When User Clicks on + Button next to Sample
 And User Selects Sample Type from Drop down menu
 Then Tests entry is marked mandatory
 And Available Tests exists
@@ -156,7 +156,7 @@ Examples:
 
 @order
 Scenario Outline: Patient Information
-And User Expands Patient information form by clicking the + button next to Patient
+When User Expands Patient information form by clicking the + button next to Patient
 And User Clicks New Patient Button
 And User Enters Subject Number "<subjectNumber>"
 And User Enters National ID "<nationalId>"

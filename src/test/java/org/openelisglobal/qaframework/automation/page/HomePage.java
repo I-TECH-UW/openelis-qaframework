@@ -39,6 +39,16 @@ public class HomePage extends Page {
 	private static final By BUTTON_SAVE_VALIDATION = By
 			.xpath("//*[@id='mainForm']/table/tbody/tr[5]/td/center/table/tbody/tr/td[1]/button");
 
+	private static final By FIRST_LEVEL_MENU_VALIDATION = By.id("menu_resultvalidation");
+
+	private static final By SECOND_LEVEL_MENU_VALIDATION_ROUTINE = By.id("menu_resultvalidation_routine");
+
+	private static final By FIRST_LEVEL_MENU_REPORTS = By.id("menu_reports");
+
+	private static final By SECOND_LEVEL_MENU_REPORTS_ROUTINE = By.id("menu_reports_routine");
+
+	private static final By THIRD_LEVEL_MENU_REPORTS_ROUTINE_STATUS_REPORT = By.id("menu_reports_status_patient");
+
 	public HomePage(Page page) {
 		super(page);
 	}
@@ -91,6 +101,19 @@ public class HomePage extends Page {
 		hoverOn(SECOND_LEVEL_MENU_RESULTS_SEARCH);
 		clickOn(THIRD_LEVEL_MENU_RESULTS_SEARCH_STATUS);
 		return new SearchResultsByStatusPage(this);
+	}
+
+	public ResultValidationPage goToResultValidation() {
+		hoverOn(FIRST_LEVEL_MENU_VALIDATION);
+		clickOn(SECOND_LEVEL_MENU_VALIDATION_ROUTINE);
+		return new ResultValidationPage(this);
+	}
+
+	public PatientStatusReportPage goToPatientStatusReportPage() {
+		hoverOn(FIRST_LEVEL_MENU_REPORTS);
+		hoverOn(SECOND_LEVEL_MENU_REPORTS_ROUTINE);
+		clickOn(THIRD_LEVEL_MENU_REPORTS_ROUTINE_STATUS_REPORT);
+		return new PatientStatusReportPage(this);
 	}
 
 	public void turnOnResultsEntryValidation() {

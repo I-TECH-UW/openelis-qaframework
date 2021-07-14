@@ -110,6 +110,13 @@ When User Reload Results Page By Results --> Search --> By Order Number "<accesi
 Then Results appear on Search By Order Page as entered
 When User Reload Results Page By Results --> Search --> By Test "<test>"
 Then Results appear on Search By Test Page as entered 
+When User Select Results --> Enter by Unit from main menu drop-down and Selects a Unit Type "<unitType>" for which there are known tests
+Then Tests for which results were entered no longer appear on page
+And User Goes to Validation ---> Routine
+Then Result Validation Page loads
+When User Goes to Reports --> Routine --> Patient Status Report
+And  User Enters the appropriate Lab Number "<accesionNumber>" and clicks Generate Printable Version
+Then Results appear as reported
 Examples:
-|accesionNumber   |lastName|firstName  |         test                 |
-|20210000000002249|moses   | mutesasira|HEPATITIS C VIRAL LOAD(SERUM) |
+|accesionNumber   |lastName|firstName  |         test                 |unitType         |
+|20210000000002249|moses   | mutesasira|HEPATITIS C VIRAL LOAD(SERUM) |Molecular Biology|
