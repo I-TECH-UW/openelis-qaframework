@@ -18,7 +18,7 @@ See [Wiki](https://github.com/I-TECH-UW/openelis-qaframework/wiki) for the Proje
 
 ### Running tests
 
-1. All Automation tests
+1. All Test Features
 
         mvn test
 
@@ -26,7 +26,7 @@ See [Wiki](https://github.com/I-TECH-UW/openelis-qaframework/wiki) for the Proje
 
         mvn test -Dcucumber.filter.tags='<@tag>'   
 
-    Example , to run Login Feature tests  
+    ie , to run Login Feature tests  
 
          mvn test -Dcucumber.filter.tags='@login'   
 

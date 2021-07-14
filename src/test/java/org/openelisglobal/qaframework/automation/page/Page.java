@@ -169,6 +169,16 @@ public abstract class Page {
 		return driver.findElement(by);
 	}
 
+	public WebElement findElementWithoutWait(By by) {
+		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+		try {
+			return driver.findElement(by);
+		} catch (Exception e) {
+			return null;
+		}
+
+	}
+
 	public List<WebElement> getElementsIfExisting(By by) {
 		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 		return driver.findElements(by);
@@ -367,6 +377,13 @@ public abstract class Page {
 
 	public String getValue(By by) {
 		return findElement(by).getAttribute("value");
+	}
+
+	public String getValueWithoutWait(By by) {
+		if (findElementWithoutWait(by) == null) {
+			return "";
+		}
+		return findElementWithoutWait(by).getAttribute("value");
 	}
 
 	public String getStyle(By by) {

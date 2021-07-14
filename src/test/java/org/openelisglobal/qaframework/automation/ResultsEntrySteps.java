@@ -3,6 +3,8 @@ package org.openelisglobal.qaframework.automation;
 import org.openelisglobal.qaframework.automation.page.AddOrderPage;
 import org.openelisglobal.qaframework.automation.page.HomePage;
 import org.openelisglobal.qaframework.automation.page.LoginPage;
+import org.openelisglobal.qaframework.automation.page.PatientStatusReportPage;
+import org.openelisglobal.qaframework.automation.page.ResultValidationPage;
 import org.openelisglobal.qaframework.automation.page.ResultsUnitTypePage;
 import org.openelisglobal.qaframework.automation.page.ResultsEntryPage;
 
@@ -41,6 +43,10 @@ public class ResultsEntrySteps extends TestBase {
 	private SearchResultsByOrderPage searchByOrderPage;
 
 	private SearchResultsByStatusPage searchResultsByStatusPage;
+
+	private ResultValidationPage resultValidationPage;
+
+	private PatientStatusReportPage patientStatusReportPage;
 
 	@After(RunTest.HOOK.RESULT)
 	public void destroy() {
@@ -429,7 +435,7 @@ public class ResultsEntrySteps extends TestBase {
 	}
 
 	@Then("Save results in new page and green ,Save was successful, message appears")
-	public void saveSuccesMessageAppears() throws InterruptedException {
+	public void saveSuccesMessageAppears() {
 		assertTrue(resultsEntryPage.containsText("Save was successful"));
 	}
 
@@ -502,5 +508,45 @@ public class ResultsEntrySteps extends TestBase {
 				.containsText("Result from analyzer"));
 		assertTrue(searchResultsByStatusPage.containsText("Current Result"));
 		homePage = searchResultsByStatusPage.goToHomePage();
+	}
+
+	@Then("Tests for which results were entered no longer appear on page")
+	public void testsWithResultsDontAppear() {
+		assertFalse(resultsEntryPage.resultsFieldsHaveValues());
+	}
+
+	@When("User Goes to Validation ---> Routine")
+	public void goToValiationPage() {
+		resultValidationPage = homePage.goToResultValidation();
+	}
+
+	@Then("Result Validation Page loads")
+	public void validationPageLoads() {
+		assertTrue(resultValidationPage.containsText("Unit Type"));
+		resultValidationPage.goToHomePage();
+	}
+
+	@When("User Goes to Reports --> Routine --> Patient Status Report")
+	public void goToPatientStatusPage() {
+		patientStatusReportPage = homePage.goToPatientStatusReportPage();
+	}
+
+	@And("User Enters the appropriate Lab Number {string} and clicks Generate Printable Version")
+	public void enterLabNumber(String labNumber) throws InterruptedException {
+		patientStatusReportPage.enterLabNUmber(labNumber);
+		patientStatusReportPage.clickSearchButton();
+		Thread.sleep(10000);
+		patientStatusReportPage.clickPrintButton();
+	}
+
+	@Then("Results appear as reported")
+	public void resultAppear() {
+		assertTrue(patientStatusReportPage.containsText("Data source"));
+		assertTrue(patientStatusReportPage.containsText("Last Name"));
+		assertTrue(patientStatusReportPage.containsText("First Name"));
+		assertTrue(patientStatusReportPage.containsText("Gender"));
+		assertTrue(patientStatusReportPage.containsText("Date of Birth"));
+		assertTrue(patientStatusReportPage.containsText("Subject Number"));
+		assertTrue(patientStatusReportPage.containsText("National ID"));
 	}
 }
