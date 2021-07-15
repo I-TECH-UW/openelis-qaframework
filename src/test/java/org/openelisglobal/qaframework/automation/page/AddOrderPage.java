@@ -722,6 +722,7 @@ public class AddOrderPage extends Page {
 		enterAccessionNumber(accesionNumber);
 		clickOnNextVisitDate();
 		if (alertPresent()) {
+			acceptAlert();
 			return;
 		}
 		Thread.sleep(1000);

@@ -18,6 +18,20 @@ public class SearchResultsByOrderPage extends Page {
 	
 	private static By CHECK_BOX_ACCEPT_AS_IS = By.id("testResult1.forceTechApproval1");
 	
+	private static By CHECK_BOX_ACCEPT_AS_IS2 = By.id("testResult2.forceTechApproval1");
+	
+	private static By FIELD_NOTES = By.id("note_1");
+	
+	private static By FIELD_NOTES2 = By.id("note_2");
+	
+	private static final By BUTTON_SHOW_HIDE_NOTES = By.id("showHideButton_1");
+	
+	private static final By BUTTON_SHOW_HIDE_NOTES2 = By.id("showHideButton_2");
+	
+	private static final By ICON_NOTES_EDIT = By.xpath("//img[contains(@src,'note-edit')]");
+	
+	private static final By BUTTON_SAVE = By.id("saveButtonId");
+	
 	public SearchResultsByOrderPage(Page parent) {
 		super(parent);
 	}
@@ -52,4 +66,39 @@ public class SearchResultsByOrderPage extends Page {
 		clickOn(CHECK_BOX_ACCEPT_AS_IS);
 	}
 	
+	public void clickAnotherCheckAsIs() {
+		clickOn(CHECK_BOX_ACCEPT_AS_IS2);
+	}
+	
+	public Boolean noteFieldOpens() {
+		return hasElement(FIELD_NOTES);
+	}
+	
+	public Boolean anotherNoteFieldOpens() {
+		return hasElement(FIELD_NOTES2);
+	}
+	
+	public Boolean editIconRevertsToGreenPlus() {
+		return hasElement(BUTTON_SHOW_HIDE_NOTES2);
+	}
+	
+	public void enterNotes(String notes) {
+		setText(FIELD_NOTES, notes);
+	}
+	
+	public String getNotes() {
+		return getValue(FIELD_NOTES);
+	}
+	
+	public void clickHideNotes() {
+		clickOn(BUTTON_SHOW_HIDE_NOTES);
+	}
+	
+	public Boolean hasEditIcon() {
+		return hasElement(ICON_NOTES_EDIT);
+	}
+	
+	public void clickSaveButton() {
+		clickOn(BUTTON_SAVE);
+	}	
 }

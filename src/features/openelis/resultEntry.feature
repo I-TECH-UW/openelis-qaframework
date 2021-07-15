@@ -19,7 +19,7 @@ Examples:
 |    unitType   |
 |Molecular Bio A|
 
-@results1
+@results
 Scenario Outline:Searching for test result entry forms
 When User Selects Results --> Search --> By Patient
 Then Results search form displays
@@ -124,7 +124,19 @@ Examples:
 @results
 Scenario Outline:Accept As Is functionality
 When User Selects Results --> Search --> By Order and searches by known Accession Number "<accesionNumber>", Click Get Tests For Accession Number
-And Check Accept as is box
+And User Checks Accept as is box
+And User Clicks OK
+Then Text box closes and Notes field opens
+When User Enters note "<notes>"
+Then Field accepts text Notes "<notes>"
+When User Closes note box
+Then Note field closes, triangle symbol changes to notepad symbol
+When User Checks another result with Accept As Is
+Then Pop-up message does not appear again , though Note field does open
+When User Uncheck Accept As Is for the result 
+Then Notes field closes and symbol reverts to green + symbol
+When User Clicks Save Button
+Then Page refreshes and green -Save was successful- message appears 
 Examples:
-|accesionNumber   |lastName|firstName  |         test                 |unitType         |
-|20210000000002249|moses   | mutesasira|HEPATITIS C VIRAL LOAD(SERUM) |Molecular Biology|
+|accesionNumber   |notes       |
+|20210000000002249|Sample notes|

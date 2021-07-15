@@ -163,7 +163,7 @@ public abstract class Page {
 	}
 	
 	public WebElement findElementWithoutWait(By by) {
-		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		try {
 			return driver.findElement(by);
 		}
@@ -331,11 +331,10 @@ public abstract class Page {
 	}
 	
 	public Boolean alertPresent() throws InterruptedException {
-		Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 		Boolean booelan = false;
 		try {
 			Alert alert = driver.switchTo().alert();
-			alert.accept();
 			booelan = true;
 		}
 		catch (Exception e) {}
@@ -344,11 +343,10 @@ public abstract class Page {
 	}
 	
 	public Boolean promptPresent() throws InterruptedException {
-		Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 		Boolean booelan = false;
 		try {
 			Alert alert = driver.switchTo().alert();
-			alert.dismiss();
 			booelan = true;
 		}
 		catch (Exception e) {}
@@ -410,6 +408,10 @@ public abstract class Page {
 	
 	public Boolean hasElement(By by) {
 		return findElement(by) != null ? true : false;
+	}
+	
+	public Boolean hasElementWithoutWait(By by) {
+		return findElementWithoutWait(by) != null ? true : false;
 	}
 	
 	public Boolean isDisabled(By by) {

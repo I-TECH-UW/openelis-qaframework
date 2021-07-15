@@ -24,6 +24,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.UUID;
+
 import org.openelisglobal.qaframework.RunTest;
 
 public class ResultsEntrySteps extends TestBase {
@@ -422,6 +424,7 @@ public class ResultsEntrySteps extends TestBase {
 	
 	@And("User Clicks Cancel and Stays on page {string}")
 	public void staysOnTheSamePage(String text) {
+		resultsEntryPage.dismissAlert();
 		resultsEntryPage.containsText(text);
 	}
 	
@@ -553,9 +556,76 @@ public class ResultsEntrySteps extends TestBase {
 		searchByOrderPage.clickAccesionNumberSearch();
 	}
 	
-	@And("Check Accept as is box")
+	@And("User Checks Accept as is box")
 	public void chechAcceptAsIs() {
 		searchByOrderPage.clickCheckAsIs();
+	}
+	
+	@Then("User Clicks OK")
+	public void popeUpAlert() {
+		//Pop-up message appears asking user to confirm for one of three reasons
 		searchByOrderPage.acceptAlert();
+	}
+	
+	@Then("Text box closes and Notes field opens")
+	public void NotesFieldOpens() {
+		assertTrue(searchByOrderPage.noteFieldOpens());
+	}
+	
+	@When("User Enters note {string}")
+	public void enterTextNotes(String notes) {
+		UUID uuid = UUID.randomUUID();
+		searchByOrderPage.enterNotes(notes + uuid.toString());
+	}
+	
+	@Then("Field accepts text Notes {string}")
+	public void getTextNotes(String notes) {
+		assertTrue(searchByOrderPage.getNotes().contains(notes));
+	}
+	
+	@When("User Closes note box")
+	public void closesNoteBox() {
+		searchByOrderPage.clickHideNotes();
+	}
+	
+	@Then("Note field closes, triangle symbol changes to notepad symbol")
+	public void hasNotePadSymbol() throws InterruptedException {
+		Thread.sleep(100);
+		assertTrue(searchByOrderPage.hasEditIcon());
+	}
+	
+	@When("User Checks another result with Accept As Is")
+	public void chechAnotherResultWithAcceptAsIs() {
+		searchByOrderPage.clickAnotherCheckAsIs();
+	}
+	
+	@Then("Pop-up message does not appear again , though Note field does open")
+	public void popUpDoesntAppearButNoteFieldAppears() throws InterruptedException {
+		assertFalse(searchByOrderPage.alertPresent());
+		assertTrue(searchByOrderPage.anotherNoteFieldOpens());
+	}
+	
+	@When("User Uncheck Accept As Is for the result")
+	public void unChechAnotherResultWithAcceptAsIs() {
+		searchByOrderPage.clickAnotherCheckAsIs();
+	}
+	
+	@Then("Notes field closes and symbol reverts to green + symbol")
+	public void notesFieldCloses() throws InterruptedException {
+		Thread.sleep(1000);
+		assertTrue(searchByOrderPage.editIconRevertsToGreenPlus());
+	}
+	
+	@When("User Clicks Save Button")
+	public void userClicksSave() throws InterruptedException {
+		searchByOrderPage.clickSaveButton();
+		if (searchByOrderPage.promptPresent()) {
+			searchByOrderPage.acceptAlert();
+		}
+	}
+	
+	@Then("Page refreshes and green -Save was successful- message appears")
+	public void displaySuccesfulSaveMessage() throws InterruptedException {
+		assertTrue(searchByOrderPage.containsText("Save was successful"));
 	}
 }
