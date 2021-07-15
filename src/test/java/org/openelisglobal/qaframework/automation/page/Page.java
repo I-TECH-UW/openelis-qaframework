@@ -331,7 +331,7 @@ public abstract class Page {
 	}
 	
 	public Boolean alertPresent() throws InterruptedException {
-		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+		Thread.sleep(1000);
 		Boolean booelan = false;
 		try {
 			Alert alert = driver.switchTo().alert();
@@ -343,7 +343,7 @@ public abstract class Page {
 	}
 	
 	public Boolean promptPresent() throws InterruptedException {
-		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+		Thread.sleep(1000);
 		Boolean booelan = false;
 		try {
 			Alert alert = driver.switchTo().alert();
