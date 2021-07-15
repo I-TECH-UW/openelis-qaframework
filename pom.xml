@@ -96,6 +96,12 @@
 		    <version>2.1.18</version>
 		</dependency>
     </dependencies>
+    <repositories>
+		<repository>
+			<id>openmrs-repo</id>
+			<url>https://mavenrepo.openmrs.org/public</url>
+		</repository>
+	</repositories>
     <build>
         <plugins>
             <plugin>
