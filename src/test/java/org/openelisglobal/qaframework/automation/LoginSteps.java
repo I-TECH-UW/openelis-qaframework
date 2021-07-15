@@ -15,39 +15,39 @@ import org.openelisglobal.qaframework.automation.page.LoginPage;
 import org.openelisglobal.qaframework.automation.test.TestBase;
 
 public class LoginSteps extends TestBase {
-
+	
 	private LoginPage loginPage;
-
+	
 	@After(RunTest.HOOK.LOGIN)
 	public void destroy() {
 		quit();
 	}
-
+	
 	@Before(RunTest.HOOK.LOGIN)
 	public void setLoginPage() {
 		loginPage = new LoginPage(getWebDriver());
 	}
-
+	
 	@Given("User visits login page")
 	public void visitLoginPage() throws Exception {
 		loginPage.go();
 	}
-
+	
 	@When("User enters {string} username")
 	public void anyUsername(String username) {
 		loginPage.enterUsername(username);
 	}
-
+	
 	@And("User enters {string} password")
 	public void anyPassword(String password) {
 		loginPage.enterPassword(password);
 	}
-
+	
 	@And("User Logs in")
 	public void userLogsIn() {
 		loginPage.getLoginButton().click();
 	}
-
+	
 	@Then("System Evaluates Login {string}")
 	public void evaluateLogin(String status) {
 		HomePage homePage = new HomePage(loginPage);
