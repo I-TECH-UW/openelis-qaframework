@@ -3,7 +3,7 @@ Feature: Results Entry
 Background:
     Given User visits Home page
     
-@results
+@results1
 Scenario Outline: Accessing Results Entry
 When User selects Results and clicks Enter By unit 
 Then Results Unit Type search form displays 
@@ -19,7 +19,7 @@ Examples:
 |    unitType   |
 |Molecular Bio A|
 
-@results
+@results1
 Scenario Outline:Searching for test result entry forms
 When User Selects Results --> Search --> By Patient
 Then Results search form displays
@@ -117,6 +117,14 @@ Then Result Validation Page loads
 When User Goes to Reports --> Routine --> Patient Status Report
 And  User Enters the appropriate Lab Number "<accesionNumber>" and clicks Generate Printable Version
 Then Results appear as reported
+Examples:
+|accesionNumber   |lastName|firstName  |         test                 |unitType         |
+|20210000000002249|moses   | mutesasira|HEPATITIS C VIRAL LOAD(SERUM) |Molecular Biology|
+
+@results
+Scenario Outline:Accept As Is functionality
+When User Selects Results --> Search --> By Order and searches by known Accession Number "<accesionNumber>", Click Get Tests For Accession Number
+And Check Accept as is box
 Examples:
 |accesionNumber   |lastName|firstName  |         test                 |unitType         |
 |20210000000002249|moses   | mutesasira|HEPATITIS C VIRAL LOAD(SERUM) |Molecular Biology|
