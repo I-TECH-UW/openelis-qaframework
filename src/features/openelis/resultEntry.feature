@@ -3,7 +3,7 @@ Feature: Results Entry
 Background:
     Given User visits Home page
     
-@results1
+@results
 Scenario Outline: Accessing Results Entry
 When User selects Results and clicks Enter By unit 
 Then Results Unit Type search form displays 
