@@ -96,12 +96,6 @@
 		    <version>2.1.18</version>
 		</dependency>
     </dependencies>
-    <repositories>
-		<repository>
-			<id>openmrs-repo</id>
-			<url>https://mavenrepo.openmrs.org/public</url>
-		</repository>
-	</repositories>
     <build>
         <plugins>
             <plugin>
@@ -146,29 +140,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-            <groupId>net.revelc.code.formatter</groupId>
-            <artifactId>formatter-maven-plugin</artifactId>
-            <version>2.11.0</version>
-            <configuration>
-                <lineEnding>LF</lineEnding>
-                <configFile>eclipse/OpenMRSFormatter.xml</configFile>
-            </configuration>
-            <dependencies>
-                <dependency>
-                <groupId>org.openmrs.tools</groupId>
-                <artifactId>openmrs-tools</artifactId>
-                <version>2.2.0</version>
-                </dependency>
-            </dependencies>
-            <executions>
-                <execution>
-                <goals>
-                    <goal>format</goal>
-                </goals>
-                </execution>
-            </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
