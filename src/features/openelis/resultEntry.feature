@@ -136,7 +136,26 @@ Then Pop-up message does not appear again , though Note field does open
 When User Uncheck Accept As Is for the result 
 Then Notes field closes and symbol reverts to green + symbol
 When User Clicks Save Button
-Then Page refreshes and green -Save was successful- message appears 
+Then Page refreshes and green ,Save was successful, message appears 
 Examples:
 |accesionNumber   |notes       |
 |20210000000002249|Sample notes|
+
+@results
+Scenario Outline:Verification
+When User Goes to Validation page for correct unit "<unitType>"
+Then Result appears in Validation list
+Examples:
+|unitType         |
+|Molecular Biology|	
+
+@results
+Scenario Outline:Changing Results
+When User Goes to Validation page for correct unit "<unitType>"
+And User Changes result to another valid result "<value>"
+Then Note Field displays and Enter note "<note>"
+When User Clicks the Save Button
+Then Message ,Save was successful, appears at top of page
+Examples:
+|unitType         |value |note       |
+|Molecular Biology|55    |Sample Note|
