@@ -20,5 +20,7 @@ public class RunTest {
 		public static final String ORDER = "@order";
 		
 		public static final String RESULT = "@results";
+
+                public static final String VALIDATE = "@validate";
 	}
 }

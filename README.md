@@ -33,9 +33,10 @@ See [Wiki](https://github.com/I-TECH-UW/openelis-qaframework/wiki) for the Proje
  See All test features bellow with their coresponding filter tags      
 
 
-| Test Feature |Filter Tag     |
-|:----------:  |:-------------:|
-| Login        |  @login       | 
-| Add order    |  @order       |  
-| Results Entry| @results      | 
+| Test Feature |Filter Tag   |
+|:----------:  |:-----------:|
+| Login        | @login      | 
+| Add order    | @order      |  
+| Results Entry| @results    | 
+| Validation   | @validate   | 
        
