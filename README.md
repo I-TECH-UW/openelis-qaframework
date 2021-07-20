@@ -38,5 +38,6 @@ See [Wiki](https://github.com/I-TECH-UW/openelis-qaframework/wiki) for the Proje
 | Login        | @login      | 
 | Add order    | @order      |  
 | Results Entry| @results    | 
-| Validation   | @validate   | 
+| Validation   | @validate   |
+| EMR-LIS FLOW | @emrLis     |  
        
