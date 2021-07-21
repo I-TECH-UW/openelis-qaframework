@@ -1,10 +1,10 @@
 package org.openelisglobal.qaframework.automation.page;
 
-public class ResultValidationPageByAccesionPage extends Page {
+public class ResultValidationByAccesionNumberPage extends Page {
 
     private static final String PAGE_PATH = "/AccessionValidation.do";
 
-    public ResultValidationPageByAccesionPage(Page parent) {
+    public ResultValidationByAccesionNumberPage(Page parent) {
         super(parent);
     }
 

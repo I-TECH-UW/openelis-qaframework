@@ -2,6 +2,7 @@ package org.openelisglobal.qaframework.automation;
 
 import org.openelisglobal.qaframework.automation.page.HomePage;
 import org.openelisglobal.qaframework.automation.page.LoginPage;
+import org.openelisglobal.qaframework.automation.page.ResultValidationByAccesionNumberPage;
 import org.openelisglobal.qaframework.automation.page.ResultValidationPage;
 import org.openelisglobal.qaframework.automation.test.TestBase;
 
@@ -22,6 +23,8 @@ public class ValidationSteps extends TestBase {
 	private HomePage homePage;
 
 	private ResultValidationPage resultValidationPage;
+
+	private ResultValidationByAccesionNumberPage resultValidationByAccesionPage;
 
 	@After(RunTest.HOOK.VALIDATE)
 	public void destroy() {
@@ -62,4 +65,25 @@ public class ValidationSteps extends TestBase {
 		assertTrue(resultValidationPage.containsText("Result"));
 	}
 
+	@When("User Enters lab number {string} in Lab Number search field at top right")
+	public void enterLabNumberSearch(String labNumber) {
+		resultValidationPage.enterLabNumberSearch(labNumber);;
+	}
+	
+	@Then("Field Only accepts 9 characters")
+	public void acceptNineCharacter(){
+
+	}
+
+	@When("User Clicks Search Button")
+	public void clickSearch() {
+		resultValidationByAccesionPage = resultValidationPage.clickSearch();;
+	}
+
+	@Then("Page goes to order number, order is highlighted in yellow")
+	public void toToOrderNUmber(){
+		assertTrue(resultValidationByAccesionPage.containsText("Accession Number"));
+		assertTrue(resultValidationByAccesionPage.containsText("Test Name"));
+		assertTrue(resultValidationByAccesionPage.containsText("Result"));
+	}
 }

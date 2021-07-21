@@ -18,6 +18,8 @@ public class ResultValidationPage extends Page {
 
 	private static final By FIELD_RESULT2 = By.id("resultId_2");
 
+	private static final By FIELD_LAB_NUMBER_SEARCH = By.id("labnoSearch");
+
 	private static final By FIELD_NOTE = By.id("note_1");
 
 	private static final By BUTTON_SHOW_HIDE = By.id("showHideButton_1");
@@ -25,6 +27,8 @@ public class ResultValidationPage extends Page {
 	private static final By BUTTON_SAVE = By.id("saveButtonId");
 
 	private static final By CHECK_BOX_ACCEPTED = By.id("accepted_1");
+
+	private static final By BUTTON_SEARCH = By.xpath("//input[@value='Search'][@type='button']");
 
 	@Override
 	public String getPageUrl() {
@@ -62,5 +66,15 @@ public class ResultValidationPage extends Page {
 
 	public void clickSave(){
 		clickOn(BUTTON_SAVE);
+	}
+
+	public ResultValidationByAccesionNumberPage clickSearch(){
+		clickOn(BUTTON_SEARCH);
+        acceptAlert();
+		return new ResultValidationByAccesionNumberPage(this) ;
+	}
+
+	public void enterLabNumberSearch(String labNumber){
+		setText(FIELD_LAB_NUMBER_SEARCH, labNumber);;
 	}
 }
