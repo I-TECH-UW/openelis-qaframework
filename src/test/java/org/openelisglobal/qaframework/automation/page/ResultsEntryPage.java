@@ -14,7 +14,7 @@ public class ResultsEntryPage extends Page {
 	
 	private static final By FIELD_TEST_RESULT_2 = By.id("results_4");
 	
-	private static final By DROP_DOWN_TEST_RESULT = By.id("resultId_2");
+	private static final By DROP_DOWN_TEST_RESULT = By.id("resultId_0");
 	
 	private static final By LABEL_IMAGE_NON_CONFORMING = By.xpath("//img[contains(@src,'nonconforming')]");
 	
