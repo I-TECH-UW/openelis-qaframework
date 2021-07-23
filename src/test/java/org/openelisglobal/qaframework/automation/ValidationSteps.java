@@ -12,6 +12,7 @@ import org.openelisglobal.qaframework.RunTest;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -80,10 +81,30 @@ public class ValidationSteps extends TestBase {
 		resultValidationByAccesionPage = resultValidationPage.clickSearch();;
 	}
 
-	@Then("Page goes to order number, order is highlighted in yellow")
-	public void toToOrderNUmber(){
-		assertTrue(resultValidationByAccesionPage.containsText("Accession Number"));
-		assertTrue(resultValidationByAccesionPage.containsText("Test Name"));
-		assertTrue(resultValidationByAccesionPage.containsText("Result"));
+	@Then("If order number exists {string} ,Page goes to order number, order is highlighted in yellow")
+	public void goToOrderNumber(String exists) {
+		if (exists.equals("true")) {
+			assertTrue(resultValidationByAccesionPage.containsText("Accession Number"));
+			assertTrue(resultValidationByAccesionPage.containsText("Test Name"));
+			assertTrue(resultValidationByAccesionPage.containsText("Result"));
+		}
+	}
+
+	@Then("If order number does not exist {string} , message `Accession number not found` appears")
+	public void accesionNotFound(String exists) {
+		if (exists.equals("false")) {
+			assertTrue(resultValidationByAccesionPage.containsText("Accession number not found"));
+			resultValidationByAccesionPage.goToHomePage();
+		}
+	}
+
+	@Then("User Check for known non-conformity, Red flag displayed next to test")
+	public void redFlagDisplays(){
+		resultValidationPage.containsText("Sample or order is nonconforming");
+	}
+
+	@And("Non-conformity Reason note displays with Date and Time stamp")
+	public void nonConformityNoteDisplays(){
+		assertTrue(resultValidationPage.containsText("Prior Notes:"));
 	}
 }

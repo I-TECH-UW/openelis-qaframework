@@ -30,6 +30,10 @@ public class ResultValidationPage extends Page {
 
 	private static final By BUTTON_SEARCH = By.xpath("//input[@value='Search'][@type='button']");
 
+	private static final By CKECK_BOX_SAVE_ALL = By.id("selectAllAccept");
+
+	private static final By CKECK_BOX_RETEST_ALL = By.id("selectAllReject");
+
 	@Override
 	public String getPageUrl() {
 		return PAGE_PATH;
@@ -76,5 +80,17 @@ public class ResultValidationPage extends Page {
 
 	public void enterLabNumberSearch(String labNumber){
 		setText(FIELD_LAB_NUMBER_SEARCH, labNumber);;
+	}
+
+	public void checkSaveAll(){
+		clickOn(CKECK_BOX_SAVE_ALL);
+	}
+
+	public void checkRetestAll(){
+		clickOn(CKECK_BOX_RETEST_ALL);
+	}
+
+	public void resultsCheckSave(){
+
 	}
 }
