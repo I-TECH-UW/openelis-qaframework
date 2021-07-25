@@ -26,13 +26,19 @@ public class ResultValidationPage extends Page {
 
 	private static final By BUTTON_SAVE = By.id("saveButtonId");
 
-	private static final By CHECK_BOX_ACCEPTED = By.id("accepted_1");
+	private static final By BUTTON_CANCEL = By.id("cancelButtonId");
 
 	private static final By BUTTON_SEARCH = By.xpath("//input[@value='Search'][@type='button']");
+
+	private static final By CHECK_BOX_ACCEPTED = By.id("accepted_1");
+
+	private static final By CHECK_BOX_RETEST = By.id("rejected_1");
 
 	private static final By CKECK_BOX_SAVE_ALL = By.id("selectAllAccept");
 
 	private static final By CKECK_BOX_RETEST_ALL = By.id("selectAllReject");
+
+	private static final By ICON_NOTES_EDIT = By.xpath("//img[contains(@src,'note-edit')]");
 
 	@Override
 	public String getPageUrl() {
@@ -60,9 +66,17 @@ public class ResultValidationPage extends Page {
         clickOn(CHECK_BOX_ACCEPTED);
 	}
 
+	public void checkRetestCheckBox(){
+        clickOn(CHECK_BOX_RETEST);
+	}
+
 	public void enterNote(String note){
       setText(FIELD_NOTE, note);
 	}
+
+	public String getNote(){
+		return getValue(FIELD_NOTE);
+	  }
 	
 	public void clickShowHide(){
 		clickOn(BUTTON_SHOW_HIDE);
@@ -70,6 +84,10 @@ public class ResultValidationPage extends Page {
 
 	public void clickSave(){
 		clickOn(BUTTON_SAVE);
+	}
+
+	public void clickCancel(){
+		clickOn(BUTTON_CANCEL);
 	}
 
 	public ResultValidationByAccesionNumberPage clickSearch(){
@@ -90,7 +108,35 @@ public class ResultValidationPage extends Page {
 		clickOn(CKECK_BOX_RETEST_ALL);
 	}
 
-	public void resultsCheckSave(){
+	public Boolean allResultsCheckedSave() {
+		for (int x = 1; x <= 3; x++) {
+			By CHECK_BOX_ACCEPTED_N = By.id("accepted_" + x);
+			if (!isChecked(CHECK_BOX_ACCEPTED_N)) {
+				return false;
+			}
+		}
+		return true;
+	}
 
+	public Boolean allResultsCheckedRetest() {
+		for (int x = 1; x <= 3; x++) {
+			By CHECK_BOX_REJECTED_N = By.id("rejected_" + x);
+			if (!isChecked(CHECK_BOX_REJECTED_N)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public Boolean resultSaveChecked(){
+		return isChecked(CHECK_BOX_ACCEPTED);
+	}
+
+	public Boolean resultRetestChecked(){
+		return isChecked(CHECK_BOX_RETEST);
+	}
+
+	public Boolean hasEditIcon() {
+		return hasElement(ICON_NOTES_EDIT);
 	}
 }

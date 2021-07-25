@@ -348,9 +348,8 @@ public abstract class Page {
 		try {
 			Alert alert = driver.switchTo().alert();
 			booelan = true;
+		} catch (Exception e) {
 		}
-		catch (Exception e) {}
-		;
 		return booelan;
 	}
 	
