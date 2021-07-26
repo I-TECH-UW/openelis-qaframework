@@ -42,6 +42,14 @@ public class HomePage extends Page {
 	private static final By SECOND_LEVEL_MENU_REPORTS_ROUTINE = By.id("menu_reports_routine");
 	
 	private static final By THIRD_LEVEL_MENU_REPORTS_ROUTINE_STATUS_REPORT = By.id("menu_reports_status_patient");
+
+	private static final By FIRST_LEVEL_MENU_WORK_PLAN = By.id("menu_workplan");
+
+	private static final By SECOND_LEVEL_MENU_WORK_PLAN_TEST = By.id("menu_workplan_test");
+
+	private static final By SECOND_LEVEL_MENU_WORK_PLAN_PANEL = By.id("menu_workplan_panel");
+
+	private static final By SECOND_LEVEL_MENU_WORK_PLAN_UNIT = By.id("menu_workplan_bench");
 	
 	public HomePage(Page page) {
 		super(page);
@@ -115,5 +123,23 @@ public class HomePage extends Page {
 		clickOn(RADIO_BUTTON_VALIDATE_TRUE);
 		clickOn(BUTTON_SAVE_VALIDATION);
 		this.go();
+	}
+
+	public WorkPlanByTestTypePage goToWorkPlanByTestPage() {
+		hoverOn(FIRST_LEVEL_MENU_WORK_PLAN);
+		clickOn(SECOND_LEVEL_MENU_WORK_PLAN_TEST);
+		return new WorkPlanByTestTypePage(this);
+	}
+
+	public WorkPlanByPanelTypePage goToWorkPlanByPanelPage() {
+		hoverOn(FIRST_LEVEL_MENU_WORK_PLAN);
+		clickOn(SECOND_LEVEL_MENU_WORK_PLAN_PANEL);
+		return new WorkPlanByPanelTypePage(this);
+	}
+
+	public WorkPlanByUnitTypePage goToWorkPlanByUnitPage() {
+		hoverOn(FIRST_LEVEL_MENU_WORK_PLAN);
+		clickOn(SECOND_LEVEL_MENU_WORK_PLAN_UNIT);
+		return new WorkPlanByUnitTypePage(this);
 	}
 }

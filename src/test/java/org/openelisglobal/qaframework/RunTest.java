@@ -23,6 +23,8 @@ public class RunTest {
 
                 public static final String VALIDATE = "@validate";
 
+                public static final String REPORT = "@report";
+
                 public static final String EMR_LIS = "@emrLis";
 	}
 }

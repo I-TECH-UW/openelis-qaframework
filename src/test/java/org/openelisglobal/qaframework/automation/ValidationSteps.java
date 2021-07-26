@@ -5,6 +5,9 @@ import org.openelisglobal.qaframework.automation.page.LoginPage;
 import org.openelisglobal.qaframework.automation.page.PatientStatusReportPage;
 import org.openelisglobal.qaframework.automation.page.ResultValidationByAccesionNumberPage;
 import org.openelisglobal.qaframework.automation.page.ResultValidationPage;
+import org.openelisglobal.qaframework.automation.page.WorkPlanByPanelTypePage;
+import org.openelisglobal.qaframework.automation.page.WorkPlanByTestTypePage;
+import org.openelisglobal.qaframework.automation.page.WorkPlanByUnitTypePage;
 import org.openelisglobal.qaframework.automation.test.TestBase;
 
 import static org.junit.Assert.assertFalse;
@@ -32,6 +35,12 @@ public class ValidationSteps extends TestBase {
 	private ResultValidationByAccesionNumberPage resultValidationByAccesionPage;
 
 	private PatientStatusReportPage patientStatusReportPage;
+
+	private WorkPlanByTestTypePage workPlanByTestTypePage;
+
+	private WorkPlanByPanelTypePage workPlanByPanelTypePage;
+
+	private WorkPlanByUnitTypePage workPlanByUnitTypePage;
 
 	@After(RunTest.HOOK.VALIDATE)
 	public void destroy() {
@@ -297,6 +306,55 @@ public class ValidationSteps extends TestBase {
 		assertTrue(patientStatusReportPage.containsText("Date of Birth"));
 		assertTrue(patientStatusReportPage.containsText("Subject Number"));
 		assertTrue(patientStatusReportPage.containsText("National ID"));
-		patientStatusReportPage.goToHomePage();
+		homePage = patientStatusReportPage.goToHomePage();
+	}
+
+	@When("User Goes to Workplan --> By Test Type")
+	public void goToWorkPlanByTestPage() {
+		workPlanByTestTypePage = homePage.goToWorkPlanByTestPage();
+	}
+
+	@Then("Retest tests appear on workplan for that accession number By Test Type {string}")
+	public void testAppearOnWorkPlanByTestPage(String testType) {
+		assertTrue(workPlanByTestTypePage.containsText("Workplan By Test"));
+		assertTrue(workPlanByTestTypePage.containsText("Test Type"));
+		workPlanByTestTypePage.selctTestType(testType);
+		assertTrue(workPlanByTestTypePage.containsText(testType));
+		assertTrue(workPlanByTestTypePage.containsText("Lab No"));
+		assertTrue(workPlanByTestTypePage.containsText("Subject Number"));
+		homePage = workPlanByTestTypePage.goToHomePage();
+	}
+
+	@When("User Goes to Workplan --> By Panel Type")
+	public void goToWorkPlanByPanelPage() {
+		workPlanByPanelTypePage = homePage.goToWorkPlanByPanelPage();
+	}
+
+	@Then("Retest tests appear on workplan for that accession number By Panel Type {string}")
+	public void testAppearOnWorkPlanByPanelPage(String panelType) {
+		assertTrue(workPlanByPanelTypePage.containsText("Workplan By Panel"));
+		assertTrue(workPlanByPanelTypePage.containsText("Panel Type"));
+		workPlanByPanelTypePage.selectPanelType(panelType);
+		assertTrue(workPlanByPanelTypePage.containsText(panelType));
+		assertTrue(workPlanByPanelTypePage.containsText("Lab No"));
+		assertTrue(workPlanByPanelTypePage.containsText("Subject Number"));
+		assertTrue(workPlanByPanelTypePage.containsText("Test Name"));
+		homePage = workPlanByPanelTypePage.goToHomePage();
+	}
+
+	@When("User Goes to Workplan --> By Unit")
+	public void goToWorkPlanByUnitPage() {
+		workPlanByUnitTypePage = homePage.goToWorkPlanByUnitPage();
+	}
+
+	@Then("Retest tests appear on workplan for that accession number By Unit Type {string}")
+	public void testAppearOnWorkPlanByUnitPage(String unitType) {
+		assertTrue(workPlanByUnitTypePage.containsText("Workplan Unit Type"));
+		assertTrue(workPlanByUnitTypePage.containsText("Unit Type"));
+		workPlanByUnitTypePage.selectUnitType(unitType);
+		assertTrue(workPlanByUnitTypePage.containsText("Lab No"));
+		assertTrue(workPlanByUnitTypePage.containsText("Subject Number"));
+		assertTrue(workPlanByUnitTypePage.containsText("Test Name"));
+		homePage = workPlanByUnitTypePage.goToHomePage();
 	}
 }
