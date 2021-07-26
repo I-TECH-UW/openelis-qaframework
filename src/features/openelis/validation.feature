@@ -71,6 +71,12 @@ Scenario Outline: Verification
 When User Goes to Patient Status Report Page 
 And User Generates Patient Status Report for the accession number "<accesionNumber>"
 Then Saved results without rejection reason appear on Patient Status Report
+When User Goes to Workplan --> By Test Type
+Then Retest tests appear on workplan for that accession number By Test Type "<testType>"
+When User Goes to Workplan --> By Panel Type
+Then Retest tests appear on workplan for that accession number By Panel Type "<panelType>"
+When User Goes to Workplan --> By Unit
+Then Retest tests appear on workplan for that accession number By Unit Type "<unitType>"
 Examples:
-|accesionNumber   |
-|20210000000002249|
+|accesionNumber   |testType                     |panelType      |unitType         |
+|20210000000002249|HEPATITIS C VIRAL LOAD(SERUM)|pnl_Haematology|Molecular Biology|    

@@ -39,5 +39,6 @@ See [Wiki](https://github.com/I-TECH-UW/openelis-qaframework/wiki) for the Proje
 | Add order         | @order      |  
 | Results Entry     | @results    | 
 | Validation        | @validate   |
+| Patient Report    | @report     |
 | EMR-LIS Work Flow | @emrLis     |  
        
