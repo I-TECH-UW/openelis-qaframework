@@ -134,7 +134,12 @@ public class ResultsEntryPage extends Page {
 	public void refreshAndEnterTestResult() {
 		refreshPage();
 		acceptAlert();
-		setText(FIELD_TEST_RESULT_2, "40");
+		for (int x = 0; x <= 7; x++) {
+			By FIELD_TEST_RESULT_N = By.id("results_" + x);
+			if (hasElementWithoutWait(FIELD_TEST_RESULT_N)) {
+				setText(FIELD_TEST_RESULT_N, "43");
+			}
+		}
 	}
 	
 	public Boolean resultsFieldsHaveValues() {
