@@ -90,10 +90,10 @@ public class ResultValidationPage extends Page {
 		clickOn(BUTTON_CANCEL);
 	}
 
-	public ResultValidationByAccesionNumberPage clickSearch(){
+	public  ResultValidationByOderPage clickSearch(){
 		clickOn(BUTTON_SEARCH);
         acceptAlert();
-		return new ResultValidationByAccesionNumberPage(this) ;
+		return new  ResultValidationByOderPage(this) ;
 	}
 
 	public void enterLabNumberSearch(String labNumber){

@@ -154,7 +154,9 @@ public class AddOrderPage extends Page {
 	        .xpath("//td/input[@id='orderSectionId']/following-sibling::span[1]");
 	
 	private static final By CHECK_BOX_TEST = By.id("test_0");
-	
+	private static final By CHECK_BOX_TEST1 = By.id("test_1");
+	private static final By CHECK_BOX_TEST2 = By.id("test_2");
+	private static final By CHECK_BOX_TEST3 = By.id("test_3");
 	private static final By CHECK_BOX_VIRAL_LOAD_TEST = By.id("test_4");
 	
 	private static final By CHECK_BOX_PANNEL = By.id("panel_0");
@@ -300,6 +302,9 @@ public class AddOrderPage extends Page {
 	
 	public void clickTestCheckBox() {
 		clickOn(CHECK_BOX_TEST);
+		clickOn(CHECK_BOX_TEST1);
+		clickOn(CHECK_BOX_TEST2);
+		clickOn(CHECK_BOX_TEST3);
 		clickOn(CHECK_BOX_VIRAL_LOAD_TEST);
 	}
 	
@@ -716,7 +721,7 @@ public class AddOrderPage extends Page {
 		return deactivated;
 	}
 	
-	public void innitaliseData(String accesionNumber) throws InterruptedException {
+	public void innitialiseData(String accesionNumber) throws InterruptedException {
 		UUID uuid = UUID.randomUUID();
 		String uuidAsString = uuid.toString();
 		enterAccessionNumber(accesionNumber);

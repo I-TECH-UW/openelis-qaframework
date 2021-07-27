@@ -1,21 +1,20 @@
 package org.openelisglobal.qaframework.automation;
 
-import org.openelisglobal.qaframework.automation.page.HomePage;
-import org.openelisglobal.qaframework.automation.page.LoginPage;
-import org.openelisglobal.qaframework.automation.page.PatientStatusReportPage;
-import org.openelisglobal.qaframework.automation.page.ResultValidationByAccesionNumberPage;
-import org.openelisglobal.qaframework.automation.page.ResultValidationPage;
-import org.openelisglobal.qaframework.automation.page.WorkPlanByPanelTypePage;
-import org.openelisglobal.qaframework.automation.page.WorkPlanByTestTypePage;
-import org.openelisglobal.qaframework.automation.page.WorkPlanByUnitTypePage;
-import org.openelisglobal.qaframework.automation.test.TestBase;
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.UUID;
 
 import org.openelisglobal.qaframework.RunTest;
+import org.openelisglobal.qaframework.automation.page.HomePage;
+import org.openelisglobal.qaframework.automation.page.LoginPage;
+import org.openelisglobal.qaframework.automation.page.PatientStatusReportPage;
+import org.openelisglobal.qaframework.automation.page.ResultValidationByOderPage;
+import org.openelisglobal.qaframework.automation.page.ResultValidationPage;
+import org.openelisglobal.qaframework.automation.page.WorkPlanByPanelTypePage;
+import org.openelisglobal.qaframework.automation.page.WorkPlanByTestTypePage;
+import org.openelisglobal.qaframework.automation.page.WorkPlanByUnitTypePage;
+import org.openelisglobal.qaframework.automation.test.TestBase;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -32,7 +31,7 @@ public class ValidationSteps extends TestBase {
 
 	private ResultValidationPage resultValidationPage;
 
-	private ResultValidationByAccesionNumberPage resultValidationByAccesionPage;
+	private  ResultValidationByOderPage resultValidationByOrderPage;
 
 	private PatientStatusReportPage patientStatusReportPage;
 
@@ -93,23 +92,23 @@ public class ValidationSteps extends TestBase {
 
 	@When("User Clicks Search Button")
 	public void clickSearch() {
-		resultValidationByAccesionPage = resultValidationPage.clickSearch();
+		resultValidationByOrderPage = resultValidationPage.clickSearch();
 	}
 
 	@Then("If order number exists {string} ,Page goes to order number, order is highlighted in yellow")
 	public void goToOrderNumber(String exists) {
 		if (exists.equals("true")) {
-			assertTrue(resultValidationByAccesionPage.containsText("Accession Number"));
-			assertTrue(resultValidationByAccesionPage.containsText("Test Name"));
-			assertTrue(resultValidationByAccesionPage.containsText("Result"));
+			assertTrue(resultValidationByOrderPage.containsText("Accession Number"));
+			assertTrue(resultValidationByOrderPage.containsText("Test Name"));
+			assertTrue(resultValidationByOrderPage.containsText("Result"));
 		}
 	}
 
 	@Then("If order number does not exist {string} , message `Accession number not found` appears")
 	public void accesionNotFound(String exists) {
 		if (exists.equals("false")) {
-			assertTrue(resultValidationByAccesionPage.containsText("Accession number not found"));
-			resultValidationByAccesionPage.goToHomePage();
+			assertTrue(resultValidationByOrderPage.containsText("Accession number not found"));
+			resultValidationByOrderPage.goToHomePage();
 		}
 	}
 
@@ -292,7 +291,7 @@ public class ValidationSteps extends TestBase {
 
 	@And("User Generates Patient Status Report for the accession number {string}")
 	public void enterLabNumber(String labNumber) throws InterruptedException {
-		patientStatusReportPage.enterLabNUmber(labNumber);
+		patientStatusReportPage.enterLabNumber(labNumber);
 		patientStatusReportPage.clickSearchButton();
 		patientStatusReportPage.clickPrintButton();
 	}

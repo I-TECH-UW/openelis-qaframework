@@ -185,7 +185,6 @@ public class ResultsEntrySteps extends TestBase {
 	@When("User Searches by AccesionNumber {string}")
 	public void searchByAccesionNumber(String acesionNumber) {
 		searchByOrderPage.enterAccesionNumber(acesionNumber);
-		;
 		searchByOrderPage.clickAccesionNumberSearch();
 	}
 
@@ -199,7 +198,7 @@ public class ResultsEntrySteps extends TestBase {
 	public void searchByKnownAccesionNumber(String accesionNumber) throws InterruptedException {
 		// Innitialise data
 		addOrderPage = homePage.goToAddOrderPage();
-		addOrderPage.innitaliseData(accesionNumber);
+		addOrderPage.innitialiseData(accesionNumber);
 		homePage = addOrderPage.goToHomePage();
 
 		addOrderPage = homePage.goToAddOrderPage();
@@ -207,7 +206,7 @@ public class ResultsEntrySteps extends TestBase {
 		homePage = addOrderPage.goToHomePage();
 
 		addOrderPage = homePage.goToAddOrderPage();
-		addOrderPage.innitaliseData("20210000000002250");
+		addOrderPage.innitialiseData("20210000000002250");
 		homePage = addOrderPage.goToHomePage();
 
 		searchByOrderPage = homePage.goToSearchResultsByOrder();
@@ -533,7 +532,7 @@ public class ResultsEntrySteps extends TestBase {
 
 	@And("User Enters the appropriate Lab Number {string} and clicks Generate Printable Version")
 	public void enterLabNumber(String labNumber){
-		patientStatusReportPage.enterLabNUmber(labNumber);
+		patientStatusReportPage.enterLabNumber(labNumber);
 		patientStatusReportPage.clickSearchButton();
 		patientStatusReportPage.clickPrintButton();
 	}
