@@ -206,18 +206,6 @@ public class ResultsEntrySteps extends TestBase {
 		homePage = addOrderPage.goToHomePage();
 
 		addOrderPage = homePage.goToAddOrderPage();
-		addOrderPage.innitialiseRandomData();
-		homePage = addOrderPage.goToHomePage();
-
-		addOrderPage = homePage.goToAddOrderPage();
-		addOrderPage.innitialiseRandomData();
-		homePage = addOrderPage.goToHomePage();
-
-		addOrderPage = homePage.goToAddOrderPage();
-		addOrderPage.innitialiseRandomData();
-		homePage = addOrderPage.goToHomePage();
-
-		addOrderPage = homePage.goToAddOrderPage();
 		addOrderPage.innitialiseData("20210000000002250");
 		homePage = addOrderPage.goToHomePage();
 

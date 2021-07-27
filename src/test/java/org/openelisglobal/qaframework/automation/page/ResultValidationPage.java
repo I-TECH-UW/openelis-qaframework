@@ -113,7 +113,7 @@ public class ResultValidationPage extends Page {
 	}
 
 	public Boolean allResultsCheckedSave() {
-		for (int x = 0; x <= 3; x++) {
+		for (int x = 0; x <= 2; x++) {
 			By CHECK_BOX_ACCEPTED_N = By.id("accepted_" + x);
 			if (hasElementWithoutWait(CHECK_BOX_ACCEPTED_N)) {
 				if (!isChecked(CHECK_BOX_ACCEPTED_N)) {
@@ -125,7 +125,7 @@ public class ResultValidationPage extends Page {
 	}
 
 	public Boolean allResultsCheckedRetest() {
-		for (int x = 0; x <= 3; x++) {
+		for (int x = 0; x <= 2; x++) {
 			By CHECK_BOX_REJECTED_N = By.id("rejected_" + x);
 			if (hasElementWithoutWait(CHECK_BOX_REJECTED_N)) {
 				if (!isChecked(CHECK_BOX_REJECTED_N)) {
