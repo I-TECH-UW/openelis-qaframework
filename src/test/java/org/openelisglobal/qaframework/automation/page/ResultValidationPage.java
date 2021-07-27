@@ -16,8 +16,6 @@ public class ResultValidationPage extends Page {
 
 	private static final By FIELD_RESULT1 = By.id("resultId_1");
 
-	private static final By FIELD_RESULT2 = By.id("resultId_2");
-
 	private static final By FIELD_LAB_NUMBER_SEARCH = By.id("labnoSearch");
 
 	private static final By FIELD_NOTE = By.id("note_0");
@@ -61,11 +59,8 @@ public class ResultValidationPage extends Page {
 		findElement(FIELD_RESULT1).sendKeys(value);	    
 	}
 
-	public void clickResultField2(){
-		if(hasElementWithoutWait(FIELD_RESULT2)){
-			return ;
-		 }
-        clickOn(FIELD_RESULT2);
+	public void clickSearchField(){
+        clickOn(FIELD_LAB_NUMBER_SEARCH);
 	}
 
 	public void checkAcceptedCheckBox(){
