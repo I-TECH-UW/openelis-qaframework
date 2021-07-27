@@ -206,18 +206,6 @@ public class ResultsEntrySteps extends TestBase {
 		homePage = addOrderPage.goToHomePage();
 
 		addOrderPage = homePage.goToAddOrderPage();
-		addOrderPage.innitialiseRandomData();
-		homePage = addOrderPage.goToHomePage();
-
-		addOrderPage = homePage.goToAddOrderPage();
-		addOrderPage.innitialiseRandomData();
-		homePage = addOrderPage.goToHomePage();
-
-		addOrderPage = homePage.goToAddOrderPage();
-		addOrderPage.innitialiseRandomData();
-		homePage = addOrderPage.goToHomePage();
-
-		addOrderPage = homePage.goToAddOrderPage();
 		addOrderPage.innitialiseData("20210000000002250");
 		homePage = addOrderPage.goToHomePage();
 
@@ -655,7 +643,7 @@ public class ResultsEntrySteps extends TestBase {
 	}
 
 	@When("User Changes result to another valid result {string}")
-	public void chengeResult(String value) {
+	public void changeResult(String value) {
 		resultValidationPage.chageResult(value);
 	}
 
