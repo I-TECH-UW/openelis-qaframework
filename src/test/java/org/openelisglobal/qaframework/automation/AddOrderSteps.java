@@ -473,7 +473,7 @@ public class AddOrderSteps extends TestBase {
 	@Then("Text cannot be cleared in Tests Box")
 	public void textCanNotBeDeletedFromTestBox() {
 		assertNotEquals(addOrderPage.getTestValue(), "");
-		assertEquals(addOrderPage.getTestValue(), "COVID-19 ANTIBODY IgG,HEPATITIS C VIRAL LOAD");
+		assertTrue(addOrderPage.getTestValue().contains("COVID-19 ANTIBODY IgG"));
 	}
 	
 	@Then("Patient information form is marked mandatory")
