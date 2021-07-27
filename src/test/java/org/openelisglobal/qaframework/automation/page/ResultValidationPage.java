@@ -14,7 +14,7 @@ public class ResultValidationPage extends Page {
 
 	private static final By DROP_DOWN_UNIT_TYPE = By.id("testSectionId");
 
-	private static final By FIELD_RESULT = By.id("resultId_)");
+	private static final By FIELD_RESULT = By.id("resultId_0)");
 
 	private static final By FIELD_LAB_NUMBER_SEARCH = By.id("labnoSearch");
 
@@ -53,10 +53,10 @@ public class ResultValidationPage extends Page {
 	}
 
 	public void chageResult(String value){
-		if(!hasElementWithoutWait(FIELD_RESULT)){
-           return ;
+		if(hasElementWithoutWait(FIELD_RESULT)){
+			findElement(FIELD_RESULT).sendKeys(value);	
 		}
-		findElement(FIELD_RESULT).sendKeys(value);	    
+		    
 	}
 
 	public void clickSearchField(){
@@ -72,7 +72,10 @@ public class ResultValidationPage extends Page {
 	}
 
 	public void enterNote(String note){
-      setText(FIELD_NOTE, note);
+		if(hasElementWithoutWait(FIELD_NOTE)){
+			setText(FIELD_NOTE, note);
+		}
+    
 	}
 
 	public String getNote(){
