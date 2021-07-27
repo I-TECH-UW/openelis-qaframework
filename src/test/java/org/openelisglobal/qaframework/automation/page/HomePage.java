@@ -15,6 +15,8 @@ public class HomePage extends Page {
 	private static final By FIRST_LEVEL_MENU_ORDER = By.id("menu_sample");
 	
 	private static final By SECOND_LEVEL_MENU_ADD_ORDER = By.id("menu_sample_add");
+
+	private static final By SECOND_LEVEL_MENU_MODIFY_ORDER = By.id("menu_sample_edit");
 	
 	private static final By FIRST_LEVEL_MENU_RESULTS = By.id("menu_results");
 	
@@ -36,6 +38,8 @@ public class HomePage extends Page {
 	private static final By FIRST_LEVEL_MENU_VALIDATION = By.id("menu_resultvalidation");
 	
 	private static final By SECOND_LEVEL_MENU_VALIDATION_ROUTINE = By.id("menu_resultvalidation_routine");
+
+	private static final By SECOND_LEVEL_MENU_VALIDATION_BY_ORDER = By.id("menu_accession_validation");
 	
 	private static final By FIRST_LEVEL_MENU_REPORTS = By.id("menu_reports");
 	
@@ -64,20 +68,18 @@ public class HomePage extends Page {
 		return findElement(By.id("logout-form"));
 	}
 	
-	public WebElement getFirstLevelMenu() {
-		return findElement(FIRST_LEVEL_MENU_ORDER);
-	}
-	
-	public WebElement getSecondLevelMenu() {
-		return findElement(SECOND_LEVEL_MENU_ADD_ORDER);
-	}
-	
 	public AddOrderPage goToAddOrderPage() {
 		hoverOn(FIRST_LEVEL_MENU_ORDER);
-		getSecondLevelMenu().click();
+		clickOn(SECOND_LEVEL_MENU_ADD_ORDER);
 		return new AddOrderPage(this);
 	}
-	
+
+	public ModifyOrderPage goToModifyOrderPage() {
+		hoverOn(FIRST_LEVEL_MENU_ORDER);
+		clickOn(SECOND_LEVEL_MENU_MODIFY_ORDER);
+		return new ModifyOrderPage(this);
+	}
+
 	public ResultsUnitTypePage selectsResultAndClickEnterByUnit() {
 		hoverOn(FIRST_LEVEL_MENU_RESULTS);
 		clickOn(SECOND_LEVEL_MENU_RESULTS_ENTER_BY_UNIT);
@@ -109,6 +111,12 @@ public class HomePage extends Page {
 		hoverOn(FIRST_LEVEL_MENU_VALIDATION);
 		clickOn(SECOND_LEVEL_MENU_VALIDATION_ROUTINE);
 		return new ResultValidationPage(this);
+	}
+
+	public ResultValidationByOderPage goToResultValidationByOrder() {
+		hoverOn(FIRST_LEVEL_MENU_VALIDATION);
+		clickOn(SECOND_LEVEL_MENU_VALIDATION_BY_ORDER);
+		return new ResultValidationByOderPage(this);
 	}
 	
 	public PatientStatusReportPage goToPatientStatusReportPage() {

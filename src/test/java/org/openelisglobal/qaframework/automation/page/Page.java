@@ -34,6 +34,10 @@ public abstract class Page {
 	
 	protected final WebDriver driver;
 	
+	public WebDriver getDriver() {
+		return this.driver;
+	}
+
 	protected final WebDriverWait waiter;
 	
 	private final String contextUrl;
@@ -338,7 +342,6 @@ public abstract class Page {
 			booelan = true;
 		}
 		catch (Exception e) {}
-		;
 		return booelan;
 	}
 	
