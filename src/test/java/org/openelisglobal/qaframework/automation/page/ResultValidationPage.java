@@ -14,7 +14,7 @@ public class ResultValidationPage extends Page {
 
 	private static final By DROP_DOWN_UNIT_TYPE = By.id("testSectionId");
 
-	private static final By FIELD_RESULT = By.id("resultId_0)");
+	private static final By FIELD_RESULT = By.id("resultId_0");
 
 	private static final By FIELD_LAB_NUMBER_SEARCH = By.id("labnoSearch");
 
