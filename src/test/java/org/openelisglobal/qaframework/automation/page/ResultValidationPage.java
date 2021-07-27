@@ -20,7 +20,7 @@ public class ResultValidationPage extends Page {
 
 	private static final By FIELD_LAB_NUMBER_SEARCH = By.id("labnoSearch");
 
-	private static final By FIELD_NOTE = By.id("note_1");
+	private static final By FIELD_NOTE = By.id("note_0");
 
 	private static final By BUTTON_SHOW_HIDE = By.id("showHideButton_1");
 
@@ -30,9 +30,9 @@ public class ResultValidationPage extends Page {
 
 	private static final By BUTTON_SEARCH = By.xpath("//input[@value='Search'][@type='button']");
 
-	private static final By CHECK_BOX_ACCEPTED = By.id("accepted_1");
+	private static final By CHECK_BOX_ACCEPTED = By.id("accepted_0");
 
-	private static final By CHECK_BOX_RETEST = By.id("rejected_1");
+	private static final By CHECK_BOX_RETEST = By.id("rejected_0");
 
 	private static final By CKECK_BOX_SAVE_ALL = By.id("selectAllAccept");
 
@@ -55,10 +55,16 @@ public class ResultValidationPage extends Page {
 	}
 
 	public void chageResult(String value){
+		if(hasElementWithoutWait(FIELD_RESULT1)){
+           return ;
+		}
 		findElement(FIELD_RESULT1).sendKeys(value);	    
 	}
 
 	public void clickResultField2(){
+		if(hasElementWithoutWait(FIELD_RESULT2)){
+			return ;
+		 }
         clickOn(FIELD_RESULT2);
 	}
 
@@ -109,20 +115,24 @@ public class ResultValidationPage extends Page {
 	}
 
 	public Boolean allResultsCheckedSave() {
-		for (int x = 1; x <= 3; x++) {
+		for (int x = 0; x <= 3; x++) {
 			By CHECK_BOX_ACCEPTED_N = By.id("accepted_" + x);
-			if (!isChecked(CHECK_BOX_ACCEPTED_N)) {
-				return false;
+			if (hasElementWithoutWait(CHECK_BOX_ACCEPTED_N)) {
+				if (!isChecked(CHECK_BOX_ACCEPTED_N)) {
+					return false;
+				}
 			}
 		}
 		return true;
 	}
 
 	public Boolean allResultsCheckedRetest() {
-		for (int x = 1; x <= 3; x++) {
+		for (int x = 0; x <= 3; x++) {
 			By CHECK_BOX_REJECTED_N = By.id("rejected_" + x);
-			if (!isChecked(CHECK_BOX_REJECTED_N)) {
-				return false;
+			if (hasElementWithoutWait(CHECK_BOX_REJECTED_N)) {
+				if (!isChecked(CHECK_BOX_REJECTED_N)) {
+					return false;
+				}
 			}
 		}
 		return true;
