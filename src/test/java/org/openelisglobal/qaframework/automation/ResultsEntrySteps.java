@@ -650,7 +650,7 @@ public class ResultsEntrySteps extends TestBase {
 
 	@Then("Note Field displays and Enter note {string}")
 	public void enterNote(String note) {
-		resultValidationPage.clickResultField2();
+		resultValidationPage.clickSearchField();
 		resultValidationPage.enterNote(note);
 	}
 
