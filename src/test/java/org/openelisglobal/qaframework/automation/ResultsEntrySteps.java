@@ -206,6 +206,18 @@ public class ResultsEntrySteps extends TestBase {
 		homePage = addOrderPage.goToHomePage();
 
 		addOrderPage = homePage.goToAddOrderPage();
+		addOrderPage.innitialiseRandomData();
+		homePage = addOrderPage.goToHomePage();
+
+		addOrderPage = homePage.goToAddOrderPage();
+		addOrderPage.innitialiseRandomData();
+		homePage = addOrderPage.goToHomePage();
+
+		addOrderPage = homePage.goToAddOrderPage();
+		addOrderPage.innitialiseRandomData();
+		homePage = addOrderPage.goToHomePage();
+
+		addOrderPage = homePage.goToAddOrderPage();
 		addOrderPage.innitialiseData("20210000000002250");
 		homePage = addOrderPage.goToHomePage();
 
@@ -330,7 +342,6 @@ public class ResultsEntrySteps extends TestBase {
 	@When("User Enters type-in result {string} for a selected test")
 	public void enterTypeInResults(String value) {
 		resultsEntryPage.enterTestResult(value);
-		;
 	}
 
 	@Then("Type-in result {string} can be entered in the field")
