@@ -41,9 +41,9 @@ public class PatientEntrySteps extends TestBase{
         addPatientPage = homePage.goToAddEditPatientPage();
 
 		//initialise data 
-		// addPatientPage.innitialisePatientData("jimmy", "seruwu");
-		// homePage = addPatientPage.goToHomePage();
-		// addPatientPage = homePage.goToAddEditPatientPage();	
+		addPatientPage.innitialisePatientData("jimmy", "seruwu");
+		homePage = addPatientPage.goToHomePage();
+		addPatientPage = homePage.goToAddEditPatientPage();	
 	}  
 	
 	@When("Add|Modify Patient page appears with search field")
