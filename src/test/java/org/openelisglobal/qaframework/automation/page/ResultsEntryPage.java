@@ -13,11 +13,11 @@ public class ResultsEntryPage extends Page {
 	
 	private static final By FIELD_TEST_DATE = By.id("testDate_3");
 	
-	private static final By FIELD_TEST_RESULT = By.id("results_3");
-	
+	private static final By FIELD_TEST_RESULT = By.xpath("//input[starts-with(@id,'results')]");
+
 	private static final By FIELD_TEST_RESULT_2 = By.id("results_4");
 	
-	private static final By DROP_DOWN_TEST_RESULT = By.id("resultId_0");
+	private static final By DROP_DOWN_TEST_RESULT = By.xpath("//select[starts-with(@id,'resultId')]");
 	
 	private static final By LABEL_IMAGE_NON_CONFORMING = By.xpath("//img[contains(@src,'nonconforming')]");
 	
