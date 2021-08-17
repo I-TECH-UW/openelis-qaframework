@@ -2,6 +2,10 @@ package org.openelisglobal.qaframework.automation.page;
 
 import org.openqa.selenium.By;
 
+
+/**
+ * This class represents the Results, Enter By Unit Type Page
+ */
 public class ResultsUnitTypePage extends Page {
 	
 	private static final String PAGE_PATH = "/LogbookResults.do";

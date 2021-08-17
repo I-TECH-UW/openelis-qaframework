@@ -79,4 +79,4 @@ When User Goes to Workplan --> By Unit
 Then Retest tests appear on workplan for that accession number By Unit Type "<unitType>"
 Examples:
 |accesionNumber   |testType                     |panelType      |unitType         |
-|20210000000002249|HEPATITIS C VIRAL LOAD(SERUM)|pnl_Haematology|Molecular Biology|    
+|20210000000002249|HEPATITIS C VIRAL LOAD(SERUM)|pnl_virology_molecular|Molecular Biology|    

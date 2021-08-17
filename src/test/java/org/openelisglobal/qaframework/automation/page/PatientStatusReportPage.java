@@ -2,6 +2,9 @@ package org.openelisglobal.qaframework.automation.page;
 
 import org.openqa.selenium.By;
 
+/**
+ * This class represents the Report ,Patient Status Report page
+ */
 public class PatientStatusReportPage extends Page {
 	
 	private static final String PAGE_PATH = "/Report.do";

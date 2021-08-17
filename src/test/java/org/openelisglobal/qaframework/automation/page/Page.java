@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
 import com.google.common.collect.Iterables;
 
 import org.junit.Assert;
-import org.openelisglobal.qaframework.automation.page.exception.PageRejectedException;
 import org.openelisglobal.qaframework.automation.test.TestBase;
 import org.openelisglobal.qaframework.automation.test.TestProperties;
 import org.openqa.selenium.Alert;
@@ -128,13 +127,6 @@ public abstract class Page {
 	
 	public Page waitForPage() {
 		waiter.until(pageReady);
-		
-		if (getPageRejectUrl() != null) {
-			if (driver.getCurrentUrl().contains(getPageRejectUrl())) {
-				throw new PageRejectedException("Page url " + driver.getCurrentUrl() + " contains '" + getPageRejectUrl()
-				        + "', which is not allowed");
-			}
-		}
 		return this;
 	}
 	

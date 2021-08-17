@@ -2,6 +2,9 @@ package org.openelisglobal.qaframework.automation.page;
 
 import org.openqa.selenium.By;
 
+/**
+ * This class represents the Work Plan By Test Type Page
+ */
 public class WorkPlanByTestTypePage extends Page {
 
     private static final String PAGE_PATH = "/WorkPlanByTest.do";
@@ -26,6 +29,5 @@ public class WorkPlanByTestTypePage extends Page {
 
 	public void selctTestType(String testType){
 		selectFrom(DROP_DOWN_TEST_TYPES, testType);
-	}
-    
+	}  
 }

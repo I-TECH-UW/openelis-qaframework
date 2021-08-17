@@ -457,11 +457,12 @@ public class ResultsEntrySteps extends TestBase {
 	}
 
 	@When("User Reload Results Page By Results --> Search --> By Patient LastName {string} and FirstName {string}")
-	public void reloadResultsByPatientNames(String lastName, String firstName) {
+	public void reloadResultsByPatientNames(String lastName, String firstName) throws InterruptedException {
 		searchByPatientPage = homePage.goToSearchResultsByPatient();
 		searchByPatientPage.enterFirstNameSearch(firstName);
 		searchByPatientPage.enterLastNameSearch(lastName);
 		searchByPatientPage.clickSearchButton();
+		Thread.sleep(1000);
 		searchByPatientPage.clickPatientResultCheckBox();
 		searchByPatientPage.clickGetPatientTestsButon();
 	}

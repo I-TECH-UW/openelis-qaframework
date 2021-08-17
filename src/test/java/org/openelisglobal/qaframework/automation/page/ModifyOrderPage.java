@@ -2,6 +2,9 @@ package org.openelisglobal.qaframework.automation.page;
 
 import org.openqa.selenium.By;
 
+/**
+ * This class represents the Modify Order page
+ */
 public class ModifyOrderPage extends Page{
 
     private static final String PAGE_PATH = "/SampleEdit.do";

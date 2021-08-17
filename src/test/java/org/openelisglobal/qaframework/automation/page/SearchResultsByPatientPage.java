@@ -2,6 +2,9 @@ package org.openelisglobal.qaframework.automation.page;
 
 import org.openqa.selenium.By;
 
+/**
+ * This class represents the Results Search By Patient Page
+ */
 public class SearchResultsByPatientPage extends Page {
 	
 	private static final String PAGE_PATH = "/PatientResults.do";

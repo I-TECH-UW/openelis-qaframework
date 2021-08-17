@@ -2,6 +2,9 @@ package org.openelisglobal.qaframework.automation.page;
 
 import org.openqa.selenium.By;
 
+/**
+ * This class represents the Result Validation Page
+ */
 public class ResultValidationPage extends Page {
 	
 	public ResultValidationPage(Page parent) {
