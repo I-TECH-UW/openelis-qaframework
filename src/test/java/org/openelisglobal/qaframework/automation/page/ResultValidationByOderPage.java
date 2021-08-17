@@ -2,6 +2,9 @@ package org.openelisglobal.qaframework.automation.page;
 
 import org.openqa.selenium.By;
 
+/**
+ * This class represents the Validation By Order Page
+ */
 public class ResultValidationByOderPage extends Page {
 
     private static final String PAGE_PATH = "/AccessionValidation.do";

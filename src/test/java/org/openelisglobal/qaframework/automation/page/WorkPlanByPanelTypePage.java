@@ -2,6 +2,9 @@ package org.openelisglobal.qaframework.automation.page;
 
 import org.openqa.selenium.By;
 
+/**
+ * This class represents the Work Plan By Pannel Type Page
+ */
 public class WorkPlanByPanelTypePage extends Page {
 
     private static final String PAGE_PATH = "/WorkPlanByPanel.do";

@@ -2,6 +2,9 @@ package org.openelisglobal.qaframework.automation.page;
 
 import org.openqa.selenium.By;
 
+/**
+ * This class represents the Results Search By Status Page
+ */
 public class SearchResultsByStatusPage extends Page {
 	
 	private static final String PAGE_PATH = "/StatusResults.do";

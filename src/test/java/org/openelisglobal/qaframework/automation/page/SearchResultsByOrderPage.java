@@ -2,6 +2,9 @@ package org.openelisglobal.qaframework.automation.page;
 
 import org.openqa.selenium.By;
 
+/**
+ * This class represents the Results Search By Order Page
+ */
 public class SearchResultsByOrderPage extends Page {
 	
 	private static final String PAGE_PATH = "/AccessionResults.do";

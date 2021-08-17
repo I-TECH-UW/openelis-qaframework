@@ -54,6 +54,10 @@ public class HomePage extends Page {
 	private static final By SECOND_LEVEL_MENU_WORK_PLAN_PANEL = By.id("menu_workplan_panel");
 
 	private static final By SECOND_LEVEL_MENU_WORK_PLAN_UNIT = By.id("menu_workplan_bench");
+
+	private static final By FIRST_LEVEL_MENU_PATIENT = By.id("menu_patient");
+
+	private static final By SECOND_LEVEL_MENU_PATIENT_ADD_EDIT = By.id("menu_patient_add_or_edit");
 	
 	public HomePage(Page page) {
 		super(page);
@@ -149,5 +153,11 @@ public class HomePage extends Page {
 		hoverOn(FIRST_LEVEL_MENU_WORK_PLAN);
 		clickOn(SECOND_LEVEL_MENU_WORK_PLAN_UNIT);
 		return new WorkPlanByUnitTypePage(this);
+	}
+
+	public AddPatientPage goToAddEditPatientPage() {
+		hoverOn(FIRST_LEVEL_MENU_PATIENT);
+		clickOn(SECOND_LEVEL_MENU_PATIENT_ADD_EDIT);
+		return new AddPatientPage(this);
 	}
 }

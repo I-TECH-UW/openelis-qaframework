@@ -25,6 +25,8 @@ public class RunTest {
 
                 public static final String REPORT = "@report";
 
-                public static final String EMR_LIS = "@emrLis";
+                public static final String PATIENT_ENTRY = "@patientEntry";
+
+                public static final String EMR_LIS = "@emrLis";      
 	}
 }

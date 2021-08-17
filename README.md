@@ -33,12 +33,13 @@ See [Wiki](https://github.com/I-TECH-UW/openelis-qaframework/wiki) for the Proje
  See All test features bellow with their coresponding filter tags      
 
 
-| Test Feature      |Filter Tag   |
-|:----------:       |:-----------:|
-| Login             | @login      | 
-| Add order         | @order      |  
-| Results Entry     | @results    | 
-| Validation        | @validate   |
-| Patient Report    | @report     |
-| EMR-LIS Work Flow | @emrLis     |  
+| Test Feature      |Filter Tag     |
+|:-----------------:|:-------------:|
+| Login             | @login        | 
+| Add order         | @order        |  
+| Results Entry     | @results      | 
+| Validation        | @validate     |
+| Patient Report    | @report       |
+| Patient Entry     | @patientEntry |
+| EMR-LIS Work Flow | @emrLis       |  
        

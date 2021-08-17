@@ -2,6 +2,9 @@ package org.openelisglobal.qaframework.automation.page;
 
 import org.openqa.selenium.By;
 
+/**
+ * This class represents the Work Plan By Unit Type Page
+ */
 public class WorkPlanByUnitTypePage extends Page{
     
     private static final String PAGE_PATH = "/WorkPlanByTestSection.do";
