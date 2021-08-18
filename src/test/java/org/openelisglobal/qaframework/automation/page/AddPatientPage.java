@@ -207,12 +207,22 @@ public class AddPatientPage extends Page{
 		return new HomePage(this);
 	}
 
-    public void innitialisePatientData(String firstName, String lastName) throws InterruptedException {
-        UUID uuid = UUID.randomUUID();
+   	public void innitialisePatientData(String firstName, String lastName, Boolean random) throws InterruptedException {
+		UUID uuid = UUID.randomUUID();
 		String uuidAsString = uuid.toString();
 		clickNewPatientButton();
-		enterSubjectNumber("201807D9P" + uuidAsString);
-		enterNationalId("201507D35" + uuidAsString);
+		if (random) {
+			enterSubjectNumber("201807D9P" + uuidAsString);
+			enterNationalId("201507D35" + uuidAsString);
+		} else {
+			enterSubjectNumber("oe012");
+			enterNationalId("ug012");			
+			if (alertPresent()) {
+				acceptAlert();
+				acceptAlert();
+				return;
+			}
+		}
 		enterPatientLastName(lastName);
 		enterPatientFirstName(firstName);
 		enterPatientStreet("Gayaza");
