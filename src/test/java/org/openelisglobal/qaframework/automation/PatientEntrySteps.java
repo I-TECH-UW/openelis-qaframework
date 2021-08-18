@@ -38,13 +38,25 @@ public class PatientEntrySteps extends TestBase{
 	@Given("User Vists Home Page and goes to Add Add|Modify Patient Page")
 	public void visitLoginPage() throws Exception {
 		homePage = loginPage.goToHomePage();
-        addPatientPage = homePage.goToAddEditPatientPage();
+		addPatientPage = homePage.goToAddEditPatientPage();
 
-		//initialise data 
-		addPatientPage.innitialisePatientData("jimmy", "seruwu");
+		// initialise data
+		addPatientPage.innitialisePatientData("jimmy", "seruwu", false);
 		homePage = addPatientPage.goToHomePage();
-		addPatientPage = homePage.goToAddEditPatientPage();	
-	}  
+		if (addPatientPage.alertPresent()) {
+			addPatientPage.acceptAlert();
+		}
+		addPatientPage = homePage.goToAddEditPatientPage();
+
+		// cant register patient with accenetd character
+		homePage = addPatientPage.goToHomePage();
+		addPatientPage = homePage.goToAddEditPatientPage();
+		addPatientPage.innitialisePatientData("jimmý", "seruwu", true);
+		assertTrue(addPatientPage.containsText(
+				"patientProperties.firstName: ValidName invalid name format, possibly illegal character"));
+		homePage = addPatientPage.goToHomePage();
+		addPatientPage = homePage.goToAddEditPatientPage();
+	}
 	
 	@When("Add|Modify Patient page appears with search field")
 	public void AddModifyPageAppears() throws InterruptedException {
@@ -87,12 +99,71 @@ public class PatientEntrySteps extends TestBase{
 
 	@When("User enters known first name {string} in text box")
 	public void enterFirstName(String firstName){
+		addPatientPage.refreshPage();
 		addPatientPage.enterFirstNameSearch(firstName); 
 		addPatientPage.clickSearchButton(); 
 	}
 
 	@Then("Search by First name yields all patients with matching first name on Add Patient Page")
 	public void searchByFirstNameReturnsResults(){
+		assertTrue(addPatientPage.containsSeachResult());
+		assertTrue(addPatientPage.containsText("Data source"));
+		assertTrue(addPatientPage.containsText("Last Name"));
+		assertTrue(addPatientPage.containsText("First Name"));
+		assertTrue(addPatientPage.containsText("Gender"));
+		assertTrue(addPatientPage.containsText("Date of Birth"));
+		assertTrue(addPatientPage.containsText("Subject Number"));
+		assertTrue(addPatientPage.containsText("National ID"));
+	}
+
+	@When("User enters known last name {string} and first name {string}")
+	public void enterFirstAndLastName(String lastName ,String firstName){
+		addPatientPage.refreshPage();
+		addPatientPage.enterLastNameSearch(lastName); 
+		addPatientPage.enterFirstNameSearch(firstName); 
+		addPatientPage.clickSearchButton(); 
+	}
+
+	@Then("Search by Last name and First name yields results for known matching names")
+	public void searchByFirstAndLastNameReturnsResults(){
+		assertTrue(addPatientPage.containsSeachResult());
+		assertTrue(addPatientPage.containsText("Data source"));
+		assertTrue(addPatientPage.containsText("Last Name"));
+		assertTrue(addPatientPage.containsText("First Name"));
+		assertTrue(addPatientPage.containsText("Gender"));
+		assertTrue(addPatientPage.containsText("Date of Birth"));
+		assertTrue(addPatientPage.containsText("Subject Number"));
+		assertTrue(addPatientPage.containsText("National ID"));
+	}
+
+	@When("User enters known Subject Number {string}")
+	public void enterSubjectNumber(String subjectNumber){
+		addPatientPage.refreshPage();
+		addPatientPage.enterPatientIdSearch(subjectNumber);
+		addPatientPage.clickSearchButton(); 
+	}
+
+	@Then("Search by Subject Number yields results for known matching names")
+	public void searchBySubjectNumberReturnsResults(){
+		assertTrue(addPatientPage.containsSeachResult());
+		assertTrue(addPatientPage.containsText("Data source"));
+		assertTrue(addPatientPage.containsText("Last Name"));
+		assertTrue(addPatientPage.containsText("First Name"));
+		assertTrue(addPatientPage.containsText("Gender"));
+		assertTrue(addPatientPage.containsText("Date of Birth"));
+		assertTrue(addPatientPage.containsText("Subject Number"));
+		assertTrue(addPatientPage.containsText("National ID"));
+	}
+
+	@When("User enters known Lab Number {string}")
+	public void enterLabNumber(String accesionNumber){
+		addPatientPage.refreshPage();
+		addPatientPage.enterLabNumberSearch(accesionNumber);
+		addPatientPage.clickSearchButton(); 
+	}
+
+	@Then("Search by Lab Number yields results for known matching names")
+	public void searchByLabNumberReturnsResults(){
 		assertTrue(addPatientPage.containsSeachResult());
 		assertTrue(addPatientPage.containsText("Data source"));
 		assertTrue(addPatientPage.containsText("Last Name"));
