@@ -56,10 +56,7 @@ public class ResultValidationPage extends Page {
 	}
 
 	public void chageResult(String value){
-		if(hasElementWithoutWait(FIELD_RESULT)){
-			findElement(FIELD_RESULT).sendKeys(value);	
-		}
-		    
+		findElement(FIELD_RESULT).sendKeys(value);		    
 	}
 
 	public void clickSearchField(){
