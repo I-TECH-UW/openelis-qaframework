@@ -15,8 +15,6 @@ public class ResultsEntryPage extends Page {
 	
 	private static final By FIELD_TEST_RESULT = By.xpath("//input[starts-with(@id,'results')]");
 
-	private static final By FIELD_TEST_RESULT_2 = By.id("results_4");
-	
 	private static final By DROP_DOWN_TEST_RESULT = By.xpath("//select[starts-with(@id,'resultId')]");
 	
 	private static final By LABEL_IMAGE_NON_CONFORMING = By.xpath("//img[contains(@src,'nonconforming')]");
@@ -138,10 +136,8 @@ public class ResultsEntryPage extends Page {
 		refreshPage();
 		acceptAlert();
 		for (int x = 0; x <= 7; x++) {
-			By FIELD_TEST_RESULT_N = By.id("results_" + x);
-			if (hasElementWithoutWait(FIELD_TEST_RESULT_N)) {
-				setText(FIELD_TEST_RESULT_N, "43");
-			}
+			setText(FIELD_TEST_RESULT, "43");
+			selectOptionFromDropDown(DROP_DOWN_TEST_RESULT);
 		}
 	}
 	
