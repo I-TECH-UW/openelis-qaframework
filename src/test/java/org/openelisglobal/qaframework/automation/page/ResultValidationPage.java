@@ -17,11 +17,11 @@ public class ResultValidationPage extends Page {
 
 	private static final By DROP_DOWN_UNIT_TYPE = By.id("testSectionId");
 
-	private static final By FIELD_RESULT = By.id("resultId_0");
+	private static final By FIELD_RESULT = By.xpath("//input[starts-with(@id,'resultId_')]");
 
 	private static final By FIELD_LAB_NUMBER_SEARCH = By.id("labnoSearch");
 
-	private static final By FIELD_NOTE = By.id("note_0");
+	private static final By FIELD_NOTE = By.xpath("//textarea[starts-with(@id,'note_')]");
 
 	private static final By BUTTON_SHOW_HIDE = By.id("showHideButton_0");
 
@@ -56,10 +56,7 @@ public class ResultValidationPage extends Page {
 	}
 
 	public void chageResult(String value){
-		if(hasElementWithoutWait(FIELD_RESULT)){
-			findElement(FIELD_RESULT).sendKeys(value);	
-		}
-		    
+		findElement(FIELD_RESULT).sendKeys(value);		    
 	}
 
 	public void clickSearchField(){
@@ -74,15 +71,18 @@ public class ResultValidationPage extends Page {
         clickOn(CHECK_BOX_RETEST);
 	}
 
-	public void enterNote(String note){
-		if(hasElementWithoutWait(FIELD_NOTE)){
-			setText(FIELD_NOTE, note);
-		}
-    
+	public void enterNote(String note) {
+		String id = findElement(FIELD_RESULT).getAttribute("id");
+		String n = id.substring(id.length() - 1);
+		By FIELD_NOTE_N = By.id("note_" + n);
+		setText(FIELD_NOTE_N, note);
 	}
 
 	public String getNote(){
-		return getValue(FIELD_NOTE);
+		String id = findElement(FIELD_RESULT).getAttribute("id");
+		String n = id.substring(id.length() - 1);
+		By FIELD_NOTE_N = By.id("note_" + n);
+		return getValue(FIELD_NOTE_N);
 	  }
 	
 	public void clickShowHide(){

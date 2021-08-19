@@ -98,8 +98,11 @@ public class PatientEntrySteps extends TestBase{
 
 
 	@When("User enters known first name {string} in text box")
-	public void enterFirstName(String firstName){
+	public void enterFirstName(String firstName) throws InterruptedException{
 		addPatientPage.refreshPage();
+		if(addPatientPage.alertPresent()){
+			addPatientPage.acceptAlert();
+		}
 		addPatientPage.enterFirstNameSearch(firstName); 
 		addPatientPage.clickSearchButton(); 
 	}
@@ -117,8 +120,11 @@ public class PatientEntrySteps extends TestBase{
 	}
 
 	@When("User enters known last name {string} and first name {string}")
-	public void enterFirstAndLastName(String lastName ,String firstName){
+	public void enterFirstAndLastName(String lastName ,String firstName) throws InterruptedException{
 		addPatientPage.refreshPage();
+		if(addPatientPage.alertPresent()){
+			addPatientPage.acceptAlert();
+		}
 		addPatientPage.enterLastNameSearch(lastName); 
 		addPatientPage.enterFirstNameSearch(firstName); 
 		addPatientPage.clickSearchButton(); 
@@ -137,8 +143,11 @@ public class PatientEntrySteps extends TestBase{
 	}
 
 	@When("User enters known Subject Number {string}")
-	public void enterSubjectNumber(String subjectNumber){
+	public void enterSubjectNumber(String subjectNumber) throws InterruptedException{
 		addPatientPage.refreshPage();
+		if(addPatientPage.alertPresent()){
+			addPatientPage.acceptAlert();
+		}
 		addPatientPage.enterPatientIdSearch(subjectNumber);
 		addPatientPage.clickSearchButton(); 
 	}
@@ -156,8 +165,11 @@ public class PatientEntrySteps extends TestBase{
 	}
 
 	@When("User enters known Lab Number {string}")
-	public void enterLabNumber(String accesionNumber){
+	public void enterLabNumber(String accesionNumber) throws InterruptedException{
 		addPatientPage.refreshPage();
+		if(addPatientPage.alertPresent()){
+			addPatientPage.acceptAlert();
+		}
 		addPatientPage.enterLabNumberSearch(accesionNumber);
 		addPatientPage.clickSearchButton(); 
 	}

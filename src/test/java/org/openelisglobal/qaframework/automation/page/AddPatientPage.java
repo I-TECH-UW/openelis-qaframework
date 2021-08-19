@@ -215,13 +215,13 @@ public class AddPatientPage extends Page{
 			enterSubjectNumber("201807D9P" + uuidAsString);
 			enterNationalId("201507D35" + uuidAsString);
 		} else {
-			enterSubjectNumber("oe012");
-			enterNationalId("ug012");			
+			enterNationalId("ug012");
+			clickOn(FIELD_SUBJECT_NUMBER);				
 			if (alertPresent()) {
-				acceptAlert();
 				acceptAlert();
 				return;
 			}
+			enterSubjectNumber("oe012");
 		}
 		enterPatientLastName(lastName);
 		enterPatientFirstName(firstName);
