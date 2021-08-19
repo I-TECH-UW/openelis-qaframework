@@ -75,10 +75,7 @@ public class ResultValidationPage extends Page {
 	}
 
 	public void enterNote(String note){
-		if(hasElementWithoutWait(FIELD_NOTE)){
 			setText(FIELD_NOTE, note);
-		}
-    
 	}
 
 	public String getNote(){
