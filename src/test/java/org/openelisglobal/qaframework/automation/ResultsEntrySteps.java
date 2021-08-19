@@ -463,7 +463,7 @@ public class ResultsEntrySteps extends TestBase {
 		searchByPatientPage.enterLastNameSearch(lastName);
 		searchByPatientPage.clickSearchButton();
 		Thread.sleep(1000);
-		searchByPatientPage.clickPatientResultCheckBox();
+		//searchByPatientPage.clickPatientResultCheckBox();
 		searchByPatientPage.clickGetPatientTestsButon();
 	}
 
