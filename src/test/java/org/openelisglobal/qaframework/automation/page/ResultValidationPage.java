@@ -71,12 +71,18 @@ public class ResultValidationPage extends Page {
         clickOn(CHECK_BOX_RETEST);
 	}
 
-	public void enterNote(String note){
-			setText(FIELD_NOTE, note);
+	public void enterNote(String note) {
+		String id = findElement(FIELD_RESULT).getAttribute("id");
+		String n = id.substring(id.length() - 1);
+		By FIELD_NOTE_N = By.id("note_" + n);
+		setText(FIELD_NOTE_N, note);
 	}
 
 	public String getNote(){
-		return getValue(FIELD_NOTE);
+		String id = findElement(FIELD_RESULT).getAttribute("id");
+		String n = id.substring(id.length() - 1);
+		By FIELD_NOTE_N = By.id("note_" + n);
+		return getValue(FIELD_NOTE_N);
 	  }
 	
 	public void clickShowHide(){
