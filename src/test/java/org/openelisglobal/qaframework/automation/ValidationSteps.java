@@ -206,7 +206,7 @@ public class ValidationSteps extends TestBase {
 	public void EnterNotes(String notes) {
 		resultValidationPage.clickShowHide();
 		UUID uuid = UUID.randomUUID();
-		resultValidationPage.enterNote(notes + uuid);
+		resultValidationPage.enterNotes(notes + uuid);
 	}
 
 	@Then("Field accepts validation text {string}")
