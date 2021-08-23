@@ -430,6 +430,14 @@ public abstract class Page {
 		return disabled;
 	}
 	
+	public Boolean isRequired(By by) {
+		Boolean required = false;
+		if (getClass(by).equals("requiredlabel")) {
+			required = true;
+		}
+		return required;
+	}
+	
 	public void refreshPage() {
 		driver.navigate().refresh();
 	}

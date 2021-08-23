@@ -47,6 +47,5 @@ public class PatientStatusReportPage extends Page {
 	
 	public void clickPrintButton() {
 		clickOn(BUTTON_PRINT);
-	}
-	
+	}	
 }

@@ -70,6 +70,8 @@ public class AddPatientPage extends Page{
 
     private static final By SELECT_RESULT = By.id("sel_1");
 
+	private static final By REQUIRED_LABEL_NATIONAL_ID = By.xpath("//*[@id='PatientDetail']/table[1]/tbody/tr[2]/td[2]/span");
+
     public AddPatientPage(Page parent) {
         super(parent);
     }
@@ -114,12 +116,28 @@ public class AddPatientPage extends Page{
 		clickOn(BUTTON_PATIENT_SEARCH);
 	}
 
+	public void clickSubJectNumber() {
+		clickOn(FIELD_SUBJECT_NUMBER);
+	}
+
+	public void clickNameField() {
+		clickOn(FIELD_PATIENT_FIRST_NAME);
+	}
+
     public Boolean searchButtonDisabled(){
         return isDisabled(BUTTON_PATIENT_SEARCH);
     }
 
+	public Boolean saveButtonDisabled(){
+        return isDisabled(BUTTON_SAVE);
+    }
+
     public Boolean containsSeachResult(){
         return hasElement(SELECT_RESULT);
+    }
+
+	public void selectFirstSearchResult(){
+        clickOn(SELECT_RESULT);
     }
 
     public void enterSubjectNumber(String subJectNumber) {
@@ -202,6 +220,42 @@ public class AddPatientPage extends Page{
 		selectOptionFromDropDown(SELECT_PATIENT_MARITAL_STATUS);
 	}
 
+	public String getPatientLastName() {
+		return getValue(FIELD_PATIENT_LAST_NAME);
+	}
+	
+	public String getPatientFirstName() {
+		return getValue(FIELD_PATIENT_FIRST_NAME);
+	}
+
+	public String getSubjectNumber() {
+		return getValue(FIELD_SUBJECT_NUMBER);
+	}
+
+	public String getNationalId() {
+		return getValue(FIELD_NATIONAL_ID);
+	}
+
+	public String getPatientStreet() {
+		return getValue(FIELD_PATIENT_STREET);
+	}
+
+	public String getPatientCommune() {
+		return getValue(FIELD_PATIENT_COMMUNE);
+	}
+
+	public String getPatientEmail() {
+		return getValue(FIELD_PATIENT_EMAIL);
+	}
+
+	public String getPatientPhone() {
+		return getValue(FIELD_PATIENT_PHONE);
+	}
+
+	public Boolean nationalIdIsRequired() {
+		return isRequired(REQUIRED_LABEL_NATIONAL_ID);
+	}
+
     public HomePage goToHomePage() {
 		this.goToPage(PATH_HOME);
 		return new HomePage(this);
@@ -216,7 +270,7 @@ public class AddPatientPage extends Page{
 			enterNationalId("201507D35" + uuidAsString);
 		} else {
 			enterNationalId("ug012");
-			clickOn(FIELD_SUBJECT_NUMBER);				
+			clickSubJectNumber();				
 			if (alertPresent()) {
 				acceptAlert();
 				return;
