@@ -651,7 +651,7 @@ public class ResultsEntrySteps extends TestBase {
 	@Then("Note Field displays and Enter note {string}")
 	public void enterNote(String note) {
 		resultValidationPage.clickSearchField();
-		resultValidationPage.enterNote(note);
+		resultValidationPage.enterNoteAfterValueChange(note);
 	}
 
 	@When("User Clicks the Save Button")

@@ -21,7 +21,7 @@ public class ResultValidationPage extends Page {
 
 	private static final By FIELD_LAB_NUMBER_SEARCH = By.id("labnoSearch");
 
-	private static final By FIELD_NOTE = By.xpath("//textarea[starts-with(@id,'note_')]");
+	private static final By FIELD_NOTE = By.id("note_0");
 
 	private static final By BUTTON_SHOW_HIDE = By.id("showHideButton_0");
 
@@ -71,7 +71,11 @@ public class ResultValidationPage extends Page {
         clickOn(CHECK_BOX_RETEST);
 	}
 
-	public void enterNote(String note) {
+	public void enterNotes(String notes) {
+		setText(FIELD_NOTE, notes);
+	}
+
+	public void enterNoteAfterValueChange(String note) {
 		String id = findElement(FIELD_RESULT).getAttribute("id");
 		String n = id.substring(id.length() - 1);
 		By FIELD_NOTE_N = By.id("note_" + n);
