@@ -18,6 +18,21 @@ When User enters known Subject Number "<subjectNumber>"
 Then Search by Subject Number yields results for known matching names
 When User enters known Lab Number "<labNo>" 
 Then Search by Lab Number yields results for known matching names
+When User Selects correct patient 
+Then Patient Information form populates with patient information
+When User Clicks New Patient on the Add Patient Page
+Then Patient Information form clears
 Examples:
 |lastName|firstName|subjectNumber|labNo            |
 |seruwu  |jimmy    |oe012        |20210000000002250|
+
+@patientEntry
+Scenario Outline: Patient Information
+When User Enters data into text fields
+Then All text fields accept text 
+And National ID is mandatory
+And Alert is given if Subject Number is already in use
+And If subject number is already in use, cannot save
+And Alert given if National Identification Number  is already in use
+And Cannot save if National Identification Number is already in use
+And Alert given if Phone Number is not in correct format
