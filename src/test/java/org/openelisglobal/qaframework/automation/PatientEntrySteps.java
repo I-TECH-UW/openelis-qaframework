@@ -1,7 +1,7 @@
 package org.openelisglobal.qaframework.automation;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.openelisglobal.qaframework.RunTest;
@@ -41,7 +41,7 @@ public class PatientEntrySteps extends TestBase {
 		homePage = loginPage.goToHomePage();
 		addPatientPage = homePage.goToAddEditPatientPage();
 		
-		// //initialise data
+		//initialise data
 		addPatientPage.innitialisePatientData("jimmy", "seruwu", false);
 		homePage = addPatientPage.goToHomePage();
 		if (addPatientPage.alertPresent()) {
@@ -49,7 +49,7 @@ public class PatientEntrySteps extends TestBase {
 		}
 		addPatientPage = homePage.goToAddEditPatientPage();
 		
-		// //cant register patient with accenetd character
+		//cant register patient with accenetd character
 		homePage = addPatientPage.goToHomePage();
 		addPatientPage = homePage.goToAddEditPatientPage();
 		addPatientPage.innitialisePatientData("jimmý", "seruwu", true);
@@ -265,9 +265,75 @@ public class PatientEntrySteps extends TestBase {
 	}
 
 	@And("Alert given if Phone Number is not in correct format")
-	public void alertGivenIfPhoneNumberIsIncorrect() {
+	public void alertGivenIfPhoneNumberIsIncorrect() throws InterruptedException {
 		addPatientPage.enterPatientPhone("0772");;
 		addPatientPage.clickNameField();
 		addPatientPage.acceptAlert();
+		Thread.sleep(1000);
+		assertEquals("error", addPatientPage.getPatientPhoneClass().trim());
+	}
+	
+	@When("User Selects a Health County from the drop-down list")
+	public void userSelectCountry() {
+		addPatientPage.selectPatientNationalityFromDropDownMenu();
+	}
+	
+	@Then("All XX counties are listed and one option can be selected")
+	public void countriesListed() {
+		assertTrue(addPatientPage.countriesListedFromDropDownMenu());
+	}
+	
+	@When("User Selects a Health District from the drop-down list")
+	public void userSelectHealthDistrict() {
+		addPatientPage.selectPatientHelathRegionFromDropDownMenu();
+	}
+	
+	@Then("All Health Districts under the Health County selected in the previous step should be visible")
+	public void healthRegionsListed() {
+		assertTrue(addPatientPage.healthRegionsListedFromDropDownMenu());
+	}
+	
+	@When("User Fills in Date of Birth {string}")
+	public void userEntersDob(String dateOfBirth) {
+		addPatientPage.enterPatientDateofBirth(dateOfBirth);
+	}
+	
+	@Then("Date of Birth is mandatory")
+	public void dateOfBirthIsMandatory() {
+		assertTrue(addPatientPage.dateOfBirthIsRequired());
+	}
+	
+	@And("Alert appears if DOB format {string} is incorrect")
+	public void alertAppersIfDobIsIncorrect(String dob) throws InterruptedException {
+		addPatientPage.enterPatientDateofBirth(dob);
+		addPatientPage.clickNameField();
+		Thread.sleep(2000);
+		assertEquals(addPatientPage.getPatientDoBValidateLabelClass(), "badmessage");
+	}
+	
+	@And("Alert appears if date of birth is in the future")
+	public void alertAppearsIfDobIsInFuture() throws InterruptedException {
+		addPatientPage.enterPatientDateofBirth(getFutureDate());
+		addPatientPage.clickNameField();
+		addPatientPage.clickNameField();
+		Thread.sleep(2000);
+		addPatientPage.acceptAlert();
+		assertEquals(addPatientPage.getPatientDoBValidateLabelClass(), "badmessage");
+	}
+	
+	@And("Automatically fills correct age when DOB {string} is filled in")
+	public void automaticallyFillsAge(String dateOfBirth) throws InterruptedException {
+		addPatientPage.clearPatientAgeDays();
+		addPatientPage.clearPatientAgeYears();
+		addPatientPage.clearPatientAgeYears();
+		assertEquals("", addPatientPage.getPatientAgeYears());
+		assertEquals("", addPatientPage.getPatientAgeMonths());
+		assertEquals("", addPatientPage.getPatientAgeYears());
+		addPatientPage.enterPatientDateofBirth(dateOfBirth);
+		addPatientPage.clickNameField();
+		Thread.sleep(2000);
+		assertNotEquals("", addPatientPage.getPatientAgeYears());
+		assertNotEquals("", addPatientPage.getPatientAgeMonths());
+		assertNotEquals("", addPatientPage.getPatientAgeYears());
 	}
 }

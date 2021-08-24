@@ -36,3 +36,15 @@ And If subject number is already in use, cannot save
 And Alert given if National Identification Number  is already in use
 And Cannot save if National Identification Number is already in use
 And Alert given if Phone Number is not in correct format
+When User Selects a Health County from the drop-down list
+Then All XX counties are listed and one option can be selected
+When User Selects a Health District from the drop-down list
+Then All Health Districts under the Health County selected in the previous step should be visible 
+When User Fills in Date of Birth "<dateOfBirth>"
+Then Date of Birth is mandatory
+And Alert appears if DOB format "<incorrectDob>" is incorrect 
+And Alert appears if date of birth is in the future
+And Automatically fills correct age when DOB "<dateOfBirth>" is filled in
+Examples:
+    | dateOfBirth | incorrectDob |
+    | 24/04/1992  |  wrongDate   |

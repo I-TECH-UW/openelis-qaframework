@@ -211,7 +211,7 @@ public class ValidationSteps extends TestBase {
 
 	@Then("Field accepts validation text {string}")
 	public void acceptNotes(String notes) {
-		assertTrue(resultValidationPage.getNote().contains(notes));
+		assertTrue(resultValidationPage.getNotes().contains(notes));
 	}
 
 	@When("User Closes Validation note box")
@@ -225,8 +225,9 @@ public class ValidationSteps extends TestBase {
 	}
 
 	@And("User Clicks Cancel button on Validation Page")
-	public void clickCancel() {
+	public void clickCancel() throws InterruptedException {
 		resultValidationPage.checkAcceptedCheckBox();
+		Thread.sleep(1000);
 		resultValidationPage.clickCancel();
 	}
 

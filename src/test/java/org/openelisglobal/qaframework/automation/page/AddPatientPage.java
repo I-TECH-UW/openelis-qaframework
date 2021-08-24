@@ -53,6 +53,10 @@ public class AddPatientPage extends Page{
 	private static final By FIELD_PATIENT_NATIONALITY_OTHER = By.id("nationalityOtherId");
 	
 	private static final By FIELD_PATIENT_AGE_YEARS = By.id("ageYears");
+
+	private static final By FIELD_PATIENT_AGE_MONTHS = By.id("ageMonths");
+
+	private static final By FIELD_PATIENT_AGE_DAYS = By.id("ageDays");
 	
 	private static final By BUTTON_NEW_PATIENT = By.xpath("//input[@value='New Patient']");
 	
@@ -61,7 +65,9 @@ public class AddPatientPage extends Page{
 	private static final By BUTTON_CANCEL = By.id("cancelButtonId");
 	
 	private static final By SELECT_PATIENT_DISTRICT = By.id("healthRegionID");
-	
+
+	private static final By SELECT_PATIENT_COUNTRY = By.id("nationalityID");
+
 	private static final By SELECT_PATIENT_GENDER = By.id("genderID");
 	
 	private static final By SELECT_PATIENT_EDUCATION = By.id("educationID");
@@ -71,6 +77,10 @@ public class AddPatientPage extends Page{
     private static final By SELECT_RESULT = By.id("sel_1");
 
 	private static final By REQUIRED_LABEL_NATIONAL_ID = By.xpath("//*[@id='PatientDetail']/table[1]/tbody/tr[2]/td[2]/span");
+
+    private static final By REQUIRED_LABEL_DATE_OF_BIRTH = By.xpath("//*[@id='PatientDetail']/table[2]/tbody/tr[1]/td[1]/span");
+	
+	private static final By LABEL_VALIDATE_PATIENT_DOB = By.id("patientProperties.birthDateForDisplayMessage");
 
     public AddPatientPage(Page parent) {
         super(parent);
@@ -220,6 +230,18 @@ public class AddPatientPage extends Page{
 		selectOptionFromDropDown(SELECT_PATIENT_MARITAL_STATUS);
 	}
 
+	public void selectPatientNationalityFromDropDownMenu() {
+		selectOptionFromDropDown(SELECT_PATIENT_COUNTRY);
+	}
+
+	public Boolean countriesListedFromDropDownMenu() {
+		return dropDownHasOptions(SELECT_PATIENT_COUNTRY);
+	}
+
+	public Boolean healthRegionsListedFromDropDownMenu() {
+		return dropDownHasOptions(SELECT_PATIENT_DISTRICT);
+	}
+
 	public String getPatientLastName() {
 		return getValue(FIELD_PATIENT_LAST_NAME);
 	}
@@ -252,8 +274,44 @@ public class AddPatientPage extends Page{
 		return getValue(FIELD_PATIENT_PHONE);
 	}
 
+	public String getPatientAgeYears() {
+		return getValue(FIELD_PATIENT_AGE_YEARS);
+	}
+	
+	public String getPatientAgeMonths() {
+		return getValue(FIELD_PATIENT_AGE_MONTHS);
+	}
+	
+	public String getPatientAgeDays() {
+		return getValue(FIELD_PATIENT_AGE_DAYS);
+	}
+	
+	public void clearPatientAgeYears() {
+		clearText(FIELD_PATIENT_AGE_YEARS);
+	}
+	
+	public void clearPatientAgeMonths() {
+		clearText(FIELD_PATIENT_AGE_MONTHS);
+	}
+	
+	public void clearPatientAgeDays() {
+		clearText(FIELD_PATIENT_AGE_DAYS);
+	}
+	
+	public String getPatientPhoneClass() {
+		return getClass(FIELD_PATIENT_PHONE);
+	}
+	
 	public Boolean nationalIdIsRequired() {
 		return isRequired(REQUIRED_LABEL_NATIONAL_ID);
+	}
+
+	public Boolean dateOfBirthIsRequired() {
+		return isRequired(REQUIRED_LABEL_DATE_OF_BIRTH);
+	}
+	
+	public String getPatientDoBValidateLabelClass() {
+		return getClass(LABEL_VALIDATE_PATIENT_DOB);
 	}
 
     public HomePage goToHomePage() {
