@@ -75,6 +75,10 @@ public class ResultValidationPage extends Page {
 		setText(FIELD_NOTE, notes);
 	}
 
+	public String getNotes() {
+		return getValue(FIELD_NOTE);
+	}
+
 	public void enterNoteAfterValueChange(String note) {
 		String id = findElement(FIELD_RESULT).getAttribute("id");
 		String n = id.substring(id.length() - 1);
@@ -82,7 +86,7 @@ public class ResultValidationPage extends Page {
 		setText(FIELD_NOTE_N, note);
 	}
 
-	public String getNote(){
+	public String getNoteAfterValueChange(){
 		String id = findElement(FIELD_RESULT).getAttribute("id");
 		String n = id.substring(id.length() - 1);
 		By FIELD_NOTE_N = By.id("note_" + n);

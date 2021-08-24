@@ -211,7 +211,7 @@ public class ValidationSteps extends TestBase {
 
 	@Then("Field accepts validation text {string}")
 	public void acceptNotes(String notes) {
-		assertTrue(resultValidationPage.getNote().contains(notes));
+		assertTrue(resultValidationPage.getNotes().contains(notes));
 	}
 
 	@When("User Closes Validation note box")
