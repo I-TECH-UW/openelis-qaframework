@@ -99,6 +99,7 @@ public class PatientReportSteps extends TestBase{
 	public void addPartialResults() throws InterruptedException {
 		searchByOrderPage = homePage.goToSearchResultsByOrder();
 		searchByOrderPage.enterAccesionNumber(ACCESION_WITH_RESULT);
+		Thread.sleep(1000);
 		searchByOrderPage.clickAccesionNumberSearch();
 		searchByOrderPage.enterResult3("100");
 		searchByOrderPage.clickSaveButton();
@@ -112,6 +113,7 @@ public class PatientReportSteps extends TestBase{
 	public void validateResultsForThisOrder() throws InterruptedException {
 		resultValidationByOderPage = homePage.goToResultValidationByOrder();
 		resultValidationByOderPage.enterAccesionNumber(ACCESION_WITH_RESULT);
+		Thread.sleep(1000);
 		resultValidationByOderPage.clickAccesionNumberSearch();
 		resultValidationByOderPage.checkAccept();
 		resultValidationByOderPage.clickSaveButton();
