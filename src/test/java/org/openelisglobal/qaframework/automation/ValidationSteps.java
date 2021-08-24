@@ -225,8 +225,9 @@ public class ValidationSteps extends TestBase {
 	}
 
 	@And("User Clicks Cancel button on Validation Page")
-	public void clickCancel() {
+	public void clickCancel() throws InterruptedException {
 		resultValidationPage.checkAcceptedCheckBox();
+		Thread.sleep(1000);
 		resultValidationPage.clickCancel();
 	}
 
