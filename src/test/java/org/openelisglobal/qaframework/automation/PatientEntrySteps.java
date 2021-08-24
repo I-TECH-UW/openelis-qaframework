@@ -41,22 +41,22 @@ public class PatientEntrySteps extends TestBase {
 		homePage = loginPage.goToHomePage();
 		addPatientPage = homePage.goToAddEditPatientPage();
 		
-		// // //initialise data
-		// addPatientPage.innitialisePatientData("jimmy", "seruwu", false);
-		// homePage = addPatientPage.goToHomePage();
-		// if (addPatientPage.alertPresent()) {
-		// 	addPatientPage.acceptAlert();
-		// }
-		// addPatientPage = homePage.goToAddEditPatientPage();
+		//initialise data
+		addPatientPage.innitialisePatientData("jimmy", "seruwu", false);
+		homePage = addPatientPage.goToHomePage();
+		if (addPatientPage.alertPresent()) {
+			addPatientPage.acceptAlert();
+		}
+		addPatientPage = homePage.goToAddEditPatientPage();
 		
-		// // //cant register patient with accenetd character
-		// homePage = addPatientPage.goToHomePage();
-		// addPatientPage = homePage.goToAddEditPatientPage();
-		// addPatientPage.innitialisePatientData("jimmý", "seruwu", true);
-		// assertTrue(addPatientPage
-		//         .containsText("patientProperties.firstName: ValidName invalid name format, possibly illegal character"));
-		// homePage = addPatientPage.goToHomePage();
-		// addPatientPage = homePage.goToAddEditPatientPage();
+		//cant register patient with accenetd character
+		homePage = addPatientPage.goToHomePage();
+		addPatientPage = homePage.goToAddEditPatientPage();
+		addPatientPage.innitialisePatientData("jimmý", "seruwu", true);
+		assertTrue(addPatientPage
+		        .containsText("patientProperties.firstName: ValidName invalid name format, possibly illegal character"));
+		homePage = addPatientPage.goToHomePage();
+		addPatientPage = homePage.goToAddEditPatientPage();
 	}
 	
 	@When("Add|Modify Patient page appears with search field")
