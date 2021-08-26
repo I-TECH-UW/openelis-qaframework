@@ -82,6 +82,8 @@ public class AddPatientPage extends Page{
 	
 	private static final By LABEL_VALIDATE_PATIENT_DOB = By.id("patientProperties.birthDateForDisplayMessage");
 
+	private static final By LABEL_VALIDATE_PATIENT_AGE = By.id("ageYearsMessage");
+	
     public AddPatientPage(Page parent) {
         super(parent);
     }
@@ -221,6 +223,10 @@ public class AddPatientPage extends Page{
 	public void selectPatientGenderFromDropDownMenu() {
 		selectOptionFromDropDown(SELECT_PATIENT_GENDER);
 	}
+
+	public void selectPatientGenderFromDropDownMenu(String gender) {
+		selectFrom(SELECT_PATIENT_GENDER, gender);
+	}
 	
 	public void selectPatientEducationFromDropDownMenu() {
 		selectOptionFromDropDown(SELECT_PATIENT_EDUCATION);
@@ -240,6 +246,10 @@ public class AddPatientPage extends Page{
 
 	public Boolean healthRegionsListedFromDropDownMenu() {
 		return dropDownHasOptions(SELECT_PATIENT_DISTRICT);
+	}
+
+	public Boolean genderListedFromDropDownMenu() {
+		return dropDownHasOptions(SELECT_PATIENT_GENDER);
 	}
 
 	public String getPatientLastName() {
@@ -285,6 +295,10 @@ public class AddPatientPage extends Page{
 	public String getPatientAgeDays() {
 		return getValue(FIELD_PATIENT_AGE_DAYS);
 	}
+
+	public String getPatientDateOfBirth() {
+		return getValue(FIELD_PATIENT_DOB);
+	}
 	
 	public void clearPatientAgeYears() {
 		clearText(FIELD_PATIENT_AGE_YEARS);
@@ -296,6 +310,10 @@ public class AddPatientPage extends Page{
 	
 	public void clearPatientAgeDays() {
 		clearText(FIELD_PATIENT_AGE_DAYS);
+	}
+
+	public void clearPatientDateOfBirth() {
+		clearText(FIELD_PATIENT_DOB);
 	}
 	
 	public String getPatientPhoneClass() {
@@ -312,6 +330,10 @@ public class AddPatientPage extends Page{
 	
 	public String getPatientDoBValidateLabelClass() {
 		return getClass(LABEL_VALIDATE_PATIENT_DOB);
+	}
+
+	public String getPatientAgeValidateLabelClass() {
+		return getClass(LABEL_VALIDATE_PATIENT_AGE);
 	}
 
     public HomePage goToHomePage() {

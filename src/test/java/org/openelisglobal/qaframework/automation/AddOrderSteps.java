@@ -7,10 +7,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,6 +17,7 @@ import org.openelisglobal.qaframework.automation.page.HomePage;
 import org.openelisglobal.qaframework.automation.page.LoginPage;
 import org.openelisglobal.qaframework.automation.test.TestBase;
 import org.openelisglobal.qaframework.automation.test.TestProperties;
+import org.openelisglobal.qaframework.automation.utils.Utils;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -129,12 +127,7 @@ public class AddOrderSteps extends TestBase {
 	
 	@When("User enters Request Date in future")
 	public void UserEntersRequestInFuture() throws Exception {
-		Date date = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(date);
-		cal.add(Calendar.DATE, 1);
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-		String strDate = formatter.format(cal.getTime());
+		String strDate = Utils.getFutureDate();
 		addOrderPage.enterRequestDate(strDate);
 	}
 	
@@ -149,12 +142,7 @@ public class AddOrderSteps extends TestBase {
 	
 	@When("User enters correct Request and Received Date format")
 	public void UserEnterscorrectRequestAndRecievedDateFormat() throws Exception {
-		Date date = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(date);
-		cal.add(Calendar.DAY_OF_MONTH, -1);
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-		String strDate = formatter.format(cal.getTime());
+		String strDate = Utils.getPastDate();
 		addOrderPage.enterRecievedDate(strDate);
 		addOrderPage.enterRequestDate(strDate);
 	}
@@ -321,12 +309,7 @@ public class AddOrderSteps extends TestBase {
 	
 	@When("User enters Date In the future")
 	public void enterDateInTheFuture() {
-		Date date = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(date);
-		cal.add(Calendar.DATE, 1);
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-		String strDate = formatter.format(cal.getTime());
+		String strDate = Utils.getFutureDate();
 		addOrderPage.enterCollectionDate(strDate);
 	}
 	
@@ -340,12 +323,7 @@ public class AddOrderSteps extends TestBase {
 	
 	@When("User enters correct Date")
 	public void enterCorrectDateFormat() {
-		Date date = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(date);
-		cal.add(Calendar.DAY_OF_MONTH, -1);
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-		String strDate = formatter.format(cal.getTime());
+		String strDate = Utils.getPastDate();
 		addOrderPage.enterCollectionDate(strDate);
 	}
 	
@@ -542,8 +520,7 @@ public class AddOrderSteps extends TestBase {
 		addOrderPage.enterLastName("SADDIO");
 		addOrderPage.clickAddSampleButton();
 		addOrderPage.selectSampleTypeFromDropDownMenu();
-		addOrderPage.clickPannelCheckBox();
-		
+		addOrderPage.clickPannelCheckBox();		
 		addOrderPage.clickNewPatientButton();
 	}
 	
@@ -673,12 +650,7 @@ public class AddOrderSteps extends TestBase {
 	
 	@When("User Enters Patient Date of Birth in future")
 	public void enterPatientDateOfBirthInFuture() {
-		Date date = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(date);
-		cal.add(Calendar.DATE, 1);
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-		String strDate = formatter.format(cal.getTime());
+		String strDate = Utils.getFutureDate();
 		addOrderPage.enterPatientDateofBirth(strDate);
 	}
 	
@@ -700,14 +672,8 @@ public class AddOrderSteps extends TestBase {
 	public void generateDateOfBirth(String age) throws InterruptedException {
 		addOrderPage.clickOtherNationality();
 		Thread.sleep(1000);
-		Date date = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(date);
-		int currentAge = Integer.parseInt(age.trim());
-		cal.add(Calendar.YEAR, -currentAge);
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
-		String strDate = formatter.format(cal.getTime());
-		assertEquals(addOrderPage.getPatientDateOfBirthValue(), "xx/xx/" + strDate);
+		String year = Utils.generateDobYearFromAge(age);
+		assertEquals(addOrderPage.getPatientDateOfBirthValue(), "xx/xx/" + year);
 	}
 	
 	@And("Alert Appears if Age entered is -1 , 100 and >100")
