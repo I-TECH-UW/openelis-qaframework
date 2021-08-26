@@ -45,6 +45,34 @@ Then Date of Birth is mandatory
 And Alert appears if DOB format "<incorrectDob>" is incorrect 
 And Alert appears if date of birth is in the future
 And Automatically fills correct age when DOB "<dateOfBirth>" is filled in
+When User Deletes Date of Birth and enters Age "<age>"
+Then If DOB is left blank and Age is filled,Field generates DOB with correct year for Age "<age>"
+And Alert appears if Age is -1 , 100 and 100+
+When User Selects from drop-down list for gender
+Then Gender options are displayed form drop-down list 
 Examples:
-    | dateOfBirth | incorrectDob |
-    | 24/04/1992  |  wrongDate   |
+    | dateOfBirth | incorrectDob |age |
+    | 24/04/1992  |  wrongDate   |20  |
+
+@patientEntry
+Scenario: Overall Page
+When User Leaves mandatory fields without data on Add Patient Page
+Then Save button deactivated until all mandatory fields are filled on Add Patient Page
+When User Completes all mandatory fields on Add Patient Page
+Then Save button activated when all mandatory fields are filled on Add Patient Page
+When User Clicks Cancel on Add Patient Page
+Then Pop-up message appears, `Leave Site? Changes you made may not be saved` on Add Patient Page
+When User Clicks Cancel to Dismis alert
+Then Patient Information form remains on Add Patient screen
+When User Clicks Save on Add Patient Page
+Then A clear Add|Modify Patient form appears along with the message, `Save was successful` in green 
+And User Goes to the bottom of the page and click Cancel and Returns to home page
+
+
+@patientEntry
+Scenario Outline: Verification
+When User Searches for Patient on the Add Order Page for a known Patient with known last name "<lastName>" and first name "<firstName>"
+Then Correct patient information ,last name "<lastName>" and first name "<firstName>", appears when searched for
+Examples:
+|lastName|firstName|
+|seruwu  |jimmy    |

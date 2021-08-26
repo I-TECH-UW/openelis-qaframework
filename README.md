@@ -22,7 +22,7 @@ See [Wiki](https://github.com/I-TECH-UW/openelis-qaframework/wiki) for the Proje
 
         mvn test
 
-2. To run individual Test Features/categories ,You need to filter them by the feature filter tag.
+2. To run individual Test Features ,You need to filter them by the feature filter tag.
 
         mvn test -Dcucumber.filter.tags='<@tag>'   
 
