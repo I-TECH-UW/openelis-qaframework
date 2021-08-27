@@ -20,44 +20,44 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class PatientReportSteps extends TestBase{
-
-    private LoginPage loginPage;
-
+public class PatientReportSteps extends TestBase {
+	
+	private LoginPage loginPage;
+	
 	private HomePage homePage;
-
-    private AddOrderPage addOrderPage;
-
+	
+	private AddOrderPage addOrderPage;
+	
 	private PatientStatusReportPage patientStatusReportPage;
-
-	private  ModifyOrderPage  modifyOrderPage;
-
+	
+	private ModifyOrderPage modifyOrderPage;
+	
 	private String ACCESION_WITHOUT_RESULT = "20210000000003712";
-
+	
 	private String ACCESION_WITH_RESULT = "20210000000003750";
-
+	
 	private SearchResultsByOrderPage searchByOrderPage;
-
+	
 	private ResultValidationByOderPage resultValidationByOderPage;
-
-    @After(RunTest.HOOK.REPORT)
+	
+	@After(RunTest.HOOK.REPORT)
 	public void destroy() {
 		quit();
 	}
-    
+	
 	@Before(RunTest.HOOK.REPORT)
 	public void setLoginPage() {
 		System.out.println("....Patient Reports......");
 		loginPage = new LoginPage(getWebDriver());
 	}
-
+	
 	@Given("User Vists Home Page and goes to Add Order Page")
 	public void visitLoginPage() throws Exception {
 		homePage = loginPage.goToHomePage();
-        addOrderPage = homePage.goToAddOrderPage();
+		addOrderPage = homePage.goToAddOrderPage();
 	}
-
-    @When("User Enters order on Order Entry page, Complete ALL fields, and does not enter results for this order")
+	
+	@When("User Enters order on Order Entry page, Complete ALL fields, and does not enter results for this order")
 	public void enterOrderWithoutResults() throws InterruptedException {
 		addOrderPage.innitialiseData(ACCESION_WITHOUT_RESULT);
 		homePage = addOrderPage.goToHomePage();
@@ -65,14 +65,14 @@ public class PatientReportSteps extends TestBase{
 		addOrderPage.innitialiseData(ACCESION_WITH_RESULT);
 		homePage = addOrderPage.goToHomePage();
 	}
-
+	
 	@And("User Generates the Patient Report for this order without Results")
 	public void generateReportForOrderWithoutResult() {
 		patientStatusReportPage = homePage.goToPatientStatusReportPage();
 		patientStatusReportPage.enterLabNumberFrom(ACCESION_WITHOUT_RESULT);
 		patientStatusReportPage.clickPrintButton();
 	}
-
+	
 	@Then("Verify the generated Report")
 	public void verifyReport() throws InterruptedException {
 		List<String> browserTabs = new ArrayList<String>(patientStatusReportPage.getDriver().getWindowHandles());
@@ -81,7 +81,7 @@ public class PatientReportSteps extends TestBase{
 		patientStatusReportPage.getDriver().switchTo().window(browserTabs.get(0));
 		homePage = patientStatusReportPage.goToHomePage();
 	}
-
+	
 	@When("User Goes to Modify Order for the same order from Use Case 1 and cancel one test")
 	public void modifyOrderAndRemoveOneTestCase() throws InterruptedException {
 		modifyOrderPage = homePage.goToModifyOrderPage();
@@ -94,7 +94,7 @@ public class PatientReportSteps extends TestBase{
 		}
 		homePage = modifyOrderPage.goToHomePage();
 	}
-
+	
 	@And("User Looks up Results Entry for the same order, Complete some but not all results")
 	public void addPartialResults() throws InterruptedException {
 		searchByOrderPage = homePage.goToSearchResultsByOrder();
@@ -106,9 +106,9 @@ public class PatientReportSteps extends TestBase{
 		if (searchByOrderPage.alertPresent()) {
 			searchByOrderPage.acceptAlert();
 		}
-		homePage =  searchByOrderPage.goToHomePage();
+		homePage = searchByOrderPage.goToHomePage();
 	}
-
+	
 	@And("User Validates all results but one for this order, Send the last result back to Retest")
 	public void validateResultsForThisOrder() throws InterruptedException {
 		resultValidationByOderPage = homePage.goToResultValidationByOrder();
@@ -122,7 +122,7 @@ public class PatientReportSteps extends TestBase{
 		}
 		homePage = resultValidationByOderPage.goToHomePage();
 	}
-
+	
 	@And("User Generates the Patient Report for this order with Results")
 	public void generateReportForOrderWithResult() {
 		patientStatusReportPage = homePage.goToPatientStatusReportPage();

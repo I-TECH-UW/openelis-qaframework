@@ -12,13 +12,13 @@ public class PatientStatusReportPage extends Page {
 	private static final String PATH_HOME = "/Dashboard.do";
 	
 	private static final By FIELD_LAB_NUMBER = By.id("patientLabNoSearchValue");
-
+	
 	private static final By FIELD_ORDER_NUMBER_FROM = By.id("accessionDirect");
 	
 	private static final By BUTTON_SEARCH = By.id("enhancedSearchButton");
 	
 	private static final By BUTTON_PRINT = By.id("printNew");
-
+	
 	public PatientStatusReportPage(Page parent) {
 		super(parent);
 	}
@@ -36,7 +36,7 @@ public class PatientStatusReportPage extends Page {
 	public void enterLabNumber(String labNumber) {
 		setText(FIELD_LAB_NUMBER, labNumber);
 	}
-
+	
 	public void enterLabNumberFrom(String labNumber) {
 		setText(FIELD_ORDER_NUMBER_FROM, labNumber);
 	}
@@ -47,5 +47,5 @@ public class PatientStatusReportPage extends Page {
 	
 	public void clickPrintButton() {
 		clickOn(BUTTON_PRINT);
-	}	
+	}
 }

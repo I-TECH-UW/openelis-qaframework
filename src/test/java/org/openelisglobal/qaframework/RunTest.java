@@ -20,13 +20,13 @@ public class RunTest {
 		public static final String ORDER = "@order";
 		
 		public static final String RESULT = "@results";
-
-                public static final String VALIDATE = "@validate";
-
-                public static final String REPORT = "@report";
-
-                public static final String PATIENT_ENTRY = "@patientEntry";
-
-                public static final String EMR_LIS = "@emrLis";      
+		
+		public static final String VALIDATE = "@validate";
+		
+		public static final String REPORT = "@report";
+		
+		public static final String PATIENT_ENTRY = "@patientEntry";
+		
+		public static final String EMR_LIS = "@emrLis";
 	}
 }

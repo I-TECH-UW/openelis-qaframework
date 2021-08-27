@@ -26,7 +26,7 @@ public class SearchResultsByOrderPage extends Page {
 	private static By FIELD_NOTES = By.id("note_1");
 	
 	private static By FIELD_NOTES2 = By.id("note_2");
-
+	
 	private static By FIELD_RESULT3 = By.id("results_3");
 	
 	private static final By BUTTON_SHOW_HIDE_NOTES = By.id("showHideButton_1");
@@ -90,7 +90,7 @@ public class SearchResultsByOrderPage extends Page {
 	public void enterNotes(String notes) {
 		setText(FIELD_NOTES, notes);
 	}
-
+	
 	public void enterResult3(String value) {
 		if (hasElementWithoutWait(FIELD_RESULT3)) {
 			setText(FIELD_RESULT3, value);
@@ -111,5 +111,5 @@ public class SearchResultsByOrderPage extends Page {
 	
 	public void clickSaveButton() {
 		clickOn(BUTTON_SAVE);
-	}	
+	}
 }
