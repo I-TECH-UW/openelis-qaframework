@@ -41,5 +41,5 @@ See [Wiki](https://github.com/I-TECH-UW/openelis-qaframework/wiki) for the Proje
 | Validation        | @validate     |
 | Patient Report    | @report       |
 | Patient Entry     | @patientEntry |
-| EMR-LIS Work Flow | @emrLis       |  
+| Mofidy Order      | @modifyOrder  |  
        

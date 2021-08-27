@@ -50,4 +50,8 @@ public class ModifyOrderPage extends Page {
 	public void clickSaveButton() {
 		clickOn(BUTTON_SAVE);
 	}
+
+	public Boolean searchButtonIsDeactivated(){
+		return isDisabled(BUTTON_SEARCH);
+	}
 }
