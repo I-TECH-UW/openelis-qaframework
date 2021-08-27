@@ -65,7 +65,7 @@ public class PatientEntrySteps extends TestBase {
 		        .containsText("patientProperties.firstName: ValidName invalid name format, possibly illegal character"));
 		homePage = addPatientPage.goToHomePage();
 		addPatientPage = homePage.goToAddEditPatientPage();
-
+		
 		assertTrue(addPatientPage.containsText("Add/Modify Patient"));
 		assertTrue(addPatientPage.containsText("Search"));
 	}
@@ -202,21 +202,21 @@ public class PatientEntrySteps extends TestBase {
 		assertEquals("mutesasira", addPatientPage.getPatientFirstName());
 		assertEquals("moses", addPatientPage.getPatientLastName());
 	}
-
+	
 	@When("User Clicks New Patient on the Add Patient Page")
-	public void clickNewPatient() throws InterruptedException{
+	public void clickNewPatient() throws InterruptedException {
 		addPatientPage.clickNewPatientButton();
 		Thread.sleep(1000);
 	}
-
+	
 	@Then("Patient Information form clears")
 	public void patientInformationClears() {
 		assertEquals("", addPatientPage.getPatientFirstName());
 		assertEquals("", addPatientPage.getPatientLastName());
 	}
-
+	
 	@When("User Enters data into text fields")
-	public void eneterDataIntoTextFields(){
+	public void eneterDataIntoTextFields() {
 		addPatientPage.clickNewPatientButton();
 		addPatientPage.enterSubjectNumber("201807D9P");
 		addPatientPage.enterNationalId("201507D35");
@@ -227,7 +227,7 @@ public class PatientEntrySteps extends TestBase {
 		addPatientPage.enterPatientEmail("jimmy@gmail.com");
 		addPatientPage.enterPatientPhone("+23063458788");
 	}
-
+	
 	@Then("All text fields accept text")
 	public void fieldsAcceptText() {
 		assertEquals("201807D9P", addPatientPage.getSubjectNumber());
@@ -239,39 +239,40 @@ public class PatientEntrySteps extends TestBase {
 		assertEquals("jimmy@gmail.com", addPatientPage.getPatientEmail());
 		assertEquals("+23063458788", addPatientPage.getPatientPhone());
 	}
-
+	
 	@And("National ID is mandatory")
-	public void nationalIdIsMandatory(){
-        assertTrue(addPatientPage.nationalIdIsRequired());
+	public void nationalIdIsMandatory() {
+		assertTrue(addPatientPage.nationalIdIsRequired());
 	}
-
+	
 	@And("Alert is given if Subject Number is already in use")
-	public void alertGivenIfSubJectNumberIsAlreadyInUse(){
+	public void alertGivenIfSubJectNumberIsAlreadyInUse() {
 		addPatientPage.enterSubjectNumber("oe012");
 		addPatientPage.clickNameField();
 		addPatientPage.acceptAlert();
 	}
-
+	
 	@And("If subject number is already in use, cannot save")
-	public void cantNotSaveIfSubJectNumberIsAlreadyInUse(){
+	public void cantNotSaveIfSubJectNumberIsAlreadyInUse() {
 		assertTrue(addPatientPage.saveButtonDisabled());
 	}
-
+	
 	@And("Alert given if National Identification Number  is already in use")
 	public void alertGivenIfNationaIdIsAlreadyInUse() {
 		addPatientPage.enterNationalId("ug012");
 		addPatientPage.clickNameField();
 		addPatientPage.acceptAlert();
 	}
-
+	
 	@And("Cannot save if National Identification Number is already in use")
-	public void cantNotSaveIfNationaIdIsAlreadyInUse(){
+	public void cantNotSaveIfNationaIdIsAlreadyInUse() {
 		assertTrue(addPatientPage.saveButtonDisabled());
 	}
-
+	
 	@And("Alert given if Phone Number is not in correct format")
 	public void alertGivenIfPhoneNumberIsIncorrect() throws InterruptedException {
-		addPatientPage.enterPatientPhone("0772");;
+		addPatientPage.enterPatientPhone("0772");
+		;
 		addPatientPage.clickNameField();
 		addPatientPage.acceptAlert();
 		Thread.sleep(1000);
@@ -341,7 +342,7 @@ public class PatientEntrySteps extends TestBase {
 		assertNotEquals("", addPatientPage.getPatientAgeMonths());
 		assertNotEquals("", addPatientPage.getPatientAgeYears());
 	}
-
+	
 	@When("User Deletes Date of Birth and enters Age {string}")
 	public void enterAge(String age) {
 		addPatientPage.clearPatientDateOfBirth();
@@ -481,7 +482,7 @@ public class PatientEntrySteps extends TestBase {
 		assertTrue(addPatientPage.containsText("Gender"));
 		assertTrue(addPatientPage.containsText("Date of Birth"));
 		assertTrue(addPatientPage.containsText("Subject Number"));
-		assertTrue(addPatientPage.containsText("National ID"));	
+		assertTrue(addPatientPage.containsText("National ID"));
 		Thread.sleep(1000);
 		assertEquals(lastName, addPatientPage.getPatientLastName());
 		assertEquals(firstName, addPatientPage.getPatientFirstName());

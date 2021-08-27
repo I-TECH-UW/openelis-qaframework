@@ -36,7 +36,7 @@ public abstract class Page {
 	public WebDriver getDriver() {
 		return this.driver;
 	}
-
+	
 	protected final WebDriverWait waiter;
 	
 	private final String contextUrl;
@@ -343,8 +343,8 @@ public abstract class Page {
 		try {
 			Alert alert = driver.switchTo().alert();
 			booelan = true;
-		} catch (Exception e) {
 		}
+		catch (Exception e) {}
 		return booelan;
 	}
 	

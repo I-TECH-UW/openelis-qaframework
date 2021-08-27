@@ -148,6 +148,30 @@
                     <target>8</target>
                 </configuration>
             </plugin>
+            <!-- Plugin to format the code , but currently fails on CI -->
+            <!-- <plugin>
+                <groupId>net.revelc.code.formatter</groupId>
+                <artifactId>formatter-maven-plugin</artifactId>
+                <version>2.11.0</version>
+                <configuration>
+                    <lineEnding>LF</lineEnding>
+                    <configFile>eclipse/OpenMRSFormatter.xml</configFile>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                    <groupId>org.openmrs.tools</groupId>
+                    <artifactId>openmrs-tools</artifactId>
+                    <version>2.2.0</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                    <goals>
+                        <goal>format</goal>
+                    </goals>
+                    </execution>
+                </executions>
+            </plugin> -->
         </plugins>
     </build>
 </project>

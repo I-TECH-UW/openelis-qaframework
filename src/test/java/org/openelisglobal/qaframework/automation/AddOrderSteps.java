@@ -520,7 +520,7 @@ public class AddOrderSteps extends TestBase {
 		addOrderPage.enterLastName("SADDIO");
 		addOrderPage.clickAddSampleButton();
 		addOrderPage.selectSampleTypeFromDropDownMenu();
-		addOrderPage.clickPannelCheckBox();		
+		addOrderPage.clickPannelCheckBox();
 		addOrderPage.clickNewPatientButton();
 	}
 	
