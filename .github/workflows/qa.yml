@@ -20,7 +20,7 @@ jobs:
       - name: Run and Publish Openelis QA
         run: |
           echo "cucumber.publish.enabled=true" > src/test/resources/cucumber.properties
-          mvn clean install -Dcucumber.filter.tags='@null' 
+          mvn clean install -DskipTests=true 
           mvn test   
           curl -X POST \
           https://studio.cucumber.io/cucumber_project/results \

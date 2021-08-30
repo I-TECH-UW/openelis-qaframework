@@ -19,6 +19,20 @@ public class ModifyOrderPage extends Page {
 	
 	private static final By BUTTON_SAVE = By.id("saveButtonId");
 	
+	private static final By FIELD_LAB_NUMBER_SEARCH = By.id("patientLabNoSearchValue");
+	
+	private static final By FIELD_PATIENT_ID_SEARCH = By.id("patientIdNumberSearchValue");
+	
+	private static final By FIELD_LAST_NAME_SEARCH = By.id("lastNameSearchValue");
+	
+	private static final By FIELD_FIRST_NAME_SEARCH = By.id("firstNameSearchValue");
+	
+	private static final By FIELD_DOB_SEARCH = By.id("dateOfBirthSearchValue");
+
+	private static final By SELECT_RESULT = By.id("sel_1");
+
+	private static final By FIELD_PROVIDER_LAST_NAME = By.id("providerLastNameID");
+	
 	public ModifyOrderPage(Page parent) {
 		super(parent);
 	}
@@ -53,5 +67,33 @@ public class ModifyOrderPage extends Page {
 
 	public Boolean searchButtonIsDeactivated(){
 		return isDisabled(BUTTON_SEARCH);
+	}
+
+	public void enterLabNumberSearch(String accesionNumber) {
+		setText(FIELD_LAB_NUMBER_SEARCH, accesionNumber);
+	}
+	
+	public void enterPatientIdSearch(String patientId) {
+		setText(FIELD_PATIENT_ID_SEARCH, patientId);
+	}
+	
+	public void enterLastNameSearch(String lastName) {
+		setText(FIELD_LAST_NAME_SEARCH, lastName);
+	}
+	
+	public void enterFirstNameSearch(String firstName) {
+		setText(FIELD_FIRST_NAME_SEARCH, firstName);
+	}
+	
+	public void enterDateOfBirthSearch(String dateOfBirth) {
+		setText(FIELD_DOB_SEARCH, dateOfBirth);
+	}
+	
+	public Boolean containsSeachResult() {
+		return hasElement(SELECT_RESULT);
+	}
+	
+	public String getProviderLastNameValue() {
+		return getValue(FIELD_PROVIDER_LAST_NAME);
 	}
 }
