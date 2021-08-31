@@ -20,4 +20,20 @@ And If there is only one patient with that Lab No, the system auto-fills all the
 And Patient Information form populates with patient information on the Modify Order Page
 Examples:
 |lastName|firstName|subjectNumber|labNo            |
-|seruwu  |jimmy    |oe012        |20210000000002250|
+|seruwu  |jimmy    |oe012        |20210000000003760|
+
+@modifyOrder
+Scenario Outline: Order Information 
+When User Pulls up a known order with oder number "<labNo>"
+Then Order appears on screen
+And Patient information displays correctly on the Modify Oder Page
+When User enters a Lab No "<incorrectLabNo>" with incorrect format, Under Modify Order section, in the New order number 
+Then Pop-up message appears saying format is incorrect on the Modify Oder Page
+When User enters a new unused Lab No "<unUsedLabNo>" in the correct 9-digit format
+Then New order number Field ,accepts correct text 
+When User enters a Known used Lab No "<usedLabNo>" in the correct 9-digit format
+Then Pop-up message informs you that you cannot use an existing order number
+Examples:
+|labNo            |incorrectLabNo  |unUsedLabNo    |usedLabNo      |
+|20210000000003760|24068xx706080889|210000000003790|210000000003780|
+
