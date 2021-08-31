@@ -29,7 +29,7 @@ See [Wiki](https://github.com/I-TECH-UW/openelis-qaframework/wiki) for the Proje
 
          mvn test -Dcucumber.filter.tags='@login'   
 
- ## See All test features bellow with their coresponding filter tags      
+ ## Test features       
 
 
 | Test Feature      |Filter Tag     |
