@@ -2,6 +2,8 @@ package org.openelisglobal.qaframework.automation;
 
 import org.openelisglobal.qaframework.RunTest;
 import org.openelisglobal.qaframework.automation.page.ModifyOrderPage;
+import org.openelisglobal.qaframework.automation.page.AddOrderPage;
+import org.openelisglobal.qaframework.automation.page.AddPatientPage;
 import org.openelisglobal.qaframework.automation.page.HomePage;
 import org.openelisglobal.qaframework.automation.page.LoginPage;
 import org.openelisglobal.qaframework.automation.test.TestBase;
@@ -27,7 +29,17 @@ public class ModifyOrderSteps extends TestBase {
     
     private ModifyOrderPage modifyOrderPage;
     
+    private AddOrderPage addOrderPage;
+    
+    private AddPatientPage addPatientPage;
+    
     protected TestProperties testProperties = TestProperties.instance();
+    
+    private String ACCESION_NUMBER = "20210000000003760";
+    
+    private String ACCESION_NUMBER_2 = "20210000000003780";
+    
+    private String patientInfo = "Patient:  moses, mutesasira  09/02/2019  M  201507D35a0ade566-41ca-43eb-9355-839587b8491a";
     
     @After(RunTest.HOOK.MODIFY_ORDER)
     public void destroy() {
@@ -47,7 +59,25 @@ public class ModifyOrderSteps extends TestBase {
     }
     
     @Then("Search appears at top of page")
-    public void searchPageAppears() {
+    public void searchPageAppears() throws InterruptedException {
+        //initialise data 
+        homePage = modifyOrderPage.goToHomePage();
+        addOrderPage = homePage.goToAddOrderPage();
+        addOrderPage.innitialiseData(ACCESION_NUMBER);
+        homePage = addOrderPage.goToHomePage();
+        
+        addOrderPage = homePage.goToAddOrderPage();
+        addOrderPage.innitialiseData(ACCESION_NUMBER_2);
+        homePage = addOrderPage.goToHomePage();
+        
+        addPatientPage = homePage.goToAddEditPatientPage();
+        addPatientPage.innitialisePatientData("jimmy", "seruwu", false);
+        homePage = addPatientPage.goToHomePage();
+        if (addPatientPage.alertPresent()) {
+            addPatientPage.acceptAlert();
+        }
+        
+        modifyOrderPage = homePage.goToModifyOrderPage();
         assertTrue(modifyOrderPage.containsText("Modify Order"));
     }
     
@@ -130,18 +160,83 @@ public class ModifyOrderSteps extends TestBase {
     
     @Then("Search by Lab Number yields results for all patients with matching Lab Number on the Modify Order Page")
     public void searchByLabNumberYieldsResults() {
-        assertTrue(modifyOrderPage.containsText("Current Order Number:"));
-        assertTrue(modifyOrderPage.containsText("20210000000002250"));
+        assertTrue(modifyOrderPage.hasPatientInfoBar());
+        assertEquals(patientInfo, modifyOrderPage.getPatientInfo().trim());
     }
     
     @And("If there is only one patient with that Lab No, the system auto-fills all the info about that patient, bypassing the selection process")
     public void autoFillPatientInfo() {
         assertTrue(modifyOrderPage.containsText("Current Order Number:"));
-        assertTrue(modifyOrderPage.containsText("20210000000002250"));
+        assertTrue(modifyOrderPage.containsText(ACCESION_NUMBER));
     }
     
     @And("Patient Information form populates with patient information on the Modify Order Page")
     public void patientInfoFromPopulated() {
         assertEquals("SADDIO", modifyOrderPage.getProviderLastNameValue());
+    }
+    
+    @When("User Pulls up a known order with oder number {string}")
+    public void pullUpKnownOrder(String labNumber) {
+        modifyOrderPage.enterLabNumber(labNumber);
+        modifyOrderPage.clickSearchButton();
+    }
+    
+    @Then("Order appears on screen")
+    public void orderAppears() {
+        assertTrue(modifyOrderPage.containsText("Current Order Number:"));
+        assertTrue(modifyOrderPage.containsText(ACCESION_NUMBER));
+    }
+    
+    @And("Patient information displays correctly on the Modify Oder Page")
+    public void patientInfoDisplays() {
+        assertTrue(modifyOrderPage.hasPatientInfoBar());
+        assertEquals(patientInfo, modifyOrderPage.getPatientInfo().trim());
+    }
+    
+    @And("Current Lab No appears correctly under the Modify Lab No section")
+    public void CurrentLabNumberAppearsCorrectly() {
+        assertTrue(modifyOrderPage.containsText("Current Order Number:"));
+        assertTrue(modifyOrderPage.containsText(ACCESION_NUMBER));
+    }
+    
+    @When("User enters a Lab No {string} with incorrect format, Under Modify Order section, in the New order number")
+    public void enterIncorectLabNumber(String labNumber) {
+        modifyOrderPage.enterNewLabNumber(labNumber);
+    }
+    
+    @Then("Pop-up message appears saying format is incorrect on the Modify Oder Page")
+    public void popUpAppears() throws InterruptedException {
+        modifyOrderPage.clickNextVistDate();
+        assertTrue(modifyOrderPage.alertPresent());
+        assertTrue(modifyOrderPage.getAlertText()
+                .contains("Invalid accession number. It is either not formated correctly or it already is in use"));
+        modifyOrderPage.acceptAlert();
+        assertEquals("error", modifyOrderPage.getNewLabNumberClass().trim());
+    }
+    
+    @When("User enters a new unused Lab No {string} in the correct 9-digit format")
+    public void enterCorectLabNumber(String labNumber) {
+        modifyOrderPage.enterNewLabNumber(labNumber);
+    }
+    
+    @Then("New order number Field ,accepts correct text")
+    public void acceptsText() throws InterruptedException {
+        modifyOrderPage.clickNextVistDate();
+        assertFalse(modifyOrderPage.alertPresent());
+        assertNotEquals("error", modifyOrderPage.getNewLabNumberClass().trim());
+    }
+    
+    @When("User enters a Known used Lab No {string} in the correct 9-digit format")
+    public void enterUsedLabNumber(String labNumber) {
+        modifyOrderPage.enterNewLabNumber(labNumber);
+    }
+    
+    @Then("Pop-up message informs you that you cannot use an existing order number")
+    public void alertAppears() throws InterruptedException {
+        modifyOrderPage.clickNextVistDate();
+        assertTrue(modifyOrderPage.alertPresent());
+        assertTrue(modifyOrderPage.getAlertText().contains("You may not reuse an existing lab number."));
+        modifyOrderPage.acceptAlert();
+        assertEquals("error", modifyOrderPage.getNewLabNumberClass().trim());
     }
 }

@@ -319,6 +319,12 @@ public abstract class Page {
 		Alert alert = driver.switchTo().alert();
 		alert.accept();
 	}
+
+	public String getAlertText() {
+		waiter.until(ExpectedConditions.alertIsPresent());
+		Alert alert = driver.switchTo().alert();
+		return alert.getText();
+	}
 	
 	public void dismissAlert() {
 		waiter.until(ExpectedConditions.alertIsPresent());
