@@ -8,8 +8,7 @@ See [Wiki](https://github.com/I-TECH-UW/openelis-qaframework/wiki) for the Proje
 
 ## Installing dependencies wthout running tests
 
-
-    mvn clean install -Dcucumber.filter.tags='@null'
+    mvn clean install -DskipTests=true
 
 ## Configuration
 - Set Your test configurations in [src/test/resources/test.properties](./src/test/resources/test.properties)
