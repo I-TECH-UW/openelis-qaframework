@@ -8,6 +8,7 @@ import org.openelisglobal.qaframework.automation.page.HomePage;
 import org.openelisglobal.qaframework.automation.page.LoginPage;
 import org.openelisglobal.qaframework.automation.test.TestBase;
 import org.openelisglobal.qaframework.automation.test.TestProperties;
+import org.openelisglobal.qaframework.automation.utils.Utils;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -239,4 +240,84 @@ public class ModifyOrderSteps extends TestBase {
         modifyOrderPage.acceptAlert();
         assertEquals("error", modifyOrderPage.getNewLabNumberClass().trim());
     }
+    
+    @When("User Enters Order date in incorrect format {string} on the Modify Oder Page")
+    public void enterIncorrectDate(String date) {
+        modifyOrderPage.enterRequestDate(date);
+    }
+    
+    @Then("Text Box Highlighted in Red if entry is in incorrrect format")
+    public void textBoxHighligtedRed() throws InterruptedException {
+        modifyOrderPage.clickNextVistDate();
+        Thread.sleep(1000);
+        assertEquals("required error", modifyOrderPage.getRequestDateClass().trim());
+    }
+    
+    @When("User Enters Order date in future on the Modify Oder Page")
+    public void entertDateInFuture() {
+        modifyOrderPage.enterRequestDate(Utils.getFutureDate());
+    }
+    
+    @Then("Text Box Highlighted in Red and Displays Pop up message alert on the Modify Oder Page")
+    public void displayMessageAlertWhenDateIsInFuture() throws InterruptedException {
+        modifyOrderPage.clickNextVistDate();
+        Thread.sleep(1000);
+        assertTrue(modifyOrderPage.alertPresent());
+        assertTrue(modifyOrderPage.getAlertText().contains("Date may not be in the future"));
+        modifyOrderPage.acceptAlert();
+        assertEquals("required error", modifyOrderPage.getRequestDateClass().trim());
+    }
+    
+    @When("User Enters Order date in correct format on the Modify Oder Page")
+    public void enterCorrectDate() {
+        modifyOrderPage.enterRequestDate(Utils.getPastDate());
+    }
+
+    @Then("Order Date Field accepts correct Date format")
+    public void acceptCorrectOrderDate() throws InterruptedException {
+        modifyOrderPage.clickNextVistDate();
+        Thread.sleep(1000);
+        assertFalse(modifyOrderPage.alertPresent());
+        assertEquals("required", modifyOrderPage.getRequestDateClass().trim());
+    }
+    
+    @When("User Enters Recieved date in incorrect format {string} on the Modify Oder Page")
+    public void enterIncorrectRecievedDate(String date) {
+        modifyOrderPage.enterRecievedDate(date);
+    }
+    
+    @Then("Recieved date Text Box Highlighted in Red if entry is in incorrrect format")
+    public void recievedDateTextBoxHighligtedRed() throws InterruptedException {
+        modifyOrderPage.clickNextVistDate();
+        Thread.sleep(1000);
+        assertEquals("text required error", modifyOrderPage.getRecievedDateClass().trim());
+    }
+    
+    @When("User Enters Recieved date in future on the Modify Oder Page")
+    public void entertRecievedDateInFuture() {
+        modifyOrderPage.enterRecievedDate(Utils.getFutureDate());
+    }
+    
+    @Then("Recieved date Text Box Highlighted in Red and Displays Pop up message alert on the Modify Oder Page")
+    public void displayMessageAlertWhenRecievedDateIsInFuture() throws InterruptedException {
+        modifyOrderPage.clickNextVistDate();
+        Thread.sleep(1000);
+        assertTrue(modifyOrderPage.alertPresent());
+        assertTrue(modifyOrderPage.getAlertText().contains("Date may not be in the future"));
+        modifyOrderPage.acceptAlert();
+        assertEquals("text required error", modifyOrderPage.getRecievedDateClass().trim());
+    }
+    
+    @When("User Enters Recieved date in correct format on the Modify Oder Page")
+    public void enterCorrectRecievedDate() {
+        modifyOrderPage.enterRecievedDate(Utils.getPastDate());
+    }
+    
+    @Then("Recieved date Field accepts correct Date format")
+    public void acceptCorrectRecievedDate() throws InterruptedException {
+        modifyOrderPage.clickNextVistDate();
+        Thread.sleep(1000);
+        assertFalse(modifyOrderPage.alertPresent());
+        assertEquals("text required", modifyOrderPage.getRecievedDateClass().trim());
+    }  
 }
