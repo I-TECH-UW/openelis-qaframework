@@ -38,6 +38,14 @@ public class ModifyOrderPage extends Page {
 	private static final By FIELD_NEW_ODER_NUMBER = By.id("accessionEdit");
 	
 	private static final By FIELD_NEXT_VIST_DATE = By.id("nextVisitDate");
+
+	private static final By FIELD_REQUEST_DATE = By.id("requestDate");
+	
+	private static final By FIELD_RECIEVED_DATE = By.id("receivedDateForDisplay");
+	
+	private static final By FIELD_RECIEVED_TIME = By.id("receivedTime");
+	
+	private static final By FIELD_SITE_NAME = By.id("requesterId");
 	
 	public ModifyOrderPage(Page parent) {
 		super(parent);
@@ -98,6 +106,14 @@ public class ModifyOrderPage extends Page {
 	public void enterNewLabNumber(String labNumber) {
 		setText(FIELD_NEW_ODER_NUMBER, labNumber);
 	}
+
+	public void enterRequestDate(String date) {
+		setText(FIELD_REQUEST_DATE, date);
+	}
+
+	public void enterRecievedDate(String date) {
+		setText(FIELD_RECIEVED_DATE, date);
+	}
 	
 	public Boolean containsSeachResult() {
 		return hasElement(SELECT_RESULT);
@@ -121,5 +137,13 @@ public class ModifyOrderPage extends Page {
 	
 	public String getNewLabNumberClass() {
 		return getClass(FIELD_NEW_ODER_NUMBER);
+	}
+
+	public String getRequestDateClass() {
+		return getClass(FIELD_REQUEST_DATE);
+	}
+
+	public String getRecievedDateClass() {
+		return getClass(FIELD_RECIEVED_DATE);
 	}
 }

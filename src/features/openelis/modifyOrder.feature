@@ -33,7 +33,19 @@ When User enters a new unused Lab No "<unUsedLabNo>" in the correct 9-digit form
 Then New order number Field ,accepts correct text 
 When User enters a Known used Lab No "<usedLabNo>" in the correct 9-digit format
 Then Pop-up message informs you that you cannot use an existing order number
+When User Enters Order date in incorrect format "<incorrectDate>" on the Modify Oder Page
+Then Text Box Highlighted in Red if entry is in incorrrect format
+When User Enters Order date in future on the Modify Oder Page
+Then Text Box Highlighted in Red and Displays Pop up message alert on the Modify Oder Page
+When User Enters Order date in correct format on the Modify Oder Page
+Then Order Date Field accepts correct Date format
+When User Enters Recieved date in incorrect format "<incorrectDate>" on the Modify Oder Page
+Then Recieved date Text Box Highlighted in Red if entry is in incorrrect format
+When User Enters Recieved date in future on the Modify Oder Page
+Then Recieved date Text Box Highlighted in Red and Displays Pop up message alert on the Modify Oder Page
+When User Enters Recieved date in correct format on the Modify Oder Page
+Then Recieved date Field accepts correct Date format
 Examples:
-|labNo            |incorrectLabNo  |unUsedLabNo    |usedLabNo      |
-|20210000000003760|24068xx706080889|210000000003790|210000000003780|
+|labNo            |incorrectLabNo  |unUsedLabNo    |usedLabNo      |incorrectDate|
+|20210000000003760|24068xx706080889|210000000003790|210000000003780|09-02/2019   |
 
