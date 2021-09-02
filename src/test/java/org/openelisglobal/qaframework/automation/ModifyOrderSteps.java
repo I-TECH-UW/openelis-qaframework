@@ -272,7 +272,7 @@ public class ModifyOrderSteps extends TestBase {
     public void enterCorrectDate() {
         modifyOrderPage.enterRequestDate(Utils.getPastDate());
     }
-
+    
     @Then("Order Date Field accepts correct Date format")
     public void acceptCorrectOrderDate() throws InterruptedException {
         modifyOrderPage.clickNextVistDate();
@@ -319,5 +319,42 @@ public class ModifyOrderSteps extends TestBase {
         Thread.sleep(1000);
         assertFalse(modifyOrderPage.alertPresent());
         assertEquals("text required", modifyOrderPage.getRecievedDateClass().trim());
-    }  
+    }
+    
+    @When("User Enters time {string} in incorrect format on the Modify Oder Page")
+    public void enterIncorrectTime(String time) {
+        assertNotEquals("", modifyOrderPage.getRecievedTime().trim());
+        modifyOrderPage.enterRecievedTime(time);
+    }
+    
+    @Then("Field Rejects non-numeric, additional digits")
+    public void fieldRejectIncorrectRecievedtime() throws InterruptedException {
+        modifyOrderPage.clickNextVistDate();
+        Thread.sleep(1000);
+        assertEquals("", modifyOrderPage.getRecievedTime().trim());
+    }
+    
+    @When("User Enters time {string} in HHMM format on the Modify Oder Page")
+    public void enterTime(String time) {
+        modifyOrderPage.enterRecievedTime(time);
+    }
+    
+    @Then("Field Automatically corrects straight numeric to proper HH:MM format")
+    public void fieldCorrectsTime() throws InterruptedException {
+        modifyOrderPage.clickNextVistDate();
+        Thread.sleep(1000);
+        assertEquals("12:12", modifyOrderPage.getRecievedTime().trim());
+    }
+    
+    @When("User Enters time {string} in HH:MM format  on the Modify Oder Page")
+    public void enterCorrectTime(String time) {
+        modifyOrderPage.enterRecievedTime(time);
+    }
+    
+    @Then("Field accepts correct time  in HH:MM format")
+    public void fieldacceptsCorrectTime() throws InterruptedException {
+        modifyOrderPage.clickNextVistDate();
+        Thread.sleep(1000);
+        assertEquals("05:10", modifyOrderPage.getRecievedTime().trim());
+    }
 }
