@@ -351,7 +351,7 @@ public class ModifyOrderSteps extends TestBase {
         modifyOrderPage.enterRecievedTime(time);
     }
     
-    @Then("Field accepts correct format in correct ")
+    @Then("Field accepts correct time  in HH:MM format")
     public void fieldacceptsCorrectTime() throws InterruptedException {
         modifyOrderPage.clickNextVistDate();
         Thread.sleep(1000);

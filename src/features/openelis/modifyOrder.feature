@@ -49,8 +49,8 @@ When User Enters time "<incorrectTime>" in incorrect format on the Modify Oder P
 Then Field Rejects non-numeric, additional digits
 When User Enters time "<time>" in HHMM format on the Modify Oder Page
 Then Field Automatically corrects straight numeric to proper HH:MM format
-When User Enters time "<time>" in HH:MM format  on the Modify Oder Page
-Then Field accepts correct format in correct 
+When User Enters time "<correctTime>" in HH:MM format  on the Modify Oder Page
+Then Field accepts correct time  in HH:MM format 
 Examples:
 |labNo            |incorrectLabNo  |unUsedLabNo    |usedLabNo      |incorrectDate|incorrectTime|time|correctTime|
 |20210000000003760|24068xx706080889|210000000003790|210000000003780|09-02/2019   |XXMM         |1212|05:10      |
