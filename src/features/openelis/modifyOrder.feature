@@ -45,7 +45,13 @@ When User Enters Recieved date in future on the Modify Oder Page
 Then Recieved date Text Box Highlighted in Red and Displays Pop up message alert on the Modify Oder Page
 When User Enters Recieved date in correct format on the Modify Oder Page
 Then Recieved date Field accepts correct Date format
+When User Enters time "<incorrectTime>" in incorrect format on the Modify Oder Page
+Then Field Rejects non-numeric, additional digits
+When User Enters time "<time>" in HHMM format on the Modify Oder Page
+Then Field Automatically corrects straight numeric to proper HH:MM format
+When User Enters time "<time>" in HH:MM format  on the Modify Oder Page
+Then Field accepts correct format in correct 
 Examples:
-|labNo            |incorrectLabNo  |unUsedLabNo    |usedLabNo      |incorrectDate|
-|20210000000003760|24068xx706080889|210000000003790|210000000003780|09-02/2019   |
+|labNo            |incorrectLabNo  |unUsedLabNo    |usedLabNo      |incorrectDate|incorrectTime|time|correctTime|
+|20210000000003760|24068xx706080889|210000000003790|210000000003780|09-02/2019   |XXMM         |1212|05:10      |
 

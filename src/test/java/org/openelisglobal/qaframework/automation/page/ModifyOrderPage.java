@@ -114,6 +114,10 @@ public class ModifyOrderPage extends Page {
 	public void enterRecievedDate(String date) {
 		setText(FIELD_RECIEVED_DATE, date);
 	}
+
+	public void enterRecievedTime(String time) {
+		setText(FIELD_RECIEVED_TIME, time);
+	}
 	
 	public Boolean containsSeachResult() {
 		return hasElement(SELECT_RESULT);
@@ -130,6 +134,10 @@ public class ModifyOrderPage extends Page {
 	public String getPatientInfo() {
 		return getText(BAR_PATIENT_INFO);
 	}
+
+	public String getRecievedTime() {
+		return getValue(FIELD_RECIEVED_TIME);
+	}
 	
 	public void clickNextVistDate() {
 		clickOn(FIELD_NEXT_VIST_DATE);
@@ -145,5 +153,9 @@ public class ModifyOrderPage extends Page {
 
 	public String getRecievedDateClass() {
 		return getClass(FIELD_RECIEVED_DATE);
+	}
+
+	public String getRecievedTimeClass() {
+		return getClass(FIELD_RECIEVED_TIME);
 	}
 }
