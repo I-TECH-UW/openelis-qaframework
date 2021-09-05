@@ -51,6 +51,8 @@ When User Enters time "<time>" in HHMM format on the Modify Oder Page
 Then Field Automatically corrects straight numeric to proper HH:MM format
 When User Enters time "<correctTime>" in HH:MM format  on the Modify Oder Page
 Then Field accepts correct time  in HH:MM format 
+When User Enters new site name from drop-down list
+Then Site name and code drop-down list displays previously entered  options correctly and selection can be made
 Examples:
 |labNo            |incorrectLabNo  |unUsedLabNo    |usedLabNo      |incorrectDate|incorrectTime|time|correctTime|
 |20210000000003760|24068xx706080889|210000000003790|210000000003780|09-02/2019   |XXMM         |1212|05:10      |

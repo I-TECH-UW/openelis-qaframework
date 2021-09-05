@@ -357,4 +357,15 @@ public class ModifyOrderSteps extends TestBase {
         Thread.sleep(1000);
         assertEquals("05:10", modifyOrderPage.getRecievedTime().trim());
     }
+    
+    @When("User Enters new site name from drop-down list")
+    public void selectSiteName() {
+        modifyOrderPage.selectSiteNameFromDropDown();
+    }
+    
+    @Then("Site name and code drop-down list displays previously entered  options correctly and selection can be made")
+    public void siteNamesDisplyCorrectly() {
+        assertTrue(modifyOrderPage.siteNameDropDownHasOptions());
+    }
+    
 }

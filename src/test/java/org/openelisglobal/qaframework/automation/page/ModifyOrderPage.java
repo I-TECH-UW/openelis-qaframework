@@ -45,7 +45,7 @@ public class ModifyOrderPage extends Page {
 	
 	private static final By FIELD_RECIEVED_TIME = By.id("receivedTime");
 	
-	private static final By FIELD_SITE_NAME = By.id("requesterId");
+	private static final By DROP_DOWN_SITE_NAME = By.id("requesterId");
 	
 	public ModifyOrderPage(Page parent) {
 		super(parent);
@@ -157,5 +157,13 @@ public class ModifyOrderPage extends Page {
 
 	public String getRecievedTimeClass() {
 		return getClass(FIELD_RECIEVED_TIME);
+	}
+
+	public void selectSiteNameFromDropDown() {
+		selectOptionFromDropDown(DROP_DOWN_SITE_NAME);
+	}
+
+	public Boolean siteNameDropDownHasOptions() {
+		return dropDownHasOptions(DROP_DOWN_SITE_NAME);
 	}
 }
