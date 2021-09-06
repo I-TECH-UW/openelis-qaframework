@@ -57,3 +57,26 @@ Examples:
 |labNo            |incorrectLabNo  |unUsedLabNo    |usedLabNo      |incorrectDate|incorrectTime|time|correctTime|
 |20210000000003760|24068xx706080889|210000000003790|210000000003780|09-02/2019   |XXMM         |1212|05:10      |
 
+@modifyOrder
+Scenario Outline: Current Test Information
+When User Pulls up a known order with oder number "<labNo>"
+Then Table headers are correct Under Current Tests
+When User Enters new Collection Date "<incorrectDate>" in incorrect format on the Modify Oder Page
+Then Collection Date Text Box Highlighted in Red if entry is in incorrrect format
+When User Enters new Collection Date in future on the Modify Oder Page
+Then Alert appears if Collection Date is in future
+When User Enters modified date in correct format in Collection Date field
+Then Field accepts correct format; Collection Date can be modified
+When User Enters new Collection Time "<incorrectTime>" in incorrect format on the Modify Oder Page
+Then Collection Time Rejects non-numeric entries, additional digits
+When User Enters  Collection Time "<nonExistingTime>" that doesnt exist on the 12 or 24 hour clock
+Then Red alert appears if time does not exist on 12 or 24 hour clock 
+When User Enters  Collection Time "<time>" as HHMM on the Modify Oder Page
+Then Collection Time Field Automatically corrects straight numeric to proper format HH:MM
+When User Enters modified collection time  "<correctTime>" as HH:MM
+Then Collection Time Field accepts correct format; collection time can be modified
+When User Clicks Remove Samples check box on the Modify Oder Page
+Then Remove Test Check box sticks on the Modify Oder Page
+Examples:
+|labNo            |incorrectDate|incorrectTime|nonExistingTime|time|correctTime|
+|20210000000003760|09-02/2019   |XXMM         |   30:30       |1212|05:10      |

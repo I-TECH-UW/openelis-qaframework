@@ -368,4 +368,115 @@ public class ModifyOrderSteps extends TestBase {
         assertTrue(modifyOrderPage.siteNameDropDownHasOptions());
     }
     
+    @Then("Table headers are correct Under Current Tests")
+    public void tableHeadersDisplyCorrectly() {
+        assertTrue(modifyOrderPage.containsText("Current Tests"));
+        assertTrue(modifyOrderPage.containsText("Lab No"));
+        assertTrue(modifyOrderPage.containsText("Sample Type"));
+        assertTrue(modifyOrderPage.containsText("Collection Date&nbsp;(dd/mm/yyyy)"));
+        assertTrue(modifyOrderPage.containsText("Collection Time (hh:mm)"));
+        assertTrue(modifyOrderPage.containsText("Remove Samples"));
+        assertTrue(modifyOrderPage.containsText("Test Name"));
+        assertTrue(modifyOrderPage.containsText("Results Recorded or In Progress"));
+        assertTrue(modifyOrderPage.containsText("Delete (Cancel) test"));
+        assertTrue(modifyOrderPage.containsText("Available Tests"));
+    }
+    
+    @When("User Enters new Collection Date {string} in incorrect format on the Modify Oder Page")
+    public void enterIncorrectCollectionDate(String date) {
+        modifyOrderPage.enterCollectionDate(date);
+    }
+    
+    @Then("Collection Date Text Box Highlighted in Red if entry is in incorrrect format")
+    public void collectionDateTextBoxHighligtedRed() throws InterruptedException {
+        modifyOrderPage.clickNextVistDate();
+        Thread.sleep(1000);
+        assertEquals("text  error", modifyOrderPage.getCollectionDateClass().trim());
+    }
+    
+    @When("User Enters new Collection Date in future on the Modify Oder Page")
+    public void enterCollectionDateInFuture() {
+        modifyOrderPage.enterCollectionDate(Utils.getFutureDate());
+    }
+    
+    @Then("Alert appears if Collection Date is in future")
+    public void alertAppearsIfCollectionDate() throws InterruptedException {
+        modifyOrderPage.clickNextVistDate();
+        Thread.sleep(1000);
+        assertTrue(modifyOrderPage.alertPresent());
+        assertTrue(modifyOrderPage.getAlertText().contains("Date may not be in the future"));
+        modifyOrderPage.acceptAlert();
+        assertEquals("text  error", modifyOrderPage.getCollectionDateClass().trim());
+    }
+    
+    @When("User Enters modified date in correct format in Collection Date field")
+    public void enterCollectionDateInCorrectFormat() {
+        modifyOrderPage.enterCollectionDate(Utils.getPastDate());
+    }
+    
+    @Then("Field accepts correct format; Collection Date can be modified")
+    public void collectionDateAcceptsDateInCorrectFormat() throws InterruptedException {
+        modifyOrderPage.clickNextVistDate();
+        Thread.sleep(1000);
+        assertFalse(modifyOrderPage.alertPresent());
+        assertEquals("text", modifyOrderPage.getCollectionDateClass().trim());
+    }
+    
+    @When("User Enters new Collection Time {string} in incorrect format on the Modify Oder Page")
+    public void enterCollectionTimeInInCorrectFormat(String time) {
+        modifyOrderPage.enterCollectionTime(time);
+    }
+    
+    @Then("Collection Time Rejects non-numeric entries, additional digits")
+    public void collectionTimeFieldRejectIncorrectTime() throws InterruptedException {
+        modifyOrderPage.clickNextVistDate();
+        Thread.sleep(1000);
+        assertEquals("", modifyOrderPage.getCollectionTime().trim());
+    }
+    
+    @When("User Enters  Collection Time {string} that doesnt exist on the 12 or 24 hour clock")
+    public void enterNonExistingCollectionTime(String time) {
+        modifyOrderPage.enterCollectionTime(time);
+    }
+    
+    @Then("Red alert appears if time does not exist on 12 or 24 hour clock")
+    public void redAlertAppearsOncollectionTimeField() throws InterruptedException {
+        modifyOrderPage.clickNextVistDate();
+        Thread.sleep(1000);
+        assertEquals("text error", modifyOrderPage.getCollectionTimeClass());
+    }
+    
+    @When("User Enters  Collection Time {string} as HHMM on the Modify Oder Page")
+    public void enterCollectionTime(String time) {
+        modifyOrderPage.enterCollectionTime(time);
+    }
+    
+    @Then("Collection Time Field Automatically corrects straight numeric to proper format HH:MM")
+    public void collectionTimeAutomaticallyCorrectsTheTimeToProperFormat() throws InterruptedException {
+        modifyOrderPage.clickNextVistDate();
+        Thread.sleep(1000);
+        assertEquals("12:12", modifyOrderPage.getCollectionTime());
+    }
+    
+    @When("User Enters modified collection time  {string} as HH:MM")
+    public void enterCollectionTimeinCorrectFormat(String time) {
+        modifyOrderPage.enterCollectionTime(time);
+    }
+    
+    @Then("Collection Time Field accepts correct format; collection time can be modified")
+    public void collectionTimeAcceptsCorrectTimeFormat() throws InterruptedException {
+        modifyOrderPage.clickNextVistDate();
+        Thread.sleep(1000);
+        assertEquals("05:10", modifyOrderPage.getCollectionTime());
+    }
+    
+    @When("User Clicks Remove Samples check box on the Modify Oder Page")
+    public void checkRemoveTests() {
+        modifyOrderPage.checkRemoveTest();
+    }
+    
+    @Then("Remove Test Check box sticks on the Modify Oder Page")
+    public void removeTestCheckBoxSticks() {
+        assertTrue(modifyOrderPage.removeTestIsChecked());
+    }
 }

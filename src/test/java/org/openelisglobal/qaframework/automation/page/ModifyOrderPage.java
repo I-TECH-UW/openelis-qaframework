@@ -38,7 +38,7 @@ public class ModifyOrderPage extends Page {
 	private static final By FIELD_NEW_ODER_NUMBER = By.id("accessionEdit");
 	
 	private static final By FIELD_NEXT_VIST_DATE = By.id("nextVisitDate");
-
+	
 	private static final By FIELD_REQUEST_DATE = By.id("requestDate");
 	
 	private static final By FIELD_RECIEVED_DATE = By.id("receivedDateForDisplay");
@@ -46,6 +46,12 @@ public class ModifyOrderPage extends Page {
 	private static final By FIELD_RECIEVED_TIME = By.id("receivedTime");
 	
 	private static final By DROP_DOWN_SITE_NAME = By.id("requesterId");
+	
+	private static final By FIELD_COLLECTION_DATE = By.xpath("//input[contains(@name,'collectionDate')]");
+	
+	private static final By FIELD_COLLECTION_TIME = By.xpath("//input[contains(@name,'collectionTime')]");
+	
+	private static final By CHECKBOX_REMOVE_SAMPLE = By.xpath("//input[contains(@id,'removeSample')]");
 	
 	public ModifyOrderPage(Page parent) {
 		super(parent);
@@ -106,17 +112,25 @@ public class ModifyOrderPage extends Page {
 	public void enterNewLabNumber(String labNumber) {
 		setText(FIELD_NEW_ODER_NUMBER, labNumber);
 	}
-
+	
 	public void enterRequestDate(String date) {
 		setText(FIELD_REQUEST_DATE, date);
 	}
-
+	
 	public void enterRecievedDate(String date) {
 		setText(FIELD_RECIEVED_DATE, date);
 	}
-
+	
 	public void enterRecievedTime(String time) {
 		setText(FIELD_RECIEVED_TIME, time);
+	}
+	
+	public void enterCollectionDate(String date) {
+		setText(FIELD_COLLECTION_DATE, date);
+	}
+	
+	public void enterCollectionTime(String time) {
+		setText(FIELD_COLLECTION_TIME, time);
 	}
 	
 	public Boolean containsSeachResult() {
@@ -134,9 +148,13 @@ public class ModifyOrderPage extends Page {
 	public String getPatientInfo() {
 		return getText(BAR_PATIENT_INFO);
 	}
-
+	
 	public String getRecievedTime() {
 		return getValue(FIELD_RECIEVED_TIME);
+	}
+	
+	public String getCollectionTime() {
+		return getValue(FIELD_COLLECTION_TIME);
 	}
 	
 	public void clickNextVistDate() {
@@ -146,24 +164,40 @@ public class ModifyOrderPage extends Page {
 	public String getNewLabNumberClass() {
 		return getClass(FIELD_NEW_ODER_NUMBER);
 	}
-
+	
 	public String getRequestDateClass() {
 		return getClass(FIELD_REQUEST_DATE);
 	}
-
+	
 	public String getRecievedDateClass() {
 		return getClass(FIELD_RECIEVED_DATE);
 	}
-
+	
 	public String getRecievedTimeClass() {
 		return getClass(FIELD_RECIEVED_TIME);
 	}
-
+	
+	public String getCollectionDateClass() {
+		return getClass(FIELD_COLLECTION_DATE);
+	}
+	
+	public String getCollectionTimeClass() {
+		return getClass(FIELD_COLLECTION_TIME);
+	}
+	
 	public void selectSiteNameFromDropDown() {
 		selectOptionFromDropDown(DROP_DOWN_SITE_NAME);
 	}
-
+	
 	public Boolean siteNameDropDownHasOptions() {
 		return dropDownHasOptions(DROP_DOWN_SITE_NAME);
+	}
+	
+	public void checkRemoveTest() {
+		clickOn(CHECKBOX_REMOVE_SAMPLE);
+	}
+	
+	public Boolean removeTestIsChecked() {
+		return isChecked(CHECKBOX_REMOVE_SAMPLE);
 	}
 }
