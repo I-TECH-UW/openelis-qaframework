@@ -52,6 +52,8 @@ public class ModifyOrderPage extends Page {
 	private static final By FIELD_COLLECTION_TIME = By.xpath("//input[contains(@name,'collectionTime')]");
 	
 	private static final By CHECKBOX_REMOVE_SAMPLE = By.xpath("//input[contains(@id,'removeSample')]");
+
+	private static final By CHECKBOX_DELETE_TEST = By.xpath("//input[contains(@name,'canceled')]");
 	
 	public ModifyOrderPage(Page parent) {
 		super(parent);
@@ -83,6 +85,10 @@ public class ModifyOrderPage extends Page {
 	
 	public void clickSaveButton() {
 		clickOn(BUTTON_SAVE);
+	}
+
+	public void clickDeleteTest() {
+		clickOn(CHECKBOX_DELETE_TEST);
 	}
 	
 	public Boolean searchButtonIsDeactivated() {
@@ -193,11 +199,19 @@ public class ModifyOrderPage extends Page {
 		return dropDownHasOptions(DROP_DOWN_SITE_NAME);
 	}
 	
-	public void checkRemoveTest() {
+	public void checkRemoveSample() {
 		clickOn(CHECKBOX_REMOVE_SAMPLE);
 	}
 	
-	public Boolean removeTestIsChecked() {
+	public Boolean removeSampleCheckBoxIsChecked() {
 		return isChecked(CHECKBOX_REMOVE_SAMPLE);
+	}
+
+	public Boolean deleteTestCheckBoxIsDisabled() {
+		return isDisabled(CHECKBOX_DELETE_TEST);
+	}
+
+	public Boolean deleteTestCheckBoxIsChecked() {
+		return isChecked(CHECKBOX_DELETE_TEST);
 	}
 }

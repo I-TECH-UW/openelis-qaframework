@@ -471,12 +471,62 @@ public class ModifyOrderSteps extends TestBase {
     }
     
     @When("User Clicks Remove Samples check box on the Modify Oder Page")
-    public void checkRemoveTests() {
-        modifyOrderPage.checkRemoveTest();
+    public void checkRemoveSample() {
+        modifyOrderPage.checkRemoveSample();
     }
     
-    @Then("Remove Test Check box sticks on the Modify Oder Page")
-    public void removeTestCheckBoxSticks() {
-        assertTrue(modifyOrderPage.removeTestIsChecked());
+    @Then("Remove Samples Check box sticks on the Modify Oder Page")
+    public void removeSampleCheckBoxSticks() {
+        assertTrue(modifyOrderPage.removeSampleCheckBoxIsChecked());
+    }
+    
+    @When("User Unchecks Remove Samples check box on the Modify Oder Page")
+    public void uncheckRemoveTests() {
+        modifyOrderPage.checkRemoveSample();
+    }
+    
+    @Then("Remove Samples Check box is Unselected on the Modify Oder Page")
+    public void removeSampleCheckBoxUnckecks() {
+        assertFalse(modifyOrderPage.removeSampleCheckBoxIsChecked());
+    }
+    
+    @And("User can View the `Delete test` column")
+    public void viewDeleteTestColumn() {
+        assertTrue(modifyOrderPage.containsText("Delete (Cancel) test"));
+    }
+    
+    @And("Cancel Test Checkbox activated for user with validation permissions")
+    public void deleteTestCheckBoxActivated() {
+        assertFalse(modifyOrderPage.deleteTestCheckBoxIsDisabled());
+    }
+    
+    @When("User Clicks Delete test check box on the Modify Oder Page")
+    public void checkDeleteTest() {
+        modifyOrderPage.clickDeleteTest();
+    }
+    
+    @Then("Delete test Check box sticks on the Modify Oder Page")
+    public void deleteTestCheckBoxSticks() {
+        assertTrue(modifyOrderPage.deleteTestCheckBoxIsChecked());
+    }
+    
+    @When("User Unchecks Delete test check box on the Modify Oder Page")
+    public void uncheckDeleteTest() {
+        modifyOrderPage.clickDeleteTest();
+    }
+    
+    @Then("Delete test Check box is Unselected on the Modify Oder Page")
+    public void deleteTestCheckBoxIsUnchecked() {
+        assertFalse(modifyOrderPage.deleteTestCheckBoxIsChecked());
+    }
+    
+    @When("User Rechecks box Delete test check box on the Modify Oder Page")
+    public void recheckDeleteTest() {
+        modifyOrderPage.clickDeleteTest();
+    }
+    
+    @Then("Can delete a test within a panel")
+    public void canDeleteTest() {
+        assertTrue(modifyOrderPage.deleteTestCheckBoxIsChecked());
     }
 }

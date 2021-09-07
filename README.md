@@ -6,7 +6,7 @@ This is the new  OpenELIS-Global2 Automated testing Framework thats integrates b
 
 See [Wiki](https://github.com/I-TECH-UW/openelis-qaframework/wiki) for the Project SetUp
 
-## Installing dependencies wthout running tests
+## Installing dependencies 
 
     mvn clean install -DskipTests=true
 
