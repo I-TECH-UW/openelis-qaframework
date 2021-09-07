@@ -76,7 +76,17 @@ Then Collection Time Field Automatically corrects straight numeric to proper for
 When User Enters modified collection time  "<correctTime>" as HH:MM
 Then Collection Time Field accepts correct format; collection time can be modified
 When User Clicks Remove Samples check box on the Modify Oder Page
-Then Remove Test Check box sticks on the Modify Oder Page
+Then Remove Samples Check box sticks on the Modify Oder Page
+When User Unchecks Remove Samples check box on the Modify Oder Page
+Then Remove Samples Check box is Unselected on the Modify Oder Page
+And User can View the `Delete test` column
+And Cancel Test Checkbox activated for user with validation permissions
+When User Clicks Delete test check box on the Modify Oder Page
+Then Delete test Check box sticks on the Modify Oder Page
+When User Unchecks Delete test check box on the Modify Oder Page
+Then Delete test Check box is Unselected on the Modify Oder Page
+When User Rechecks box Delete test check box on the Modify Oder Page
+Then Can delete a test within a panel
 Examples:
 |labNo            |incorrectDate|incorrectTime|nonExistingTime|time|correctTime|
 |20210000000003760|09-02/2019   |XXMM         |   30:30       |1212|05:10      |
