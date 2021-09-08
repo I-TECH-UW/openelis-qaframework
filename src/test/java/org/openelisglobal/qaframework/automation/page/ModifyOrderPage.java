@@ -45,15 +45,27 @@ public class ModifyOrderPage extends Page {
 	
 	private static final By FIELD_RECIEVED_TIME = By.id("receivedTime");
 	
-	private static final By DROP_DOWN_SITE_NAME = By.id("requesterId");
+	private static final By FIELD_SAMPLE_ID = By.xpath("//input[contains(@id,'sequence')]");
+	
+	private static final By FIELD_SAMPLE_OPTION_ADDED = By.xpath("//li[contains(@class,'asmListItem')]");
 	
 	private static final By FIELD_COLLECTION_DATE = By.xpath("//input[contains(@name,'collectionDate')]");
 	
 	private static final By FIELD_COLLECTION_TIME = By.xpath("//input[contains(@name,'collectionTime')]");
 	
 	private static final By CHECKBOX_REMOVE_SAMPLE = By.xpath("//input[contains(@id,'removeSample')]");
-
+	
 	private static final By CHECKBOX_DELETE_TEST = By.xpath("//input[contains(@name,'canceled')]");
+	
+	private static final By CHECKBOX_ASSIGN_TEST = By.xpath("//input[contains(@id,'add1')]");
+	
+	private static final By CHECKBOX_SAMPLE_RESULT = By.xpath("//input[contains(@id,'select_')]");
+	
+	private static final By DROP_DOWN_SAMPLE_TYPE = By.id("sampleTypeSelect");
+	
+	private static final By DROP_DOWN_SITE_NAME = By.id("requesterId");
+	
+	private static final By DROP_DOWN_SAMPLE_CONDITION = By.xpath("//select[contains(@id,'asmSelect')]");;
 	
 	public ModifyOrderPage(Page parent) {
 		super(parent);
@@ -77,6 +89,14 @@ public class ModifyOrderPage extends Page {
 		clickOn(BUTTON_SEARCH);
 	}
 	
+	public void clickSampleTypeDropDown() {
+		clickOn(DROP_DOWN_SAMPLE_TYPE);
+	}
+	
+	public void clickConditionDropDown() {
+		clickOn(DROP_DOWN_SAMPLE_CONDITION);
+	}
+	
 	public void removeOneTest() {
 		if (hasElementWithoutWait(CHECK_BOX_EXISTING_TEST)) {
 			clickOn(CHECK_BOX_EXISTING_TEST);
@@ -86,7 +106,7 @@ public class ModifyOrderPage extends Page {
 	public void clickSaveButton() {
 		clickOn(BUTTON_SAVE);
 	}
-
+	
 	public void clickDeleteTest() {
 		clickOn(CHECKBOX_DELETE_TEST);
 	}
@@ -163,8 +183,16 @@ public class ModifyOrderPage extends Page {
 		return getValue(FIELD_COLLECTION_TIME);
 	}
 	
+	public String getSampleId() {
+		return getValue(FIELD_SAMPLE_ID);
+	}
+	
 	public void clickNextVistDate() {
 		clickOn(FIELD_NEXT_VIST_DATE);
+	}
+	
+	public void clickCheckBoxAssignTest() {
+		clickOn(CHECKBOX_ASSIGN_TEST);
 	}
 	
 	public String getNewLabNumberClass() {
@@ -206,12 +234,40 @@ public class ModifyOrderPage extends Page {
 	public Boolean removeSampleCheckBoxIsChecked() {
 		return isChecked(CHECKBOX_REMOVE_SAMPLE);
 	}
-
+	
 	public Boolean deleteTestCheckBoxIsDisabled() {
 		return isDisabled(CHECKBOX_DELETE_TEST);
 	}
-
+	
 	public Boolean deleteTestCheckBoxIsChecked() {
 		return isChecked(CHECKBOX_DELETE_TEST);
+	}
+	
+	public Boolean assignTestCheckBoxIsChecked() {
+		return isChecked(CHECKBOX_ASSIGN_TEST);
+	}
+	
+	public Boolean sampleTypesExistInDropDown() {
+		return dropDownHasOptions(DROP_DOWN_SAMPLE_TYPE);
+	}
+	
+	public void selectSampleType() {
+		selectOptionFromDropDown(DROP_DOWN_SAMPLE_TYPE);
+	}
+	
+	public Boolean ConditionsExistInDropDown() {
+		return dropDownHasOptions(DROP_DOWN_SAMPLE_TYPE);
+	}
+	
+	public void selectSampleCondition() {
+		selectOptionFromDropDown(DROP_DOWN_SAMPLE_CONDITION);
+	}
+	
+	public Boolean hasSampleTypeResults() {
+		return hasElement(CHECKBOX_SAMPLE_RESULT);
+	}
+	
+	public Boolean sampleConditionOptionAdded() {
+		return hasElement(FIELD_SAMPLE_OPTION_ADDED);
 	}
 }

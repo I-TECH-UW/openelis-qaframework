@@ -13,6 +13,7 @@ import org.openelisglobal.qaframework.automation.utils.Utils;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import io.cucumber.java.After;
@@ -529,4 +530,84 @@ public class ModifyOrderSteps extends TestBase {
     public void canDeleteTest() {
         assertTrue(modifyOrderPage.deleteTestCheckBoxIsChecked());
     }
+    
+    @When("User Search by lab number {string} from previous testing steps on the Modify Oder Page")
+    public void searchBYLabNumber(String labNumber) {
+        modifyOrderPage.enterLabNumber(labNumber);
+        modifyOrderPage.clickSearchButton();
+    }
+    
+    @Then("Table headers are correct Under Available Tests")
+    public void tableHeadersDisplyCorrectlyUnderAvailableTests() {
+        assertTrue(modifyOrderPage.containsText("Available Tests"));
+        assertTrue(modifyOrderPage.containsText("Lab No"));
+        assertTrue(modifyOrderPage.containsText("Sample Type"));
+        assertTrue(modifyOrderPage.containsText("Test Name"));
+        assertTrue(modifyOrderPage.containsText("Assign"));
+    }
+    
+    @When("User Check box next to  several tests")
+    public void clickCheckBoxAssign() {
+        modifyOrderPage.clickCheckBoxAssignTest();
+    }
+    
+    @Then("Assign test Check boxes stick")
+    public void assignTestCheckBoxSticks() {
+        assertTrue(modifyOrderPage.assignTestCheckBoxIsChecked());
+    }
+    
+    @When("User unCheck box next to  several tests")
+    public void unCheckBoxAssign() {
+        modifyOrderPage.clickCheckBoxAssignTest();
+    }
+    
+    @Then("Assign test Check boxes will uncheck")
+    public void assignTestCheckBoxUncheck() {
+        assertFalse(modifyOrderPage.assignTestCheckBoxIsChecked());
+    }
+    
+    @When("User Click on drop-down Sample Type list on the Modify Oder Page")
+    public void clickSampleTypeDropDown() {
+        modifyOrderPage.clickSampleTypeDropDown();
+    }
+    
+    @Then("Sample types display in drop-down list on the Modify Oder Page")
+    public void sampelTypesExist() {
+        assertTrue(modifyOrderPage.sampleTypesExistInDropDown());
+    }
+    
+    @When("User Select any sample type on the Modify Oder Page")
+    public void selectSampleType() {
+        modifyOrderPage.selectSampleType();
+    }
+    
+    @Then("Order information fields for the selected sample type appear. Sample types can be added one by one")
+    public void orderFieldsAppear() {
+        assertTrue(modifyOrderPage.hasSampleTypeResults());
+        assertTrue(modifyOrderPage.containsText("ID"));
+        assertTrue(modifyOrderPage.containsText("Sample Type"));
+        assertTrue(modifyOrderPage.containsText("Collection Date&nbsp;(dd/mm/yyyy)"));
+        assertTrue(modifyOrderPage.containsText("Collection Time (hh:mm)"));
+        assertTrue(modifyOrderPage.containsText("Condition"));
+        assertTrue(modifyOrderPage.containsText("Sample Nature"));
+        assertTrue(modifyOrderPage.containsText("Sample Nature"));
+        assertTrue(modifyOrderPage.containsText("Tests"));
+        assertTrue(modifyOrderPage.containsText("Add Order"));
+    }
+    
+    @And("Sample ID added to reflect correct next Sample number")
+    public void sampleIdAdded() {
+        assertNotNull(modifyOrderPage.getSampleId());
+    }
+
+    @When("User Select sample Condition from drop-down list on the Modify Oder Page")
+    public void selectSampleCondition() {
+        modifyOrderPage.selectSampleCondition();;
+    }
+
+     
+    @Then("Multiple sample conditions can be added")
+    public void sampelConditionAdded() {
+        assertTrue(modifyOrderPage.sampleConditionOptionAdded());
+    }  
 }
