@@ -90,3 +90,29 @@ Then Can delete a test within a panel
 Examples:
 |labNo            |incorrectDate|incorrectTime|nonExistingTime|time|correctTime|
 |20210000000003760|09-02/2019   |XXMM         |   30:30       |1212|05:10      |
+
+@modifyOrder
+Scenario Outline: Available Test Information
+When User Search by lab number "<labNo>" from previous testing steps on the Modify Oder Page
+Then Table headers are correct Under Available Tests
+When User Check box next to  several tests
+Then Assign test Check boxes stick
+When User unCheck box next to  several tests
+Then Assign test Check boxes will uncheck
+Examples:
+|labNo            |
+|20210000000003760|
+
+@modifyOrder
+Scenario Outline: Add Order
+And User Search by lab number "<labNo>" from previous testing steps on the Modify Oder Page
+When User Click on drop-down Sample Type list on the Modify Oder Page
+Then Sample types display in drop-down list on the Modify Oder Page
+When User Select any sample type on the Modify Oder Page
+Then Order information fields for the selected sample type appear. Sample types can be added one by one 
+And Sample ID added to reflect correct next Sample number
+When User Select sample Condition from drop-down list on the Modify Oder Page
+Then Multiple sample conditions can be added
+Examples:
+|labNo            |
+|20210000000003760|
