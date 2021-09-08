@@ -32,13 +32,13 @@ See [Wiki](https://github.com/I-TECH-UW/openelis-qaframework/wiki) for the Proje
  ## Test features       
 
 
-| Test Feature      |Filter Tag     |
-|:-----------------:|:-------------:|
-| Login             | @login        | 
-| Add order         | @order        |  
-| Results Entry     | @results      | 
-| Validation        | @validate     |
-| Patient Report    | @report       |
-| Patient Entry     | @patientEntry |
-| Mofidy Order      | @modifyOrder  |  
+| Test Feature      |Filter Tag     |Status        |
+|:-----------------:|:-------------:|:-------------:|
+| Login             | @login        | [![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/login.yml/badge.svg)](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/login.yml)|
+| Add order         | @order        | [![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/addOrder.yml/badge.svg)](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/addOrder.yml)|  
+| Results Entry     | @results      |[![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/resultEntry.yml/badge.svg)](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/resultEntry.yml)| 
+| Validation        | @validate     |[![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/validation.yml/badge.svg)](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/validation.yml)|
+| Patient Report    | @report       |[![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/patientReport.yml/badge.svg)](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/patientReport.yml)|
+| Patient Entry     | @patientEntry |[![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/patientEntry.yml/badge.svg)](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/patientEntry.yml)|
+| Mofidy Order      | @modifyOrder  |[![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/modifyOrder.yml/badge.svg)](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/modifyOrder.yml)| 
        
