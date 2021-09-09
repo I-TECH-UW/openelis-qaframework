@@ -16,8 +16,8 @@ Then Result accession number search form displays
 When User Selects Results --> Search --> By Test Name, Date, or Status 
 Then Results by Test, Date or Status search form displays
 Examples:
-|    unitType   |
-|Molecular Bio A|
+    |    unitType   |
+    |Molecular Bio A|
 
 @results
 Scenario Outline:Searching for test result entry forms
@@ -35,8 +35,8 @@ Then Result accession number search form displays
 When User Searches by AccesionNumber "<accesionNumber>"
 Then Search by Lab Number yields results for known accession number
 Examples:
-|patientId  |lastName|FirstName|accesionNumber|
-|HT7823DAAAZ|Foxy    | McGee   |1234519000002 |
+    |patientId  |lastName|FirstName|accesionNumber|
+    |HT7823DAAAZ|Foxy    | McGee   |1234519000002 |
 
 @results
 Scenario Outline:Results Entry Set-up
@@ -58,8 +58,8 @@ Then Page goes to correct lab number and order is highlighted in yellow
 And User Select Results --> Enter by Unit from main menu drop-down and Selects a Unit Type "<unitType>" for which there are known tests
 And Message appears ,Accession number not found, if the format is incorrect or number is not in use
 Examples:
-|accesionNumber   |lastName|firstName  |unitType         |date      |
-|20210000000002249|moses   | mutesasira|Molecular Biology|03/07/2021|  
+    |accesionNumber   |lastName|firstName  |unitType         |date      |
+    |20210000000002249|moses   | mutesasira|Molecular Biology|03/07/2021|  
 
 @results
 Scenario Outline:Entering Test Results 
@@ -82,8 +82,8 @@ Then Results can be chosen from the drop-down list
 When User Clicks checkbox under Result From Analyzer
 Then Uncheck sticks
 Examples:
-|unitType         |value |convertedValue|lowValue|highValue|notes       |
-|Molecular Biology|3     |3.00          |3       |20000000 |Sample Notes|
+    |unitType         |value |convertedValue|lowValue|highValue|notes       |
+    |Molecular Biology|3     |3.00          |3       |20000000 |Sample Notes|
 
 @results
 Scenario Outline:Overall Page
@@ -99,8 +99,8 @@ And User Clicks Cancel button
 And User Clicks Leave 
 Then User is returned to home page
 Examples:
-|unitType         |
-|Molecular Biology|
+    |unitType         |
+    |Molecular Biology|
 
 @results
 Scenario Outline:Verification
@@ -118,8 +118,8 @@ When User Goes to Reports --> Routine --> Patient Status Report
 And  User Enters the appropriate Lab Number "<accesionNumber>" and clicks Generate Printable Version
 Then Results appear as reported
 Examples:
-|accesionNumber   |lastName|firstName  |         test                 |unitType         |
-|20210000000002249|moses   | mutesasira|HEPATITIS C VIRAL LOAD(SERUM) |Molecular Biology|
+    |accesionNumber   |lastName|firstName  |         test                 |unitType         |
+    |20210000000002249|moses   | mutesasira|HEPATITIS C VIRAL LOAD(SERUM) |Molecular Biology|
 
 @results
 Scenario Outline:Accept As Is functionality
@@ -138,16 +138,16 @@ Then Notes field closes and symbol reverts to green + symbol
 When User Clicks Save Button
 Then Page refreshes and green ,Save was successful, message appears 
 Examples:
-|accesionNumber   |notes       |
-|20210000000002249|Sample notes|
+    |accesionNumber   |notes       |
+    |20210000000002249|Sample notes|
 
 @results
 Scenario Outline:Verification
 When User Goes to Validation page for correct unit "<unitType>"
 Then Result appears in Validation list
 Examples:
-|unitType         |
-|Molecular Biology|	
+    |unitType         |
+    |Molecular Biology|	
 
 @results
 Scenario Outline:Changing Results
@@ -157,5 +157,5 @@ Then Note Field displays and Enter note "<note>"
 When User Clicks the Save Button
 Then Message ,Save was successful, appears at top of page
 Examples:
-|unitType         |value |note       |
-|Molecular Biology|55    |Sample Note|
+    |unitType         |value |note       |
+    |Molecular Biology|55    |Sample Note|

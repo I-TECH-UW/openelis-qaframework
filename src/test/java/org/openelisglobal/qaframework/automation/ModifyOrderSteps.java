@@ -599,15 +599,98 @@ public class ModifyOrderSteps extends TestBase {
     public void sampleIdAdded() {
         assertNotNull(modifyOrderPage.getSampleId());
     }
-
+    
     @When("User Select sample Condition from drop-down list on the Modify Oder Page")
     public void selectSampleCondition() {
-        modifyOrderPage.selectSampleCondition();;
+        modifyOrderPage.selectSampleCondition();
     }
-
-     
+    
     @Then("Multiple sample conditions can be added")
     public void sampelConditionAdded() {
         assertTrue(modifyOrderPage.sampleConditionOptionAdded());
-    }  
+    }
+    
+    @When("User Clicks `X` beside a condition on the Modify Oder Page")
+    public void removeSampleCondition() {
+        modifyOrderPage.clickRemoveCondition();
+    }
+    
+    @Then("Added sample conditions can be deleted")
+    public void sampelConditionRemoved() {
+        assertTrue(modifyOrderPage.sampleConditionOptionRemoved());
+    }
+    
+    @When("User click Remove ,On the far right of the sample")
+    public void removeSample() {
+        modifyOrderPage.clickRemoveSample();
+    }
+    
+    @Then("Removes sample from order")
+    public void sampelRemoved() {
+        assertTrue(modifyOrderPage.sampleTypeResultsRemoved());
+    }
+    
+    @When("User Click Remove All ,on the Modify Oder Page")
+    public void removeAllSample() {
+        modifyOrderPage.selectSampleType();
+        modifyOrderPage.clickRemoveAllSample();
+    }
+    
+    @Then("Removes all samples from order")
+    public void allSampelRemoved() {
+        assertTrue(modifyOrderPage.sampleTypeResultsRemoved());
+    }
+    
+    @When("User can Re-add samples")
+    public void reAddSample() {
+        modifyOrderPage.selectSampleType();
+    }
+    
+    @When("User Enters Collection Date {string} on the Modify Oder Page")
+    public void enterCollectionDate(String date) throws InterruptedException {
+        modifyOrderPage.enterCollectionDate(date);
+        modifyOrderPage.clickNextVistDate();
+        Thread.sleep(1000);
+    }
+    
+    @Then("Collection Date Field validates {string} the date format")
+    public void fieldValidatesDate(String validation) throws InterruptedException {
+        if (validation.trim().equals("Rejects incorect Format not in DD/MM/YYYY")
+                | validation.trim().equals("Rejects incorect Format not Numeric")) {
+            assertEquals("text  error", modifyOrderPage.getCollectionDateClass().trim());
+        } else if (validation.trim().equals("Rejects Future date")) {
+            assertTrue(modifyOrderPage.alertPresent());
+            assertTrue(modifyOrderPage.getAlertText().contains("Date may not be in the future"));
+            modifyOrderPage.acceptAlert();
+            assertEquals("text  error", modifyOrderPage.getCollectionDateClass().trim());
+        } else if (validation.trim().equals("Accepts correct Format in DD/MM/YYYY")) {
+            assertFalse(modifyOrderPage.alertPresent());
+            assertEquals("text", modifyOrderPage.getCollectionDateClass().trim());
+        }
+    }
+    
+    @When("User Enters Collection Time {string} on the Modify Oder Page")
+    public void enterCollectionTimeOnModifyOrderPage(String time) throws InterruptedException {
+        modifyOrderPage.enterCollectionTime(time);
+        modifyOrderPage.clickNextVistDate();
+        Thread.sleep(1000);
+    }
+    
+    @Then("Collection Time Field  validates {string} the time format")
+    public void fieldValidatesTime(String validation) throws InterruptedException {
+        if (validation.trim().equals("Rejects incorect Format ,non numeric")) {
+            assertEquals("", modifyOrderPage.getCollectionTime().trim());
+        } else if (validation.trim().equals("Rejects time not existing on the  in 12/24 hour clock")) {
+            assertEquals("text error", modifyOrderPage.getCollectionTimeClass());
+        } else if (validation.trim().equals("Rejects extra digits")) {
+            assertEquals("12:12", modifyOrderPage.getCollectionTime().trim());
+            assertEquals("text", modifyOrderPage.getCollectionTimeClass());
+        } else if (validation.trim().equals("Auto-corrects HHMM format to HH:MM")) {
+            assertEquals("11:11", modifyOrderPage.getCollectionTime().trim());
+            assertEquals("text", modifyOrderPage.getCollectionTimeClass());
+        } else if (validation.trim().equals("Accepts correct Format in HH:MM")) {
+            assertEquals("10:10", modifyOrderPage.getCollectionTime().trim());
+            assertEquals("text", modifyOrderPage.getCollectionTimeClass());
+        }
+    }
 }

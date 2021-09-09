@@ -65,7 +65,13 @@ public class ModifyOrderPage extends Page {
 	
 	private static final By DROP_DOWN_SITE_NAME = By.id("requesterId");
 	
-	private static final By DROP_DOWN_SAMPLE_CONDITION = By.xpath("//select[contains(@id,'asmSelect')]");;
+	private static final By DROP_DOWN_SAMPLE_CONDITION = By.xpath("//select[contains(@id,'asmSelect')]");
+	
+	private static final By REMOVE_CONDITION = By.xpath("//a[contains(@class,'asmListItemRemove')]");
+	
+	private static final By REMOVE_SAMPLE = By.xpath("//input[contains(@id,'removeButton_')]");
+	
+	private static final By REMOVE_ALL_SAMPLE = By.xpath("//*[@id='samplesAdded']/table[2]/tbody/tr/td[2]/input");
 	
 	public ModifyOrderPage(Page parent) {
 		super(parent);
@@ -195,6 +201,18 @@ public class ModifyOrderPage extends Page {
 		clickOn(CHECKBOX_ASSIGN_TEST);
 	}
 	
+	public void clickRemoveCondition() {
+		clickOn(REMOVE_CONDITION);
+	}
+	
+	public void clickRemoveSample() {
+		clickOn(REMOVE_SAMPLE);
+	}
+	
+	public void clickRemoveAllSample() {
+		clickOn(REMOVE_ALL_SAMPLE);
+	}
+	
 	public String getNewLabNumberClass() {
 		return getClass(FIELD_NEW_ODER_NUMBER);
 	}
@@ -267,7 +285,15 @@ public class ModifyOrderPage extends Page {
 		return hasElement(CHECKBOX_SAMPLE_RESULT);
 	}
 	
+	public Boolean sampleTypeResultsRemoved() {
+		return !hasElementWithoutWait(CHECKBOX_SAMPLE_RESULT);
+	}
+	
 	public Boolean sampleConditionOptionAdded() {
 		return hasElement(FIELD_SAMPLE_OPTION_ADDED);
+	}
+	
+	public Boolean sampleConditionOptionRemoved() {
+		return !hasElementWithoutWait(FIELD_SAMPLE_OPTION_ADDED);
 	}
 }
