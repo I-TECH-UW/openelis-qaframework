@@ -64,9 +64,9 @@ Then Validate "<status>" Telephone Number
 And User Enters Fax "<fax>"
 And User Enters Email "<email>"
 Examples:
-|     telephone    |     fax   |      email      | status |
-| +23063458788     | 682737882 | uwash@gmail.com | valid  |     
-| +225-33-45-87    |     -     |      -          |invalid | 
+     |     telephone    |     fax   |      email      | status |
+     | +23063458788     | 682737882 | uwash@gmail.com | valid  |     
+     | +225-33-45-87    |     -     |      -          |invalid | 
 
 @order
 Scenario: Add samples 
@@ -151,8 +151,8 @@ And User Searches by Last Name "<lastName>"
 And User Searches by First Name "<firstName>"
 And User Searches by Date of Birth "<dateOfBirth>"
 Examples:
-| accesionNumber    | patientId  | lastName | firstName  | dateOfBirth |
-| 20210000000001004 | 201507D33  |   Aliou  | SADIO      | 09/02/2019  |
+     | accesionNumber    | patientId  | lastName | firstName  | dateOfBirth |
+     | 20210000000001004 | 201507D33  |   Aliou  | SADIO      | 09/02/2019  |
 
 @order
 Scenario Outline: Patient Information
@@ -187,10 +187,9 @@ And User Selects Patient Education
 And User Selects Patient Marital Status
 And User Enters Patient Other Nationality "<nationality>"
 Examples:
-|subjectNumber|nationalId |pLastName|pFirstName|cLastName|cFirstName|  cEmail         | cPhone        |        street              |commune   |town  |pPhone       |pEmail        |dateOfBirth |nationality|age|status  |
-| 201807D9P   | 201507D35 |   Aliou | SADIO    |  moses  | mutes    | wrongEmail      | +23063458788  | New York city, street 3334 |Grand yoff| Dakar|ff223377     |wrongEmail    |09/02/dd    |American   |20 |invalid |
-| 201807D9P   | 201507D35 |   Aliou | SADIO    |  moses  | mutes    |contact@gmail.com| +23063458788  | New York city, street 3334 |Grand yoff| Dakar|+23063458788 |pat@gmail.com |09/02/2019  |American   |20 |valid   |
-
+     |subjectNumber|nationalId |pLastName|pFirstName|cLastName|cFirstName|  cEmail         | cPhone        |        street              |commune   |town  |pPhone       |pEmail        |dateOfBirth |nationality|age|status  |
+     | 201807D9P   | 201507D35 |   Aliou | SADIO    |  moses  | mutes    | wrongEmail      | +23063458788  | New York city, street 3334 |Grand yoff| Dakar|ff223377     |wrongEmail    |09/02/dd    |American   |20 |invalid |
+     | 201807D9P   | 201507D35 |   Aliou | SADIO    |  moses  | mutes    |contact@gmail.com| +23063458788  | New York city, street 3334 |Grand yoff| Dakar|+23063458788 |pat@gmail.com |09/02/2019  |American   |20 |valid   |
 
 @order
 Scenario: Overall Page

@@ -23,8 +23,8 @@ Then Patient Information form populates with patient information
 When User Clicks New Patient on the Add Patient Page
 Then Patient Information form clears
 Examples:
-|lastName|firstName|subjectNumber|labNo            |
-|seruwu  |jimmy    |oe012        |20210000000002250|
+    |lastName|firstName|subjectNumber|labNo            |
+    |seruwu  |jimmy    |oe012        |20210000000002250|
 
 @patientEntry
 Scenario Outline: Patient Information
@@ -74,5 +74,5 @@ Scenario Outline: Verification
 When User Searches for Patient on the Add Order Page for a known Patient with known last name "<lastName>" and first name "<firstName>"
 Then Correct patient information ,last name "<lastName>" and first name "<firstName>", appears when searched for
 Examples:
-|lastName|firstName|
-|seruwu  |jimmy    |
+    |lastName|firstName|
+    |seruwu  |jimmy    |
