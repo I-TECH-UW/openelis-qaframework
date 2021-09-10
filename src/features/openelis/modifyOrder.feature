@@ -148,3 +148,21 @@ Examples:
     |20210000000003760|12:122|Rejects extra digits                                 |
     |20210000000003760|1111  |Auto-corrects HHMM format to HH:MM                   |
     |20210000000003760|10:10 |Accepts correct Format in HH:MM                      |
+
+@modifyOrder
+Scenario Outline: Add Tests 
+And User Search by lab number "<labNo>" from previous testing steps on the Modify Oder Page
+And User Select any sample type on the Modify Oder Page
+Then Test entry is marked mandatory on the Modify Oder Page
+And Available Tests check box list appears for each sample type
+When User Checks check box next to test name on the Modify Oder Page
+Then Checkbox sticks, test name appears in Tests box on the Modify Oder Page 
+When User Unchecks check box next to test name on the Modify Oder Page
+Then Checkbox stays clear; Deselects test ;test name disappears from Tests box
+When User Checks check box next to panel name on the Modify Oder Page
+Then All panel tests are selected ,checkboxes stick, test names appear in Tests box 
+When User unChecks check box next to panel name on the Modify Oder Page
+Then All panel tests are diselected ,Deselects test ;test name disappears from Tests box
+Examples:
+    |labNo            |
+    |20210000000003760|   

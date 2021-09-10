@@ -47,6 +47,8 @@ public class ModifyOrderPage extends Page {
 	
 	private static final By FIELD_SAMPLE_ID = By.xpath("//input[contains(@id,'sequence')]");
 	
+	private static final By FIELD_TESTS = By.xpath("//textarea[contains(@id,'tests_')]");
+	
 	private static final By FIELD_SAMPLE_OPTION_ADDED = By.xpath("//li[contains(@class,'asmListItem')]");
 	
 	private static final By FIELD_COLLECTION_DATE = By.xpath("//input[contains(@name,'collectionDate')]");
@@ -61,6 +63,10 @@ public class ModifyOrderPage extends Page {
 	
 	private static final By CHECKBOX_SAMPLE_RESULT = By.xpath("//input[contains(@id,'select_')]");
 	
+	private static final By CHECKBOX_TEST_SELECT = By.className("testCheckbox");
+	
+	private static final By CHECKBOX_PANNEL_SELECT = By.name("panelSelect");
+	
 	private static final By DROP_DOWN_SAMPLE_TYPE = By.id("sampleTypeSelect");
 	
 	private static final By DROP_DOWN_SITE_NAME = By.id("requesterId");
@@ -72,6 +78,9 @@ public class ModifyOrderPage extends Page {
 	private static final By REMOVE_SAMPLE = By.xpath("//input[contains(@id,'removeButton_')]");
 	
 	private static final By REMOVE_ALL_SAMPLE = By.xpath("//*[@id='samplesAdded']/table[2]/tbody/tr/td[2]/input");
+	
+	private static final By LABEL_TEST_REQUIRED = By
+	        .xpath("//*[@id='orderDisplay']/table/tbody/tr/td/table/tbody/tr[2]/td[1]/span[1]");
 	
 	public ModifyOrderPage(Page parent) {
 		super(parent);
@@ -189,6 +198,10 @@ public class ModifyOrderPage extends Page {
 		return getValue(FIELD_COLLECTION_TIME);
 	}
 	
+	public String getAddedTests() {
+		return getValue(FIELD_TESTS);
+	}
+	
 	public String getSampleId() {
 		return getValue(FIELD_SAMPLE_ID);
 	}
@@ -211,6 +224,14 @@ public class ModifyOrderPage extends Page {
 	
 	public void clickRemoveAllSample() {
 		clickOn(REMOVE_ALL_SAMPLE);
+	}
+	
+	public void clickTestCheckBox() {
+		clickOn(CHECKBOX_TEST_SELECT);
+	}
+	
+	public void clickPanelCheckBox() {
+		clickOn(CHECKBOX_PANNEL_SELECT);
 	}
 	
 	public String getNewLabNumberClass() {
@@ -237,6 +258,10 @@ public class ModifyOrderPage extends Page {
 		return getClass(FIELD_COLLECTION_TIME);
 	}
 	
+	public String getTestRequiredLabelClass() {
+		return getClass(LABEL_TEST_REQUIRED);
+	}
+	
 	public void selectSiteNameFromDropDown() {
 		selectOptionFromDropDown(DROP_DOWN_SITE_NAME);
 	}
@@ -261,6 +286,14 @@ public class ModifyOrderPage extends Page {
 		return isChecked(CHECKBOX_DELETE_TEST);
 	}
 	
+	public Boolean enterTestCheckBoxIsChecked() {
+		return isChecked(CHECKBOX_TEST_SELECT);
+	}
+	
+	public Boolean panelCheckBoxIsChecked() {
+		return isChecked(CHECKBOX_PANNEL_SELECT);
+	}
+	
 	public Boolean assignTestCheckBoxIsChecked() {
 		return isChecked(CHECKBOX_ASSIGN_TEST);
 	}
@@ -283,6 +316,10 @@ public class ModifyOrderPage extends Page {
 	
 	public Boolean hasSampleTypeResults() {
 		return hasElement(CHECKBOX_SAMPLE_RESULT);
+	}
+	
+	public Boolean hasTestCheckBoxes() {
+		return hasElement(CHECKBOX_TEST_SELECT);
 	}
 	
 	public Boolean sampleTypeResultsRemoved() {

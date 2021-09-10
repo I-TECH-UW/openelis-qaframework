@@ -693,4 +693,65 @@ public class ModifyOrderSteps extends TestBase {
             assertEquals("text", modifyOrderPage.getCollectionTimeClass());
         }
     }
+    
+    @Then("Test entry is marked mandatory on the Modify Oder Page")
+    public void testsEntryMarkedMandatory() {
+        assertEquals("requiredlabel", modifyOrderPage.getTestRequiredLabelClass());
+    }
+    
+    @And("Available Tests check box list appears for each sample type")
+    public void availableTestsCheckBoxAppears() {
+        assertTrue(modifyOrderPage.containsText("Available Tests"));
+        assertTrue(modifyOrderPage.hasTestCheckBoxes());
+    }
+    
+    @When("User Checks check box next to test name on the Modify Oder Page")
+    public void selectTestCheckBox() throws InterruptedException {
+        assertEquals("", modifyOrderPage.getAddedTests().trim());
+        modifyOrderPage.clickTestCheckBox();
+        Thread.sleep(1000);
+    }
+    
+    @Then("Checkbox sticks, test name appears in Tests box on the Modify Oder Page")
+    public void testCheckBoxSticsk() {
+        assertTrue(modifyOrderPage.enterTestCheckBoxIsChecked());
+        assertNotEquals("", modifyOrderPage.getAddedTests().trim());
+    }
+    
+    @When("User Unchecks check box next to test name on the Modify Oder Page")
+    public void unselectTestCheckBox() throws InterruptedException {
+        modifyOrderPage.clickTestCheckBox();
+        Thread.sleep(1000);
+    }
+    
+    @Then("Checkbox stays clear; Deselects test ;test name disappears from Tests box")
+    public void testCheckBoxDiselected() {
+        assertFalse(modifyOrderPage.enterTestCheckBoxIsChecked());
+        assertEquals("", modifyOrderPage.getAddedTests().trim());
+    }
+    
+    @When("User Checks check box next to panel name on the Modify Oder Page")
+    public void selectPanelCheckBox() throws InterruptedException {
+        assertEquals("", modifyOrderPage.getAddedTests().trim());
+        modifyOrderPage.clickPanelCheckBox();
+        Thread.sleep(1000);
+    }
+    
+    @Then("All panel tests are selected ,checkboxes stick, test names appear in Tests box")
+    public void panelCheckBoxSticsk() {
+        assertTrue(modifyOrderPage.panelCheckBoxIsChecked());
+        assertNotEquals("", modifyOrderPage.getAddedTests().trim());
+    }
+    
+    @When("User unChecks check box next to panel name on the Modify Oder Page")
+    public void unselectPanelCheckBox() throws InterruptedException {
+        modifyOrderPage.clickPanelCheckBox();
+        Thread.sleep(1000);
+    }
+    
+    @Then("All panel tests are diselected ,Deselects test ;test name disappears from Tests box")
+    public void panelCheckBoxStics() {
+        assertFalse(modifyOrderPage.panelCheckBoxIsChecked());
+        assertEquals("", modifyOrderPage.getAddedTests().trim());
+    }
 }
