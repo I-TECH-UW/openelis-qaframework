@@ -174,6 +174,14 @@ public class ModifyOrderPage extends Page {
 		setText(FIELD_COLLECTION_TIME, time);
 	}
 	
+	public void enterTextDirectlyInTestsField(String tests) {
+		setText(FIELD_TESTS, tests);
+	}
+	
+	public Boolean testsBoxIsReadOnly() {
+		return findElement(FIELD_TESTS).getAttribute("readonly").equals("true") ? true : false;
+	}
+	
 	public Boolean containsSeachResult() {
 		return hasElement(SELECT_RESULT);
 	}
