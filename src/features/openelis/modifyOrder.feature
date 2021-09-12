@@ -162,7 +162,11 @@ Then Checkbox stays clear; Deselects test ;test name disappears from Tests box
 When User Checks check box next to panel name on the Modify Oder Page
 Then All panel tests are selected ,checkboxes stick, test names appear in Tests box 
 When User unChecks check box next to panel name on the Modify Oder Page
-Then All panel tests are diselected ,Deselects test ;test name disappears from Tests box
+Then All panel tests are diselected ;test name disappears from Tests box
+When User Enters text in box Tests on the Modify Oder Page
+Then Text cannot be added to box Tests on the Modify Oder Page
+When User Deletes text from box Tests on the Modify Oder Page
+Then Text cannot be deleted from  Tests box on the Modify Oder Page
 Examples:
     |labNo            |
     |20210000000003760|   

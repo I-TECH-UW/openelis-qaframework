@@ -749,9 +749,43 @@ public class ModifyOrderSteps extends TestBase {
         Thread.sleep(1000);
     }
     
-    @Then("All panel tests are diselected ,Deselects test ;test name disappears from Tests box")
+    @Then("All panel tests are diselected ;test name disappears from Tests box")
     public void panelCheckBoxStics() {
         assertFalse(modifyOrderPage.panelCheckBoxIsChecked());
         assertEquals("", modifyOrderPage.getAddedTests().trim());
+    }
+    
+    @When("User Enters text in box Tests on the Modify Oder Page")
+    public void enterTestsDirectly() throws InterruptedException {
+        try {
+            modifyOrderPage.enterTextDirectlyInTestsField("tests");
+        }
+        catch (Exception e) {
+            assertTrue(modifyOrderPage.testsBoxIsReadOnly());
+        }
+        Thread.sleep(1000);
+    }
+    
+    @Then("Text cannot be added to box Tests on the Modify Oder Page")
+    public void checkTextInTestsBox() {
+        assertEquals("", modifyOrderPage.getAddedTests().trim());
+    }
+    
+    @When("User Deletes text from box Tests on the Modify Oder Page")
+    public void deleteTestsDirectly() throws InterruptedException {
+        assertEquals("", modifyOrderPage.getAddedTests().trim());
+        modifyOrderPage.clickTestCheckBox();
+        try {
+            modifyOrderPage.enterTextDirectlyInTestsField("");
+        }
+        catch (Exception e) {
+            assertTrue(modifyOrderPage.testsBoxIsReadOnly());
+        }
+        Thread.sleep(1000);
+    }
+    
+    @Then("Text cannot be deleted from  Tests box on the Modify Oder Page")
+    public void checkIfTextisDeletedFromTestsBox() {
+        assertNotEquals("", modifyOrderPage.getAddedTests().trim());
     }
 }
