@@ -19,6 +19,10 @@ public class ModifyOrderPage extends Page {
 	
 	private static final By BUTTON_SAVE = By.id("saveButtonId");
 	
+	private static final By BUTTON_CANCEL = By.id("cancelButtonId");
+
+	private static final By BUTTON_PRINT_LABEL = By.id("printBarcodeButton");
+	
 	private static final By FIELD_LAB_NUMBER_SEARCH = By.id("patientLabNoSearchValue");
 	
 	private static final By FIELD_PATIENT_ID_SEARCH = By.id("patientIdNumberSearchValue");
@@ -28,6 +32,8 @@ public class ModifyOrderPage extends Page {
 	private static final By FIELD_FIRST_NAME_SEARCH = By.id("firstNameSearchValue");
 	
 	private static final By FIELD_DOB_SEARCH = By.id("dateOfBirthSearchValue");
+	
+	private static final By FIELD_PROVIDER_FIRST_NAME = By.id("providerFirstNameID");
 	
 	private static final By BAR_PATIENT_INFO = By.id("patientInfo");
 	
@@ -122,6 +128,10 @@ public class ModifyOrderPage extends Page {
 		clickOn(BUTTON_SAVE);
 	}
 	
+	public void clickCancelButton() {
+		clickOn(BUTTON_CANCEL);
+	}
+	
 	public void clickDeleteTest() {
 		clickOn(CHECKBOX_DELETE_TEST);
 	}
@@ -176,6 +186,10 @@ public class ModifyOrderPage extends Page {
 	
 	public void enterTextDirectlyInTestsField(String tests) {
 		setText(FIELD_TESTS, tests);
+	}
+	
+	public void enterProviderFirstName(String firstName) {
+		setText(FIELD_PROVIDER_FIRST_NAME, firstName);
 	}
 	
 	public Boolean testsBoxIsReadOnly() {
@@ -290,6 +304,10 @@ public class ModifyOrderPage extends Page {
 		return isDisabled(CHECKBOX_DELETE_TEST);
 	}
 	
+	public Boolean saveButtonIsDeactivated() {
+		return isDisabled(BUTTON_SAVE);
+	}
+	
 	public Boolean deleteTestCheckBoxIsChecked() {
 		return isChecked(CHECKBOX_DELETE_TEST);
 	}
@@ -328,6 +346,10 @@ public class ModifyOrderPage extends Page {
 	
 	public Boolean hasTestCheckBoxes() {
 		return hasElement(CHECKBOX_TEST_SELECT);
+	}
+
+	public Boolean printButtonAppears() {
+		return hasElement(BUTTON_PRINT_LABEL);
 	}
 	
 	public Boolean sampleTypeResultsRemoved() {

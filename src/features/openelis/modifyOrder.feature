@@ -20,7 +20,7 @@ And If there is only one patient with that Lab No, the system auto-fills all the
 And Patient Information form populates with patient information on the Modify Order Page
 Examples:
     |lastName|firstName|subjectNumber|labNo            |
-    |seruwu  |jimmy    |oe012        |20210000000003760|
+    |seruwu  |jimmy    |oe012        |20210000000003761|
 
 @modifyOrder
 Scenario Outline: Order Information 
@@ -55,7 +55,7 @@ When User Enters new site name from drop-down list
 Then Site name and code drop-down list displays previously entered  options correctly and selection can be made
 Examples:
     |labNo            |incorrectLabNo  |unUsedLabNo    |usedLabNo      |incorrectDate|incorrectTime|time|correctTime|
-    |20210000000003760|24068xx706080889|210000000003790|210000000003780|09-02/2019   |XXMM         |1212|05:10      |
+    |20210000000003761|24068xx706080889|210000000003790|210000000003780|09-02/2019   |XXMM         |1212|05:10      |
 
 @modifyOrder
 Scenario Outline: Current Test Information
@@ -89,7 +89,7 @@ When User Rechecks box Delete test check box on the Modify Oder Page
 Then Can delete a test within a panel
 Examples:
     |labNo            |incorrectDate|incorrectTime|nonExistingTime|time|correctTime|
-    |20210000000003760|09-02/2019   |XXMM         |   30:30       |1212|05:10      |
+    |20210000000003761|09-02/2019   |XXMM         |   30:30       |1212|05:10      |
 
 @modifyOrder
 Scenario Outline: Available Test Information
@@ -101,7 +101,7 @@ When User unCheck box next to  several tests
 Then Assign test Check boxes will uncheck
 Examples:
     |labNo            |
-    |20210000000003760|
+    |20210000000003761|
 
 @modifyOrder
 Scenario Outline: Add Order
@@ -122,7 +122,7 @@ Then Removes all samples from order
 And User can Re-add samples
 Examples:
     |labNo            |
-    |20210000000003760|
+    |20210000000003761|
 
 @modifyOrder
 Scenario Outline: Collection Date 
@@ -131,10 +131,10 @@ When User Enters Collection Date "<date>" on the Modify Oder Page
 Then Collection Date Field validates "<validation>" the date format 
 Examples:
     |labNo            |date       |validation                                |
-    |20210000000003760|09-02/2019 |Rejects incorect Format not in DD/MM/YYYY |
-    |20210000000003760|dd/mm/yyy  |Rejects incorect Format not Numeric       |
-    |20210000000003760|09/02/5000 |Rejects Future date                       |
-    |20210000000003760|09/01/2020 |Accepts correct Format in DD/MM/YYYY      |
+    |20210000000003761|09-02/2019 |Rejects incorect Format not in DD/MM/YYYY |
+    |20210000000003761|dd/mm/yyy  |Rejects incorect Format not Numeric       |
+    |20210000000003761|09/02/5000 |Rejects Future date                       |
+    |20210000000003761|09/01/2020 |Accepts correct Format in DD/MM/YYYY      |
 
 @modifyOrder
 Scenario Outline: Collection Time 
@@ -143,11 +143,11 @@ When User Enters Collection Time "<time>" on the Modify Oder Page
 Then Collection Time Field  validates "<validation>" the time format
 Examples:
     |labNo            |time  |validation                                           |
-    |20210000000003760|XXMM  |Rejects incorect Format ,non numeric                 |
-    |20210000000003760|30:30 |Rejects time not existing on the  in 12/24 hour clock|
-    |20210000000003760|12:122|Rejects extra digits                                 |
-    |20210000000003760|1111  |Auto-corrects HHMM format to HH:MM                   |
-    |20210000000003760|10:10 |Accepts correct Format in HH:MM                      |
+    |20210000000003761|XXMM  |Rejects incorect Format ,non numeric                 |
+    |20210000000003761|30:30 |Rejects time not existing on the  in 12/24 hour clock|
+    |20210000000003761|12:122|Rejects extra digits                                 |
+    |20210000000003761|1111  |Auto-corrects HHMM format to HH:MM                   |
+    |20210000000003761|10:10 |Accepts correct Format in HH:MM                      |
 
 @modifyOrder
 Scenario Outline: Add Tests 
@@ -169,4 +169,34 @@ When User Deletes text from box Tests on the Modify Oder Page
 Then Text cannot be deleted from  Tests box on the Modify Oder Page
 Examples:
     |labNo            |
-    |20210000000003760|   
+    |20210000000003761|   
+
+@modifyOrder
+Scenario Outline: Add Tests 
+And User Search by lab number "<labNo>" from previous testing steps on the Modify Oder Page 
+When User Leaves mandatory field without data on the Modify Oder Page
+Then Save button deactivated until all mandatory fields are completed on the Modify Oder Page
+When User Completes all mandatory fields on the Modify Oder Page
+Then Save button activated when all mandatory fields are completed on the Modify Oder Page
+When User Clicks Cancel on the Modify Oder Page
+Then Pop-up message 'Leave Site? Changes you made may not be saved' appears
+When User Clicks Cancel to Cancel the Confirmation box
+Then Edit Sample form remains on screen on the Modify Oder Page
+And User User Clicks Save on the Modify Oder Page
+Then Save results in new Edit Sample page and message in green 'Save was successful'
+When User Clicks Cancel on the Modify Oder Page
+Then System returns to Returns to home page
+Examples:
+    |labNo            |
+    |20210000000003761|    
+
+@modifyOrder
+Scenario Outline: Verification  
+When User Goes to Workplan > By Test Type 
+And User Selects Sample type "<sampleType>" of tests with results
+And User Clicks 'Print Workplan'
+Then Modified order and sample information correctly appears on appropriate work plan
+Examples:
+    |sampleType                  |
+    |COVID-19 ANTIBODY IgG(SERUM)| 
+   

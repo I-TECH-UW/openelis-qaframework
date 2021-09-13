@@ -418,7 +418,7 @@ public class ResultsEntrySteps extends TestBase {
 	
 	@Then("Triggers message ,Leave Site? Changes you made may not be saved")
 	public void alertAppears() throws InterruptedException {
-		assertTrue(resultsEntryPage.promptPresent());
+		assertTrue(resultsEntryPage.alertPresent());
 	}
 	
 	@And("User Clicks Cancel and Stays on page {string}")
@@ -618,7 +618,7 @@ public class ResultsEntrySteps extends TestBase {
 	@When("User Clicks Save Button")
 	public void userClicksSave() throws InterruptedException {
 		searchByOrderPage.clickSaveButton();
-		if (searchByOrderPage.promptPresent()) {
+		if (searchByOrderPage.alertPresent()) {
 			searchByOrderPage.acceptAlert();
 		}
 	}
