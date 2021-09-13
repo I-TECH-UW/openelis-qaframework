@@ -233,7 +233,7 @@ public class ValidationSteps extends TestBase {
 	
 	@Then("Triggers prompt box ,to confirm leaving page")
 	public void displayPrompt() throws InterruptedException {
-		assertTrue(resultValidationPage.promptPresent());
+		assertTrue(resultValidationPage.alertPresent());
 	}
 	
 	@When("User Clicks `Cancel` to Stay on Page")
@@ -255,7 +255,7 @@ public class ValidationSteps extends TestBase {
 	
 	@Then("Pop-up message asks you to confirm that you have indicated action for all items you wish to validate")
 	public void displayConfirmationPrompt() throws InterruptedException {
-		assertTrue(resultValidationPage.promptPresent());
+		assertTrue(resultValidationPage.alertPresent());
 	}
 	
 	@When("User Clicks Ok")

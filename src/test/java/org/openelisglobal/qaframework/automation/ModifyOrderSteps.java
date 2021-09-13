@@ -6,6 +6,7 @@ import org.openelisglobal.qaframework.automation.page.AddOrderPage;
 import org.openelisglobal.qaframework.automation.page.AddPatientPage;
 import org.openelisglobal.qaframework.automation.page.HomePage;
 import org.openelisglobal.qaframework.automation.page.LoginPage;
+import org.openelisglobal.qaframework.automation.page.WorkPlanByTestTypePage;
 import org.openelisglobal.qaframework.automation.test.TestBase;
 import org.openelisglobal.qaframework.automation.test.TestProperties;
 import org.openelisglobal.qaframework.automation.utils.Utils;
@@ -35,13 +36,15 @@ public class ModifyOrderSteps extends TestBase {
     
     private AddPatientPage addPatientPage;
     
+    private WorkPlanByTestTypePage workPlanByTestTypePage;
+    
     protected TestProperties testProperties = TestProperties.instance();
     
-    private String ACCESION_NUMBER = "20210000000003760";
+    private String ACCESION_NUMBER = "20210000000003761";
     
     private String ACCESION_NUMBER_2 = "20210000000003780";
     
-    private String patientInfo = "Patient:  moses, mutesasira  09/02/2019  M  201507D35a0ade566-41ca-43eb-9355-839587b8491a";
+    private String patientInfo = "Patient:  moses, mutesasira  09/02/2019  M";
     
     @After(RunTest.HOOK.MODIFY_ORDER)
     public void destroy() {
@@ -163,7 +166,7 @@ public class ModifyOrderSteps extends TestBase {
     @Then("Search by Lab Number yields results for all patients with matching Lab Number on the Modify Order Page")
     public void searchByLabNumberYieldsResults() {
         assertTrue(modifyOrderPage.hasPatientInfoBar());
-        assertEquals(patientInfo, modifyOrderPage.getPatientInfo().trim());
+        assertTrue(modifyOrderPage.getPatientInfo().trim().contains(patientInfo));
     }
     
     @And("If there is only one patient with that Lab No, the system auto-fills all the info about that patient, bypassing the selection process")
@@ -192,7 +195,7 @@ public class ModifyOrderSteps extends TestBase {
     @And("Patient information displays correctly on the Modify Oder Page")
     public void patientInfoDisplays() {
         assertTrue(modifyOrderPage.hasPatientInfoBar());
-        assertEquals(patientInfo, modifyOrderPage.getPatientInfo().trim());
+        assertTrue(modifyOrderPage.getPatientInfo().trim().contains(patientInfo));
     }
     
     @And("Current Lab No appears correctly under the Modify Lab No section")
@@ -787,5 +790,91 @@ public class ModifyOrderSteps extends TestBase {
     @Then("Text cannot be deleted from  Tests box on the Modify Oder Page")
     public void checkIfTextisDeletedFromTestsBox() {
         assertNotEquals("", modifyOrderPage.getAddedTests().trim());
+    }
+    
+    @When("User Leaves mandatory field without data on the Modify Oder Page")
+    public void leaveOutMandatoryFields() throws InterruptedException {
+        modifyOrderPage.clickNextVistDate();
+        Thread.sleep(1000);
+    }
+    
+    @Then("Save button deactivated until all mandatory fields are completed on the Modify Oder Page")
+    public void saveButtonDeactivated() {
+        assertTrue(modifyOrderPage.saveButtonIsDeactivated());
+    }
+    
+    @When("User Completes all mandatory fields on the Modify Oder Page")
+    public void completeMandatoryFields() throws InterruptedException {
+        modifyOrderPage.enterCollectionTime("10:10");
+        modifyOrderPage.clickNextVistDate();
+        Thread.sleep(1000);
+    }
+    
+    @Then("Save button activated when all mandatory fields are completed on the Modify Oder Page")
+    public void saveButtonActivated() {
+        assertFalse(modifyOrderPage.saveButtonIsDeactivated());
+    }
+    
+    @When("User Clicks Cancel on the Modify Oder Page")
+    public void clickCancel() {
+        modifyOrderPage.clickCancelButton();
+    }
+    
+    @Then("Pop-up message 'Leave Site? Changes you made may not be saved' appears")
+    public void alertAppearsPromptingToLeavePage() throws InterruptedException {
+        assertTrue(modifyOrderPage.alertPresent());
+    }
+    
+    @When("User Clicks Cancel to Cancel the Confirmation box")
+    public void cancelTheCormationBox() {
+        modifyOrderPage.dismissAlert();
+    }
+    
+    @Then("Edit Sample form remains on screen on the Modify Oder Page")
+    public void editSampleFormRemainsOnSCreen() throws InterruptedException {
+        assertTrue(modifyOrderPage.getPatientInfo().trim().contains(patientInfo));
+        assertTrue(modifyOrderPage.containsText("Current Order Number:"));
+        assertTrue(modifyOrderPage.containsText(ACCESION_NUMBER));
+    }
+    
+    @When("User User Clicks Save on the Modify Oder Page")
+    public void clickSave() throws InterruptedException {
+        modifyOrderPage.enterCollectionTime("10:10");
+        modifyOrderPage.clickNextVistDate();
+        Thread.sleep(1000);
+        modifyOrderPage.clickSaveButton();
+    }
+    
+    @Then("Save results in new Edit Sample page and message in green 'Save was successful'")
+    public void savesSuccesfull() {
+        assertTrue(modifyOrderPage.containsText("Save was successful"));
+        assertTrue(modifyOrderPage.printButtonAppears());
+    }
+    
+    @Then("System returns to Returns to home page")
+    public void returnToHomePage() {
+        assertTrue(modifyOrderPage.containsText("Modify Order"));
+    }
+    
+    @When("User Goes to Workplan > By Test Type")
+    public void goToWorkPlanByTestType() {
+        //homePage = modifyOrderPage.goToHomePage();
+        workPlanByTestTypePage = homePage.goToWorkPlanByTestPage();
+    }
+    
+    @And("User Selects Sample type {string} of tests with results")
+    public void selectTestType(String testType) {
+        workPlanByTestTypePage.selctTestType(testType);
+        assertTrue(workPlanByTestTypePage.containsText(ACCESION_NUMBER));
+    }
+    
+    @And("User Clicks 'Print Workplan'")
+    public void printWorkPlan() {
+        workPlanByTestTypePage.clickPrintWorkPlan();
+    }
+    
+    @Then("Modified order and sample information correctly appears on appropriate work plan")
+    public void informationAppears() {
+        workPlanByTestTypePage.verifyReportPrinted();
     }
 }

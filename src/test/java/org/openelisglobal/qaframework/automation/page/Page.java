@@ -4,6 +4,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.List;
+import java.util.ArrayList;
+
 import java.util.concurrent.TimeUnit;
 
 import com.google.common.collect.Iterables;
@@ -319,7 +321,7 @@ public abstract class Page {
 		Alert alert = driver.switchTo().alert();
 		alert.accept();
 	}
-
+	
 	public String getAlertText() {
 		waiter.until(ExpectedConditions.alertIsPresent());
 		Alert alert = driver.switchTo().alert();
@@ -333,17 +335,6 @@ public abstract class Page {
 	}
 	
 	public Boolean alertPresent() throws InterruptedException {
-		Thread.sleep(1000);
-		Boolean booelan = false;
-		try {
-			Alert alert = driver.switchTo().alert();
-			booelan = true;
-		}
-		catch (Exception e) {}
-		return booelan;
-	}
-	
-	public Boolean promptPresent() throws InterruptedException {
 		Thread.sleep(1000);
 		Boolean booelan = false;
 		try {
@@ -442,6 +433,13 @@ public abstract class Page {
 			required = true;
 		}
 		return required;
+	}
+	
+	public void verifyReportPrinted() {
+		List<String> browserTabs = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(browserTabs.get(1));
+		driver.close();
+		driver.switchTo().window(browserTabs.get(0));
 	}
 	
 	public void refreshPage() {

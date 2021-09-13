@@ -1,8 +1,5 @@
 package org.openelisglobal.qaframework.automation;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.openelisglobal.qaframework.RunTest;
 import org.openelisglobal.qaframework.automation.page.AddOrderPage;
 import org.openelisglobal.qaframework.automation.page.HomePage;
@@ -75,10 +72,7 @@ public class PatientReportSteps extends TestBase {
 	
 	@Then("Verify the generated Report")
 	public void verifyReport() throws InterruptedException {
-		List<String> browserTabs = new ArrayList<String>(patientStatusReportPage.getDriver().getWindowHandles());
-		patientStatusReportPage.getDriver().switchTo().window(browserTabs.get(1));
-		patientStatusReportPage.getDriver().close();
-		patientStatusReportPage.getDriver().switchTo().window(browserTabs.get(0));
+		patientStatusReportPage.verifyReportPrinted();
 		homePage = patientStatusReportPage.goToHomePage();
 	}
 	
