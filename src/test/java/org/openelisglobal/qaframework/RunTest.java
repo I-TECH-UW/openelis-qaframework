@@ -28,6 +28,8 @@ public class RunTest {
 		public static final String PATIENT_ENTRY = "@patientEntry";
 
 		public static final String MODIFY_ORDER = "@modifyOrder";
+
+		public static final String REFERAL_WORK_FLOW = "@referral";
 		
 		public static final String EMR_LIS = "@emrLis";
 	}
