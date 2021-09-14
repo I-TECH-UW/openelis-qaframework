@@ -7,6 +7,7 @@ import org.openelisglobal.qaframework.automation.page.AddPatientPage;
 import org.openelisglobal.qaframework.automation.page.HomePage;
 import org.openelisglobal.qaframework.automation.page.LoginPage;
 import org.openelisglobal.qaframework.automation.page.WorkPlanByTestTypePage;
+import org.openelisglobal.qaframework.automation.page.PatientStatusReportPage;
 import org.openelisglobal.qaframework.automation.test.TestBase;
 import org.openelisglobal.qaframework.automation.test.TestProperties;
 import org.openelisglobal.qaframework.automation.utils.Utils;
@@ -37,6 +38,8 @@ public class ModifyOrderSteps extends TestBase {
     private AddPatientPage addPatientPage;
     
     private WorkPlanByTestTypePage workPlanByTestTypePage;
+    
+    private PatientStatusReportPage patientStatusReportPage;
     
     protected TestProperties testProperties = TestProperties.instance();
     
@@ -858,7 +861,7 @@ public class ModifyOrderSteps extends TestBase {
     
     @When("User Goes to Workplan > By Test Type")
     public void goToWorkPlanByTestType() {
-        //homePage = modifyOrderPage.goToHomePage();
+        homePage = modifyOrderPage.goToHomePage();
         workPlanByTestTypePage = homePage.goToWorkPlanByTestPage();
     }
     
@@ -876,5 +879,26 @@ public class ModifyOrderSteps extends TestBase {
     @Then("Modified order and sample information correctly appears on appropriate work plan")
     public void informationAppears() {
         workPlanByTestTypePage.verifyReportPrinted();
+    }
+    
+    @When("User Goes to Reports > Routine > Patient Status Report")
+    public void goToPatientStatusREport() {
+        homePage = workPlanByTestTypePage.goToHomePage();
+        patientStatusReportPage = homePage.goToPatientStatusReportPage();
+    }
+    
+    @And("User Enters valid Lab Number {string}")
+    public void enterLabNumber(String labNumber) {
+        patientStatusReportPage.enterLabNumber(labNumber);
+    }
+    
+    @And("User Clicks 'Generate printable version' for this lab number")
+    public void clickGeneratePrint() {
+        patientStatusReportPage.clickPrintButton();
+    }
+    
+    @And("Modified order information is correct and tests appear as In Progress on Patient Report")
+    public void verifyInformation() {
+        patientStatusReportPage.verifyReportPrinted();
     }
 }

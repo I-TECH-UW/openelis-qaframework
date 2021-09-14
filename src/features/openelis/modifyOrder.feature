@@ -196,7 +196,11 @@ When User Goes to Workplan > By Test Type
 And User Selects Sample type "<sampleType>" of tests with results
 And User Clicks 'Print Workplan'
 Then Modified order and sample information correctly appears on appropriate work plan
+When User Goes to Reports > Routine > Patient Status Report
+And User Enters valid Lab Number "<labNo>"
+And User Clicks 'Generate printable version' for this lab number 
+Then Modified order information is correct and tests appear as In Progress on Patient Report
 Examples:
-    |sampleType                  |
-    |COVID-19 ANTIBODY IgG(SERUM)| 
+    |sampleType                  |labNo            |
+    |COVID-19 ANTIBODY IgG(SERUM)|20210000000003761|    
    
