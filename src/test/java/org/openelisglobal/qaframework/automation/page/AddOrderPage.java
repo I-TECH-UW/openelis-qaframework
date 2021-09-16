@@ -38,15 +38,15 @@ public class AddOrderPage extends Page {
 	
 	private static final By FIELD_OPTION = By.tagName("option");
 	
-	private static final By FIELD_LAST_NAME = By.id("providerLastNameID");
+	private static final By FIELD_REQUESTER_LAST_NAME = By.id("providerLastNameID");
 	
-	private static final By FIELD_FIRST_NAME = By.id("providerFirstNameID");
+	private static final By FIELD_REQUESTER_FIRST_NAME = By.id("providerFirstNameID");
 	
-	private static final By FIELD_PHONE_NUMBER = By.id("providerWorkPhoneID");
+	private static final By FIELD_REQUESTER_PHONE_NUMBER = By.id("providerWorkPhoneID");
 	
-	private static final By FIELD_FAX = By.id("providerFaxID");
+	private static final By FIELD_REQUESTER_FAX = By.id("providerFaxID");
 	
-	private static final By FIELD_EMAIL = By.id("providerEmailID");
+	private static final By FIELD_REQUESTER_EMAIL = By.id("providerEmailID");
 	
 	private static final By FIELD_COLLECTION_DATE = By.id("collectionDate_1");
 	
@@ -81,6 +81,10 @@ public class AddOrderPage extends Page {
 	private static final By FIELD_CONTACT_PHONE = By.id("contactPhoneID");
 	
 	private static final By FIELD_CONTACT_EMAIL = By.id("contactEmailID");
+	
+	private static final By FIELD_CONTACT_TRACING_INDEX_NAME = By.id("contactTracingIndexName");
+	
+	private static final By FIELD_CONTACT_TRACING_INDEX_RECORD_NUMBER = By.id("contactTracingIndexRecordNumber");
 	
 	private static final By FIELD_PATIENT_STREET = By.id("streetID");
 	
@@ -163,7 +167,19 @@ public class AddOrderPage extends Page {
 	
 	private static final By CHECK_BOX_VIRAL_LOAD_TEST = By.id("test_4");
 	
-	private static final By CHECK_BOX_PANNEL = By.id("panel_0");
+	private static final By CHECK_BOX_PANNEL = By.name("panelSelect");
+	
+	private static final By CHECK_BOX_REFFER_TEST = By.id("useReferral");
+	
+	private static final By SELECT_REFFER_REASON = By.id("referralReasonId_0");
+	
+	private static final By SELECT_REFFER_INSTITUTE = By.id("referredInstituteId_0");
+	
+	private static final By SELECT_REFFER_TEST_NAME = By.id("testSelection_0");
+	
+	private static final By FIELD_REFFER_SENT_DATE = By.id("sendDate_0");
+	
+	private static final By FIELD_REFFER_REFFERER = By.id("referrer_0");
 	
 	private static final By RADIO_BUTTON_VALIDATE_TRUE = By.id("value1");
 	
@@ -232,23 +248,23 @@ public class AddOrderPage extends Page {
 	}
 	
 	public WebElement getLastNameField() {
-		return findElement(FIELD_LAST_NAME);
+		return findElement(FIELD_REQUESTER_LAST_NAME);
 	}
 	
 	public WebElement getFirstNameField() {
-		return findElement(FIELD_FIRST_NAME);
+		return findElement(FIELD_REQUESTER_FIRST_NAME);
 	}
 	
 	public WebElement getTelephoneField() {
-		return findElement(FIELD_PHONE_NUMBER);
+		return findElement(FIELD_REQUESTER_PHONE_NUMBER);
 	}
 	
 	public WebElement getFaxField() {
-		return findElement(FIELD_FAX);
+		return findElement(FIELD_REQUESTER_FAX);
 	}
 	
 	public WebElement getEmailField() {
-		return findElement(FIELD_EMAIL);
+		return findElement(FIELD_REQUESTER_EMAIL);
 	}
 	
 	public WebElement getSampleSelectionField() {
@@ -313,7 +329,9 @@ public class AddOrderPage extends Page {
 	}
 	
 	public void clickPannelCheckBox() {
-		// clickOn(CHECK_BOX_PANNEL);
+		if (panelCheckBoxExists()) {
+			clickOn(CHECK_BOX_PANNEL);
+		}
 	}
 	
 	public void clickNewPatientButton() {
@@ -330,6 +348,10 @@ public class AddOrderPage extends Page {
 	
 	public void clickSave() {
 		clickOn(BUTTON_SAVE);
+	}
+	
+	public void clickReferrerTest() {
+		clickOn(CHECK_BOX_REFFER_TEST);
 	}
 	
 	public void selectSiteNameFromDropDown() throws InterruptedException {
@@ -382,6 +404,10 @@ public class AddOrderPage extends Page {
 		return getLastNameField().getAttribute("value");
 	}
 	
+	public String getAccesionNumberValue() {
+		return getValue(FIELD_LAB_NUMBER);
+	}
+	
 	public String getCollectionTimeValue() {
 		return getValue(FIELD_COLLECTION_TIME);
 	}
@@ -422,24 +448,24 @@ public class AddOrderPage extends Page {
 		setText(FIELD_LAB_NUMBER, accesionNumber);
 	}
 	
-	public void enterLastName(String lastName) {
-		setText(FIELD_LAST_NAME, lastName);
+	public void enterRequesterLastName(String lastName) {
+		setText(FIELD_REQUESTER_LAST_NAME, lastName);
 	}
 	
-	public void enterFirstName(String firstName) {
-		setText(FIELD_FIRST_NAME, firstName);
+	public void enterRequesterFirstName(String firstName) {
+		setText(FIELD_REQUESTER_FIRST_NAME, firstName);
 	}
 	
-	public void enterTelephone(String telephone) {
-		setText(FIELD_PHONE_NUMBER, telephone);
+	public void enterRequesterTelephone(String telephone) {
+		setText(FIELD_REQUESTER_PHONE_NUMBER, telephone);
 	}
 	
-	public void enterFax(String fax) {
-		setText(FIELD_FAX, fax);
+	public void enterRequesterFax(String fax) {
+		setText(FIELD_REQUESTER_FAX, fax);
 	}
 	
-	public void enterEmail(String email) {
-		setText(FIELD_EMAIL, email);
+	public void enterRequesterEmail(String email) {
+		setText(FIELD_REQUESTER_EMAIL, email);
 	}
 	
 	public void enterCollector(String name) {
@@ -498,6 +524,14 @@ public class AddOrderPage extends Page {
 		setText(FIELD_CONTACT_EMAIL, email);
 	}
 	
+	public void enterContactTracingIndexName(String tracingName) {
+		setText(FIELD_CONTACT_TRACING_INDEX_NAME, tracingName);
+	}
+	
+	public void enterContactTracingIndexRecordNumber(String recordNumber) {
+		setText(FIELD_CONTACT_TRACING_INDEX_RECORD_NUMBER, recordNumber);
+	}
+	
 	public void enterContactPhone(String phone) {
 		setText(FIELD_CONTACT_PHONE, phone);
 	}
@@ -532,6 +566,26 @@ public class AddOrderPage extends Page {
 	
 	public void enterPatientAgeInYears(String age) {
 		setText(FIELD_PATIENT_AGE_YEARS, age);
+	}
+	
+	public void enterNeaxtVistDate(String date) {
+		setText(FIELD_NEXT_VISIT_DATE, date);
+	}
+	
+	public void enterReferer(String referrer) {
+		setText(FIELD_REFFER_REFFERER, referrer);
+	}
+	
+	public String getRefererName() {
+		return getValue(FIELD_REFFER_REFFERER);
+	}
+	
+	public void enterReferralSentDate(String date) {
+		setText(FIELD_REFFER_SENT_DATE, date);
+	}
+	
+	public String getReferralSentDate() {
+		return getValue(FIELD_REFFER_SENT_DATE);
 	}
 	
 	public void clearTestsField() {
@@ -665,6 +719,30 @@ public class AddOrderPage extends Page {
 		selectOptionFromDropDown(SELECT_PATIENT_MARITAL_STATUS);
 	}
 	
+	public void selectReasonForReferal(String reason) {
+		selectFrom(SELECT_REFFER_REASON, reason);
+	}
+	
+	public String getDefaultReferralReason() {
+		return getSelectedOption(SELECT_REFFER_REASON);
+	}
+	
+	public Boolean reasonsForReferralListDisplay() {
+		return dropDownHasOptions(SELECT_REFFER_REASON);
+	}
+	
+	public void selectreferralInstitute() {
+		selectOptionFromDropDown(SELECT_REFFER_INSTITUTE);
+	}
+	
+	public Boolean institutesForReferralDisplay() {
+		return dropDownHasOptions(SELECT_REFFER_INSTITUTE);
+	}
+	
+	public void selectreferralTestName() {
+		selectOptionFromDropDown(SELECT_REFFER_TEST_NAME);
+	}
+	
 	public void removeAddedSampleConditionFromDropDownMenu() throws InterruptedException {
 		List<WebElement> options = getConditonSelectionField().findElements(FIELD_OPTION);
 		int n = 0;
@@ -737,7 +815,7 @@ public class AddOrderPage extends Page {
 		Thread.sleep(1000);
 		selectSiteNameFromDropDown();
 		Thread.sleep(1000);
-		enterLastName("SADDIO");
+		enterRequesterLastName("SADDIO");
 		clickAddSampleButton();
 		selectSampleTypeFromDropDownMenu();
 		clickPannelCheckBox();
@@ -767,7 +845,7 @@ public class AddOrderPage extends Page {
 		Thread.sleep(1000);
 		selectSiteNameFromDropDown();
 		Thread.sleep(1000);
-		enterLastName("SADDIO");
+		enterRequesterLastName("SADDIO");
 		clickAddSampleButton();
 		selectSampleTypeFromDropDownMenu();
 		clickPannelCheckBox();
@@ -788,6 +866,14 @@ public class AddOrderPage extends Page {
 		selectPatientMaritalStatusFromDropDownMenu();
 		enterPatientOtherNationality("nationality");
 		clickSave();
+	}
+	
+	public Boolean panelCheckBoxExists() {
+		return hasElementWithoutWait(CHECK_BOX_PANNEL);
+	}
+	
+	public Boolean testCheckBoxExists() {
+		return hasElement(CHECK_BOX_TEST);
 	}
 	
 	public HomePage goToHomePage() {

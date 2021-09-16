@@ -168,7 +168,6 @@ public abstract class Page {
 		catch (Exception e) {
 			return null;
 		}
-		
 	}
 	
 	public List<WebElement> getElementsIfExisting(By by) {
@@ -237,6 +236,11 @@ public abstract class Page {
 	public void selectFrom(By by, String value) {
 		Select droplist = new Select(findElement(by));
 		droplist.selectByVisibleText(value);
+	}
+	
+	public String getSelectedOption(By by) {
+		Select droplist = new Select(findElement(by));
+		return droplist.getFirstSelectedOption().getText();
 	}
 	
 	public void hoverOn(By by) {
