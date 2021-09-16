@@ -193,11 +193,12 @@ public class ValidationSteps extends TestBase {
 	}
 	
 	@And("Tests cannot be checked both `Save` and `Retest` at the same time")
-	public void testCantBeMarkedWithBothSaveAndRetest() {
+	public void testCantBeMarkedWithBothSaveAndRetest() throws InterruptedException {
 		resultValidationPage.checkAcceptedCheckBox();
 		resultValidationPage.checkRetestCheckBox();
 		resultValidationPage.clickSave();
 		resultValidationPage.acceptAlert();
+		Thread.sleep(1000);
 		assertTrue(resultValidationPage.containsText("A system error has occurred."));
 		resultValidationPage.goToHomePage();
 	}

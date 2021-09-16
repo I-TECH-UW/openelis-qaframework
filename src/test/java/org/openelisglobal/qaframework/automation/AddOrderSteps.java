@@ -204,20 +204,20 @@ public class AddOrderSteps extends TestBase {
 	
 	@And("User Enters Requester's Last Name {string}")
 	public void enterLastName(String lastName) {
-		addOrderPage.enterLastName(lastName);
+		addOrderPage.enterRequesterLastName(lastName);
 		assertEquals(addOrderPage.getLastNameValue(), lastName);
 	}
 	
 	@And("User Enters Requester's First Name {string}")
 	public void enterFirstName(String firstName) {
-		addOrderPage.enterFirstName(firstName);
+		addOrderPage.enterRequesterFirstName(firstName);
 		assertEquals(addOrderPage.getFistNameValue(), firstName);
 	}
 	
 	@When("User Enters Telephone Number {string}")
 	public void enterTelephone(String telephone) {
 		addOrderPage.turnOnTelephoneValidation();
-		addOrderPage.enterTelephone(telephone);
+		addOrderPage.enterRequesterTelephone(telephone);
 	}
 	
 	@Then("Validate {string} Telephone Number")
@@ -236,12 +236,12 @@ public class AddOrderSteps extends TestBase {
 	
 	@And("User Enters Fax {string}")
 	public void enterFax(String fax) {
-		addOrderPage.enterFax(fax);
+		addOrderPage.enterRequesterFax(fax);
 	}
 	
 	@And("User Enters Email {string}")
 	public void enterEmail(String email) throws InterruptedException {
-		addOrderPage.enterEmail(email);
+		addOrderPage.enterRequesterEmail(email);
 	}
 	
 	@Then("Sample addition is mandatory")
@@ -406,9 +406,9 @@ public class AddOrderSteps extends TestBase {
 	
 	@Then("All applicable panel tests apear in the Testsbox")
 	public void AllApplicableTestNameAppearsUnderTestBox() {
-		// ignore since pannel checkbox doesnt show up
-		// assertEquals(addOrderPage.getTestValue(),
-		// "Antigen Covid,COVID-19 PCR");
+		if (addOrderPage.panelCheckBoxExists()) {
+			assertNotEquals(addOrderPage.getTestValue(), "");
+		}
 	}
 	
 	@When("User unChecks checkbox next to Panel name")
@@ -517,7 +517,7 @@ public class AddOrderSteps extends TestBase {
 		Thread.sleep(1000);
 		addOrderPage.selectSiteNameFromDropDown();
 		Thread.sleep(1000);
-		addOrderPage.enterLastName("SADDIO");
+		addOrderPage.enterRequesterLastName("SADDIO");
 		addOrderPage.clickAddSampleButton();
 		addOrderPage.selectSampleTypeFromDropDownMenu();
 		addOrderPage.clickPannelCheckBox();
@@ -725,7 +725,7 @@ public class AddOrderSteps extends TestBase {
 		Thread.sleep(1000);
 		addOrderPage.selectSiteNameFromDropDown();
 		Thread.sleep(1000);
-		addOrderPage.enterLastName("SADDIO");
+		addOrderPage.enterRequesterLastName("SADDIO");
 		addOrderPage.clickAddSampleButton();
 		addOrderPage.selectSampleTypeFromDropDownMenu();
 		addOrderPage.clickPannelCheckBox();
