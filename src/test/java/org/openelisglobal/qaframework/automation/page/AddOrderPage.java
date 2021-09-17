@@ -726,6 +726,10 @@ public class AddOrderPage extends Page {
 	public String getDefaultReferralReason() {
 		return getSelectedOption(SELECT_REFFER_REASON);
 	}
+
+	public String getSelectedTestName() {
+		return getSelectedOption(SELECT_REFFER_TEST_NAME);
+	}
 	
 	public Boolean reasonsForReferralListDisplay() {
 		return dropDownHasOptions(SELECT_REFFER_REASON);
