@@ -22,6 +22,7 @@ And Referrer field is autofilled with name of logged in user
 And Laboratory names appear in alphabetical order under Institute
 And Sent Date is autofilled with current date 
 And Sent Date can be modified 
+And Test Name defaults to original test requested for sample above
 Examples:
     |labNo            |incorectLabNumber|
     |20210000000008080| BETA119000047   |
