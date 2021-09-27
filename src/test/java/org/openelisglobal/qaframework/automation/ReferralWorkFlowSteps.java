@@ -26,6 +26,8 @@ public class ReferralWorkFlowSteps extends TestBase {
 
     private AddOrderPage addOrderPage;
 
+    private String existingLabNumber = "20210000000008888";
+
     String accesionNumber;
 
     @After(RunTest.HOOK.REFERAL_WORK_FLOW)
@@ -50,7 +52,10 @@ public class ReferralWorkFlowSteps extends TestBase {
     }
 
     @When("User Goes to Order tab--> Add Order")
-    public void gotToAddOrder() {
+    public void gotToAddOrder() throws InterruptedException {
+        addOrderPage = homePage.goToAddOrderPage();
+        addOrderPage.innitialiseData(existingLabNumber);
+        homePage = addOrderPage.goToHomePage();
         addOrderPage = homePage.goToAddOrderPage();
     }
 
@@ -165,5 +170,56 @@ public class ReferralWorkFlowSteps extends TestBase {
     @And("Test Name defaults to original test requested for sample above")
     public void testNameDefaultsToOriginalTest() {
         assertTrue(addOrderPage.getTestValue().contains(addOrderPage.getSelectedTestName()));
+    }
+
+    @When("User Enter search parameter [Previous] Lab Number {string} for a known patient and click Search")
+    public void searchByLabNumber(String accesionNumber) throws InterruptedException {
+        addOrderPage.enterLabNumberSearch(accesionNumber);
+        addOrderPage.searchPatient();
+    }
+
+    @Then("Patient search shows green wheel while searching internally ,OE database")
+    public void loaderGifShowsGreen() {
+        assertEquals(addOrderPage.getLoaderGifClass(), "fa-2x local-search");
+    }
+
+    @And("Patient details appear in search results table")
+    public void searchByLastNameYieldsResults() {
+        assertTrue(addOrderPage.containsSeachResult());
+        assertTrue(addOrderPage.containsText("Data source"));
+        assertTrue(addOrderPage.containsText("Last Name"));
+        assertTrue(addOrderPage.containsText("First Name"));
+        assertTrue(addOrderPage.containsText("Gender"));
+        assertTrue(addOrderPage.containsText("Date of Birth"));
+        assertTrue(addOrderPage.containsText("Subject Number"));
+        assertTrue(addOrderPage.containsText("National ID"));
+    }
+
+    @And("If correct patient is selected, their information populates the Patient section of the order form")
+    public void populatePatientSection() throws InterruptedException {
+        Thread.sleep(1000);
+        assertTrue(addOrderPage.getPatientSubjectNumber().contains("201807D9P"));
+        assertTrue(addOrderPage.getPatientNationalId().contains("201507D35"));
+        assertTrue(addOrderPage.getPatientFirstName().contains("mutesasira"));
+        assertTrue(addOrderPage.getPatientLastName().contains("moses"));
+        assertTrue(addOrderPage.getPatientEmail().contains("email@gmail.com"));
+    }
+
+    @When("User Enters search parameter Patient ID {string} for a known patient and click Search")
+    public void searchByPatientId(String patientId) throws InterruptedException {
+        addOrderPage.enterPatientIdSearch(patientId);
+        addOrderPage.searchPatient();
+    }
+
+    @When("User Enters search parameter Last Name {string} for a known patient and click Search")
+    public void searchByLastName(String lastName) throws InterruptedException {
+        addOrderPage.enterLastNameSearch(lastName);
+        addOrderPage.searchPatient();
+    }
+
+    @When("User Enters search parameter First Name {string} for a known patient and click Search")
+    public void searchByFIrstName(String firstName) throws InterruptedException {
+        addOrderPage.enterFirstNameSearch(firstName);
+        addOrderPage.searchPatient();
     }
 }

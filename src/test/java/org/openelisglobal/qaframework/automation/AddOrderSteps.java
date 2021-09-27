@@ -478,35 +478,35 @@ public class AddOrderSteps extends TestBase {
 	public void searchByAccesionNumber(String accesionNumber) {
 		addOrderPage.enterLabNumberSearch(accesionNumber);
 		assertNull(addOrderPage.getPatientSerchDisabledAttribute());
-		addOrderPage.serchPatient();
+		addOrderPage.searchPatient();
 	}
 	
 	@And("User Searches by Patient Id {string}")
 	public void searchByPatientId(String patientId) {
 		addOrderPage.enterPatientIdSearch(patientId);
 		assertNull(addOrderPage.getPatientSerchDisabledAttribute());
-		addOrderPage.serchPatient();
+		addOrderPage.searchPatient();
 	}
 	
 	@And("User Searches by Last Name {string}")
 	public void searchByLastName(String lastName) {
 		addOrderPage.enterLastNameSearch(lastName);
 		assertNull(addOrderPage.getPatientSerchDisabledAttribute());
-		addOrderPage.serchPatient();
+		addOrderPage.searchPatient();
 	}
 	
 	@And("User Searches by First Name {string}")
 	public void searchByFirstName(String firstName) {
 		addOrderPage.enterFirstNameSearch(firstName);
 		assertNull(addOrderPage.getPatientSerchDisabledAttribute());
-		addOrderPage.serchPatient();
+		addOrderPage.searchPatient();
 	}
 	
 	@And("User Searches by Date of Birth {string}")
 	public void searchByDateOfBirth(String dateOfBirth) {
 		addOrderPage.enterDateOfBirthSearch(dateOfBirth);
 		assertNull(addOrderPage.getPatientSerchDisabledAttribute());
-		addOrderPage.serchPatient();
+		addOrderPage.searchPatient();
 	}
 	
 	@And("User Clicks New Patient Button")

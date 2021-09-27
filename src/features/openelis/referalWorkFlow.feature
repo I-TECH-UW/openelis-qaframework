@@ -23,7 +23,17 @@ And Laboratory names appear in alphabetical order under Institute
 And Sent Date is autofilled with current date 
 And Sent Date can be modified 
 And Test Name defaults to original test requested for sample above
+When User Enter search parameter [Previous] Lab Number "<existinglabNo>" for a known patient and click Search 
+Then Patient search shows green wheel while searching internally ,OE database
+And Patient details appear in search results table
+And  If correct patient is selected, their information populates the Patient section of the order form
+When User Enters search parameter Patient ID "<patientId>" for a known patient and click Search 
+Then Patient details appear in search results table
+When User Enters search parameter Last Name "<lastName>" for a known patient and click Search 
+Then Patient details appear in search results table
+When User Enters search parameter First Name "<firstName>" for a known patient and click Search 
+Then Patient details appear in search results table
 Examples:
-    |labNo            |incorectLabNumber|
-    |20210000000008080| BETA119000047   |
+    |labNo            |incorectLabNumber|existinglabNo    |patientId|lastName|firstName  |
+    |20210000000008080| BETA119000047   |20210000000008888|201807D9P|moses   | mutesasira|
 
