@@ -186,6 +186,10 @@ public class AddOrderPage extends Page {
 	private static final By LABEL_VALIDATE_PATIENT_DOB = By.id("patientProperties.birthDateForDisplayMessage");
 	
 	private static final By LABEL_VALIDATE_PATIENT_AGE = By.id("ageYearsMessage");
+
+	private static final By GIF_LOADER = By.id("loading");
+
+	private static final By SELECT_RESULT = By.id("sel_1");
 	
 	public AddOrderPage(Page parentPage) {
 		super(parentPage);
@@ -587,6 +591,26 @@ public class AddOrderPage extends Page {
 	public String getReferralSentDate() {
 		return getValue(FIELD_REFFER_SENT_DATE);
 	}
+
+	public String getPatientSubjectNumber() {
+		return getValue(FIELD_SUBJECT_NUMBER);
+	}
+
+	public String getPatientNationalId() {
+		return getValue(FIELD_NATIONAL_ID);
+	}
+
+	public String getPatientLastName() {
+		return getValue(FIELD_PATIENT_LAST_NAME);
+	}
+
+	public String getPatientFirstName() {
+		return getValue(FIELD_PATIENT_FIRST_NAME);
+	}
+
+	public String getPatientEmail() {
+		return getValue(FIELD_PATIENT_EMAIL);
+	}
 	
 	public void clearTestsField() {
 		clearText(FIELD_TEST);
@@ -675,6 +699,10 @@ public class AddOrderPage extends Page {
 	public String getPatientAgeValidateLabelClass() {
 		return getClass(LABEL_VALIDATE_PATIENT_AGE);
 	}
+
+	public String getLoaderGifClass() {
+		return getClass(GIF_LOADER);
+	}
 	
 	public String getPatientSerchDisabledAttribute() {
 		return findElement(BUTTON_PATIENT_SEARCH).getAttribute("disabled");
@@ -746,6 +774,10 @@ public class AddOrderPage extends Page {
 	public void selectreferralTestName() {
 		selectOptionFromDropDown(SELECT_REFFER_TEST_NAME);
 	}
+
+	public Boolean containsSeachResult() {
+		return hasElement(SELECT_RESULT);
+	}
 	
 	public void removeAddedSampleConditionFromDropDownMenu() throws InterruptedException {
 		List<WebElement> options = getConditonSelectionField().findElements(FIELD_OPTION);
@@ -792,7 +824,7 @@ public class AddOrderPage extends Page {
 		this.go();
 	}
 	
-	public void serchPatient() {
+	public void searchPatient() {
 		clickOn(BUTTON_PATIENT_SEARCH);
 	}
 	
