@@ -1,6 +1,7 @@
 package org.openelisglobal.qaframework.automation;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -66,15 +67,14 @@ public class ReferralWorkFlowSteps extends TestBase {
         addOrderPage.clickOnNextVisitDate();
         if (addOrderPage.alertPresent()) {
             addOrderPage.acceptAlert();
-            return;
         }
-        addOrderPage.enterNeaxtVistDate(Utils.getFutureDate());
+        addOrderPage.enterNextVistDate(Utils.getFutureDate());
         addOrderPage.selectSiteNameFromDropDown();
-        addOrderPage.enterRequesterLastName("test_requester");
+        addOrderPage.enterRequesterLastName("testRequester");
         addOrderPage.enterRequesterTelephone("+23063458788");
         addOrderPage.enterRequesterFax("test_fax");
         addOrderPage.enterRequesterEmail("requester@gmail.com");
-        addOrderPage.enterContactTracingIndexName("test_tracingName");
+        addOrderPage.enterContactTracingIndexName("testTracingName");
         addOrderPage.enterContactTracingIndexRecordNumber("22222");
         this.accesionNumber = accesionNumber;
     }
@@ -93,6 +93,12 @@ public class ReferralWorkFlowSteps extends TestBase {
         addOrderPage.acceptAlert();
         assertEquals(addOrderPage.getAccesionNumberClass(), "text error");
         addOrderPage.enterAccessionNumber(this.accesionNumber);
+        addOrderPage.clickOnNextVisitDate();
+        Thread.sleep(1000);
+        if (addOrderPage.alertPresent()) {
+            addOrderPage.acceptAlert();
+            addOrderPage.clickGenerateButton();
+        }
     }
 
     @When("User Completes the Sample section of the Order form")
@@ -104,7 +110,7 @@ public class ReferralWorkFlowSteps extends TestBase {
         addOrderPage.selectSampleConditionFromDropDownMenu();
         addOrderPage.enterCollectionDate(Utils.getPastDate());
         addOrderPage.enterCollectionTime("12:12");
-        addOrderPage.enterCollector("test_Collector");
+        addOrderPage.enterCollector("testCollector");
     }
 
     @Then("Sample Type list displays all needed options")
@@ -172,9 +178,34 @@ public class ReferralWorkFlowSteps extends TestBase {
         assertTrue(addOrderPage.getTestValue().contains(addOrderPage.getSelectedTestName()));
     }
 
+    @When("User Enters search parameter Patient ID {string} for a known patient and click Search")
+    public void searchByPatientId(String patientId) throws InterruptedException {
+        addOrderPage.enterPatientIdSearch(patientId);
+        addOrderPage.searchPatient();
+    }
+
+    @When("User Enters search parameter Last Name {string} for a known patient and click Search")
+    public void searchByLastName(String lastName) throws InterruptedException {
+        addOrderPage.clickNewPatientButton();
+        addOrderPage.enterLastNameSearch(lastName);
+        addOrderPage.searchPatient();
+    }
+
+    @When("User Enters search parameter First Name {string} for a known patient and click Search")
+    public void searchByFirstName(String firstName) throws InterruptedException {
+        addOrderPage.clickNewPatientButton();
+        addOrderPage.enterFirstNameSearch(firstName);
+        addOrderPage.searchPatient();
+    }
+
     @When("User Enter search parameter [Previous] Lab Number {string} for a known patient and click Search")
     public void searchByLabNumber(String accesionNumber) throws InterruptedException {
+        Thread.sleep(2000);
+        addOrderPage.clickNewPatientButton();
         addOrderPage.enterLabNumberSearch(accesionNumber);
+        addOrderPage.clearFirstNameSearch();
+        addOrderPage.clearLastNameSearch();
+        addOrderPage.clearPatientIdSearch();
         addOrderPage.searchPatient();
     }
 
@@ -185,6 +216,7 @@ public class ReferralWorkFlowSteps extends TestBase {
 
     @And("Patient details appear in search results table")
     public void searchByLastNameYieldsResults() {
+        addOrderPage.waitForSeachResult();
         assertTrue(addOrderPage.containsSeachResult());
         assertTrue(addOrderPage.containsText("Data source"));
         assertTrue(addOrderPage.containsText("Last Name"));
@@ -197,6 +229,16 @@ public class ReferralWorkFlowSteps extends TestBase {
 
     @And("If correct patient is selected, their information populates the Patient section of the order form")
     public void populatePatientSection() throws InterruptedException {
+        Thread.sleep(2000);
+        assertTrue(addOrderPage.getPatientSubjectNumber().contains("201807D9P"));
+        assertTrue(addOrderPage.getPatientNationalId().contains("201507D35"));
+        assertTrue(addOrderPage.getPatientFirstName().contains("mutesasira"));
+        assertTrue(addOrderPage.getPatientLastName().contains("moses"));
+        assertTrue(addOrderPage.getPatientEmail().contains("email@gmail.com"));
+    }
+
+    @When("User Reviews and completes the  Patient Information section")
+    public void reviewAndcompletePatientInfo() throws InterruptedException {
         Thread.sleep(1000);
         assertTrue(addOrderPage.getPatientSubjectNumber().contains("201807D9P"));
         assertTrue(addOrderPage.getPatientNationalId().contains("201507D35"));
@@ -205,21 +247,33 @@ public class ReferralWorkFlowSteps extends TestBase {
         assertTrue(addOrderPage.getPatientEmail().contains("email@gmail.com"));
     }
 
-    @When("User Enters search parameter Patient ID {string} for a known patient and click Search")
-    public void searchByPatientId(String patientId) throws InterruptedException {
-        addOrderPage.enterPatientIdSearch(patientId);
-        addOrderPage.searchPatient();
+    @Then("Save button is activated ,if all required fields are filled")
+    public void saveButtonActivated() throws InterruptedException {
+        addOrderPage.clickReferrerTest();
+        addOrderPage.clickReferrerTest();
+        assertFalse(addOrderPage.saveButtonDeactivated());
     }
 
-    @When("User Enters search parameter Last Name {string} for a known patient and click Search")
-    public void searchByLastName(String lastName) throws InterruptedException {
-        addOrderPage.enterLastNameSearch(lastName);
-        addOrderPage.searchPatient();
+    @And("User Ticks the boxes for Patient notification by Email and SMS")
+    public void checkPatientNotification() throws InterruptedException {
+        Thread.sleep(2000);
+        addOrderPage.checkPatientEmailandSmsNotification();
     }
 
-    @When("User Enters search parameter First Name {string} for a known patient and click Search")
-    public void searchByFIrstName(String firstName) throws InterruptedException {
-        addOrderPage.enterFirstNameSearch(firstName);
-        addOrderPage.searchPatient();
+    @And("User Ticks the boxes for Requester notification by Email and SMS")
+    public void checkRequesterNotification() throws InterruptedException {
+        Thread.sleep(2000);
+        addOrderPage.checkRequesterEmailandSmsNotification();
+    }
+
+    @When("User Clicks Save to save form on Add Order Page")
+    public void clickSave() throws InterruptedException {
+        addOrderPage.clickSave();
+    }
+
+    @And("Message 'Save Was Successful' appears at the top of the page")
+    public void succesMessageAppears() throws InterruptedException {
+        Thread.sleep(1000);
+        assertTrue(addOrderPage.containsText("Save was successful"));
     }
 }
