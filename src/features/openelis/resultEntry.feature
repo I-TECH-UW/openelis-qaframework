@@ -16,8 +16,8 @@ Then Result accession number search form displays
 When User Selects Results --> Search --> By Test Name, Date, or Status 
 Then Results by Test, Date or Status search form displays
 Examples:
-    |    unitType   |
-    |Molecular Bio A|
+    |    unitType    |
+    |Molecular Biology|
 
 @results
 Scenario Outline:Searching for test result entry forms

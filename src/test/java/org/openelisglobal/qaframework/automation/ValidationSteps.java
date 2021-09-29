@@ -70,7 +70,7 @@ public class ValidationSteps extends TestBase {
 	@When("User Selects a Unit Type {string} under which there are known tests")
 	public void goToValidationPage(String unitType) throws InterruptedException {
 		resultValidationPage.selectUnitType(unitType);
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 	}
 	
 	@Then("Tests display with Lab order Number, Test name, result and result reference")
