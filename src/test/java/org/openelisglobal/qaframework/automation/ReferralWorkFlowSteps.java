@@ -9,6 +9,7 @@ import org.openelisglobal.qaframework.RunTest;
 import org.openelisglobal.qaframework.automation.page.AddOrderPage;
 import org.openelisglobal.qaframework.automation.page.HomePage;
 import org.openelisglobal.qaframework.automation.page.LoginPage;
+import org.openelisglobal.qaframework.automation.page.ModifyOrderPage;
 import org.openelisglobal.qaframework.automation.test.TestBase;
 import org.openelisglobal.qaframework.automation.utils.Utils;
 
@@ -27,7 +28,11 @@ public class ReferralWorkFlowSteps extends TestBase {
 
     private AddOrderPage addOrderPage;
 
+    private ModifyOrderPage modifyOrderPage;
+
     private String existingLabNumber = "20210000000008888";
+
+    private String patientInfo = "Patient:  moses, mutesasira  09/02/2019  M";
 
     String accesionNumber;
 
@@ -275,5 +280,33 @@ public class ReferralWorkFlowSteps extends TestBase {
     public void succesMessageAppears() throws InterruptedException {
         Thread.sleep(1000);
         assertTrue(addOrderPage.containsText("Save was successful"));
+    }
+
+    @When("User Clicks 'Print labels' Button")
+    public void clickPrintLabels() {
+        addOrderPage.clickPrintlabel();
+    }
+
+    @Then("User is able to print barcode label that matches all order information")
+    public void printLabel() {
+        addOrderPage.verifyReportPrinted();
+    }
+
+    @When("User Go to Order tab --> Modify Order")
+    public void goToModifyOrder() {
+        homePage = addOrderPage.goToHomePage();
+        modifyOrderPage = homePage.goToModifyOrderPage();
+    }
+
+    @And("User Enters lab number {string} from test order")
+    public void enterLabNumber(String labNumber) {
+        modifyOrderPage.enterLabNumber(labNumber);
+        modifyOrderPage.clickSearchButton();
+    }
+
+    @Then("Order details are correct")
+    public void verifyPatientDetails() {
+        assertTrue(modifyOrderPage.hasPatientInfoBar());
+        assertTrue(modifyOrderPage.getPatientInfo().trim().contains(patientInfo));
     }
 }

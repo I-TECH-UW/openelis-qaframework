@@ -4,6 +4,7 @@ Background:
     Given User logs in into the OpenELIS  System
     And User is able to log in
 
+# Use Case 1 :I am a receptionist at the Flu Clinic
 @referral
 Scenario Outline: Register a patient's sample for Covid testing and send the lab request and sample to the Central Health Laboratory
 When User Goes to Order tab--> Add Order
@@ -37,7 +38,13 @@ Then Save button is activated ,if all required fields are filled
 And User Ticks the boxes for Patient notification by Email and SMS
 And User Ticks the boxes for Requester notification by Email and SMS   
 When User Clicks Save to save form on Add Order Page
-And Message 'Save Was Successful' appears at the top of the page                                                                                                                                                                       
+And Message 'Save Was Successful' appears at the top of the page 
+When User Clicks 'Print labels' Button 
+Then User is able to print barcode label that matches all order information 
+# CONFIRMATION STEPS 
+When User Go to Order tab --> Modify Order 
+And User Enters lab number "<labNo>" from test order 
+Then Order details are correct                                                                                                                                                                
 Examples:
     |labNo            |incorectLabNumber|existinglabNo    |patientId|lastName|firstName  |
     |20210000000008080| BETA119000047   |20210000000008888|201807D9P|moses   | mutesasira|

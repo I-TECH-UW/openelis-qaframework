@@ -41,8 +41,8 @@ When User Closes Validation note box
 Then Validation Note field closes; triangle symbol changes to notepad symbol
 Examples:
     |unitType         |labNumber        |exist |notes       |
-    |Molecular Bio A  |20210000000002249|true  |sample Notes|   
-    |Molecular Bio A  |11111111111111111|false |sample Notes|
+    |Molecular Biology |20210000000002249|true  |sample Notes|   
+    |Molecular Biology |11111111111111111|false |sample Notes|
 
 @validate
 Scenario Outline: Overall Page
@@ -63,7 +63,7 @@ When User Clicks `Leave` in cancel message
 Then Returned to home page
 Examples:
     |unitType         |
-    |Molecular Bio A  |
+    |Molecular Biology |
 
 @validate
 Scenario Outline: Verification
@@ -78,4 +78,4 @@ When User Goes to Workplan --> By Unit
 Then Retest tests appear on workplan for that accession number By Unit Type "<unitType>"
 Examples:
     |accesionNumber   |testType                     |panelType             |unitType         |
-    |20210000000002249|HEPATITIS C VIRAL LOAD(SERUM)|pnl_virology_molecular|Molecular Bio A |    
+    |20210000000002249|HEPATITIS C VIRAL LOAD(SERUM)|pnl_virology_molecular|Molecular Biology|    
