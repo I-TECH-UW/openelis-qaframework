@@ -125,6 +125,8 @@ public class AddOrderPage extends Page {
 
 	private static final By BUTTON_CANCEL = By.xpath("//input[@value='Cancel']");
 
+	private static final By BUTTON_PRINT_LABEL= By.id("printBarcodeButton");
+
 	private static final By SELECT_SAMPLE = By.id("sampleTypeSelect");
 
 	private static final By SELECT_CONDITION = By.id("asmSelect0");
@@ -198,6 +200,7 @@ public class AddOrderPage extends Page {
 	private static final By GIF_LOADER = By.id("loading");
 
 	private static final By SELECT_RESULT = By.id("sel_1");
+
 
 	public AddOrderPage(Page parentPage) {
 		super(parentPage);
@@ -360,6 +363,10 @@ public class AddOrderPage extends Page {
 
 	public void clickSave() {
 		clickOn(BUTTON_SAVE);
+	}
+
+	public void clickPrintlabel() {
+		clickOn(BUTTON_PRINT_LABEL);
 	}
 
 	public void clickReferrerTest() {
