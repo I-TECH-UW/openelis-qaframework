@@ -125,7 +125,7 @@ public class AddOrderPage extends Page {
 
 	private static final By BUTTON_CANCEL = By.xpath("//input[@value='Cancel']");
 
-	private static final By BUTTON_PRINT_LABEL= By.id("printBarcodeButton");
+	private static final By BUTTON_PRINT_LABEL = By.id("printBarcodeButton");
 
 	private static final By SELECT_SAMPLE = By.id("sampleTypeSelect");
 
@@ -161,12 +161,6 @@ public class AddOrderPage extends Page {
 
 	private static final By CHECK_BOX_TEST = By.id("test_0");
 
-	private static final By CHECK_BOX_TEST1 = By.id("test_1");
-
-	private static final By CHECK_BOX_TEST2 = By.id("test_2");
-
-	private static final By CHECK_BOX_TEST3 = By.id("test_3");
-
 	private static final By CHECK_BOX_PATIENT_EMAIL = By.className("patientEmailInput");
 
 	private static final By CHECK_BOX_PATIENT_SMS = By.className("patientSMSInput");
@@ -174,8 +168,6 @@ public class AddOrderPage extends Page {
 	private static final By CHECK_BOX_PROVIDER_EMAIL = By.className("providerEmailInput");
 
 	private static final By CHECK_BOX_PROVIDER_SMS = By.className("providerSMSInput");
-
-	private static final By CHECK_BOX_VIRAL_LOAD_TEST = By.id("test_4");
 
 	private static final By CHECK_BOX_PANNEL = By.name("panelSelect");
 
@@ -200,7 +192,6 @@ public class AddOrderPage extends Page {
 	private static final By GIF_LOADER = By.id("loading");
 
 	private static final By SELECT_RESULT = By.id("sel_1");
-
 
 	public AddOrderPage(Page parentPage) {
 		super(parentPage);
@@ -336,11 +327,12 @@ public class AddOrderPage extends Page {
 	}
 
 	public void clickTestCheckBox() {
-		clickOn(CHECK_BOX_TEST);
-		// clickOn(CHECK_BOX_TEST1);
-		// clickOn(CHECK_BOX_TEST2);
-		// clickOn(CHECK_BOX_TEST3);
-		// clickOn(CHECK_BOX_VIRAL_LOAD_TEST);
+		for (int n = 0; n <= 6; n++) {
+			By CHECK_BOX_TEST_N = By.id("test_" + n);
+			if (hasElementWithoutWait(CHECK_BOX_TEST_N)) {
+				clickOn(CHECK_BOX_TEST_N);
+			}
+		}
 	}
 
 	public void clickPannelCheckBox() {
