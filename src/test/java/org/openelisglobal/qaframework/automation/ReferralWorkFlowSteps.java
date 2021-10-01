@@ -10,6 +10,7 @@ import org.openelisglobal.qaframework.automation.page.AddOrderPage;
 import org.openelisglobal.qaframework.automation.page.HomePage;
 import org.openelisglobal.qaframework.automation.page.LoginPage;
 import org.openelisglobal.qaframework.automation.page.ModifyOrderPage;
+import org.openelisglobal.qaframework.automation.page.ElectronicOrderPage;
 import org.openelisglobal.qaframework.automation.test.TestBase;
 import org.openelisglobal.qaframework.automation.utils.Utils;
 
@@ -30,6 +31,8 @@ public class ReferralWorkFlowSteps extends TestBase {
 
     private ModifyOrderPage modifyOrderPage;
 
+    private ElectronicOrderPage electronicOrderPage;
+
     private String existingLabNumber = "20210000000008888";
 
     private String patientInfo = "Patient:  moses, mutesasira  09/02/2019  M";
@@ -47,7 +50,7 @@ public class ReferralWorkFlowSteps extends TestBase {
         loginPage = new LoginPage(getWebDriver());
     }
 
-    @Given("User logs in into the OpenELIS  System")
+    @When("User logs in into the OpenELIS System")
     public void visitLoginPage() throws Exception {
         homePage = loginPage.goToHomePage();
     }
@@ -107,7 +110,7 @@ public class ReferralWorkFlowSteps extends TestBase {
     }
 
     @When("User Completes the Sample section of the Order form")
-    public void completeSampleSection() {
+    public void completeSampleSection() throws InterruptedException {
         addOrderPage.clickAddSampleButton();
         addOrderPage.selectSampleTypeFromDropDownMenu();
         addOrderPage.clickPannelCheckBox();
@@ -128,13 +131,10 @@ public class ReferralWorkFlowSteps extends TestBase {
         assertTrue(addOrderPage.testCheckBoxExists());
     }
 
-    @When("User Completes the Referral sub-section under Sample section of the Order form")
-    public void completeReferralSection() {
+    @When("User Completes the Referral sub-section under Sample section of the Order form, with referral Institute {string}")
+    public void completeReferralSection(String institute) throws InterruptedException {
         addOrderPage.clickReferrerTest();
-        // addOrderPage.selectReasonForReferal("Confirmation requested");
-        // addOrderPage.enterReferer("test_referrer");
-        // addOrderPage.enterReferralSentDate("16/09/2021");
-        addOrderPage.selectreferralInstitute();
+        addOrderPage.selectReferralInstitute(institute);
         addOrderPage.selectreferralTestName();
     }
 
@@ -157,7 +157,7 @@ public class ReferralWorkFlowSteps extends TestBase {
     @And("Referrer field is autofilled with name of logged in user")
     public void referalFieldAutoFilledWithNameOfLogedInUser() {
         assertEquals(addOrderPage.getRefererName().trim(), "itech itech");
-        addOrderPage.enterReferer("test_referrer");
+        // addOrderPage.enterReferer("test_referrer");
     }
 
     @And("Laboratory names appear in alphabetical order under Institute")
@@ -308,5 +308,20 @@ public class ReferralWorkFlowSteps extends TestBase {
     public void verifyPatientDetails() {
         assertTrue(modifyOrderPage.hasPatientInfoBar());
         assertTrue(modifyOrderPage.getPatientInfo().trim().contains(patientInfo));
+    }
+
+    @When("User logs in into the referral OpenELIS System")
+    public void LoginToRefferalLab() {
+        homePage = loginPage.goToReferralHomePage();
+    }
+
+    @Then("User is able to log in into the referral OpenELIS System")
+    public void userLoginsInToReferralSystem() {
+        assertNotNull(homePage.getLogOutLink());
+    }
+
+    @When("User Goes to Order tab --> Electronic Orders")
+    public void goToElectronicOrder() {
+        electronicOrderPage = homePage.goToElectronicOrderPage();
     }
 }

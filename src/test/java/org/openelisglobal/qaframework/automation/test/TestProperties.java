@@ -14,7 +14,7 @@ public class TestProperties {
 	
 	public static final String LOGIN_PASSWORD_PROPERTY = "login.password";
 	
-	public static final String DEFAULT_PASSWORD = "test";
+	public static final String DEFAULT_PASSWORD = "adminADMIN!";
 	
 	public static final String LOGIN_USERNAME_PROPERTY = "login.username";
 	
@@ -27,6 +27,18 @@ public class TestProperties {
 	public static final String HEADLESS_PROPERTY = "headless";
 	
 	public static final String DEFAULT_HEADLESS = "false";
+
+	public static final String REFERRAL_LOGIN_USERNAME_PROPERTY = "referral.login.username";
+
+	public static final String DEFAULT_REFERRAL_LOGIN_USERNAME = "admin";
+	
+	public static final String REFERRAL_WEBAPP_URL_PROPERTY = "referral.webapp.url";
+
+	public static final String DEFAULT_REFERRAL_WEBAPP_URL = "https://reflab.openelisci.org:8443/OpenELIS-Global";
+
+	public static final String REFERRAL_LOGIN_PASSWORD_PROPERTY = "referral.login.password";
+
+	public static final String DEFAULT_REFERRAL_PASSWORD = "adminADMIN!";
 	
 	private static TestProperties SINGLETON;
 	
@@ -63,6 +75,18 @@ public class TestProperties {
 	
 	public String getPassword() {
 		return getProperty(LOGIN_PASSWORD_PROPERTY, DEFAULT_PASSWORD);
+	}
+
+	public String getReferralWebAppUrl() {
+		return getProperty(REFERRAL_WEBAPP_URL_PROPERTY, DEFAULT_REFERRAL_WEBAPP_URL);
+	}
+
+	public String getReferralUsername() {
+		return getProperty(REFERRAL_LOGIN_USERNAME_PROPERTY, DEFAULT_REFERRAL_LOGIN_USERNAME);
+	}
+	
+	public String getReferralPassword() {
+		return getProperty(REFERRAL_LOGIN_PASSWORD_PROPERTY, DEFAULT_REFERRAL_PASSWORD);
 	}
 	
 	public String getHeadless() {

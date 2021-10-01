@@ -44,6 +44,8 @@ public abstract class Page {
 	private final String contextUrl;
 	
 	private final String serverUrl;
+
+	private final String referralServerUrl;
 	
 	private final ExpectedCondition<Boolean> pageReady = new ExpectedCondition<Boolean>() {
 		
@@ -92,10 +94,17 @@ public abstract class Page {
 		this.driver = driver;
 		
 		String webAppUrl = properties.getWebAppUrl();
+		String referralWebAppUrl = properties.getReferralWebAppUrl();
 		if (webAppUrl.endsWith("/")) {
 			webAppUrl = webAppUrl.substring(0, webAppUrl.length() - 1);
 		}
+
+		if (referralWebAppUrl.endsWith("/")) {
+			referralWebAppUrl = referralWebAppUrl.substring(0, referralWebAppUrl.length() - 1);
+		}
+
 		serverUrl = webAppUrl;
+		referralServerUrl = referralWebAppUrl;
 		
 		try {
 			contextUrl = new URL(serverUrl).getPath();
@@ -145,13 +154,29 @@ public abstract class Page {
 		}
 		return serverUrl + pageUrl;
 	}
+
+	public String newAbsoluteReferralPageUrl(String pageUrl) {
+		if (!pageUrl.startsWith("/")) {
+			pageUrl = "/" + pageUrl;
+		}
+		return referralServerUrl + pageUrl;
+	}
 	
 	public void goToPage(String address) {
 		driver.get(newAbsolutePageUrl(address));
 	}
+
+	public void goToRefferalPage(String address) {
+		driver.get(newAbsoluteReferralPageUrl(address));
+	}
 	
 	public void go() {
 		driver.get(getAbsolutePageUrl());
+		waitForPage();
+	}
+
+	public void goToReferralPage() {
+		driver.get(getAbsoluteRefferalPageUrl());
 		waitForPage();
 	}
 	
@@ -290,6 +315,10 @@ public abstract class Page {
 	
 	public String getAbsolutePageUrl() {
 		return newAbsolutePageUrl(getPageUrl());
+	}
+
+	public String getAbsoluteRefferalPageUrl() {
+		return newAbsoluteReferralPageUrl(getPageUrl());
 	}
 	
 	public void clickOnLinkFromHref(String href) throws InterruptedException {

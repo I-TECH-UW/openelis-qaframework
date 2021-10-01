@@ -15,6 +15,8 @@ public class HomePage extends Page {
 	private static final By FIRST_LEVEL_MENU_ORDER = By.id("menu_sample");
 	
 	private static final By SECOND_LEVEL_MENU_ADD_ORDER = By.id("menu_sample_add");
+
+	private static final By SECOND_LEVEL_MENU_E_ORDER = By.id("menu_sample_eorder");
 	
 	private static final By SECOND_LEVEL_MENU_MODIFY_ORDER = By.id("menu_sample_edit");
 	
@@ -76,6 +78,12 @@ public class HomePage extends Page {
 		hoverOn(FIRST_LEVEL_MENU_ORDER);
 		clickOn(SECOND_LEVEL_MENU_ADD_ORDER);
 		return new AddOrderPage(this);
+	}
+
+	public ElectronicOrderPage goToElectronicOrderPage() {
+		hoverOn(FIRST_LEVEL_MENU_ORDER);
+		clickOn(SECOND_LEVEL_MENU_E_ORDER);
+		return new ElectronicOrderPage(this);
 	}
 	
 	public ModifyOrderPage goToModifyOrderPage() {

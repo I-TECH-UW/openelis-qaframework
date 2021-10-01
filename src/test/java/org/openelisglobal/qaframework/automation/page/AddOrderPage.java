@@ -326,11 +326,12 @@ public class AddOrderPage extends Page {
 		clickOn(FIELD_COLLECTOR);
 	}
 
-	public void clickTestCheckBox() {
+	public void clickTestCheckBox() throws InterruptedException {
 		for (int n = 0; n <= 6; n++) {
 			By CHECK_BOX_TEST_N = By.id("test_" + n);
 			if (hasElementWithoutWait(CHECK_BOX_TEST_N)) {
 				clickOn(CHECK_BOX_TEST_N);
+				Thread.sleep(100);
 			}
 		}
 	}
@@ -786,8 +787,18 @@ public class AddOrderPage extends Page {
 		return dropDownHasOptions(SELECT_REFFER_REASON);
 	}
 
-	public void selectreferralInstitute() {
+	public void selectReferralInstitute() {
 		selectOptionFromDropDown(SELECT_REFFER_INSTITUTE);
+	}
+
+	public void selectReferralInstitute(String institute) throws InterruptedException {
+		for (int n = 0; n <= 6; n++) {
+			By SELECT_REFFER_INSTITUTE_N = By.id("referredInstituteId_" + n);
+			if (hasElementWithoutWait(SELECT_REFFER_INSTITUTE_N)) {
+				selectFrom(SELECT_REFFER_INSTITUTE_N, institute);
+				Thread.sleep(100);
+			}
+		}
 	}
 
 	public Boolean institutesForReferralDisplay() {
@@ -875,6 +886,19 @@ public class AddOrderPage extends Page {
 		return deactivated;
 	}
 
+	public Boolean panelCheckBoxExists() {
+		return hasElementWithoutWait(CHECK_BOX_PANNEL);
+	}
+
+	public Boolean testCheckBoxExists() {
+		return hasElement(CHECK_BOX_TEST);
+	}
+
+	public HomePage goToHomePage() {
+		this.goToPage(PATH_HOME);
+		return new HomePage(this);
+	}
+
 	public void innitialiseData(String accesionNumber) throws InterruptedException {
 		UUID uuid = UUID.randomUUID();
 		String uuidAsString = uuid.toString();
@@ -938,18 +962,5 @@ public class AddOrderPage extends Page {
 		selectPatientMaritalStatusFromDropDownMenu();
 		enterPatientOtherNationality("nationality");
 		clickSave();
-	}
-
-	public Boolean panelCheckBoxExists() {
-		return hasElementWithoutWait(CHECK_BOX_PANNEL);
-	}
-
-	public Boolean testCheckBoxExists() {
-		return hasElement(CHECK_BOX_TEST);
-	}
-
-	public HomePage goToHomePage() {
-		this.goToPage(PATH_HOME);
-		return new HomePage(this);
 	}
 }
