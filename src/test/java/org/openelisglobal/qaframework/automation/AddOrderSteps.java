@@ -380,7 +380,7 @@ public class AddOrderSteps extends TestBase {
 	}
 	
 	@When("User Checks checkbox next to test name")
-	public void checkTestNameCheckBox() {
+	public void checkTestNameCheckBox() throws InterruptedException {
 		addOrderPage.clickTestCheckBox();
 	}
 	
@@ -390,7 +390,7 @@ public class AddOrderSteps extends TestBase {
 	}
 	
 	@When("User unChecks checkbox next to test name")
-	public void unCheckTestNameCheckBox() {
+	public void unCheckTestNameCheckBox() throws InterruptedException {
 		addOrderPage.clickTestCheckBox();
 	}
 	
@@ -438,7 +438,7 @@ public class AddOrderSteps extends TestBase {
 	}
 	
 	@When("User deletes Text in Tests Box")
-	public void deleteTests() {
+	public void deleteTests() throws InterruptedException {
 		addOrderPage.clickTestCheckBox();
 		try {
 			addOrderPage.clearTestsField();

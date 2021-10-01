@@ -1,12 +1,10 @@
 Feature: Referral Work Flow 
 
-Background:
-    Given User logs in into the OpenELIS  System
-    And User is able to log in
-
 # Use Case 1 :I am a receptionist at the Flu Clinic
 @referral
 Scenario Outline: Register a patient's sample for Covid testing and send the lab request and sample to the Central Health Laboratory
+When User logs in into the OpenELIS System
+Then User is able to log in
 When User Goes to Order tab--> Add Order
 And User Completes the Order section of the Order form with accesionNumber "<labNo>" 
 Then Lab number "<labNo>" can be entered|scanned successfully
@@ -14,7 +12,7 @@ And Lab Number field will not accept incorrect format "<incorectLabNumber>"
 When User Completes the Sample section of the Order form
 Then Sample Type list displays all needed options 
 And Panels and Tests appear correctly
-When User Completes the Referral sub-section under Sample section of the Order form
+When User Completes the Referral sub-section under Sample section of the Order form, with referral Institute "<referalInstitute>"
 Then Referral details fields appear when the Refer test to a reference lab box is ticked 
 And Reasons for Referral shows default value 'Test not performed'
 And Reasons for Referral list appears in alphabetical order
@@ -46,6 +44,13 @@ When User Go to Order tab --> Modify Order
 And User Enters lab number "<labNo>" from test order 
 Then Order details are correct                                                                                                                                                                
 Examples:
-    |labNo            |incorectLabNumber|existinglabNo    |patientId|lastName|firstName  |
-    |20210000000008080| BETA119000047   |20210000000008888|201807D9P|moses   | mutesasira|
+    |labNo            |incorectLabNumber|existinglabNo    |patientId|lastName|firstName  |referalInstitute |
+    |20210000000008080| BETA119000047   |20210000000008888|201807D9P|moses   | mutesasira|Test referral lab|
+
+@referral  
+Scenario Outline: Register test requests sent electronically from the Flu Clinic
+When User logs in into the referral OpenELIS System
+Then User is able to log in into the referral OpenELIS System
+When User Goes to Order tab --> Electronic Orders
+
 

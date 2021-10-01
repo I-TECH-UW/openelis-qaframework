@@ -58,4 +58,12 @@ public class LoginPage extends Page {
 		getLoginButton().click();
 		return new HomePage(this);
 	}
+
+	public HomePage goToReferralHomePage() {
+		goToReferralPage();
+		enterUsername(properties.getReferralUsername());
+		enterPassword(properties.getPassword());
+		getLoginButton().click();
+		return new HomePage(this);
+	}
 }
