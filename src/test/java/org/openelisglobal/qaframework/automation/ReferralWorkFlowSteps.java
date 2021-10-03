@@ -13,6 +13,7 @@ import org.openelisglobal.qaframework.automation.page.ModifyOrderPage;
 import org.openelisglobal.qaframework.automation.page.ElectronicOrderPage;
 import org.openelisglobal.qaframework.automation.test.TestBase;
 import org.openelisglobal.qaframework.automation.utils.Utils;
+import org.openqa.selenium.firefox.FirefoxDriver.SystemProperty;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -107,6 +108,7 @@ public class ReferralWorkFlowSteps extends TestBase {
             addOrderPage.acceptAlert();
             addOrderPage.clickGenerateButton();
         }
+        System.setProperty("labNumber", addOrderPage.getAccesionNumberValue());
     }
 
     @When("User Completes the Sample section of the Order form")
@@ -323,5 +325,31 @@ public class ReferralWorkFlowSteps extends TestBase {
     @When("User Goes to Order tab --> Electronic Orders")
     public void goToElectronicOrder() {
         electronicOrderPage = homePage.goToElectronicOrderPage();
+    }
+
+    @And("User Enters lab number {string} in Search Test Requests, and Click Search")
+    public void enterLabNumberSearch(String labNo) {
+        // System.getProperty("labNumber")
+        electronicOrderPage.enterSearchText(labNo);
+    }
+
+    @Then("Order details appear in the table")
+    public void getElectronocOrders() throws InterruptedException {
+        assertTrue(electronicOrderPage.hasSentOrders());
+    }
+
+    @When("User Enters Patient Last Name {string} in Search Test Requests, and Click Search")
+    public void enterPatientLastName(String name) {
+        electronicOrderPage.enterSearchText(name);
+    }
+
+    @When("User Enters Patient First Name {string} in Search Test Requests, and Click Search")
+    public void enterPatientFirstName(String name) {
+        electronicOrderPage.enterSearchText(name);
+    }
+
+    @When("User Enters Patient Id {string} in Search Test Requests, and Click Search")
+    public void enterPatientIdName(String id) {
+        electronicOrderPage.enterSearchText(id);
     }
 }
