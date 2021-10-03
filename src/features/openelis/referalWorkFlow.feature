@@ -52,5 +52,16 @@ Scenario Outline: Register test requests sent electronically from the Flu Clinic
 When User logs in into the referral OpenELIS System
 Then User is able to log in into the referral OpenELIS System
 When User Goes to Order tab --> Electronic Orders
+And User Enters lab number "<labNo>" in Search Test Requests, and Click Search
+Then Order details appear in the table 
+When User Enters Patient Last Name "<lastName>" in Search Test Requests, and Click Search
+Then Order details appear in the table 
+When User Enters Patient First Name "<lastName>" in Search Test Requests, and Click Search
+Then Order details appear in the table 
+When User Enters Patient Id "<patientId>" in Search Test Requests, and Click Search
+Then Order details appear in the table 
+Examples:
+    |labNo            |lastName|firstName  |patientId|
+    |20210000000008080|moses   | mutesasira|201807D9P|
 
 
