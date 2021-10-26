@@ -28,10 +28,15 @@ public class LoginPage extends Page {
 		username = properties.getUsername();
 		password = properties.getPassword();
 	}
-	
+	 
+	public String getUsername() {
+		return username;
+	}
+
 	@Override
 	public void go() {
 		goToPage(PATH_LOGIN);
+		acceptSelfAssignedCert();
 	}
 	
 	@Override
@@ -40,11 +45,11 @@ public class LoginPage extends Page {
 	}
 	
 	public void enterUsername(String username) {
-		findElement(FIELD_USERNAME).sendKeys(username);
+		setTextToFieldNoEnter(FIELD_USERNAME,username);
 	}
 	
 	public void enterPassword(String password) {
-		findElement(FIELD_PASSWORD).sendKeys(password);
+		setTextToFieldNoEnter(FIELD_PASSWORD,password);
 	}
 	
 	public WebElement getLoginButton() {
@@ -55,7 +60,7 @@ public class LoginPage extends Page {
 		go();
 		enterUsername(this.username);
 		enterPassword(this.password);
-		getLoginButton().click();
+		clickOn(BUTTON_SUBMIT);
 		return new HomePage(this);
 	}
 
@@ -63,7 +68,16 @@ public class LoginPage extends Page {
 		goToReferralPage();
 		enterUsername(properties.getReferralUsername());
 		enterPassword(properties.getPassword());
-		getLoginButton().click();
+		clickOn(BUTTON_SUBMIT);
 		return new HomePage(this);
+	}
+
+	private void acceptSelfAssignedCert() {
+		if (properties.getWebAppUrl().contains("localhost")) {
+			By BUTTON_ADVANCED = By.id("details-button");
+			By LINK_PROEED = By.id("proceed-link");
+			clickOn(BUTTON_ADVANCED);
+			clickOn(LINK_PROEED);
+		}
 	}
 }

@@ -267,6 +267,19 @@ public abstract class Page {
 		Select droplist = new Select(findElement(by));
 		return droplist.getFirstSelectedOption().getText();
 	}
+
+	public Boolean dropDownHasTextOption(By by, String value) {
+		Boolean found = false;
+		Select droplist = new Select(findElement(by));
+		List<WebElement> allOptions = droplist.getOptions();
+		for (WebElement option :allOptions) {
+			if (option.getText().equals(value)) {
+				found=true;
+                break;
+			}
+		}
+		return found;
+	}
 	
 	public void hoverOn(By by) {
 		Actions builder = new Actions(driver);

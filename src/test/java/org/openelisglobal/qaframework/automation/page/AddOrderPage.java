@@ -140,21 +140,21 @@ public class AddOrderPage extends Page {
 	private static final By SELECT_PATIENT_MARITAL_STATUS = By.id("maritialStatusID");
 
 	private static final By REQUIRED_REQUEST_DATE = By
-			.xpath("//div[@id='orderDisplay']/table/tbody/tr/td/table/tbody/tr[2]/td/span");
+			.xpath("(//span[@class='requiredlabel'])[2]");
 
 	private static final By REQUIRED_RECIEVED_DATE = By
-			.xpath("//div[@id='orderDisplay']/table/tbody/tr/td/table/tbody/tr[3]/td/span");
+			.xpath("(//span[@class='requiredlabel'])[3]");
 
 	private static final By REQUIRED_SITE_NAME = By
-			.xpath("//div[@id='orderDisplay']/table/tbody/tr/td/table/tbody/tr[6]/td/span");
+			.xpath("(//span[@class='requiredlabel'])[4]");
 
 	private static final By REQUIRED_LAST_NAME = By
-			.xpath("//div[@id='orderDisplay']/table/tbody/tr/td/table/tbody/tr[11]/td/span");
+			.xpath("(//span[@class='requiredlabel'])[5]");
 
 	private static final By REQUIRED_SAMPLE_ADDITION = By
-			.xpath("//input[@id='samplesSectionId']/following-sibling::span[1]");
+			.xpath("(//span[@class='requiredlabel'])[6]");
 
-	private static final By REQUIRED_TEST = By.xpath("//*[@id='samplesAddedTable']/tbody/tr[1]/th[9]/span");
+	private static final By REQUIRED_TEST = By.xpath("(//span[@class='requiredlabel'])[10]");
 
 	private static final By REQUIRED_PATIENT_INFORMATION = By
 			.xpath("//td/input[@id='orderSectionId']/following-sibling::span[1]");
@@ -580,8 +580,14 @@ public class AddOrderPage extends Page {
 		setText(FIELD_PATIENT_PHONE, phone);
 	}
 
+	public Boolean hasPatientEmailField(){
+		return hasElementWithoutWait(FIELD_PATIENT_EMAIL);
+	}
+	
 	public void enterPatientEmail(String email) {
-		setText(FIELD_PATIENT_EMAIL, email);
+		if (hasPatientEmailField()) {
+			setText(FIELD_PATIENT_EMAIL, email);
+		}
 	}
 
 	public void enterPatientDateofBirth(String dob) {
@@ -737,7 +743,11 @@ public class AddOrderPage extends Page {
 	}
 
 	public void selectSampleTypeFromDropDownMenu() {
-		selectFrom(SELECT_SAMPLE, "SERUM");
+		if (dropDownHasTextOption(SELECT_SAMPLE, "SERUM")) {
+			selectFrom(SELECT_SAMPLE, "SERUM");
+		} else if (dropDownHasTextOption(SELECT_SAMPLE, "Serum")) {
+			selectFrom(SELECT_SAMPLE, "Serum");
+		}
 	}
 
 	public void selectSampleConditionFromDropDownMenu() {
@@ -860,9 +870,13 @@ public class AddOrderPage extends Page {
 
 	public void turnOnAcessionValidation() {
 		goToPage(PATH_SAMPLE_ENTRY_CONFIG);
-		clickOn(RADIO_BUTTON_VALIDATE_TRUE);
-		clickOn(BUTTON_SAVE_VALIDATION);
-		this.go();
+		if (this.containsText("System error")) {
+			this.go();
+		} else {
+			clickOn(RADIO_BUTTON_VALIDATE_TRUE);
+			clickOn(BUTTON_SAVE_VALIDATION);
+			this.go();
+		}	
 	}
 
 	public void turnOnTelephoneValidation() {
