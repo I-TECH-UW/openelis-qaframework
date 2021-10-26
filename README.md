@@ -42,4 +42,8 @@ See [Wiki](https://github.com/I-TECH-UW/openelis-qaframework/wiki) for the Proje
 | Patient Entry     | @patientEntry |[![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/patientEntry.yml/badge.svg)](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/patientEntry.yml)|
 | Mofidy Order      | @modifyOrder  |[![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/modifyOrder.yml/badge.svg)](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/modifyOrder.yml)| 
 | Referral Work Flow | @referral    |[![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/referalWorkFlow.yml/badge.svg)](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/referalWorkFlow.yml)| 
-       
+
+
+ ## CI Local Tests
+ [![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/test-local.yml/badge.svg)](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/test-local.yml)
+
