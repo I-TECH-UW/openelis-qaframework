@@ -35,6 +35,11 @@ public class LoginSteps extends TestBase {
 	
 	@When("User enters {string} username")
 	public void anyUsername(String username) {
+		if(username.trim().equals("itech")){
+			if(!username.trim().equals(loginPage.getUsername())){
+				username = loginPage.getUsername();
+			}
+		}
 		loginPage.enterUsername(username);
 	}
 	
