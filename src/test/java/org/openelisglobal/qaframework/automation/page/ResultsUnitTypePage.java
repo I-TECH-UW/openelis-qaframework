@@ -12,6 +12,10 @@ public class ResultsUnitTypePage extends Page {
 	private static final By SEARCH_FORM = By.id("searchDiv");
 	
 	private static final By DROP_DOWN_UNIT_TYPE = By.id("testSectionId");
+
+	private static final By BUTTON_SAVE = By.id("saveButtonId");
+
+	private static final String PATH_HOME = "/Dashboard.do";
 	
 	public ResultsUnitTypePage(Page parent) {
 		super(parent);
@@ -33,5 +37,22 @@ public class ResultsUnitTypePage extends Page {
 	public ResultsEntryPage selectUnitType(String unitType) {
 		selectFrom(DROP_DOWN_UNIT_TYPE, unitType);
 		return new ResultsEntryPage(this);
+	}
+
+	public void enterTestResult() throws InterruptedException {
+		for (int n = 1; n <= 7; n++) {
+			By FIELD_TEST_RESULT_N = By.xpath("(//input[starts-with(@id,'results')])["+n+"]");
+			setText(FIELD_TEST_RESULT_N, "43");
+			Thread.sleep(100);
+		}
+	}
+
+	public void clickSaveButton() {
+		clickOn(BUTTON_SAVE);
+	}
+
+	public HomePage goToHomePage() {
+		this.goToPage(PATH_HOME);
+		return new HomePage(this);
 	}
 }

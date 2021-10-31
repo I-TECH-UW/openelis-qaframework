@@ -225,13 +225,7 @@ public class ReferralWorkFlowSteps extends TestBase {
     public void searchByLastNameYieldsResults() {
         addOrderPage.waitForSeachResult();
         assertTrue(addOrderPage.containsSeachResult());
-        assertTrue(addOrderPage.containsText("Data source"));
-        assertTrue(addOrderPage.containsText("Last Name"));
-        assertTrue(addOrderPage.containsText("First Name"));
-        assertTrue(addOrderPage.containsText("Gender"));
-        assertTrue(addOrderPage.containsText("Date of Birth"));
-        assertTrue(addOrderPage.containsText("Subject Number"));
-        assertTrue(addOrderPage.containsText("National ID"));
+        assertPageContainsPatientResults(addOrderPage);
     }
 
     @And("If correct patient is selected, their information populates the Patient section of the order form")

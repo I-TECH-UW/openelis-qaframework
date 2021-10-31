@@ -235,13 +235,7 @@ public class ResultsEntrySteps extends TestBase {
 	@Then("Patient information display correctly by Patient details")
 	public void patienttInformationDispaysByAccesionPatientDetails() {
 		assertTrue(searchByPatientPage.searchResultsDisplay());
-		assertTrue(searchByPatientPage.containsText("Data source"));
-		assertTrue(searchByPatientPage.containsText("Last Name"));
-		assertTrue(searchByPatientPage.containsText("First Name"));
-		assertTrue(searchByPatientPage.containsText("Gender"));
-		assertTrue(searchByPatientPage.containsText("Date of Birth"));
-		assertTrue(searchByPatientPage.containsText("Subject Number"));
-		assertTrue(searchByPatientPage.containsText("National ID"));
+		assertPageContainsPatientResults(searchByPatientPage);
 		homePage = searchByPatientPage.goToHomePage();
 	}
 	
@@ -539,13 +533,7 @@ public class ResultsEntrySteps extends TestBase {
 	
 	@Then("Results appear as reported")
 	public void resultAppear() {
-		assertTrue(patientStatusReportPage.containsText("Data source"));
-		assertTrue(patientStatusReportPage.containsText("Last Name"));
-		assertTrue(patientStatusReportPage.containsText("First Name"));
-		assertTrue(patientStatusReportPage.containsText("Gender"));
-		assertTrue(patientStatusReportPage.containsText("Date of Birth"));
-		assertTrue(patientStatusReportPage.containsText("Subject Number"));
-		assertTrue(patientStatusReportPage.containsText("National ID"));
+		assertPageContainsPatientResults(patientStatusReportPage);
 	}
 	
 	@When("User Selects Results --> Search --> By Order and searches by known Accession Number {string}, Click Get Tests For Accession Number")

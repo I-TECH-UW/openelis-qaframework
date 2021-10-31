@@ -44,6 +44,6 @@ See [Wiki](https://github.com/I-TECH-UW/openelis-qaframework/wiki) for the Proje
 | Referral Work Flow | @referral    |[![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/referalWorkFlow.yml/badge.svg)](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/referalWorkFlow.yml)| 
 
 
- ## CI Local Tests
- [![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/test-local.yml/badge.svg)](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/test-local.yml)
+ <!-- ## CI Local Tests
+ [![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/test-local.yml/badge.svg)](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/test-local.yml) -->
 
