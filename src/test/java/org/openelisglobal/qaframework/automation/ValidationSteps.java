@@ -276,7 +276,8 @@ public class ValidationSteps extends TestBase {
 	}
 	
 	@Then("Returns to Validation Unit Type search page and message in green `Save was successful` appears")
-	public void saveSuccesful() {
+	public void saveSuccesful() throws InterruptedException {
+		Thread.sleep(1000);
 		assertTrue(resultValidationPage.containsText("Save was successful"));
 		assertTrue(resultValidationPage.containsText("Unit Type"));
 	}
@@ -328,7 +329,7 @@ public class ValidationSteps extends TestBase {
 		assertTrue(workPlanByTestTypePage.containsText(testType));
 		assertTrue(workPlanByTestTypePage.containsText("Lab No"));
 		//assertTrue(workPlanByTestTypePage.containsText("Subject Number"));
-		assertTrue(workPlanByUnitTypePage.containsText("Unique Health ID number"));
+		assertTrue(workPlanByTestTypePage.containsText("Unique Health ID number"));
 		homePage = workPlanByTestTypePage.goToHomePage();
 	}
 	
@@ -345,7 +346,7 @@ public class ValidationSteps extends TestBase {
 		assertTrue(workPlanByPanelTypePage.containsText(panelType));
 		assertTrue(workPlanByPanelTypePage.containsText("Lab No"));
 		//assertTrue(workPlanByPanelTypePage.containsText("Subject Number"));
-		assertTrue(workPlanByUnitTypePage.containsText("Unique Health ID number"));
+		assertTrue(workPlanByPanelTypePage.containsText("Unique Health ID number"));
 		assertTrue(workPlanByPanelTypePage.containsText("Test Name"));
 		homePage = workPlanByPanelTypePage.goToHomePage();
 	}

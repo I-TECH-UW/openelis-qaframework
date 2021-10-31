@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.openelisglobal.qaframework.RunTest;
 import org.openelisglobal.qaframework.automation.page.AddPatientPage;
@@ -186,10 +187,11 @@ public class PatientEntrySteps extends TestBase {
 	}
 	
 	@When("User Enters data into text fields")
-	public void eneterDataIntoTextFields() {
+	public void enterDataIntoTextFields() {
 		addPatientPage.clickNewPatientButton();
-		addPatientPage.enterSubjectNumber("201807D9P");
-		addPatientPage.enterNationalId("201507D35");
+		UUID uuid = UUID.randomUUID();
+		addPatientPage.enterSubjectNumber("201807D9P" + uuid.toString());
+		addPatientPage.enterNationalId("201507D35" + uuid.toString());
 		addPatientPage.enterPatientLastName("lastName");
 		addPatientPage.enterPatientFirstName("firstName");
 		addPatientPage.enterPatientStreet("Gayaza");
@@ -200,8 +202,8 @@ public class PatientEntrySteps extends TestBase {
 	
 	@Then("All text fields accept text")
 	public void fieldsAcceptText() {
-		assertEquals("201807D9P", addPatientPage.getSubjectNumber());
-		assertEquals("201507D35", addPatientPage.getNationalId());
+		assertTrue(addPatientPage.getSubjectNumber().contains("201807D9P"));
+		assertTrue(addPatientPage.getNationalId().contains("201507D35"));
 		assertEquals("lastName", addPatientPage.getPatientLastName());
 		assertEquals("firstName", addPatientPage.getPatientFirstName());
 		assertEquals("Gayaza", addPatientPage.getPatientStreet());
@@ -242,7 +244,6 @@ public class PatientEntrySteps extends TestBase {
 	@And("Alert given if Phone Number is not in correct format")
 	public void alertGivenIfPhoneNumberIsIncorrect() throws InterruptedException {
 		addPatientPage.enterPatientPhone("0772");
-		;
 		addPatientPage.clickNameField();
 		addPatientPage.acceptAlert();
 		Thread.sleep(1000);

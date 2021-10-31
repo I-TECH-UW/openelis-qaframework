@@ -354,6 +354,7 @@ public class AddPatientPage extends Page {
 		} else {
 			enterNationalId("ug012");
 			clickSubJectNumber();
+			Thread.sleep(1000);
 			if (alertPresent()) {
 				acceptAlert();
 				return;
