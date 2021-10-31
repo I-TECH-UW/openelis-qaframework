@@ -16,7 +16,7 @@ public class ResultsUnitTypePage extends Page {
 	private static final By BUTTON_SAVE = By.id("saveButtonId");
 
 	private static final String PATH_HOME = "/Dashboard.do";
-	
+
 	public ResultsUnitTypePage(Page parent) {
 		super(parent);
 	}
@@ -41,8 +41,10 @@ public class ResultsUnitTypePage extends Page {
 
 	public void enterTestResult() throws InterruptedException {
 		for (int n = 1; n <= 7; n++) {
-			By FIELD_TEST_RESULT_N = By.xpath("(//input[starts-with(@id,'results')])["+n+"]");
-			setText(FIELD_TEST_RESULT_N, "43");
+			By FIELD_TEST_RESULT_N = By.xpath("(//input[starts-with(@id,'results')])[" + n + "]");
+			if (hasElementWithoutWait(FIELD_TEST_RESULT_N)) {
+				setText(FIELD_TEST_RESULT_N, "43");
+			}
 			Thread.sleep(100);
 		}
 	}
