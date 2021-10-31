@@ -74,7 +74,7 @@ public class ValidationSteps extends TestBase {
 	public void goToValidationPage(String unitType) throws InterruptedException {
 		//	intialise data
 		homePage = resultValidationPage.goToHomePage();
-	    resultsUnitTypePage = homePage.selectsResultAndClickEnterByUnit();
+		resultsUnitTypePage = homePage.selectsResultAndClickEnterByUnit();
 		resultsUnitTypePage.selectUnitType(unitType);
 		resultsUnitTypePage.enterTestResult();
 		resultsUnitTypePage.clickSaveButton();
