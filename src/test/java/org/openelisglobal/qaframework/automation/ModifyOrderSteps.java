@@ -112,12 +112,7 @@ public class ModifyOrderSteps extends TestBase {
     @Then("Search by Last name yields results for all patients with matching last name on the Modify Order Page")
     public void searchByLastNameYieldsResults() {
         assertTrue(modifyOrderPage.containsSeachResult());
-        assertTrue(modifyOrderPage.containsText("Data source"));
-        assertTrue(modifyOrderPage.containsText("Last Name"));
-        assertTrue(modifyOrderPage.containsText("First Name"));
-        assertTrue(modifyOrderPage.containsText("Gender"));
-        assertTrue(modifyOrderPage.containsText("Date of Birth"));
-        assertTrue(modifyOrderPage.containsText("Subject Number"));
+        assertPageContainsPatientResults(modifyOrderPage);
         assertTrue(modifyOrderPage.containsText("National ID"));
     }
     
@@ -131,13 +126,7 @@ public class ModifyOrderSteps extends TestBase {
     @Then("Search by First name yields results for all patients with matching first name on the Modify Order Page")
     public void searchByFirstNameYieldsResults() {
         assertTrue(modifyOrderPage.containsSeachResult());
-        assertTrue(modifyOrderPage.containsText("Data source"));
-        assertTrue(modifyOrderPage.containsText("Last Name"));
-        assertTrue(modifyOrderPage.containsText("First Name"));
-        assertTrue(modifyOrderPage.containsText("Gender"));
-        assertTrue(modifyOrderPage.containsText("Date of Birth"));
-        assertTrue(modifyOrderPage.containsText("Subject Number"));
-        assertTrue(modifyOrderPage.containsText("National ID"));
+        assertPageContainsPatientResults(modifyOrderPage);
     }
     
     @When("User Enters known Patient ID {string} in Patient ID search field on the Modify Order Page")
@@ -150,13 +139,7 @@ public class ModifyOrderSteps extends TestBase {
     @Then("Search by Patient ID yields results for all patients with matching Patient ID on the Modify Order Page")
     public void searchByPatientIdYieldsResults() {
         assertTrue(modifyOrderPage.containsSeachResult());
-        assertTrue(modifyOrderPage.containsText("Data source"));
-        assertTrue(modifyOrderPage.containsText("Last Name"));
-        assertTrue(modifyOrderPage.containsText("First Name"));
-        assertTrue(modifyOrderPage.containsText("Gender"));
-        assertTrue(modifyOrderPage.containsText("Date of Birth"));
-        assertTrue(modifyOrderPage.containsText("Subject Number"));
-        assertTrue(modifyOrderPage.containsText("National ID"));
+        assertPageContainsPatientResults(modifyOrderPage);
     }
     
     @When("User Enters known Lab Number {string} in Lab No. search on the Modify Order Page")

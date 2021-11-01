@@ -192,4 +192,15 @@ public class TestBase {
 			getWebDriver().quit();
 		}
 	}
+
+	public void assertPageContainsPatientResults(Page page) {
+		assertTrue(page.containsText("Data source"));
+		assertTrue(page.containsText("Last Name"));
+		assertTrue(page.containsText("First Name"));
+		assertTrue(page.containsText("Gender"));
+		assertTrue(page.containsText("Date of Birth"));
+		//assertTrue(page.containsText("Subject Number"));
+		assertTrue(page.containsText("Unique Health ID number"));
+		assertTrue(page.containsText("National ID"));
+	}
 }

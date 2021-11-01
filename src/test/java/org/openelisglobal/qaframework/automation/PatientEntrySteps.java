@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.openelisglobal.qaframework.RunTest;
 import org.openelisglobal.qaframework.automation.page.AddPatientPage;
@@ -93,13 +94,7 @@ public class PatientEntrySteps extends TestBase {
 	@Then("Search by Last name yields all patients with matching last name on Add Patient Page")
 	public void searchByLastNameReturnsResults() {
 		assertTrue(addPatientPage.containsSeachResult());
-		assertTrue(addPatientPage.containsText("Data source"));
-		assertTrue(addPatientPage.containsText("Last Name"));
-		assertTrue(addPatientPage.containsText("First Name"));
-		assertTrue(addPatientPage.containsText("Gender"));
-		assertTrue(addPatientPage.containsText("Date of Birth"));
-		assertTrue(addPatientPage.containsText("Subject Number"));
-		assertTrue(addPatientPage.containsText("National ID"));
+		assertPageContainsPatientResults(addPatientPage);
 	}
 	
 	@When("User enters known first name {string} in text box")
@@ -115,13 +110,7 @@ public class PatientEntrySteps extends TestBase {
 	@Then("Search by First name yields all patients with matching first name on Add Patient Page")
 	public void searchByFirstNameReturnsResults() {
 		assertTrue(addPatientPage.containsSeachResult());
-		assertTrue(addPatientPage.containsText("Data source"));
-		assertTrue(addPatientPage.containsText("Last Name"));
-		assertTrue(addPatientPage.containsText("First Name"));
-		assertTrue(addPatientPage.containsText("Gender"));
-		assertTrue(addPatientPage.containsText("Date of Birth"));
-		assertTrue(addPatientPage.containsText("Subject Number"));
-		assertTrue(addPatientPage.containsText("National ID"));
+		assertPageContainsPatientResults(addPatientPage);
 	}
 	
 	@When("User enters known last name {string} and first name {string}")
@@ -138,13 +127,7 @@ public class PatientEntrySteps extends TestBase {
 	@Then("Search by Last name and First name yields results for known matching names")
 	public void searchByFirstAndLastNameReturnsResults() {
 		assertTrue(addPatientPage.containsSeachResult());
-		assertTrue(addPatientPage.containsText("Data source"));
-		assertTrue(addPatientPage.containsText("Last Name"));
-		assertTrue(addPatientPage.containsText("First Name"));
-		assertTrue(addPatientPage.containsText("Gender"));
-		assertTrue(addPatientPage.containsText("Date of Birth"));
-		assertTrue(addPatientPage.containsText("Subject Number"));
-		assertTrue(addPatientPage.containsText("National ID"));
+		assertPageContainsPatientResults(addPatientPage);
 	}
 	
 	@When("User enters known Subject Number {string}")
@@ -160,13 +143,7 @@ public class PatientEntrySteps extends TestBase {
 	@Then("Search by Subject Number yields results for known matching names")
 	public void searchBySubjectNumberReturnsResults() {
 		assertTrue(addPatientPage.containsSeachResult());
-		assertTrue(addPatientPage.containsText("Data source"));
-		assertTrue(addPatientPage.containsText("Last Name"));
-		assertTrue(addPatientPage.containsText("First Name"));
-		assertTrue(addPatientPage.containsText("Gender"));
-		assertTrue(addPatientPage.containsText("Date of Birth"));
-		assertTrue(addPatientPage.containsText("Subject Number"));
-		assertTrue(addPatientPage.containsText("National ID"));
+		assertPageContainsPatientResults(addPatientPage);
 	}
 	
 	@When("User enters known Lab Number {string}")
@@ -182,13 +159,7 @@ public class PatientEntrySteps extends TestBase {
 	@Then("Search by Lab Number yields results for known matching names")
 	public void searchByLabNumberReturnsResults() {
 		assertTrue(addPatientPage.containsSeachResult());
-		assertTrue(addPatientPage.containsText("Data source"));
-		assertTrue(addPatientPage.containsText("Last Name"));
-		assertTrue(addPatientPage.containsText("First Name"));
-		assertTrue(addPatientPage.containsText("Gender"));
-		assertTrue(addPatientPage.containsText("Date of Birth"));
-		assertTrue(addPatientPage.containsText("Subject Number"));
-		assertTrue(addPatientPage.containsText("National ID"));
+		assertPageContainsPatientResults(addPatientPage);
 	}
 	
 	@When("User Selects correct patient")
@@ -216,10 +187,11 @@ public class PatientEntrySteps extends TestBase {
 	}
 	
 	@When("User Enters data into text fields")
-	public void eneterDataIntoTextFields() {
+	public void enterDataIntoTextFields() {
 		addPatientPage.clickNewPatientButton();
-		addPatientPage.enterSubjectNumber("201807D9P");
-		addPatientPage.enterNationalId("201507D35");
+		UUID uuid = UUID.randomUUID();
+		addPatientPage.enterSubjectNumber("201807D9P" + uuid.toString());
+		addPatientPage.enterNationalId("201507D35" + uuid.toString());
 		addPatientPage.enterPatientLastName("lastName");
 		addPatientPage.enterPatientFirstName("firstName");
 		addPatientPage.enterPatientStreet("Gayaza");
@@ -230,8 +202,8 @@ public class PatientEntrySteps extends TestBase {
 	
 	@Then("All text fields accept text")
 	public void fieldsAcceptText() {
-		assertEquals("201807D9P", addPatientPage.getSubjectNumber());
-		assertEquals("201507D35", addPatientPage.getNationalId());
+		assertTrue(addPatientPage.getSubjectNumber().contains("201807D9P"));
+		assertTrue(addPatientPage.getNationalId().contains("201507D35"));
 		assertEquals("lastName", addPatientPage.getPatientLastName());
 		assertEquals("firstName", addPatientPage.getPatientFirstName());
 		assertEquals("Gayaza", addPatientPage.getPatientStreet());
@@ -272,7 +244,6 @@ public class PatientEntrySteps extends TestBase {
 	@And("Alert given if Phone Number is not in correct format")
 	public void alertGivenIfPhoneNumberIsIncorrect() throws InterruptedException {
 		addPatientPage.enterPatientPhone("0772");
-		;
 		addPatientPage.clickNameField();
 		addPatientPage.acceptAlert();
 		Thread.sleep(1000);
@@ -476,13 +447,7 @@ public class PatientEntrySteps extends TestBase {
 	@Then("Correct patient information ,last name {string} and first name {string}, appears when searched for")
 	public void correctPatientInformationDisplays(String lastName, String firstName) throws InterruptedException {
 		assertTrue(addPatientPage.containsSeachResult());
-		assertTrue(addPatientPage.containsText("Data source"));
-		assertTrue(addPatientPage.containsText("Last Name"));
-		assertTrue(addPatientPage.containsText("First Name"));
-		assertTrue(addPatientPage.containsText("Gender"));
-		assertTrue(addPatientPage.containsText("Date of Birth"));
-		assertTrue(addPatientPage.containsText("Subject Number"));
-		assertTrue(addPatientPage.containsText("National ID"));
+		assertPageContainsPatientResults(addPatientPage);
 		Thread.sleep(1000);
 		assertEquals(lastName, addPatientPage.getPatientLastName());
 		assertEquals(firstName, addPatientPage.getPatientFirstName());

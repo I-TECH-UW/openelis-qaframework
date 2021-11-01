@@ -11,6 +11,7 @@ import org.openelisglobal.qaframework.automation.page.LoginPage;
 import org.openelisglobal.qaframework.automation.page.PatientStatusReportPage;
 import org.openelisglobal.qaframework.automation.page.ResultValidationByOderPage;
 import org.openelisglobal.qaframework.automation.page.ResultValidationPage;
+import org.openelisglobal.qaframework.automation.page.ResultsUnitTypePage;
 import org.openelisglobal.qaframework.automation.page.WorkPlanByPanelTypePage;
 import org.openelisglobal.qaframework.automation.page.WorkPlanByTestTypePage;
 import org.openelisglobal.qaframework.automation.page.WorkPlanByUnitTypePage;
@@ -40,6 +41,8 @@ public class ValidationSteps extends TestBase {
 	private WorkPlanByPanelTypePage workPlanByPanelTypePage;
 	
 	private WorkPlanByUnitTypePage workPlanByUnitTypePage;
+
+	private ResultsUnitTypePage resultsUnitTypePage;
 	
 	@After(RunTest.HOOK.VALIDATE)
 	public void destroy() {
@@ -69,6 +72,14 @@ public class ValidationSteps extends TestBase {
 	
 	@When("User Selects a Unit Type {string} under which there are known tests")
 	public void goToValidationPage(String unitType) throws InterruptedException {
+		//	intialise data
+		homePage = resultValidationPage.goToHomePage();
+		resultsUnitTypePage = homePage.selectsResultAndClickEnterByUnit();
+		resultsUnitTypePage.selectUnitType(unitType);
+		resultsUnitTypePage.enterTestResult();
+		resultsUnitTypePage.clickSaveButton();
+		homePage = resultsUnitTypePage.goToHomePage();
+		resultValidationPage = homePage.goToResultValidation();
 		resultValidationPage.selectUnitType(unitType);
 		Thread.sleep(2000);
 	}
@@ -265,7 +276,8 @@ public class ValidationSteps extends TestBase {
 	}
 	
 	@Then("Returns to Validation Unit Type search page and message in green `Save was successful` appears")
-	public void saveSuccesful() {
+	public void saveSuccesful() throws InterruptedException {
+		Thread.sleep(1000);
 		assertTrue(resultValidationPage.containsText("Save was successful"));
 		assertTrue(resultValidationPage.containsText("Unit Type"));
 	}
@@ -300,13 +312,7 @@ public class ValidationSteps extends TestBase {
 	
 	@Then("Saved results without rejection reason appear on Patient Status Report")
 	public void resultAppear() {
-		assertTrue(patientStatusReportPage.containsText("Data source"));
-		assertTrue(patientStatusReportPage.containsText("Last Name"));
-		assertTrue(patientStatusReportPage.containsText("First Name"));
-		assertTrue(patientStatusReportPage.containsText("Gender"));
-		assertTrue(patientStatusReportPage.containsText("Date of Birth"));
-		assertTrue(patientStatusReportPage.containsText("Subject Number"));
-		assertTrue(patientStatusReportPage.containsText("National ID"));
+		assertPageContainsPatientResults(patientStatusReportPage);
 		homePage = patientStatusReportPage.goToHomePage();
 	}
 	
@@ -322,7 +328,8 @@ public class ValidationSteps extends TestBase {
 		workPlanByTestTypePage.selctTestType(testType);
 		assertTrue(workPlanByTestTypePage.containsText(testType));
 		assertTrue(workPlanByTestTypePage.containsText("Lab No"));
-		assertTrue(workPlanByTestTypePage.containsText("Subject Number"));
+		//assertTrue(workPlanByTestTypePage.containsText("Subject Number"));
+		assertTrue(workPlanByTestTypePage.containsText("Unique Health ID number"));
 		homePage = workPlanByTestTypePage.goToHomePage();
 	}
 	
@@ -338,7 +345,8 @@ public class ValidationSteps extends TestBase {
 		workPlanByPanelTypePage.selectPanelType(panelType);
 		assertTrue(workPlanByPanelTypePage.containsText(panelType));
 		assertTrue(workPlanByPanelTypePage.containsText("Lab No"));
-		assertTrue(workPlanByPanelTypePage.containsText("Subject Number"));
+		//assertTrue(workPlanByPanelTypePage.containsText("Subject Number"));
+		assertTrue(workPlanByPanelTypePage.containsText("Unique Health ID number"));
 		assertTrue(workPlanByPanelTypePage.containsText("Test Name"));
 		homePage = workPlanByPanelTypePage.goToHomePage();
 	}
@@ -354,7 +362,8 @@ public class ValidationSteps extends TestBase {
 		assertTrue(workPlanByUnitTypePage.containsText("Unit Type"));
 		workPlanByUnitTypePage.selectUnitType(unitType);
 		assertTrue(workPlanByUnitTypePage.containsText("Lab No"));
-		assertTrue(workPlanByUnitTypePage.containsText("Subject Number"));
+		//assertTrue(workPlanByUnitTypePage.containsText("Subject Number"));
+		assertTrue(workPlanByUnitTypePage.containsText("Unique Health ID number"));
 		assertTrue(workPlanByUnitTypePage.containsText("Test Name"));
 		homePage = workPlanByUnitTypePage.goToHomePage();
 	}
