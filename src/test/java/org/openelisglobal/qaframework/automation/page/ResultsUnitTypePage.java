@@ -17,6 +17,8 @@ public class ResultsUnitTypePage extends Page {
 
 	private static final String PATH_HOME = "/Dashboard.do";
 
+	private static final By DROP_DOWN_TEST_RESULT = By.xpath("//select[starts-with(@id,'resultId')]");
+
 	public ResultsUnitTypePage(Page parent) {
 		super(parent);
 	}
@@ -39,13 +41,15 @@ public class ResultsUnitTypePage extends Page {
 		return new ResultsEntryPage(this);
 	}
 
-	public void enterTestResult() throws InterruptedException {
+	public void enterTestResult() {
 		for (int n = 1; n <= 7; n++) {
 			By FIELD_TEST_RESULT_N = By.xpath("(//input[starts-with(@id,'results')])[" + n + "]");
 			if (hasElementWithoutWait(FIELD_TEST_RESULT_N)) {
 				setText(FIELD_TEST_RESULT_N, "43");
 			}
-			Thread.sleep(100);
+		}
+		if (hasElementWithoutWait(DROP_DOWN_TEST_RESULT)) {
+			selectNthOptionFromDropDown(DROP_DOWN_TEST_RESULT, 4);
 		}
 	}
 

@@ -435,6 +435,20 @@ public abstract class Page {
 			n = n + 1;
 		}
 	}
+
+	public void selectNthOptionFromDropDown(By by , int x) {
+		By FIELD_OPTION = By.tagName("option");
+		clickOn(by);
+		List<WebElement> options = findElement(by).findElements(FIELD_OPTION);
+		int n = 0;
+		for (WebElement option : options) {
+			if (n == x) {
+				option.click();
+				break;
+			}
+			n = n + 1;
+		}
+	}
 	
 	public Boolean dropDownHasOptions(By by) {
 		By FIELD_OPTION = By.tagName("option");

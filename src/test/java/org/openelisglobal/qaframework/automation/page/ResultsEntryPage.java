@@ -35,6 +35,8 @@ public class ResultsEntryPage extends Page {
 	private static final By ICON_NOTES_EDIT = By.xpath("//img[contains(@src,'note-edit')]");
 	
 	private static final By CHECK_BOX_RESULT_ANALYSER = By.id("testResult3.analysisMethod1");
+
+	private static final By CHECK_APPROVE = By.xpath("//input[starts-with(@id,'testResult')]");
 	
 	public ResultsEntryPage(Page parent) {
 		super(parent);
@@ -72,15 +74,29 @@ public class ResultsEntryPage extends Page {
 	}
 	
 	public void enterTestResult(String value) {
-		setText(FIELD_TEST_RESULT, value);
+		if (hasElementWithoutWait(FIELD_TEST_RESULT)) {
+			setText(FIELD_TEST_RESULT, value);
+		}
+		if (hasElementWithoutWait(DROP_DOWN_TEST_RESULT)) {
+			selectNthOptionFromDropDown(DROP_DOWN_TEST_RESULT, 4);
+		}
+		
 	}
 	
 	public String getTestResultValue() {
 		return getValue(FIELD_TEST_RESULT);
 	}
+
+	public Boolean hasTestResultsField(){
+       return hasElementWithoutWait(FIELD_TEST_RESULT);
+	}
 	
 	public void clickOnDateField() {
 		clickOn(FIELD_TEST_DATE);
+	}
+
+	public void checkAproveTest() {
+		clickOn(CHECK_APPROVE);
 	}
 	
 	public Boolean resultFieldHasYellowBackground() {
@@ -135,9 +151,20 @@ public class ResultsEntryPage extends Page {
 	public void refreshAndEnterTestResult() {
 		refreshPage();
 		acceptAlert();
-		for (int x = 0; x <= 7; x++) {
-			setText(FIELD_TEST_RESULT, "43");
-			selectOptionFromDropDown(DROP_DOWN_TEST_RESULT);
+		for (int x = 0; x <= 2; x++) {
+			By FIELD_TEST_N = By.id("results_" + x);
+			By DROP_DOWN_TEST_RESULT_N = By.id("resultId_" + x);
+			By CHECK_RESULT_N = By.id("testResult" + x + ".forceTechApproval1");
+			if (hasElementWithoutWait(FIELD_TEST_N)) {
+				setText(FIELD_TEST_N, "43");
+			}
+			
+			if (hasElementWithoutWait(DROP_DOWN_TEST_RESULT_N)) {
+				selectNthOptionFromDropDown(DROP_DOWN_TEST_RESULT_N ,4);
+			}
+			if (hasElementWithoutWait(CHECK_RESULT_N)) {
+				clickOn(CHECK_RESULT_N);
+			}
 		}
 	}
 	
