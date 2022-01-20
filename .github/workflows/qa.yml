@@ -19,7 +19,7 @@ jobs:
           repository: ${{github.repository}}
       - name:  Start the Remote web driver in docker  
         run:  |
-              docker-compose up chrome -d
+              docker-compose up -d chrome
       - name: Sleep for 3 minutes 
         run: sleep 3m
         shell: bash     
