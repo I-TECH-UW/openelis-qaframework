@@ -5,6 +5,7 @@ import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
@@ -25,6 +26,7 @@ import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 /**
  * Superclass for all UI Tests. Contains lots of handy "utilities" needed to setup and tear down
@@ -44,13 +46,27 @@ public class TestBase {
 	
 	public static final int MAX_SERVER_STARTUP_IN_MILLISECONDS = 10 * 60 * 1000;
 	
+	public static final String REMOTE_URL_CHROME = "http://localhost:4444/wd/hub";
+	
+	public static String REMOTE_URL_FIREFOX = "http://localhost:4445/wd/hub";
+	
 	private static volatile boolean serverFailure = false;
 	
 	private WebDriver driver;
 	
+	protected static ThreadLocal<RemoteWebDriver> remoteDriver = new ThreadLocal<>();;
+	
+	final TestProperties properties = TestProperties.instance();
+	
+	TestProperties.BrowserType broserType;
+	
+	TestProperties.WebDriverType driverType;
+	
 	protected Page page;
 	
 	public TestBase() {
+		broserType = properties.getBrowserType();
+		driverType = properties.getDriverType();
 		try {
 			startWebDriver();
 		}
@@ -62,17 +78,25 @@ public class TestBase {
 	
 	@Before
 	public void startWebDriver() throws Exception {
+		broserType = properties.getBrowserType();
+		driverType = properties.getDriverType();
 		if (serverFailure) {
 			fail("Test killed due to server failure");
 		}
-		launchBrowser();
+		switch (driverType) {
+			case local:
+				launchBrowser();
+				break;
+			case remote:
+				setupThread();
+				break;
+		}
+		
 	}
 	
 	public void launchBrowser() throws Exception {
-		final TestProperties properties = TestProperties.instance();
 		System.out.println("Running locally...");
-		final TestProperties.WebDriverType webDriverType = properties.getWebDriver();
-		switch (webDriverType) {
+		switch (broserType) {
 			case chrome:
 				driver = setupChromeDriver();
 				break;
@@ -83,7 +107,6 @@ public class TestBase {
 				// shrug, choose chrome as default
 				driver = setupChromeDriver();
 				break;
-			
 		}
 		
 		driver.manage().timeouts().implicitlyWait(MAX_WAIT_IN_SECONDS, TimeUnit.SECONDS);
@@ -93,13 +116,18 @@ public class TestBase {
 	
 	@After
 	public void stopWebDriver() {
-		if (driver != null) {
-			driver.quit();
-		}
+		quit();
 	}
 	
 	protected WebDriver getWebDriver() {
-		return driver;
+		switch (driverType) {
+			case local:
+				return driver;
+			case remote:
+				return remoteDriver.get();
+			default:
+				return remoteDriver.get();
+		}
 	}
 	
 	WebDriver setupFirefoxDriver() {
@@ -192,7 +220,31 @@ public class TestBase {
 			getWebDriver().quit();
 		}
 	}
-
+	
+	protected void setupThread() throws MalformedURLException {
+		switch (broserType) {
+			case chrome:
+				System.out.println("Inside Chrome");
+				ChromeOptions chromeOptions = new ChromeOptions();
+				String chromeUrl = System.getenv("REMOTE_URL_CHROME");
+				if (chromeUrl == null || chromeUrl.isEmpty()) {
+					chromeUrl = REMOTE_URL_CHROME;
+				}
+				remoteDriver.set(new RemoteWebDriver(new URL(chromeUrl), chromeOptions));
+				break;
+			
+			case firefox:
+				System.out.println("Inside Firefox");
+				FirefoxOptions fireFoxOptions = new FirefoxOptions();
+				String fireFoxUrl = System.getenv("REMOTE_URL_FIREFOX");
+				if (fireFoxUrl == null || fireFoxUrl.isEmpty()) {
+					fireFoxUrl = REMOTE_URL_FIREFOX;
+				}
+				remoteDriver.set(new RemoteWebDriver(new URL(fireFoxUrl), fireFoxOptions));
+				break;
+		}
+	}
+	
 	public void assertPageContainsPatientResults(Page page) {
 		assertTrue(page.containsText("Data source"));
 		assertTrue(page.containsText("Last Name"));

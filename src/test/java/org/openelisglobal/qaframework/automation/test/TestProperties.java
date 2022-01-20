@@ -8,6 +8,10 @@ import java.util.Properties;
 
 public class TestProperties {
 	
+	public static final String WEBDRIVER_TYPE_PROPERTY = "webdriver.type";
+	
+	public static final String DEFAULT_WEBDRIVER_TYPE = "remote";
+	
 	public static final String WEBDRIVER_PROPERTY = "webdriver";
 	
 	public static final String DEFAULT_WEBDRIVER = "firefox";
@@ -27,17 +31,17 @@ public class TestProperties {
 	public static final String HEADLESS_PROPERTY = "headless";
 	
 	public static final String DEFAULT_HEADLESS = "false";
-
+	
 	public static final String REFERRAL_LOGIN_USERNAME_PROPERTY = "referral.login.username";
-
+	
 	public static final String DEFAULT_REFERRAL_LOGIN_USERNAME = "admin";
 	
 	public static final String REFERRAL_WEBAPP_URL_PROPERTY = "referral.webapp.url";
-
+	
 	public static final String DEFAULT_REFERRAL_WEBAPP_URL = "https://reflab.openelisci.org:8443/OpenELIS-Global";
-
+	
 	public static final String REFERRAL_LOGIN_PASSWORD_PROPERTY = "referral.login.password";
-
+	
 	public static final String DEFAULT_REFERRAL_PASSWORD = "adminADMIN!";
 	
 	private static TestProperties SINGLETON;
@@ -76,11 +80,11 @@ public class TestProperties {
 	public String getPassword() {
 		return getProperty(LOGIN_PASSWORD_PROPERTY, DEFAULT_PASSWORD);
 	}
-
+	
 	public String getReferralWebAppUrl() {
 		return getProperty(REFERRAL_WEBAPP_URL_PROPERTY, DEFAULT_REFERRAL_WEBAPP_URL);
 	}
-
+	
 	public String getReferralUsername() {
 		return getProperty(REFERRAL_LOGIN_USERNAME_PROPERTY, DEFAULT_REFERRAL_LOGIN_USERNAME);
 	}
@@ -97,12 +101,25 @@ public class TestProperties {
 		return getProperty(WEBDRIVER_PROPERTY, DEFAULT_WEBDRIVER);
 	}
 	
-	public WebDriverType getWebDriver() {
+	public String getDriver() {
+		return getProperty(WEBDRIVER_TYPE_PROPERTY, DEFAULT_WEBDRIVER_TYPE);
+	}
+	
+	public BrowserType getBrowserType() {
 		try {
-			return WebDriverType.valueOf(getBrowser());
+			return BrowserType.valueOf(getBrowser());
 		}
 		catch (IllegalArgumentException e) {
-			return WebDriverType.firefox;
+			return BrowserType.firefox;
+		}
+	}
+	
+	public WebDriverType getDriverType() {
+		try {
+			return WebDriverType.valueOf(getDriver());
+		}
+		catch (IllegalArgumentException e) {
+			return WebDriverType.remote;
 		}
 	}
 	
@@ -124,8 +141,13 @@ public class TestProperties {
 		return getProperty("webdriver.gecko.driver", null);
 	}
 	
-	public enum WebDriverType {
+	public enum BrowserType {
 		chrome,
 		firefox
+	}
+	
+	public enum WebDriverType {
+		remote,
+		local
 	}
 }
