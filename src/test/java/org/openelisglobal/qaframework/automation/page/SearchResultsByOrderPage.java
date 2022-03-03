@@ -7,11 +7,11 @@ import org.openqa.selenium.By;
  */
 public class SearchResultsByOrderPage extends Page {
 	
-	private static final String PAGE_PATH = "/AccessionResults.do";
+	private static final String PAGE_PATH = "/AccessionResults";
 	
 	private static final By SEARCH_FORM = By.id("searchDiv");
 	
-	private static final String PATH_HOME = "/Dashboard.do";
+	private static final String PATH_HOME = "/Dashboard";
 	
 	private static final By FIELD_LAB_NO_SEARCH = By.id("searchAccessionID");
 	

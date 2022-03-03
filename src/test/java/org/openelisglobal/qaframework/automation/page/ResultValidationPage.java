@@ -11,9 +11,9 @@ public class ResultValidationPage extends Page {
 		super(parent);
 	}
 	
-	private static final String PAGE_PATH = "/ResultValidation.do";
+	private static final String PAGE_PATH = "/ResultValidation";
 	
-	private static final String PATH_HOME = "/Dashboard.do";
+	private static final String PATH_HOME = "/Dashboard";
 	
 	private static final By DROP_DOWN_UNIT_TYPE = By.id("testSectionId");
 	

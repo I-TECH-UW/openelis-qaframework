@@ -7,9 +7,9 @@ import org.openqa.selenium.By;
  */
 public class WorkPlanByUnitTypePage extends Page {
 	
-	private static final String PAGE_PATH = "/WorkPlanByTestSection.do";
+	private static final String PAGE_PATH = "/WorkPlanByTestSection";
 	
-	private static final String PATH_HOME = "/Dashboard.do";
+	private static final String PATH_HOME = "/Dashboard";
 	
 	private static final By DROP_DOWN_UNIT_TYPES = By.id("testSectionId");
 	

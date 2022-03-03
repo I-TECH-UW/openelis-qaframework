@@ -7,9 +7,9 @@ import org.openqa.selenium.By;
  */
 public class ModifyOrderPage extends Page {
 	
-	private static final String PAGE_PATH = "/SampleEdit.do";
+	private static final String PAGE_PATH = "/SampleEdit";
 	
-	private static final String PATH_HOME = "/Dashboard.do";
+	private static final String PATH_HOME = "/Dashboard";
 	
 	private static final By FIELD_LAB_NUMBER = By.id("patientLabNoSearchValue");
 	

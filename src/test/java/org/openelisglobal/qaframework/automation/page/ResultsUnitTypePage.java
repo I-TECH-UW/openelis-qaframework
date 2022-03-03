@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
  */
 public class ResultsUnitTypePage extends Page {
 	
-	private static final String PAGE_PATH = "/LogbookResults.do";
+	private static final String PAGE_PATH = "/LogbookResults";
 	
 	private static final By SEARCH_FORM = By.id("searchDiv");
 	
@@ -15,7 +15,7 @@ public class ResultsUnitTypePage extends Page {
 
 	private static final By BUTTON_SAVE = By.id("saveButtonId");
 
-	private static final String PATH_HOME = "/Dashboard.do";
+	private static final String PATH_HOME = "/Dashboard";
 
 	private static final By DROP_DOWN_TEST_RESULT = By.xpath("//select[starts-with(@id,'resultId')]");
 

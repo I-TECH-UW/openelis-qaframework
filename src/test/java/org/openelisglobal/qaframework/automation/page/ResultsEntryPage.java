@@ -7,9 +7,9 @@ import org.openqa.selenium.By;
  */
 public class ResultsEntryPage extends Page {
 	
-	private static final String PAGE_PATH = "/LogbookResults.do";
+	private static final String PAGE_PATH = "/LogbookResults";
 	
-	private static final String PATH_HOME = "/Dashboard.do";
+	private static final String PATH_HOME = "/Dashboard";
 	
 	private static final By FIELD_TEST_DATE = By.id("testDate_3");
 	

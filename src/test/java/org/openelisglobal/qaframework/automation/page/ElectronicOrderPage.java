@@ -16,7 +16,7 @@ public class ElectronicOrderPage extends Page {
 
     @Override
     public String getPageUrl() {
-        return "/ElectronicOrders.do";
+        return "/ElectronicOrders";
     }
 
     public void enterSearchText(String text) {

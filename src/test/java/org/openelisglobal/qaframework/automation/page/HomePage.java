@@ -8,9 +8,9 @@ import org.openqa.selenium.WebElement;
  */
 public class HomePage extends Page {
 	
-	private static final String PATH_HOME = "/Dashboard.do";
+	private static final String PATH_HOME = "/Dashboard";
 	
-	private static final String PATH_RESULT_ENTRY_CONFIG = "ResultConfiguration.do?ID=43&startingRecNo=1";
+	private static final String PATH_RESULT_ENTRY_CONFIG = "ResultConfiguration?ID=43&startingRecNo=1";
 	
 	private static final By FIRST_LEVEL_MENU_ORDER = By.id("menu_sample");
 	

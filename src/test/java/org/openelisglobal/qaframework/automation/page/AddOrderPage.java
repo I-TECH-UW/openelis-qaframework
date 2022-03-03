@@ -12,13 +12,13 @@ import org.openqa.selenium.WebElement;
  */
 public class AddOrderPage extends Page {
 
-	private static final String PATH_ADD_ORDER = "/SamplePatientEntry.do";
+	private static final String PATH_ADD_ORDER = "/SamplePatientEntry";
 
-	private static final String PATH_HOME = "/Dashboard.do";
+	private static final String PATH_HOME = "/Dashboard";
 
-	private static final String PATH_SAMPLE_ENTRY_CONFIG = "SampleEntryConfig.do?ID=116&startingRecNo=1";
+	private static final String PATH_SAMPLE_ENTRY_CONFIG = "SampleEntryConfig?ID=116&startingRecNo=1";
 
-	private static final String PATH_SITE_INFO_CONFIG = "SiteInformation.do?ID=71&startingRecNo=1";
+	private static final String PATH_SITE_INFO_CONFIG = "SiteInformation?ID=71&startingRecNo=1";
 
 	private static final String LABEL_TEXT_REQUEST = "Test Reques";
 

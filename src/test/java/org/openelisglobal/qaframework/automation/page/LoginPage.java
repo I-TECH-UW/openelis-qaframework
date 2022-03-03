@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
  */
 public class LoginPage extends Page {
 	
-	private static final String PATH_LOGIN = "/LoginPage.do";
+	private static final String PATH_LOGIN = "/LoginPage";
 	
 	private static final By FIELD_USERNAME = By.id("loginName");
 	

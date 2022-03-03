@@ -7,9 +7,9 @@ import org.openqa.selenium.By;
  */
 public class ResultValidationByOderPage extends Page {
 	
-	private static final String PAGE_PATH = "/AccessionValidation.do";
+	private static final String PAGE_PATH = "/AccessionValidation";
 	
-	private static final String PATH_HOME = "/Dashboard.do";
+	private static final String PATH_HOME = "/Dashboard";
 	
 	private static final By FIELD_LAB_NO_SEARCH = By.id("searchAccessionID");
 	
