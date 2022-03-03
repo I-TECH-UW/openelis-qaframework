@@ -58,14 +58,14 @@ public class TestBase {
 	
 	final TestProperties properties = TestProperties.instance();
 	
-	TestProperties.BrowserType broserType;
+	TestProperties.BrowserType browserType;
 	
 	TestProperties.WebDriverType driverType;
 	
 	protected Page page;
 	
 	public TestBase() {
-		broserType = properties.getBrowserType();
+		browserType = properties.getBrowserType();
 		driverType = properties.getDriverType();
 		try {
 			startWebDriver();
@@ -78,7 +78,7 @@ public class TestBase {
 	
 	@Before
 	public void startWebDriver() throws Exception {
-		broserType = properties.getBrowserType();
+		browserType = properties.getBrowserType();
 		driverType = properties.getDriverType();
 		if (serverFailure) {
 			fail("Test killed due to server failure");
@@ -96,7 +96,7 @@ public class TestBase {
 	
 	public void launchBrowser() throws Exception {
 		System.out.println("Running locally...");
-		switch (broserType) {
+		switch (browserType) {
 			case chrome:
 				driver = setupChromeDriver();
 				break;
@@ -222,7 +222,7 @@ public class TestBase {
 	}
 	
 	protected void setupThread() throws MalformedURLException {
-		switch (broserType) {
+		switch (browserType) {
 			case chrome:
 				System.out.println("Inside Chrome");
 				ChromeOptions chromeOptions = new ChromeOptions();

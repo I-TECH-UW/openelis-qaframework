@@ -7,9 +7,9 @@ import org.openqa.selenium.By;
  */
 public class SearchResultsByPatientPage extends Page {
 	
-	private static final String PAGE_PATH = "/PatientResults.do";
+	private static final String PAGE_PATH = "/PatientResults";
 	
-	private static final String PATH_HOME = "/Dashboard.do";
+	private static final String PATH_HOME = "/Dashboard";
 	
 	private static final By SEARCH_FORM = By.id("searchDiv");
 	

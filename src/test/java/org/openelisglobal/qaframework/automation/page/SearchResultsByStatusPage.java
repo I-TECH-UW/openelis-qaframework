@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
  */
 public class SearchResultsByStatusPage extends Page {
 	
-	private static final String PAGE_PATH = "/StatusResults.do";
+	private static final String PAGE_PATH = "/StatusResults";
 	
 	private static final By SEARCH_FORM = By.id("searchDiv");
 	
@@ -15,7 +15,7 @@ public class SearchResultsByStatusPage extends Page {
 	
 	private static final By BUTTON_SEARCH = By.xpath("//*[@id='PatientPage']/button");
 	
-	private static final String PATH_HOME = "/Dashboard.do";
+	private static final String PATH_HOME = "/Dashboard";
 	
 	public SearchResultsByStatusPage(Page parent) {
 		super(parent);

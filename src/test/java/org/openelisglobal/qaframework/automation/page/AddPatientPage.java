@@ -6,9 +6,9 @@ import org.openqa.selenium.By;
 
 public class AddPatientPage extends Page {
 	
-	private static final String PAGE_PATH = "/PatientManagement.do";
+	private static final String PAGE_PATH = "/PatientManagement";
 	
-	private static final String PATH_HOME = "/Dashboard.do";
+	private static final String PATH_HOME = "/Dashboard";
 	
 	private static final By BUTTON_PATIENT_SEARCH = By.id("enhancedSearchButton");
 	
