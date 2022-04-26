@@ -11,6 +11,6 @@ Feature: User Login
     Then System Evaluates Login "<status>"
     Examples:
       | username  | password     | status |
-      | itech     | adminADMIN!  | true   |
+      | admin     | adminADMIN!  | true   |
       | wrongUser | adminADMIN!  | false  |
       | itech     | wrongPass    | false  |
