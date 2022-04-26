@@ -73,9 +73,9 @@ public class LoginPage extends Page {
 	}
 
 	private void acceptSelfAssignedCert() {
-		if (properties.getWebAppUrl().contains("localhost")) {
-			By BUTTON_ADVANCED = By.id("details-button");
-			By LINK_PROEED = By.id("proceed-link");
+		By BUTTON_ADVANCED = By.id("details-button");
+		By LINK_PROEED = By.id("proceed-link");
+		if (hasElementWithoutWait(BUTTON_ADVANCED)) {			
 			clickOn(BUTTON_ADVANCED);
 			clickOn(LINK_PROEED);
 		}
