@@ -307,7 +307,7 @@ public class ReferralWorkFlowSteps extends TestBase {
     }
 
     @When("User logs in into the referral OpenELIS System")
-    public void LoginToRefferalLab() {
+    public void LoginToRefferalLab() throws InterruptedException {
         homePage = loginPage.goToReferralHomePage();
     }
 

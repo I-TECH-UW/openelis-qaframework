@@ -44,19 +44,21 @@ public class LoginPage extends Page {
 		return PATH_LOGIN;
 	}
 	
-	public void enterUsername(String username) {
+	public void enterUsername(String username) throws InterruptedException {
 		setTextToFieldNoEnter(FIELD_USERNAME,username);
+		Thread.sleep(100);
 	}
 	
-	public void enterPassword(String password) {
+	public void enterPassword(String password) throws InterruptedException {
 		setTextToFieldNoEnter(FIELD_PASSWORD,password);
+		Thread.sleep(100);
 	}
 	
 	public WebElement getLoginButton() {
 		return findElement(BUTTON_SUBMIT);
 	}
 	
-	public HomePage goToHomePage() {
+	public HomePage goToHomePage() throws InterruptedException {
 		go();
 		enterUsername(this.username);
 		enterPassword(this.password);
@@ -64,7 +66,7 @@ public class LoginPage extends Page {
 		return new HomePage(this);
 	}
 
-	public HomePage goToReferralHomePage() {
+	public HomePage goToReferralHomePage() throws InterruptedException {
 		goToReferralPage();
 		enterUsername(properties.getReferralUsername());
 		enterPassword(properties.getPassword());
