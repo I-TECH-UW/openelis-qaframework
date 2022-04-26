@@ -34,7 +34,7 @@ public class LoginSteps extends TestBase {
 	}
 	
 	@When("User enters {string} username")
-	public void anyUsername(String username) {
+	public void anyUsername(String username) throws InterruptedException {
 		if(username.trim().equals("itech")){
 			if(!username.trim().equals(loginPage.getUsername())){
 				username = loginPage.getUsername();
@@ -44,13 +44,14 @@ public class LoginSteps extends TestBase {
 	}
 	
 	@And("User enters {string} password")
-	public void anyPassword(String password) {
+	public void anyPassword(String password) throws InterruptedException {
 		loginPage.enterPassword(password);
 	}
 	
 	@And("User Logs in")
-	public void userLogsIn() {
+	public void userLogsIn() throws InterruptedException {
 		loginPage.getLoginButton().click();
+		Thread.sleep(100);
 	}
 	
 	@Then("System Evaluates Login {string}")
