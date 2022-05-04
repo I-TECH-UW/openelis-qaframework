@@ -50,12 +50,14 @@ public class LoginSteps extends TestBase {
 	
 	@And("User Logs in")
 	public void userLogsIn() throws InterruptedException {
+		Thread.sleep(100);
 		loginPage.getLoginButton().click();
 		Thread.sleep(100);
 	}
 	
 	@Then("System Evaluates Login {string}")
-	public void evaluateLogin(String status) {
+	public void evaluateLogin(String status) throws InterruptedException {
+		Thread.sleep(100);
 		HomePage homePage = new HomePage(loginPage);
 		if (status.trim().endsWith("true")) {
 			assertNotNull(homePage.getLogOutLink());

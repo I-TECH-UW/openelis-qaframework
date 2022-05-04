@@ -62,6 +62,7 @@ public class LoginPage extends Page {
 		go();
 		enterUsername(this.username);
 		enterPassword(this.password);
+		Thread.sleep(100);
 		clickOn(BUTTON_SUBMIT);
 		return new HomePage(this);
 	}
