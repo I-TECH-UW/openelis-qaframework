@@ -203,6 +203,7 @@ public class TestBase {
 			chromeOptions.addArguments("--headless");
 		}
 		driver = new ChromeDriver(chromeOptions);
+		driver.manage().window().maximize();
 		return driver;
 	}
 	
