@@ -60,7 +60,9 @@ public class HomePage extends Page {
 	private static final By FIRST_LEVEL_MENU_PATIENT = By.id("menu_patient");
 	
 	private static final By SECOND_LEVEL_MENU_PATIENT_ADD_EDIT = By.id("menu_patient_add_or_edit");
-	
+
+	private static final By ADMIN_MENU_LINK = By.id("menu_administration");
+
 	public HomePage(Page page) {
 		super(page);
 	}
@@ -167,5 +169,10 @@ public class HomePage extends Page {
 		hoverOn(FIRST_LEVEL_MENU_PATIENT);
 		clickOn(SECOND_LEVEL_MENU_PATIENT_ADD_EDIT);
 		return new AddPatientPage(this);
+	}
+
+	public TestManagementPage goToMasterListsPage() {
+		clickOn(ADMIN_MENU_LINK);
+		return new TestManagementPage(this);
 	}
 }
