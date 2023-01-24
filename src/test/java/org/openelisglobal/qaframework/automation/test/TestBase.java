@@ -111,7 +111,7 @@ public class TestBase {
 		
 		driver.manage().timeouts().implicitlyWait(MAX_WAIT_IN_SECONDS, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(MAX_PAGE_LOAD_IN_SECONDS, TimeUnit.SECONDS);
-		
+		driver.manage().window().maximize();
 	}
 	
 	@After
