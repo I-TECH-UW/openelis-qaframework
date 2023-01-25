@@ -33,5 +33,7 @@ public class RunTest {
 		public static final String EMR_LIS = "@emrLis";
 
 		public static final String TEST_MGT = "@testManagement";
+
+		public static final String USER_MGT = "@userManagement";
 	}
 }

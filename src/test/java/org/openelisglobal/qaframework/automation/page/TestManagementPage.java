@@ -12,10 +12,6 @@ public class TestManagementPage extends Page {
 
 	private static final String PAGE_PATH = "/TestManagementConfigMenu";
 
-	private static final By MASTER_LIST_SUB_MENU = By.cssSelector("#masterListsSubMenu li a");
-
-	private static final By TEST_MGT_LINK = By.linkText("Test Management");
-
 	private static final By TestManagementConfigMenu = By.cssSelector("#mainForm ul li .textButton");
 
 	private static final By Rename_Existing_Test_Names = By.xpath("/html/body/table/tbody/tr[3]/td/form/ul[1]/li[1]/input");
@@ -54,19 +50,6 @@ public class TestManagementPage extends Page {
 	@Override
 	public String getPageUrl() {
 		return PAGE_PATH;
-	}
-
-	public boolean goToTestManagementConfigMenu() {
-		List<WebElement> menuElements = getElementsIfExisting(MASTER_LIST_SUB_MENU);
-		for (WebElement e : menuElements) {
-			String menuItem = e.getText();
-			if (menuItem.equals("Test Management")) {
-				clickOn(TEST_MGT_LINK);
-				return true;
-			}
-
-		}
-		return false;
 	}
 
 	public List<String> getTestManagementConfigMenuItems() {

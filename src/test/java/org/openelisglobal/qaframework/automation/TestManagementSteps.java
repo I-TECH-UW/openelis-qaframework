@@ -1,8 +1,6 @@
 package org.openelisglobal.qaframework.automation;
 
 import static java.lang.Thread.sleep;
-import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -17,6 +15,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openelisglobal.qaframework.RunTest;
+import org.openelisglobal.qaframework.automation.page.AdminPage;
 import org.openelisglobal.qaframework.automation.page.HomePage;
 import org.openelisglobal.qaframework.automation.page.LoginPage;
 import org.openelisglobal.qaframework.automation.page.TestManagementPage;
@@ -27,6 +26,8 @@ public class TestManagementSteps extends TestBase {
 	private LoginPage loginPage;
 
 	private HomePage homePage;
+
+	private AdminPage adminPage;
 
 	private TestManagementPage testManagementPage;
 
@@ -49,16 +50,14 @@ public class TestManagementSteps extends TestBase {
 
 	@When("User clicks admin menu link")
 	public void userClicksAdminMenuLink() throws InterruptedException {
-		testManagementPage = homePage.goToMasterListsPage();
+		adminPage = homePage.goToAdminPage();
 		Thread.sleep(100);
 	}
 
 	@And("User clicks Test Management left menu item link")
 	public void userClicksTestManagementLeftMenuItemLink() throws InterruptedException {
+		testManagementPage = adminPage.goToTestManagementPage();
 		Thread.sleep(100);
-		boolean expected = testManagementPage.goToTestManagementConfigMenu();
-		assertTrue(expected);
-		Thread.sleep(500);
 	}
 
 	@Given("Test Management page appears with functionality links")
