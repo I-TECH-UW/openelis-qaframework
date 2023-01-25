@@ -174,5 +174,8 @@ public class TestManagementSteps extends TestBase {
 		assertFalse(testManagementPage.containsText(testUpdateName + "(Plasma)"));
 	}
 
-
+	@And("User clicks on finished button")
+	public void userClicksFinishButton() {
+		testManagementPage.clickFinishButton();
+	}
 }

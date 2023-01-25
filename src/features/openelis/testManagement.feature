@@ -61,6 +61,7 @@ Feature: Test Management Feature
     Then User Clicks save button
     When User clicks reject button
     Then Confirm Test name "GlucoseRejectEng" update was rejected but contains "Glucose(Plasma)"
+    And User clicks on finished button
 
   @testManagement
   Scenario: User cancels the testName updates
@@ -74,6 +75,7 @@ Feature: Test Management Feature
     And User enters reporting test name "GlucoseReportCancelFR" in French
     When User clicks cancel button
     Then Confirm Test name "GlucoseCancelEng" update was canceled
+    And User clicks on finished button
 
 
 

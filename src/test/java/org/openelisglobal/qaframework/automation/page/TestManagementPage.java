@@ -40,6 +40,8 @@ public class TestManagementPage extends Page {
 
 	private static By CANCEL_BUTTON = By.xpath("//*[@id=\"editButtons\"]/input[2]");
 
+	private static By FINISH_BUTTON = By.xpath("/html/body/table/tbody/tr[3]/td/input");
+
 	public TestManagementPage(Page parent) {
 		super(parent);
 	}
@@ -145,4 +147,10 @@ public class TestManagementPage extends Page {
 	public void clickCancelButton() {
 		clickOn(CANCEL_BUTTON);
 	}
+
+	public void clickFinishButton() {
+		scrollPageByElement(FINISH_BUTTON);
+		clickOn(FINISH_BUTTON);
+	}
+
 }
