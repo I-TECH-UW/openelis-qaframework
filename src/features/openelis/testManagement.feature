@@ -40,6 +40,7 @@ Feature: Test Management Feature
     And User enters reporting test name "<TestNameReportFR>" in French
     Then User Clicks save button
     And User Clicks accept to confirm changes
+    Then Confirm Test name "<testNameEng>" update was saved
 
     Examples:
       | testName           | testNameEng | testNameFR | TestNameReportENG | TestNameReportFR |
@@ -59,7 +60,7 @@ Feature: Test Management Feature
     And User enters reporting test name "GlucoseReportRejectFR" in French
     Then User Clicks save button
     When User clicks reject button
-
+    Then Confirm Test name "GlucoseRejectEng" update was rejected but contains "Glucose(Plasma)"
 
   @testManagement
   Scenario: User cancels the testName updates
@@ -72,6 +73,7 @@ Feature: Test Management Feature
     And User enters Reporting test name "GlucoseReportCancelEng" in English
     And User enters reporting test name "GlucoseReportCancelFR" in French
     When User clicks cancel button
+    Then Confirm Test name "GlucoseCancelEng" update was canceled
 
 
 

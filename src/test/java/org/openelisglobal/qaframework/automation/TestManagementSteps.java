@@ -4,6 +4,7 @@ import static java.lang.Thread.sleep;
 import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
@@ -136,7 +137,12 @@ public class TestManagementSteps extends TestBase {
 	public void userClicksAcceptToConfirmChanges() throws InterruptedException {
 		sleep(100);
 		testManagementPage.clickAcceptButton();
-		sleep(100);
+		Thread.sleep(1000);
+	}
+
+	@Then("Confirm Test name {string} update was saved")
+	public void confirmTestNameUpdateWasSaved(String updatedTestName) throws InterruptedException {
+		assertTrue(testManagementPage.containsText(updatedTestName + "(Plasma)"));
 	}
 
 	@When("User clicks reject button")
@@ -147,10 +153,26 @@ public class TestManagementSteps extends TestBase {
 
 	}
 
+	@Then("Confirm Test name {string} update was rejected but contains {string}")
+	public void confirmTestNameUpdateWasRejectedButContains(String testUpdateName, String presentTestName)
+			throws InterruptedException {
+		sleep(100);
+		assertFalse(testManagementPage.containsText(testUpdateName + "(Plasma)"));
+		assertTrue(testManagementPage.containsText(presentTestName));
+	}
+
 	@When("User clicks cancel button")
 	public void userClicksCancelButton() throws InterruptedException {
 		sleep(100);
 		testManagementPage.clickCancelButton();
 		sleep(100);
 	}
+
+	@Then("Confirm Test name {string} update was canceled")
+	public void confirmTestNameUpdateWasCanceled(String testUpdateName) throws InterruptedException {
+		sleep(100);
+		assertFalse(testManagementPage.containsText(testUpdateName + "(Plasma)"));
+	}
+
+
 }
