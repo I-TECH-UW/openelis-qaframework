@@ -40,9 +40,9 @@ import org.openqa.selenium.remote.RemoteWebDriver;
  */
 public class TestBase {
 	
-	public static final int MAX_WAIT_IN_SECONDS = 120;
+	public static final int MAX_WAIT_IN_SECONDS = 300;
 	
-	public static final int MAX_PAGE_LOAD_IN_SECONDS = 120;
+	public static final int MAX_PAGE_LOAD_IN_SECONDS = 300;
 	
 	public static final int MAX_SERVER_STARTUP_IN_MILLISECONDS = 10 * 60 * 1000;
 	

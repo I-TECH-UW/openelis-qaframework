@@ -3,6 +3,7 @@ services:
   chrome:
     image: selenium/standalone-chrome
     hostname: chrome
+    shm_size: '1gb'
     container_name: chrome
     ports:
       - "4444:4444"
@@ -11,6 +12,7 @@ services:
   firefox:
     image: selenium/standalone-firefox
     hostname: firefox
+    shm_size: '1gb'
     container_name: firefox
     ports:
       - "4445:4444"

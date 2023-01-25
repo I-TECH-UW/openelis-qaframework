@@ -43,8 +43,8 @@ public class TestManagementSteps extends TestBase {
 
 	@Given("User logins and Visits Home Page")
 	public void userLoginsAndVisitsHomePage() throws InterruptedException {
-		homePage = loginPage.goToHomePage();
 		Thread.sleep(100);
+		homePage = loginPage.goToHomePage();
 	}
 
 	@When("User clicks admin menu link")
