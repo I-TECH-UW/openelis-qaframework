@@ -28,6 +28,56 @@ Feature: Test Management Feature
       | Add result select list                  |
     Then Count List menu list Items should be <18>
 
+  @testManagement
+  Scenario Outline: Open Rename Existing Test Names page
+    Given Check if rename existing test names link exists
+    When User clicks rename existing test names link
+    Then Laboratory test names (hyperlinked & underlined) should appear on page in three columns. All are in primary language
+    When User selects an existing Test Name "<testName>"
+    And User enters test name "<testNameEng>" in English
+    And User enters test name "<testNameFR>" in French
+    And User enters Reporting test name "<TestNameReportENG>" in English
+    And User enters reporting test name "<TestNameReportFR>" in French
+    Then User Clicks save button
+    And User Clicks accept to confirm changes
+    Then Confirm Test name "<testNameEng>" update was saved
+
+    Examples:
+      | testName           | testNameEng | testNameFR | TestNameReportENG | TestNameReportFR |
+      | Glucose(Plasma)    | GlucoseENG  | GlucoseFR  | GlucoseReportENG  | GlucoseReportFR  |
+      | GlucoseENG(Plasma) | Glucose     | Glucose    | GlucoseReport     | GlucoseReport    |
+
+
+  @testManagement
+  Scenario: User rejects the testName updates
+    Given Check if rename existing test names link exists
+    When User clicks rename existing test names link
+    Then Laboratory test names (hyperlinked & underlined) should appear on page in three columns. All are in primary language
+    When User selects an existing Test Name "Glucose(Plasma)"
+    And User enters test name "GlucoseRejectEng" in English
+    And User enters test name "GlucoseRejectFR" in French
+    And User enters Reporting test name "GlucoseReportRejectEng" in English
+    And User enters reporting test name "GlucoseReportRejectFR" in French
+    Then User Clicks save button
+    When User clicks reject button
+    Then Confirm Test name "GlucoseRejectEng" update was rejected but contains "Glucose(Plasma)"
+    And User clicks on finished button
+
+  @testManagement
+  Scenario: User cancels the testName updates
+    Given Check if rename existing test names link exists
+    When User clicks rename existing test names link
+    Then Laboratory test names (hyperlinked & underlined) should appear on page in three columns. All are in primary language
+    When User selects an existing Test Name "Glucose(Plasma)"
+    And User enters test name "GlucoseCancelEng" in English
+    And User enters test name "GlucoseCancelFR" in French
+    And User enters Reporting test name "GlucoseReportCancelEng" in English
+    And User enters reporting test name "GlucoseReportCancelFR" in French
+    When User clicks cancel button
+    Then Confirm Test name "GlucoseCancelEng" update was canceled
+    And User clicks on finished button
+
+
 
 
 
