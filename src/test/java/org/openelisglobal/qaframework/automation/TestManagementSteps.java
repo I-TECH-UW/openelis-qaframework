@@ -54,9 +54,10 @@ public class TestManagementSteps extends TestBase {
 
 	@And("User clicks Test Management left menu item link")
 	public void userClicksTestManagementLeftMenuItemLink() throws InterruptedException {
+		Thread.sleep(100);
 		boolean expected = testManagementPage.goToTestManagementConfigMenu();
 		assertTrue(expected);
-		Thread.sleep(100);
+		Thread.sleep(500);
 	}
 
 	@Given("Test Management page appears with functionality links")
@@ -72,8 +73,84 @@ public class TestManagementSteps extends TestBase {
 
 	@Then("Count List menu list Items should be <{int}>")
 	public void countListMenuListItemsShouldBe(int expectedCount) throws InterruptedException {
+		sleep(100);
 		int actual = testManagementPage.getTestManagementConfigMenuItemsCount();
 		assertEquals(expectedCount, actual);
-		sleep(500);
+		sleep(100);
+	}
+
+	@Given("Check if rename existing test names link exists")
+	public void checkIfRenameExistingTestNamesLinkExists() {
+		boolean linkExists = testManagementPage.renameExistingTestNamesLinkExists();
+		assertTrue(linkExists);
+	}
+
+	@When("User clicks rename existing test names link")
+	public void userClicksRenameExistingTestNamesLink() throws InterruptedException {
+		Thread.sleep(100);
+		testManagementPage.clickRenameExistingTestNamesLink();
+		Thread.sleep(100);
+	}
+
+	@Then("Laboratory test names \\(hyperlinked & underlined) should appear on page in three columns. All are in primary language")
+	public void laboratory_test_names_hyperlinked_underlined_should_appear_on_page_in_three_columns_all_are_in_primary_language() {
+		boolean result = testManagementPage.labTestNamesAppearInATable();
+		assertTrue(result);
+	}
+
+	@When("User selects an existing Test Name {string}")
+	public void userSelectsAnExistingTestName(String testName) throws InterruptedException {
+		Thread.sleep(100);
+		testManagementPage.clickOnTestTestName(testName);
+		Thread.sleep(100);
+	}
+
+	@And("User enters test name {string} in English")
+	public void userEntersTestNameInEnglish(String testNameEng) {
+		testManagementPage.enterTestNameInEnglish(testNameEng);
+	}
+
+	@And("User enters test name {string} in French")
+	public void userEntersTestNameInFrench(String testNameFR) {
+		testManagementPage.enterTestNameInFrench(testNameFR);
+	}
+
+	@And("User enters Reporting test name {string} in English")
+	public void userEntersReportingTestNameInEnglish(String reportTestNameEng) {
+		testManagementPage.enterReportingTestNameInEnglish(reportTestNameEng);
+	}
+
+	@And("User enters reporting test name {string} in French")
+	public void userEntersReportingTestNameInFrench(String reportTestNameFR) {
+		testManagementPage.enterReportingTestNameInFrench(reportTestNameFR);
+	}
+
+	@Then("User Clicks save button")
+	public void userClicksSaveButton() throws InterruptedException {
+		sleep(100);
+		testManagementPage.clickSaveButton();
+		sleep(100);
+	}
+
+	@And("User Clicks accept to confirm changes")
+	public void userClicksAcceptToConfirmChanges() throws InterruptedException {
+		sleep(100);
+		testManagementPage.clickAcceptButton();
+		sleep(100);
+	}
+
+	@When("User clicks reject button")
+	public void userClicksRejectButton() throws InterruptedException {
+		sleep(100);
+		testManagementPage.clickRejectButton();
+		sleep(100);
+
+	}
+
+	@When("User clicks cancel button")
+	public void userClicksCancelButton() throws InterruptedException {
+		sleep(100);
+		testManagementPage.clickCancelButton();
+		sleep(100);
 	}
 }
