@@ -193,6 +193,8 @@ public class AddOrderPage extends Page {
 
 	private static final By SELECT_RESULT = By.id("sel_1");
 
+	private  static  final  By PATIENT_SEARCH_RESULTS_TABLE = By.xpath("//*[@id=\"searchResultTable\"]");
+
 	public AddOrderPage(Page parentPage) {
 		super(parentPage);
 	}
@@ -642,6 +644,22 @@ public class AddOrderPage extends Page {
 		return getValue(FIELD_PATIENT_EMAIL);
 	}
 
+	public String getPatientStreet() {
+		return getValue(FIELD_PATIENT_STREET);
+	}
+	public String getPatientAgeYears() {
+		return getValue(FIELD_PATIENT_AGE_YEARS);
+	}
+	public  String getGender(){
+		return getSelectedOption(SELECT_PATIENT_GENDER);
+	}
+	public  String getMaritalStatus(){
+		return getSelectedOption(SELECT_PATIENT_MARITAL_STATUS);
+	}
+
+	public String getNationalityOther() {
+		return getValue(FIELD_PATIENT_NATIONALITY_OTHER);
+	}
 	public void clearTestsField() {
 		clearText(FIELD_TEST);
 	}
@@ -837,6 +855,9 @@ public class AddOrderPage extends Page {
 		waitForElement(SELECT_RESULT);
 	}
 
+	public void selectFirstSearchResult() {
+		clickOn(SELECT_RESULT);
+	}
 	public void removeAddedSampleConditionFromDropDownMenu() throws InterruptedException {
 		List<WebElement> options = getConditonSelectionField().findElements(FIELD_OPTION);
 		int n = 0;
@@ -976,5 +997,8 @@ public class AddOrderPage extends Page {
 		selectPatientMaritalStatusFromDropDownMenu();
 		enterPatientOtherNationality("nationality");
 		clickSave();
+	}
+	public boolean patientSearchResultsTableExists(){
+		return findElement(PATIENT_SEARCH_RESULTS_TABLE).isDisplayed();
 	}
 }
