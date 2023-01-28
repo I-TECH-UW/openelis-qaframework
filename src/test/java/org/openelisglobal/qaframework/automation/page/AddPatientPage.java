@@ -47,9 +47,7 @@ public class AddPatientPage extends Page {
 	private static final By FIELD_PATIENT_PHONE = By.id("patientPhone");
 	
 	private static final By FIELD_PATIENT_DOB = By.id("dateOfBirthID");
-	
-	private static final By FIELD_PATIENT_EMAIL = By.id("patientEmail");
-	
+
 	private static final By FIELD_PATIENT_NATIONALITY_OTHER = By.id("nationalityOtherId");
 	
 	private static final By FIELD_PATIENT_AGE_YEARS = By.id("ageYears");
@@ -64,8 +62,10 @@ public class AddPatientPage extends Page {
 	
 	private static final By BUTTON_CANCEL = By.id("cancelButtonId");
 	
-	private static final By SELECT_PATIENT_DISTRICT = By.id("healthRegionID");
-	
+	private static final By SELECT_PATIENT_REGION = By.id("healthRegionID");
+
+	private static final By SELECT_PATIENT_DISTRICT = By.id("healthDistrictID");
+
 	private static final By SELECT_PATIENT_COUNTRY = By.id("nationalityID");
 	
 	private static final By SELECT_PATIENT_GENDER = By.id("genderID");
@@ -85,7 +85,9 @@ public class AddPatientPage extends Page {
 	private static final By LABEL_VALIDATE_PATIENT_DOB = By.id("patientProperties.birthDateForDisplayMessage");
 	
 	private static final By LABEL_VALIDATE_PATIENT_AGE = By.id("ageYearsMessage");
-	
+
+	private  static  final  By PATIENT_SEARCH_RESULTS_TABLE = By.xpath("//*[@id=\"searchResultTable\"]");
+
 	public AddPatientPage(Page parent) {
 		super(parent);
 	}
@@ -202,11 +204,7 @@ public class AddPatientPage extends Page {
 	public void enterPatientPhone(String phone) {
 		setText(FIELD_PATIENT_PHONE, phone);
 	}
-	
-	public void enterPatientEmail(String email) {
-		setText(FIELD_PATIENT_EMAIL, email);
-	}
-	
+
 	public void enterPatientDateofBirth(String dob) {
 		setText(FIELD_PATIENT_DOB, dob);
 	}
@@ -218,10 +216,15 @@ public class AddPatientPage extends Page {
 	public void enterPatientAgeInYears(String age) {
 		setText(FIELD_PATIENT_AGE_YEARS, age);
 	}
-	
+
 	public void selectPatientHelathRegionFromDropDownMenu() {
+		selectOptionFromDropDown(SELECT_PATIENT_REGION);
+	}
+
+	public void selectPatientHealthDistrictFromDropDownMenu() {
 		selectOptionFromDropDown(SELECT_PATIENT_DISTRICT);
 	}
+
 	
 	public void selectPatientGenderFromDropDownMenu() {
 		selectOptionFromDropDown(SELECT_PATIENT_GENDER);
@@ -246,10 +249,15 @@ public class AddPatientPage extends Page {
 	public Boolean countriesListedFromDropDownMenu() {
 		return dropDownHasOptions(SELECT_PATIENT_COUNTRY);
 	}
-	
+
 	public Boolean healthRegionsListedFromDropDownMenu() {
+		return dropDownHasOptions(SELECT_PATIENT_REGION);
+	}
+
+	public Boolean healthDistrictListedFromDropDownMenu() {
 		return dropDownHasOptions(SELECT_PATIENT_DISTRICT);
 	}
+
 	
 	public Boolean genderListedFromDropDownMenu() {
 		return dropDownHasOptions(SELECT_PATIENT_GENDER);
@@ -266,9 +274,13 @@ public class AddPatientPage extends Page {
 	public String getSubjectNumber() {
 		return getValue(FIELD_SUBJECT_NUMBER);
 	}
-	
+
 	public String getNationalId() {
 		return getValue(FIELD_NATIONAL_ID);
+	}
+
+	public String getNationalityOther() {
+		return getValue(FIELD_PATIENT_NATIONALITY_OTHER);
 	}
 	
 	public String getPatientStreet() {
@@ -278,11 +290,7 @@ public class AddPatientPage extends Page {
 	public String getPatientCommune() {
 		return getValue(FIELD_PATIENT_COMMUNE);
 	}
-	
-	public String getPatientEmail() {
-		return getValue(FIELD_PATIENT_EMAIL);
-	}
-	
+
 	public String getPatientPhone() {
 		return getValue(FIELD_PATIENT_PHONE);
 	}
@@ -290,7 +298,14 @@ public class AddPatientPage extends Page {
 	public String getPatientAgeYears() {
 		return getValue(FIELD_PATIENT_AGE_YEARS);
 	}
-	
+	public  String getGender(){
+		return getSelectedOption(SELECT_PATIENT_GENDER);
+	}
+
+	public  String getMaritalStatus(){
+		return getSelectedOption(SELECT_PATIENT_MARITAL_STATUS);
+	}
+
 	public String getPatientAgeMonths() {
 		return getValue(FIELD_PATIENT_AGE_MONTHS);
 	}
@@ -302,7 +317,7 @@ public class AddPatientPage extends Page {
 	public String getPatientDateOfBirth() {
 		return getValue(FIELD_PATIENT_DOB);
 	}
-	
+
 	public void clearPatientAgeYears() {
 		clearText(FIELD_PATIENT_AGE_YEARS);
 	}
@@ -322,7 +337,7 @@ public class AddPatientPage extends Page {
 	public String getPatientPhoneClass() {
 		return getClass(FIELD_PATIENT_PHONE);
 	}
-	
+
 	public Boolean nationalIdIsRequired() {
 		return isRequired(REQUIRED_LABEL_NATIONAL_ID);
 	}
@@ -365,14 +380,18 @@ public class AddPatientPage extends Page {
 		enterPatientFirstName(firstName);
 		enterPatientStreet("Gayaza");
 		enterPatientCommune("commune");
-		enterPatientEmail("jimmy@gmail.com");
-		enterPatientPhone("+23063458788");
+		enterPatientPhone("+225-63-45-87-88");
 		selectPatientHelathRegionFromDropDownMenu();
+		selectPatientHealthDistrictFromDropDownMenu();
 		enterPatientDateofBirth("09/02/2019");
 		selectPatientGenderFromDropDownMenu();
 		selectPatientEducationFromDropDownMenu();
 		selectPatientMaritalStatusFromDropDownMenu();
 		enterPatientOtherNationality("uganda");
 		clickSave();
+	}
+
+	public boolean patientSearchResultsTableExists(){
+		return findElement(PATIENT_SEARCH_RESULTS_TABLE).isDisplayed();
 	}
 }
