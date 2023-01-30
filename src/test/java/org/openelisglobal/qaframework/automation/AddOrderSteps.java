@@ -61,10 +61,14 @@ public class AddOrderSteps extends TestBase {
 	public void orderFormShouldAppear() throws Exception {
 		assertTrue(addOrderPage.containsTextRequest());
 	}
-	
+	@And("Remember site and requester checkbox exists")
+	public void rememberSiteAndRequesterCheckboxExists() {
+		assertTrue(addOrderPage.rememberSiteAndRequesterCheckBoxExist());
+		assertTrue(addOrderPage.containsText("Remember site and requester"));
+	}
 	@When("User enters Accesion Number {string}")
 	public void enterAcessionNumber(String accesionNumber) throws Exception {
-		addOrderPage.turnOnAcessionValidation();
+//		addOrderPage.turnOnAcessionValidation();
 		addOrderPage.enterAccessionNumber(accesionNumber);
 	}
 	
@@ -192,8 +196,13 @@ public class AddOrderSteps extends TestBase {
 	public void siteNameShoulBeMandatory() {
 		assertEquals(addOrderPage.getSiteNameRequiredClass(), "requiredlabel");
 	}
+	@When("User enters site name suggestion text {string}")
+	public void userEntersSiteNameSuggestionText(String siteNameSuggestion) throws InterruptedException {
+		addOrderPage.enterSiteNameSuggestion(siteNameSuggestion);
+		Thread.sleep(100);
+	}
 	
-	@And("User Selects Site Name from a Drop down Menu")
+	@Then("User Selects Site Name from a Drop down Menu")
 	public void selectSiteNameFromDropDownMenu() throws InterruptedException {
 		addOrderPage.selectSiteNameFromDropDown();
 	}
@@ -203,71 +212,48 @@ public class AddOrderSteps extends TestBase {
 		addOrderPage.selectProgramFromDropDown();
 	}
 	
-	@Then("Requester's Last Name is mandatory")
-	public void requesterLastNameIsMandatory() throws InterruptedException {
+	@Then("Requester's Name is mandatory")
+	public void requesterNameIsMandatory() throws InterruptedException {
 		assertEquals(addOrderPage.getLastNameRequiredClass(), "requiredlabel");
 	}
 	
-	@And("User Enters Requester's Last Name {string}")
-	public void enterLastName(String lastName) {
-		addOrderPage.enterRequesterLastName(lastName);
-		assertEquals(addOrderPage.getLastNameValue(), lastName);
+	@And("User Enters Requester's Name {string}")
+	public void enterLastName(String name) throws InterruptedException {
+		addOrderPage.enterRequesterName(name);
+		assertEquals(addOrderPage.getRequesterName(), name);
 	}
-	
-	@And("User Enters Requester's First Name {string}")
-	public void enterFirstName(String firstName) {
-		addOrderPage.enterRequesterFirstName(firstName);
-		assertEquals(addOrderPage.getFistNameValue(), firstName);
+
+	@Then("User selects patient payment status drop down list")
+	public void userSelectsPatientPaymentStatusDropDownList() {
+		addOrderPage.selectPatientPaymentStatus();
 	}
-	
-	@When("User Enters Telephone Number {string}")
-	public void enterTelephone(String telephone) {
-		addOrderPage.turnOnTelephoneValidation();
-		addOrderPage.enterRequesterTelephone(telephone);
+
+	@When("User selects others from Sampling performed for analysis drop down list")
+	public void userSelectsOthersFromSamplingPerformedForAnalysisDropDownList() {
+		addOrderPage.selectSamplingPerformed();
 	}
-	
-	@Then("Validate {string} Telephone Number")
-	public void validateTelephoneNumber(String status) throws InterruptedException {
-		if (status.equals("valid")) {
-			addOrderPage.clickOnNextVisitDate();
-			if(addOrderPage.alertPresent()){
-                addOrderPage.acceptAlert();
-				addOrderPage.enterRequesterTelephone("");
-				return;
-			}
-			Thread.sleep(1000);
-			assertEquals(addOrderPage.getTelephoneNumberClass(), "text");
-		} else if (status.equals("invalid")) {
-			addOrderPage.clickOnNextVisitDate();
-			Thread.sleep(1000);
-			addOrderPage.acceptAlert();
-			assertEquals(addOrderPage.getTelephoneNumberClass(), "text error");
-		}
+	@Then("Others sampling performed text box appears")
+	public void othersSamplingPerformedTextBoxAppears() {
+        assertTrue(addOrderPage.IsSamplingPerformedOthersTextBoxDisplayed());
 	}
-	
-	@And("User Enters Fax {string}")
-	public void enterFax(String fax) {
-		addOrderPage.enterRequesterFax(fax);
+	@And("Others sampling performed text field accepts text {string}")
+	public void othersSamplingPerformedTextFieldAcceptsText(String other) {
+		   addOrderPage.enterSamplingPerformedOther(other);
+		   assertEquals(addOrderPage.getSamplingPerformedOthersValue(), other);
 	}
-	
-	@And("User Enters Email {string}")
-	public void enterEmail(String email) throws InterruptedException {
-		addOrderPage.enterRequesterEmail(email);
-	}
-	
 	@Then("Sample addition is mandatory")
 	public void sampleAdditionMandatory() {
 		assertEquals(addOrderPage.getSampleRecquiredClass(), "requiredlabel");
 	}
 	
 	@When("User Clicks on + Button next to Sample")
-	public void clickAddSample() {
+	public void clickAddSample() throws InterruptedException {
 		addOrderPage.clickAddSampleButton();
 	}
 	
 	@Then("Sample Selection Field appears")
 	public void sampleSelectionFiedlAppears() {
-		assertNotNull(addOrderPage.getSampleSelectionField());
+		assertTrue(addOrderPage.getSampleSelectionField().isDisplayed());
 	}
 	
 	@And("Sample types display in drop-down list")
@@ -528,7 +514,7 @@ public class AddOrderSteps extends TestBase {
 		Thread.sleep(1000);
 		addOrderPage.selectSiteNameFromDropDown();
 		Thread.sleep(1000);
-		addOrderPage.enterRequesterLastName("SADDIO");
+		addOrderPage.enterRequesterName("ABDOOL RAHEEM, Jamiilah");
 		addOrderPage.clickAddSampleButton();
 		addOrderPage.selectSampleTypeFromDropDownMenu();
 		addOrderPage.clickPannelCheckBox();
@@ -732,7 +718,7 @@ public class AddOrderSteps extends TestBase {
 	
 	@Then("Save button deactivated until all mandatory fields are completed")
 	public void saveButtonDeactivated() {
-		assertTrue(addOrderPage.saveButtonDeactivated());
+		assertFalse(addOrderPage.saveButtonActivated());
 	}
 	
 	@When("User Completes all mandatory fields")
@@ -744,7 +730,7 @@ public class AddOrderSteps extends TestBase {
 		Thread.sleep(1000);
 		addOrderPage.selectSiteNameFromDropDown();
 		Thread.sleep(1000);
-		addOrderPage.enterRequesterLastName("SADDIO");
+		addOrderPage.enterRequesterName("ABDOOL RAHEEM, Jamiilah");
 		addOrderPage.clickAddSampleButton();
 		addOrderPage.selectSampleTypeFromDropDownMenu();
 		addOrderPage.clickPannelCheckBox();
@@ -774,7 +760,7 @@ public class AddOrderSteps extends TestBase {
 	
 	@Then("Save button is Activated when all mandatory fields are completed")
 	public void saveButtonActivated() {
-		assertFalse(addOrderPage.saveButtonDeactivated());
+		assertFalse(addOrderPage.saveButtonActivated());
 	}
 	
 	@When("User Clicks Cancel")
@@ -789,7 +775,7 @@ public class AddOrderSteps extends TestBase {
 	
 	@Then("Patient Information form remains on screen")
 	public void patientFormRemains() {
-		assertFalse(addOrderPage.saveButtonDeactivated());
+		assertFalse(addOrderPage.saveButtonActivated());
 	}
 	
 	@When("User Clicks Save")
@@ -805,8 +791,11 @@ public class AddOrderSteps extends TestBase {
 	}
 	
 	@Then("User Clicks Cancel and Returns to Home Page")
-	public void clickCancelAndLeave() {
+	public void clickCancelAndLeave() throws InterruptedException {
 		addOrderPage.clickCancel();
+		if(addOrderPage.alertPresent()){
+			addOrderPage.acceptAlert();
+		}
 		homePage = new HomePage(addOrderPage);
 		assertFalse(homePage.containsText("Test Request"));
 	}

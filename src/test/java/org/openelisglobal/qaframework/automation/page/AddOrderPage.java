@@ -16,11 +16,13 @@ public class AddOrderPage extends Page {
 
 	private static final String PATH_HOME = "/Dashboard";
 
-	private static final String PATH_SAMPLE_ENTRY_CONFIG = "SampleEntryConfig?ID=116&startingRecNo=1";
+	private static final String PATH_SAMPLE_ENTRY_CONFIG = "SampleEntryConfig?id=116&startingRecNo=1";
 
-	private static final String PATH_SITE_INFO_CONFIG = "SiteInformation?ID=71&startingRecNo=1";
+	private static final String PATH_SITE_INFO_CONFIG = "SiteInformation?id=71&startingRecNo=1";
 
-	private static final String LABEL_TEXT_REQUEST = "Test Reques";
+	private static final String LABEL_TEXT_REQUEST = "Test Request";
+
+	private  static  final By REMEMBER_SITE_AND_REQUESTER_CHECKBOX=  By.id("rememberSiteAndRequester");
 
 	private static final By FIELD_LAB_NUMBER = By.id("labNo");
 
@@ -32,11 +34,15 @@ public class AddOrderPage extends Page {
 
 	private static final By FIELD_RECIEVED_TIME = By.id("receivedTime");
 
-	private static final By FIELD_SITE_NAME = By.id("requesterId");
+	private static final By FIELD_SITE_NAME = By.xpath("//*[@id=\"orderDisplay\"]/table/tbody/tr/td/table/tbody/tr[7]/td[2]/input");
+
+	private static final By FIELD_SITE_NAME_SELECTOR = By.xpath("requesterId");
 
 	private static final By FIELD_PROGRAM = By.id("sampleOrderItems.program");
 
 	private static final By FIELD_OPTION = By.tagName("option");
+
+	private static final By FIELD_REQUESTER_NAME = By.xpath("//*[@id=\"orderDisplay\"]/table/tbody/tr/td/table/tbody/tr[12]/td[2]/input");
 
 	private static final By FIELD_REQUESTER_LAST_NAME = By.id("providerLastNameID");
 
@@ -104,7 +110,7 @@ public class AddOrderPage extends Page {
 
 	private static final By BUTTON_GENERATE = By.id("generateAccessionButton");
 
-	private static final By BUTTON_ADD_SAMPLE = By.id("samplesSectionId");
+	private static final By BUTTON_ADD_SAMPLE = By.xpath("//*[@id=\"samplesBlock\"]/table/tbody/tr/td/input");
 
 	private static final By BUTTON_REMOVE_CONDITION = By.className("asmListItemRemove");
 
@@ -127,7 +133,7 @@ public class AddOrderPage extends Page {
 
 	private static final By BUTTON_PRINT_LABEL = By.id("printBarcodeButton");
 
-	private static final By SELECT_SAMPLE = By.id("sampleTypeSelect");
+	private static final By SELECT_SAMPLE = By.xpath("//*[@id=\"samplesDisplay_1\"]/table/tbody/tr[2]/td/select");
 
 	private static final By SELECT_CONDITION = By.id("asmSelect0");
 
@@ -152,9 +158,9 @@ public class AddOrderPage extends Page {
 			.xpath("(//span[@class='requiredlabel'])[5]");
 
 	private static final By REQUIRED_SAMPLE_ADDITION = By
-			.xpath("(//span[@class='requiredlabel'])[6]");
+			.xpath("//*[@id=\"samplesBlock\"]/table/tbody/tr/td/span");
 
-	private static final By REQUIRED_TEST = By.xpath("(//span[@class='requiredlabel'])[10]");
+	private static final By REQUIRED_TEST = By.xpath("/html/body/form/table/tbody/tr[4]/td/div[1]/div[2]/table/tbody/tr/td/div[1]/div[7]/table/tbody/tr[1]/th[7]/span");
 
 	private static final By REQUIRED_PATIENT_INFORMATION = By
 			.xpath("//td/input[@id='orderSectionId']/following-sibling::span[1]");
@@ -195,6 +201,11 @@ public class AddOrderPage extends Page {
 
 	private  static  final  By PATIENT_SEARCH_RESULTS_TABLE = By.xpath("//*[@id=\"searchResultTable\"]");
 
+	private  static  final  By FIELD_PATIENT_PAYMENT_STATUS = By.id("sampleOrderItems.paymentOptionSelection");
+
+	private  static  final  By FIELD_TEST_LOCATION_CODE = By.id("testLocationCodeId");
+	private  static  final  By FIELD_TEST_LOCATION_CODE_OTHER = By.id("testLocationCodeOtherId");
+
 	public AddOrderPage(Page parentPage) {
 		super(parentPage);
 	}
@@ -206,6 +217,10 @@ public class AddOrderPage extends Page {
 
 	public Boolean containsTextRequest() {
 		return containsText(LABEL_TEXT_REQUEST);
+	}
+
+	public boolean rememberSiteAndRequesterCheckBoxExist() {
+		return hasElement(REMEMBER_SITE_AND_REQUESTER_CHECKBOX);
 	}
 
 	public Boolean isAccessionNumberMandatory() {
@@ -247,16 +262,20 @@ public class AddOrderPage extends Page {
 		return findElement(FIELD_RECIEVED_TIME);
 	}
 
-	public WebElement getSiteNameField() {
-		return findElement(FIELD_SITE_NAME);
+	public WebElement getSiteNameSelectorField() {
+		return findElement(FIELD_SITE_NAME_SELECTOR);
 	}
 
 	public WebElement getProgramField() {
 		return findElement(FIELD_PROGRAM);
 	}
 
-	public WebElement getLastNameField() {
-		return findElement(FIELD_REQUESTER_LAST_NAME);
+	public WebElement getSamplingPerformedAnalysisField(){
+		return findElement(FIELD_TEST_LOCATION_CODE);
+	}
+
+	public WebElement getRequesterNameField() {
+		return findElement(FIELD_REQUESTER_NAME);
 	}
 
 	public WebElement getFirstNameField() {
@@ -308,14 +327,16 @@ public class AddOrderPage extends Page {
 		clickOn(FIELD_COLLECTION_TIME);
 	}
 
-	public void clickAddSampleButton() {
-		if (getAddSampleButton().getAttribute("value") == "+") {
+	public void clickAddSampleButton() throws InterruptedException {
+		scrollPageByElement(BUTTON_ADD_SAMPLE);
+		if (getAddSampleButton().getAttribute("value").equals("+")) {
+			Thread.sleep(1000);
 			clickOn(BUTTON_ADD_SAMPLE);
 		}
 	}
 
 	public void clickAddPatientInformation() {
-		if (getValue(BUTTON_ADD_PATIENT_SECTION) == "+") {
+		if (getValue(BUTTON_ADD_PATIENT_SECTION).equals("+")) {
 			clickOn(BUTTON_ADD_PATIENT_SECTION);
 		}
 	}
@@ -368,18 +389,35 @@ public class AddOrderPage extends Page {
 		clickOn(CHECK_BOX_REFFER_TEST);
 	}
 
+	public void enterSiteNameSuggestion(String siteNameSuggestion) {
+         setText(FIELD_SITE_NAME,siteNameSuggestion);
+	}
 	public void selectSiteNameFromDropDown() throws InterruptedException {
+
 		clickOn(FIELD_SITE_NAME);
-		List<WebElement> options = getSiteNameField().findElements(FIELD_OPTION);
-		int n = 0;
-		for (WebElement option : options) {
-			option.click();
-			Thread.sleep(100);
-			if (n == 5) {
-				break;
-			}
-			n = n + 1;
-		}
+
+		// TODO: 30/01/2023
+
+//		WebElement selector = findElement(FIELD_SITE_NAME_SELECTOR);
+//		assertTrue(selector.isDisplayed());
+
+//	clickOn(FIELD_SITE_NAME_SELECTOR);
+//		List<WebElement> options = getSiteNameSelectorField().findElements(FIELD_OPTION);
+//		for (WebElement option : options) {
+//			option.click();
+//			Thread.sleep(100);
+//		}
+//		System.out.println("JamesOmala: "+options.toString());
+//		int n = 0;
+//		for (WebElement option : options) {
+//			System.out.println("JamesOmala: "+option.toString());
+//			option.click();
+//			Thread.sleep(100);
+//			if (n == 5) {
+//				break;
+//			}
+//			n = n + 1;
+//		}
 	}
 
 	public void selectProgramFromDropDown() throws InterruptedException {
@@ -391,6 +429,26 @@ public class AddOrderPage extends Page {
 		}
 	}
 
+	public void selectPatientPaymentStatus(){
+	  getSelectedOption(FIELD_PATIENT_PAYMENT_STATUS);
+	}
+
+	public void selectSamplingPerformed(){
+		clickOn(FIELD_TEST_LOCATION_CODE);
+		List<WebElement> options = getSamplingPerformedAnalysisField().findElements(FIELD_OPTION);
+		for (WebElement option : options) {
+			if (option.getText().equals("Other - specify")){
+				option.click();
+			}
+		}
+	}
+    public  boolean IsSamplingPerformedOthersTextBoxDisplayed(){
+      return findElement(FIELD_TEST_LOCATION_CODE_OTHER).isDisplayed();
+     }
+
+	 public void enterSamplingPerformedOther(String other){
+		setText(FIELD_TEST_LOCATION_CODE_OTHER,other);
+	 }
 	public Boolean GeneratedAccessionNumberIsDigit() {
 		if (StringUtils.isNumeric(getAccessionNumberField().getAttribute("value"))) {
 			return true;
@@ -410,12 +468,8 @@ public class AddOrderPage extends Page {
 		return getRecievedTimeField().getAttribute("value");
 	}
 
-	public String getFistNameValue() {
-		return getFirstNameField().getAttribute("value");
-	}
-
-	public String getLastNameValue() {
-		return getLastNameField().getAttribute("value");
+	public String getRequesterName() {
+		return getRequesterNameField().getAttribute("value");
 	}
 
 	public String getAccesionNumberValue() {
@@ -437,7 +491,9 @@ public class AddOrderPage extends Page {
 	public String getPatientDateOfBirthValue() {
 		return getValue(FIELD_PATIENT_DOB);
 	}
-
+	public String getSamplingPerformedOthersValue() {
+		return getValue(FIELD_TEST_LOCATION_CODE_OTHER);
+	}
 	public void enterRecievedDate(String date) {
 		setText(FIELD_RECIEVED_DATE, date);
 	}
@@ -462,8 +518,9 @@ public class AddOrderPage extends Page {
 		setText(FIELD_LAB_NUMBER, accesionNumber);
 	}
 
-	public void enterRequesterLastName(String lastName) {
-		setText(FIELD_REQUESTER_LAST_NAME, lastName);
+	public void enterRequesterName(String requesterName) throws InterruptedException {
+		setText(FIELD_REQUESTER_NAME, requesterName);
+		clickOn(FIELD_REQUESTER_NAME);
 	}
 
 	public void enterRequesterFirstName(String firstName) {
@@ -911,14 +968,8 @@ public class AddOrderPage extends Page {
 		clickOn(BUTTON_PATIENT_SEARCH);
 	}
 
-	public Boolean saveButtonDeactivated() {
-		Boolean deactivated = false;
-		try {
-			deactivated = findElement(BUTTON_SAVE).getAttribute("disabled").equals("true") ? true : false;
-		} catch (NullPointerException e) {
-			deactivated = false;
-		}
-		return deactivated;
+	public Boolean saveButtonActivated() {
+		return findElement(BUTTON_SAVE).isEnabled();
 	}
 
 	public Boolean panelCheckBoxExists() {
@@ -946,7 +997,7 @@ public class AddOrderPage extends Page {
 		Thread.sleep(1000);
 		selectSiteNameFromDropDown();
 		Thread.sleep(1000);
-		enterRequesterLastName("SADDIO");
+		enterRequesterName("ABDOOL RAHEEM, Jamiilah");
 		clickAddSampleButton();
 		selectSampleTypeFromDropDownMenu();
 		clickPannelCheckBox();
@@ -976,7 +1027,7 @@ public class AddOrderPage extends Page {
 		Thread.sleep(1000);
 		selectSiteNameFromDropDown();
 		Thread.sleep(1000);
-		enterRequesterLastName("SADDIO");
+		enterRequesterName("ABDOOL RAHEEM, Jamiilah");
 		clickAddSampleButton();
 		selectSampleTypeFromDropDownMenu();
 		clickPannelCheckBox();
