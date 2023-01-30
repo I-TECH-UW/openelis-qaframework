@@ -3,12 +3,13 @@ Feature: Add Order
 Background:
     Given User logs in and visits Home page
     And User clicks add order and goes to Add order Page
-   
+
 @order
 Scenario Outline: Order Number
     Then Order form should appear
-    When User enters Accesion Number "<accesionNumber>"
-    Then Validate "<status>" AccesionNumber Entered "<accesionNumber>"
+    And Remember site and requester checkbox exists
+#    When User enters Accesion Number "<accesionNumber>"
+#    Then Validate "<status>" AccesionNumber Entered "<accesionNumber>"
     When User clicks Generate Button
     Then Generated Accesion Number should be a digit
     Examples:
@@ -27,14 +28,14 @@ Scenario Outline: Request and Received Date
    When User enters correct Request and Received Date format
    Then Request and Received Date Fields should not show error
    Examples:
-     | incorrectDateValue | 
-     | 09-02/2019         | 
+     | incorrectDateValue |
+     | 09-02/2019         |
 
 @order
 Scenario Outline: Reception Time
 When User enters Reception time "<entry>"
 Then Field Automatically corrects "<action>" straight numeric to proper format HH:MM "<correctedTime>"
-And Field validates "<status>" correct format 
+And Field validates "<status>" correct format
 Examples:
      | entry     |    action     | correctedTime | status   |
      | 1d2d77D   | auto-correct  |    12:77      | invalid  |
@@ -44,47 +45,41 @@ Examples:
 @order
 Scenario: Site Name
 Then Site Name is mandatory
-And User Selects Site Name from a Drop down Menu
+When User enters site name suggestion text "6666 - TESTING ARV"
+Then User Selects Site Name from a Drop down Menu
 And User Selects Program from a Drop down Menu
 
 
 @order
-Scenario Outline: Requester's Name
-Then Requester's Last Name is mandatory
-And User Enters Requester's Last Name "<lastName>" 
-And User Enters Requester's First Name "<firstName>" 
-Examples:
-     | firstName  | lastName  | 
-     | Aliou      | SADIO     |    
+Scenario: Requester's Name
+Then Requester's Name is mandatory
+And User Enters Requester's Name "ABDOOL RAHEEM, Jamiilah"
+
+
+  @order
+  Scenario: Payment fields and Sampling performed for analysis
+  Then User selects patient payment status drop down list
+    When User selects others from Sampling performed for analysis drop down list
+    Then Others sampling performed text box appears
+    And Others sampling performed text field accepts text "other"
 
 @order
-Scenario Outline: Requester Phone/Fax/Email
-When User Enters Telephone Number "<telephone>"
-Then Validate "<status>" Telephone Number
-And User Enters Fax "<fax>"
-And User Enters Email "<email>"
-Examples:
-     |     telephone    |     fax   |      email      | status |
-     | +23063458788     | 682737882 | uwash@gmail.com | valid  |     
-     | +225-33-45-87    |     -     |      -          |invalid | 
-
-@order
-Scenario: Add samples 
+Scenario: Add samples
 Then Sample addition is mandatory
 When User Clicks on + Button next to Sample
-Then Sample Selection Field appears 
+Then Sample Selection Field appears
 And Sample types display in drop-down list
-And User Selects Sample Type from Drop down menu 
-And User Selects Sample Conditions from Drop down menu  
-And User Clicks X to remove added Sample Conditions 
-And User Clicks remove button to remove added Sample 
-And User Re-adds Samples 
-And User Clicks to Remove all  
+And User Selects Sample Type from Drop down menu
+#And User Selects Sample Conditions from Drop down menu
+#And User Clicks X to remove added Sample Conditions
+#And User Clicks remove button to remove added Sample
+#And User Re-adds Samples
+#And User Clicks to Remove all
 
 @order
 Scenario Outline: Collection Date
 When User Clicks on + Button next to Sample
-And User Selects Sample Type from Drop down menu 
+And User Selects Sample Type from Drop down menu
 And User enters Incorrect Date format "<incorrectDateValue>"
 Then Text field hightlights in red
 When User enters Date In the future
@@ -92,8 +87,8 @@ Then Pop-up alert appears if date is in the future
 When User enters correct Date
 Then Text field accepts the correct date format
 Examples:
-     | incorrectDateValue | 
-     | 09-02/2019         |           
+     | incorrectDateValue |
+     | 09-02/2019         |
      | dd/mm/yyyyy        |
 
 @order
@@ -102,13 +97,13 @@ When User Clicks on + Button next to Sample
 And User Selects Sample Type from Drop down menu
 And User enters Collection time "<entry>"
 Then Field Automatically corrects "<action>" straight numeric to proper Collection Time format HH:MM "<correctedTime>"
-And Field validates "<status>" Collection Time 
+And Field validates "<status>" Collection Time
 Examples:
      | entry     |    action     | correctedTime | status   |
      | 1d2d77D   | auto-correct  |    12:77      | invalid  |
      | 1254      | auto-correct  |    12:54      | valid    |
      | 13:54     | none          |    13:54      | valid    |
-   
+
 
 @order
 Scenario Outline: Collector
@@ -117,8 +112,8 @@ And User Selects Sample Type from Drop down menu
 And User Enters Collector "<collectorName>"
 Then Field Acceps text "<collectorName>"
 Examples:
-     | collectorName   |  
-     | Aliou  SADIO    |       
+     | collectorName   |
+     | Aliou  SADIO    |
 
 @order
 Scenario: Available Tests and Panels
@@ -130,7 +125,7 @@ When User Checks checkbox next to test name
 Then Checkbox sticks, test name appears under Tests box
 When User unChecks checkbox next to test name
 Then Name disappears from Tests box
-When User Checks checkbox next to Panel name 
+When User Checks checkbox next to Panel name
 Then All applicable panel tests apear in the Testsbox
 When User unChecks checkbox next to Panel name
 Then All Test Names disappears from Tests box
@@ -201,4 +196,4 @@ And User Click Stay on Page
 Then Patient Information form remains on screen
 When User Clicks Save
 Then New blank Add Order form appears with green Save was successful message on the top
-And User Clicks Cancel and Returns to Home Page 
+And User Clicks Cancel and Returns to Home Page

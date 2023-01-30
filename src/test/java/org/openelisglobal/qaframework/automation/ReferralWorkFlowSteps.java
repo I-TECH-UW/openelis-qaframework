@@ -79,7 +79,7 @@ public class ReferralWorkFlowSteps extends TestBase {
         }
         addOrderPage.enterNextVistDate(Utils.getFutureDate());
         addOrderPage.selectSiteNameFromDropDown();
-        addOrderPage.enterRequesterLastName("testRequester");
+        addOrderPage.enterRequesterName("ABDOOL RAHEEM, Jamiilah");
         addOrderPage.enterRequesterTelephone("+23063458788");
         addOrderPage.enterRequesterFax("test_fax");
         addOrderPage.enterRequesterEmail("requester@gmail.com");
@@ -252,7 +252,7 @@ public class ReferralWorkFlowSteps extends TestBase {
     public void saveButtonActivated() throws InterruptedException {
         addOrderPage.clickReferrerTest();
         addOrderPage.clickReferrerTest();
-        assertFalse(addOrderPage.saveButtonDeactivated());
+        assertFalse(addOrderPage.saveButtonActivated());
     }
 
     @And("User Ticks the boxes for Patient notification by Email and SMS")
