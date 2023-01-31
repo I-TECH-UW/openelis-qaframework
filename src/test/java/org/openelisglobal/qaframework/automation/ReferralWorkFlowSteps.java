@@ -79,7 +79,7 @@ public class ReferralWorkFlowSteps extends TestBase {
         }
         addOrderPage.enterNextVistDate(Utils.getFutureDate());
         addOrderPage.selectSiteNameFromDropDown();
-        addOrderPage.enterRequesterName("ABDOOL RAHEEM, Jamiilah");
+        addOrderPage.enterRequesterLastName("SADDIO");
         addOrderPage.enterRequesterTelephone("+23063458788");
         addOrderPage.enterRequesterFax("test_fax");
         addOrderPage.enterRequesterEmail("requester@gmail.com");

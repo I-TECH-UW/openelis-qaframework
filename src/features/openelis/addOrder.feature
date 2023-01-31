@@ -51,10 +51,24 @@ And User Selects Program from a Drop down Menu
 
 
 @order
-Scenario: Requester's Name
+Scenario Outline: Requester's Name
 Then Requester's Name is mandatory
-And User Enters Requester's Name "ABDOOL RAHEEM, Jamiilah"
+  And User Enters Requester's Last Name "<lastName>"
+  And User Enters Requester's First Name "<firstName>"
+  Examples:
+    | firstName  | lastName  |
+    | Aliou      | SADIO     |
 
+  @order @requester
+  Scenario Outline: Requester Phone/Fax/Email
+    When User Enters Telephone Number "<telephone>"
+    Then Validate "<status>" Telephone Number
+    And User Enters Fax "<fax>"
+    And User Enters Email "<email>"
+    Examples:
+      |     telephone    |     fax   |      email      | status |
+      | +23063458788     | 682737882 | uwash@gmail.com | valid  |
+      | +225-33-45-87    |     -     |      -          |invalid |
 
   @order
   Scenario: Payment fields and Sampling performed for analysis
