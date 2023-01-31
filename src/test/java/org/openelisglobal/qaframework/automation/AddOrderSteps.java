@@ -68,7 +68,7 @@ public class AddOrderSteps extends TestBase {
 	}
 	@When("User enters Accesion Number {string}")
 	public void enterAcessionNumber(String accesionNumber) throws Exception {
-//		addOrderPage.turnOnAcessionValidation();
+		addOrderPage.turnOnAcessionValidation();
 		addOrderPage.enterAccessionNumber(accesionNumber);
 	}
 	
@@ -215,12 +215,54 @@ public class AddOrderSteps extends TestBase {
 	@Then("Requester's Name is mandatory")
 	public void requesterNameIsMandatory() throws InterruptedException {
 		assertEquals(addOrderPage.getLastNameRequiredClass(), "requiredlabel");
+	     addOrderPage.turnOnAllowRequesterFieldAllFreeText();
+		 Thread.sleep(1000);
 	}
-	
-	@And("User Enters Requester's Name {string}")
-	public void enterLastName(String name) throws InterruptedException {
-		addOrderPage.enterRequesterName(name);
-		assertEquals(addOrderPage.getRequesterName(), name);
+
+	@And("User Enters Requester's Last Name {string}")
+	public void enterLastName(String lastName) {
+		addOrderPage.enterRequesterLastName(lastName);
+		assertEquals(addOrderPage.getLastNameValue(), lastName);
+	}
+
+	@And("User Enters Requester's First Name {string}")
+	public void enterFirstName(String firstName) {
+		addOrderPage.enterRequesterFirstName(firstName);
+		assertEquals(addOrderPage.getFistNameValue(), firstName);
+	}
+
+	@When("User Enters Telephone Number {string}")
+	public void enterTelephone(String telephone) {
+		addOrderPage.turnOnTelephoneValidation();
+		addOrderPage.enterRequesterTelephone(telephone);
+	}
+
+	@Then("Validate {string} Telephone Number")
+	public void validateTelephoneNumber(String status) throws InterruptedException {
+		if (status.equals("valid")) {
+			addOrderPage.clickOnNextVisitDate();
+			if (addOrderPage.alertPresent()) {
+				addOrderPage.acceptAlert();
+				addOrderPage.enterRequesterTelephone("");
+				return;
+			}
+			Thread.sleep(1000);
+			assertEquals(addOrderPage.getTelephoneNumberClass(), "text");
+		} else if (status.equals("invalid")) {
+			addOrderPage.clickOnNextVisitDate();
+			Thread.sleep(1000);
+			addOrderPage.acceptAlert();
+			assertEquals(addOrderPage.getTelephoneNumberClass(), "text error");
+		}
+	}
+	@And("User Enters Fax {string}")
+	public void enterFax(String fax) {
+		addOrderPage.enterRequesterFax(fax);
+	}
+
+	@And("User Enters Email {string}")
+	public void enterEmail(String email) throws InterruptedException {
+		addOrderPage.enterRequesterEmail(email);
 	}
 
 	@Then("User selects patient payment status drop down list")
@@ -514,7 +556,7 @@ public class AddOrderSteps extends TestBase {
 		Thread.sleep(1000);
 		addOrderPage.selectSiteNameFromDropDown();
 		Thread.sleep(1000);
-		addOrderPage.enterRequesterName("ABDOOL RAHEEM, Jamiilah");
+		addOrderPage.enterRequesterLastName("SADDIO");
 		addOrderPage.clickAddSampleButton();
 		addOrderPage.selectSampleTypeFromDropDownMenu();
 		addOrderPage.clickPannelCheckBox();
@@ -730,7 +772,7 @@ public class AddOrderSteps extends TestBase {
 		Thread.sleep(1000);
 		addOrderPage.selectSiteNameFromDropDown();
 		Thread.sleep(1000);
-		addOrderPage.enterRequesterName("ABDOOL RAHEEM, Jamiilah");
+		addOrderPage.enterRequesterLastName("SADDIO");
 		addOrderPage.clickAddSampleButton();
 		addOrderPage.selectSampleTypeFromDropDownMenu();
 		addOrderPage.clickPannelCheckBox();

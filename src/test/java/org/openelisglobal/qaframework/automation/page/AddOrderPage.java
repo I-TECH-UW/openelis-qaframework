@@ -16,9 +16,11 @@ public class AddOrderPage extends Page {
 
 	private static final String PATH_HOME = "/Dashboard";
 
-	private static final String PATH_SAMPLE_ENTRY_CONFIG = "SampleEntryConfig?id=116&startingRecNo=1";
+	private static final String PATH_SAMPLE_ENTRY_CONFIG = "SampleEntryConfig?ID=116&startingRecNo=1";
 
-	private static final String PATH_SITE_INFO_CONFIG = "SiteInformation?id=71&startingRecNo=1";
+	private static final String PATH_PROVIDER_RESTRICT_FREE_TEXT_ENTRY_CONFIG = "SampleEntryConfig?ID=123&startingRecNo=1";
+
+	private static final String PATH_SITE_INFO_CONFIG = "SiteInformation?ID=71&startingRecNo=1";
 
 	private static final String LABEL_TEXT_REQUEST = "Test Request";
 
@@ -191,6 +193,8 @@ public class AddOrderPage extends Page {
 
 	private static final By RADIO_BUTTON_VALIDATE_TRUE = By.id("value1");
 
+	private static final By RADIO_BUTTON_VALIDATE_FALSE = By.id("value2");
+
 	private static final By LABEL_VALIDATE_PATIENT_DOB = By.id("patientProperties.birthDateForDisplayMessage");
 
 	private static final By LABEL_VALIDATE_PATIENT_AGE = By.id("ageYearsMessage");
@@ -274,8 +278,8 @@ public class AddOrderPage extends Page {
 		return findElement(FIELD_TEST_LOCATION_CODE);
 	}
 
-	public WebElement getRequesterNameField() {
-		return findElement(FIELD_REQUESTER_NAME);
+	public WebElement getLastNameField() {
+		return findElement(FIELD_REQUESTER_LAST_NAME);
 	}
 
 	public WebElement getFirstNameField() {
@@ -468,8 +472,12 @@ public class AddOrderPage extends Page {
 		return getRecievedTimeField().getAttribute("value");
 	}
 
-	public String getRequesterName() {
-		return getRequesterNameField().getAttribute("value");
+
+	public String getLastNameValue() {
+		return getLastNameField().getAttribute("value");
+	}
+	public String getFistNameValue() {
+		return getFirstNameField().getAttribute("value");
 	}
 
 	public String getAccesionNumberValue() {
@@ -518,9 +526,8 @@ public class AddOrderPage extends Page {
 		setText(FIELD_LAB_NUMBER, accesionNumber);
 	}
 
-	public void enterRequesterName(String requesterName) throws InterruptedException {
-		setText(FIELD_REQUESTER_NAME, requesterName);
-		clickOn(FIELD_REQUESTER_NAME);
+	public void enterRequesterLastName(String lastName) {
+		setText(FIELD_REQUESTER_LAST_NAME, lastName);
 	}
 
 	public void enterRequesterFirstName(String firstName) {
@@ -954,8 +961,20 @@ public class AddOrderPage extends Page {
 			clickOn(RADIO_BUTTON_VALIDATE_TRUE);
 			clickOn(BUTTON_SAVE_VALIDATION);
 			this.go();
-		}	
+		}
 	}
+
+	public void turnOnAllowRequesterFieldAllFreeText() {
+		goToPage(PATH_PROVIDER_RESTRICT_FREE_TEXT_ENTRY_CONFIG);
+		if (this.containsText("System error")) {
+			this.go();
+		} else {
+			clickOn(RADIO_BUTTON_VALIDATE_FALSE);
+			clickOn(BUTTON_SAVE_VALIDATION);
+			this.go();
+		}
+	}
+
 
 	public void turnOnTelephoneValidation() {
 		goToPage(PATH_SITE_INFO_CONFIG);
@@ -997,7 +1016,7 @@ public class AddOrderPage extends Page {
 		Thread.sleep(1000);
 		selectSiteNameFromDropDown();
 		Thread.sleep(1000);
-		enterRequesterName("ABDOOL RAHEEM, Jamiilah");
+		enterRequesterLastName("SADDIO");
 		clickAddSampleButton();
 		selectSampleTypeFromDropDownMenu();
 		clickPannelCheckBox();
@@ -1027,7 +1046,7 @@ public class AddOrderPage extends Page {
 		Thread.sleep(1000);
 		selectSiteNameFromDropDown();
 		Thread.sleep(1000);
-		enterRequesterName("ABDOOL RAHEEM, Jamiilah");
+		enterRequesterLastName("SADDIO");
 		clickAddSampleButton();
 		selectSampleTypeFromDropDownMenu();
 		clickPannelCheckBox();
