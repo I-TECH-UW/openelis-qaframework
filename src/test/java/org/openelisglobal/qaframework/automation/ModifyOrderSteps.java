@@ -554,7 +554,12 @@ public class ModifyOrderSteps extends TestBase {
     public void assignTestCheckBoxUncheck() {
         assertFalse(modifyOrderPage.assignTestCheckBoxIsChecked());
     }
-    
+
+    @When("User Clicks add new sample button")
+    public void userClicksAddNewSampleButton() {
+        modifyOrderPage.clickAddNewSampleButton();
+    }
+
     @When("User Click on drop-down Sample Type list on the Modify Oder Page")
     public void clickSampleTypeDropDown() {
         modifyOrderPage.clickSampleTypeDropDown();
@@ -577,11 +582,11 @@ public class ModifyOrderSteps extends TestBase {
         assertTrue(modifyOrderPage.containsText("Sample Type"));
         assertTrue(modifyOrderPage.containsText("Collection Date&nbsp;(dd/mm/yyyy)"));
         assertTrue(modifyOrderPage.containsText("Collection Time (hh:mm)"));
-        assertTrue(modifyOrderPage.containsText("Condition"));
-        assertTrue(modifyOrderPage.containsText("Sample Nature"));
-        assertTrue(modifyOrderPage.containsText("Sample Nature"));
+        assertTrue(modifyOrderPage.containsText("Collector"));
         assertTrue(modifyOrderPage.containsText("Tests"));
-        assertTrue(modifyOrderPage.containsText("Add Order"));
+        assertTrue(modifyOrderPage.containsText("Reject"));
+        assertTrue(modifyOrderPage.containsText("Reject reason"));
+        assertTrue(modifyOrderPage.containsText("Remove Sample"));
     }
     
     @And("Sample ID added to reflect correct next Sample number")
@@ -621,6 +626,7 @@ public class ModifyOrderSteps extends TestBase {
     
     @When("User Click Remove All ,on the Modify Oder Page")
     public void removeAllSample() {
+        modifyOrderPage.clickAddNewSampleButton();
         modifyOrderPage.selectSampleType();
         modifyOrderPage.clickRemoveAllSample();
     }
@@ -632,7 +638,8 @@ public class ModifyOrderSteps extends TestBase {
     
     @When("User can Re-add samples")
     public void reAddSample() {
-        modifyOrderPage.selectSampleType();
+        modifyOrderPage.clickAddNewSampleButton();
+        modifyOrderPage.selectSampleTypeAgain();
     }
     
     @When("User Enters Collection Date {string} on the Modify Oder Page")

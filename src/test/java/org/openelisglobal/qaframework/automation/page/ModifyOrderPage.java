@@ -73,11 +73,13 @@ public class ModifyOrderPage extends Page {
 	
 	private static final By CHECKBOX_PANNEL_SELECT = By.name("panelSelect");
 	
-	private static final By DROP_DOWN_SAMPLE_TYPE = By.id("sampleTypeSelect");
-	
+	private static final By DROP_DOWN_SAMPLE_TYPE = By.xpath("//*[@id=\"samplesDisplay_1\"]/table/tbody/tr[2]/td/select");
+
+	private static final By DROP_DOWN_SAMPLE_TYPE_2 = By.xpath("//*[@id=\"samplesDisplay_2\"]/table/tbody/tr[2]/td/select");
+
 	private static final By DROP_DOWN_SITE_NAME = By.id("requesterId");
 	
-	private static final By DROP_DOWN_SAMPLE_CONDITION = By.xpath("//select[contains(@id,'asmSelect')]");
+	private static final By DROP_DOWN_SAMPLE_CONDITION = By.id("select_1");
 	
 	private static final By REMOVE_CONDITION = By.xpath("//a[contains(@class,'asmListItemRemove')]");
 	
@@ -87,7 +89,9 @@ public class ModifyOrderPage extends Page {
 	
 	private static final By LABEL_TEST_REQUIRED = By
 	        .xpath("//*[@id='orderDisplay']/table/tbody/tr/td/table/tbody/tr[2]/td[1]/span[1]");
-	
+
+	private  static final By BUTTON_ADD_NEW_SAMPLE = By.xpath("//*[@id=\"resultsDiv\"]/button");
+
 	public ModifyOrderPage(Page parent) {
 		super(parent);
 	}
@@ -109,8 +113,12 @@ public class ModifyOrderPage extends Page {
 	public void clickSearchButton() {
 		clickOn(BUTTON_SEARCH);
 	}
-	
+
+	public  void clickAddNewSampleButton(){
+		clickOn(BUTTON_ADD_NEW_SAMPLE);
+	}
 	public void clickSampleTypeDropDown() {
+		scrollPageByElement(DROP_DOWN_SAMPLE_TYPE);
 		clickOn(DROP_DOWN_SAMPLE_TYPE);
 	}
 	
@@ -330,6 +338,10 @@ public class ModifyOrderPage extends Page {
 	
 	public void selectSampleType() {
 		selectOptionFromDropDown(DROP_DOWN_SAMPLE_TYPE);
+	}
+
+	public  void selectSampleTypeAgain(){
+		selectOptionFromDropDown(DROP_DOWN_SAMPLE_TYPE_2);
 	}
 	
 	public Boolean ConditionsExistInDropDown() {

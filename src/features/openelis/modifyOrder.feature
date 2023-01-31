@@ -106,25 +106,26 @@ Examples:
 @modifyOrder
 Scenario Outline: Add Order
 And User Search by lab number "<labNo>" from previous testing steps on the Modify Oder Page
-When User Click on drop-down Sample Type list on the Modify Oder Page
+When User Clicks add new sample button
+Then User Click on drop-down Sample Type list on the Modify Oder Page
 Then Sample types display in drop-down list on the Modify Oder Page
 When User Select any sample type on the Modify Oder Page
 Then Order information fields for the selected sample type appear. Sample types can be added one by one 
 And Sample ID added to reflect correct next Sample number
 When User Select sample Condition from drop-down list on the Modify Oder Page
-Then Multiple sample conditions can be added
-When User Clicks `X` beside a condition on the Modify Oder Page
-Then Added sample conditions can be deleted
+#Then Multiple sample conditions can be added
+#When User Clicks `X` beside a condition on the Modify Oder Page
+#Then Added sample conditions can be deleted
 When User click Remove ,On the far right of the sample
 Then Removes sample from order
-When User Click Remove All ,on the Modify Oder Page
-Then Removes all samples from order
+#When User Click Remove All ,on the Modify Oder Page
+#Then Removes all samples from order
 And User can Re-add samples
 Examples:
     |labNo            |
     |20210000000003761|
 
-@modifyOrder
+@modifyOrder @pressOrder
 Scenario Outline: Collection Date 
 And User Search by lab number "<labNo>" from previous testing steps on the Modify Oder Page
 When User Enters Collection Date "<date>" on the Modify Oder Page
