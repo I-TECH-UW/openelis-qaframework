@@ -38,13 +38,11 @@ public class AddOrderPage extends Page {
 
 	private static final By FIELD_SITE_NAME = By.xpath("//*[@id=\"orderDisplay\"]/table/tbody/tr/td/table/tbody/tr[7]/td[2]/input");
 
-	private static final By FIELD_SITE_NAME_SELECTOR = By.xpath("requesterId");
+	private  static  final By SITE_NAME_OPTIONS_DROP_DOWN = By.xpath("//*[@id=\"ui-id-1\"]/li[1]/a");
 
 	private static final By FIELD_PROGRAM = By.id("sampleOrderItems.program");
 
 	private static final By FIELD_OPTION = By.tagName("option");
-
-	private static final By FIELD_REQUESTER_NAME = By.xpath("//*[@id=\"orderDisplay\"]/table/tbody/tr/td/table/tbody/tr[12]/td[2]/input");
 
 	private static final By FIELD_REQUESTER_LAST_NAME = By.id("providerLastNameID");
 
@@ -139,7 +137,9 @@ public class AddOrderPage extends Page {
 
 	private static final By SELECT_CONDITION = By.id("asmSelect0");
 
-	private static final By SELECT_PATIENT_DISTRICT = By.id("healthRegionID");
+	private static final By SELECT_PATIENT_REGION = By.id("healthRegionID");
+
+	private static final By SELECT_PATIENT_DISTRICT = By.id("healthDistrictID");
 
 	private static final By SELECT_PATIENT_GENDER = By.id("genderID");
 
@@ -266,10 +266,6 @@ public class AddOrderPage extends Page {
 		return findElement(FIELD_RECIEVED_TIME);
 	}
 
-	public WebElement getSiteNameSelectorField() {
-		return findElement(FIELD_SITE_NAME_SELECTOR);
-	}
-
 	public WebElement getProgramField() {
 		return findElement(FIELD_PROGRAM);
 	}
@@ -394,34 +390,13 @@ public class AddOrderPage extends Page {
 	}
 
 	public void enterSiteNameSuggestion(String siteNameSuggestion) {
-         setText(FIELD_SITE_NAME,siteNameSuggestion);
+		setText(FIELD_SITE_NAME,siteNameSuggestion);
 	}
-	public void selectSiteNameFromDropDown() throws InterruptedException {
-
-		clickOn(FIELD_SITE_NAME);
-
-		// TODO: 30/01/2023
-
-//		WebElement selector = findElement(FIELD_SITE_NAME_SELECTOR);
-//		assertTrue(selector.isDisplayed());
-
-//	clickOn(FIELD_SITE_NAME_SELECTOR);
-//		List<WebElement> options = getSiteNameSelectorField().findElements(FIELD_OPTION);
-//		for (WebElement option : options) {
-//			option.click();
-//			Thread.sleep(100);
-//		}
-//		System.out.println("JamesOmala: "+options.toString());
-//		int n = 0;
-//		for (WebElement option : options) {
-//			System.out.println("JamesOmala: "+option.toString());
-//			option.click();
-//			Thread.sleep(100);
-//			if (n == 5) {
-//				break;
-//			}
-//			n = n + 1;
-//		}
+	public void selectSiteNameFromDropDown() {
+		List<WebElement> options = findElements(SITE_NAME_OPTIONS_DROP_DOWN);
+		for (WebElement option : options) {
+			option.click();
+		}
 	}
 
 	public void selectProgramFromDropDown() throws InterruptedException {
@@ -848,6 +823,10 @@ public class AddOrderPage extends Page {
 	}
 
 	public void selectPatientHelathRegionFromDropDownMenu() {
+		selectOptionFromDropDown(SELECT_PATIENT_REGION);
+	}
+
+	public void selectPatientHealthDistrictFromDropDownMenu() {
 		selectOptionFromDropDown(SELECT_PATIENT_DISTRICT);
 	}
 
@@ -1014,6 +993,7 @@ public class AddOrderPage extends Page {
 			return;
 		}
 		Thread.sleep(1000);
+		enterSiteNameSuggestion("ABENGOUROU");
 		selectSiteNameFromDropDown();
 		Thread.sleep(1000);
 		enterRequesterLastName("SADDIO");
@@ -1029,8 +1009,9 @@ public class AddOrderPage extends Page {
 		enterPatientStreet("street");
 		enterPatientCommune("commune");
 		enterPatientEmail("email@gmail.com");
-		enterPatientPhone("+23063458788");
+		enterPatientPhone("+225-63-45-87-88");
 		selectPatientHelathRegionFromDropDownMenu();
+		selectPatientHealthDistrictFromDropDownMenu();
 		enterPatientDateofBirth("09/02/2019");
 		selectPatientGenderFromDropDownMenu();
 		selectPatientEducationFromDropDownMenu();
@@ -1044,6 +1025,7 @@ public class AddOrderPage extends Page {
 		String uuidAsString = uuid.toString();
 		clickGenerateButton();
 		Thread.sleep(1000);
+		enterSiteNameSuggestion("ABENGOUROU");
 		selectSiteNameFromDropDown();
 		Thread.sleep(1000);
 		enterRequesterLastName("SADDIO");
@@ -1059,8 +1041,9 @@ public class AddOrderPage extends Page {
 		enterPatientStreet("street");
 		enterPatientCommune("commune");
 		enterPatientEmail("email@gmail.com");
-		enterPatientPhone("+23063458788");
+		enterPatientPhone("+225-63-45-87-88");
 		selectPatientHelathRegionFromDropDownMenu();
+		selectPatientHealthDistrictFromDropDownMenu();
 		enterPatientDateofBirth("09/02/2019");
 		selectPatientGenderFromDropDownMenu();
 		selectPatientEducationFromDropDownMenu();

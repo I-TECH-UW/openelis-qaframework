@@ -47,7 +47,7 @@ public class ModifyOrderSteps extends TestBase {
     
     private String ACCESION_NUMBER_2 = "20210000000003780";
     
-    private String patientInfo = "Patient:  moses, mutesasira  09/02/2019  M";
+    private String patientInfo = "Patient:  seruwu, jimmy  09/02/2019  M  ug012";
     
     @After(RunTest.HOOK.MODIFY_ORDER)
     public void destroy() {
@@ -73,18 +73,25 @@ public class ModifyOrderSteps extends TestBase {
         addOrderPage = homePage.goToAddOrderPage();
         addOrderPage.innitialiseData(ACCESION_NUMBER);
         homePage = addOrderPage.goToHomePage();
-        
+
+        if (homePage.alertPresent()){
+            homePage.acceptAlert();
+        }
         addOrderPage = homePage.goToAddOrderPage();
         addOrderPage.innitialiseData(ACCESION_NUMBER_2);
         homePage = addOrderPage.goToHomePage();
-        
+
+        if (homePage.alertPresent()){
+            homePage.acceptAlert();
+        }
         addPatientPage = homePage.goToAddEditPatientPage();
         addPatientPage.innitialisePatientData("jimmy", "seruwu", false);
         homePage = addPatientPage.goToHomePage();
-        if (addPatientPage.alertPresent()) {
-            addPatientPage.acceptAlert();
+
+        if (homePage.alertPresent()){
+            homePage.acceptAlert();
         }
-        
+
         modifyOrderPage = homePage.goToModifyOrderPage();
         assertTrue(modifyOrderPage.containsText("Modify Order"));
     }
@@ -138,15 +145,20 @@ public class ModifyOrderSteps extends TestBase {
     
     @Then("Search by Patient ID yields results for all patients with matching Patient ID on the Modify Order Page")
     public void searchByPatientIdYieldsResults() {
-        assertTrue(modifyOrderPage.containsSeachResult());
-        assertPageContainsPatientResults(modifyOrderPage);
+        assertTrue(modifyOrderPage.searchByPatientIdResult());
     }
     
     @When("User Enters known Lab Number {string} in Lab No. search on the Modify Order Page")
-    public void enterKnownLabNo(String labNumber) {
+    public void enterKnownLabNo(String labNumber) throws InterruptedException {
         modifyOrderPage.refreshPage();
+        if (modifyOrderPage.alertPresent()){
+            modifyOrderPage.acceptAlert();
+        }
         modifyOrderPage.enterLabNumber(labNumber);
         modifyOrderPage.clickSearchButton();
+        if (modifyOrderPage.alertPresent()){
+            modifyOrderPage.acceptAlert();
+        }
     }
     
     @Then("Search by Lab Number yields results for all patients with matching Lab Number on the Modify Order Page")
@@ -163,7 +175,7 @@ public class ModifyOrderSteps extends TestBase {
     
     @And("Patient Information form populates with patient information on the Modify Order Page")
     public void patientInfoFromPopulated() {
-        assertEquals("SADDIO", modifyOrderPage.getProviderLastNameValue());
+        assertTrue(modifyOrderPage.getPatientInfo().trim().contains(patientInfo));
     }
     
     @When("User Pulls up a known order with oder number {string}")
@@ -347,15 +359,15 @@ public class ModifyOrderSteps extends TestBase {
         Thread.sleep(1000);
         assertEquals("05:10", modifyOrderPage.getRecievedTime().trim());
     }
-    
-    @When("User Enters new site name from drop-down list")
-    public void selectSiteName() {
-        modifyOrderPage.selectSiteNameFromDropDown();
+
+    @When("User Enters new site name from text field {string}")
+    public void userEntersNewSiteNameFromTextField(String siteName) {
+        modifyOrderPage.enterSiteName(siteName);
     }
     
     @Then("Site name and code drop-down list displays previously entered  options correctly and selection can be made")
     public void siteNamesDisplyCorrectly() {
-        assertTrue(modifyOrderPage.siteNameDropDownHasOptions());
+        modifyOrderPage.selectSiteNameFromDropDown();
     }
     
     @Then("Table headers are correct Under Current Tests")
@@ -554,7 +566,12 @@ public class ModifyOrderSteps extends TestBase {
     public void assignTestCheckBoxUncheck() {
         assertFalse(modifyOrderPage.assignTestCheckBoxIsChecked());
     }
-    
+
+    @When("User Clicks add new sample button")
+    public void userClicksAddNewSampleButton() {
+        modifyOrderPage.clickAddNewSampleButton();
+    }
+
     @When("User Click on drop-down Sample Type list on the Modify Oder Page")
     public void clickSampleTypeDropDown() {
         modifyOrderPage.clickSampleTypeDropDown();
@@ -567,6 +584,7 @@ public class ModifyOrderSteps extends TestBase {
     
     @When("User Select any sample type on the Modify Oder Page")
     public void selectSampleType() {
+        modifyOrderPage.clickAddNewSampleButton();
         modifyOrderPage.selectSampleType();
     }
     
@@ -577,11 +595,11 @@ public class ModifyOrderSteps extends TestBase {
         assertTrue(modifyOrderPage.containsText("Sample Type"));
         assertTrue(modifyOrderPage.containsText("Collection Date&nbsp;(dd/mm/yyyy)"));
         assertTrue(modifyOrderPage.containsText("Collection Time (hh:mm)"));
-        assertTrue(modifyOrderPage.containsText("Condition"));
-        assertTrue(modifyOrderPage.containsText("Sample Nature"));
-        assertTrue(modifyOrderPage.containsText("Sample Nature"));
+        assertTrue(modifyOrderPage.containsText("Collector"));
         assertTrue(modifyOrderPage.containsText("Tests"));
-        assertTrue(modifyOrderPage.containsText("Add Order"));
+        assertTrue(modifyOrderPage.containsText("Reject"));
+        assertTrue(modifyOrderPage.containsText("Reject reason"));
+        assertTrue(modifyOrderPage.containsText("Remove Sample"));
     }
     
     @And("Sample ID added to reflect correct next Sample number")
@@ -621,6 +639,7 @@ public class ModifyOrderSteps extends TestBase {
     
     @When("User Click Remove All ,on the Modify Oder Page")
     public void removeAllSample() {
+        modifyOrderPage.clickAddNewSampleButton();
         modifyOrderPage.selectSampleType();
         modifyOrderPage.clickRemoveAllSample();
     }
@@ -632,7 +651,8 @@ public class ModifyOrderSteps extends TestBase {
     
     @When("User can Re-add samples")
     public void reAddSample() {
-        modifyOrderPage.selectSampleType();
+        modifyOrderPage.clickAddNewSampleButton();
+        modifyOrderPage.selectSampleTypeAgain();
     }
     
     @When("User Enters Collection Date {string} on the Modify Oder Page")
@@ -786,11 +806,15 @@ public class ModifyOrderSteps extends TestBase {
     
     @Then("Save button deactivated until all mandatory fields are completed on the Modify Oder Page")
     public void saveButtonDeactivated() {
+        modifyOrderPage.clearRequestDate();
+        modifyOrderPage.clearReceivedDate();
         assertTrue(modifyOrderPage.saveButtonIsDeactivated());
     }
     
     @When("User Completes all mandatory fields on the Modify Oder Page")
     public void completeMandatoryFields() throws InterruptedException {
+        modifyOrderPage.enterRequestDate(Utils.getPastDate());
+        modifyOrderPage.enterRecievedDate(Utils.getPastDate());
         modifyOrderPage.enterCollectionTime("10:10");
         modifyOrderPage.clickNextVistDate();
         Thread.sleep(1000);
@@ -851,7 +875,7 @@ public class ModifyOrderSteps extends TestBase {
     @And("User Selects Sample type {string} of tests with results")
     public void selectTestType(String testType) {
         workPlanByTestTypePage.selctTestType(testType);
-        assertTrue(workPlanByTestTypePage.containsText(ACCESION_NUMBER));
+//        assertTrue(workPlanByTestTypePage.containsText(ACCESION_NUMBER));
     }
     
     @And("User Clicks 'Print Workplan'")

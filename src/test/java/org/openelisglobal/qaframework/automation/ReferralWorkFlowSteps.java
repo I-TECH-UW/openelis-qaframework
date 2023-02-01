@@ -78,6 +78,7 @@ public class ReferralWorkFlowSteps extends TestBase {
             addOrderPage.acceptAlert();
         }
         addOrderPage.enterNextVistDate(Utils.getFutureDate());
+        addOrderPage.enterSiteNameSuggestion("ABENGOUROU");
         addOrderPage.selectSiteNameFromDropDown();
         addOrderPage.enterRequesterLastName("SADDIO");
         addOrderPage.enterRequesterTelephone("+23063458788");
@@ -289,7 +290,7 @@ public class ReferralWorkFlowSteps extends TestBase {
     }
 
     @When("User Go to Order tab --> Modify Order")
-    public void goToModifyOrder() {
+    public void goToModifyOrder() throws InterruptedException {
         homePage = addOrderPage.goToHomePage();
         modifyOrderPage = homePage.goToModifyOrderPage();
     }

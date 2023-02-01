@@ -1,6 +1,9 @@
 package org.openelisglobal.qaframework.automation.page;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 /**
  * This class represents the Modify Order page
@@ -38,7 +41,9 @@ public class ModifyOrderPage extends Page {
 	private static final By BAR_PATIENT_INFO = By.id("patientInfo");
 	
 	private static final By SELECT_RESULT = By.id("sel_1");
-	
+
+	private static final By SELECT_RESULT_BY_PATIENT_ID = By.id("patientInfo");
+
 	private static final By FIELD_PROVIDER_LAST_NAME = By.id("providerLastNameID");
 	
 	private static final By FIELD_NEW_ODER_NUMBER = By.id("accessionEdit");
@@ -73,11 +78,17 @@ public class ModifyOrderPage extends Page {
 	
 	private static final By CHECKBOX_PANNEL_SELECT = By.name("panelSelect");
 	
-	private static final By DROP_DOWN_SAMPLE_TYPE = By.id("sampleTypeSelect");
-	
+	private static final By DROP_DOWN_SAMPLE_TYPE = By.xpath("//*[@id=\"samplesDisplay_1\"]/table/tbody/tr[2]/td/select");
+
+	private static final By DROP_DOWN_SAMPLE_TYPE_2 = By.xpath("//*[@id=\"samplesDisplay_2\"]/table/tbody/tr[2]/td/select");
+
 	private static final By DROP_DOWN_SITE_NAME = By.id("requesterId");
-	
-	private static final By DROP_DOWN_SAMPLE_CONDITION = By.xpath("//select[contains(@id,'asmSelect')]");
+
+	private static final By FIELD_SITE_NAME = By.xpath("//*[@id=\"orderDisplay\"]/table/tbody/tr/td/table/tbody/tr[7]/td[2]/input");
+
+	private  static  final By SITE_NAME_OPTIONS_DROP_DOWN = By.xpath("//*[@id=\"ui-id-1\"]/li[1]/a");
+
+	private static final By DROP_DOWN_SAMPLE_CONDITION = By.id("select_1");
 	
 	private static final By REMOVE_CONDITION = By.xpath("//a[contains(@class,'asmListItemRemove')]");
 	
@@ -86,8 +97,10 @@ public class ModifyOrderPage extends Page {
 	private static final By REMOVE_ALL_SAMPLE = By.xpath("//*[@id='samplesAdded']/table[2]/tbody/tr/td[2]/input");
 	
 	private static final By LABEL_TEST_REQUIRED = By
-	        .xpath("//*[@id='orderDisplay']/table/tbody/tr/td/table/tbody/tr[2]/td[1]/span[1]");
-	
+	        .xpath("/html/body/form/table/tbody/tr[4]/td/div[2]/div[4]/table/tbody/tr/td/div/div[7]/table/tbody/tr[1]/th[7]/span");
+
+	private  static final By BUTTON_ADD_NEW_SAMPLE = By.xpath("//*[@id=\"resultsDiv\"]/button");
+
 	public ModifyOrderPage(Page parent) {
 		super(parent);
 	}
@@ -109,8 +122,12 @@ public class ModifyOrderPage extends Page {
 	public void clickSearchButton() {
 		clickOn(BUTTON_SEARCH);
 	}
-	
+
+	public  void clickAddNewSampleButton(){
+		clickOn(BUTTON_ADD_NEW_SAMPLE);
+	}
 	public void clickSampleTypeDropDown() {
+		scrollPageByElement(DROP_DOWN_SAMPLE_TYPE);
 		clickOn(DROP_DOWN_SAMPLE_TYPE);
 	}
 	
@@ -195,9 +212,18 @@ public class ModifyOrderPage extends Page {
 	public Boolean testsBoxIsReadOnly() {
 		return findElement(FIELD_TESTS).getAttribute("readonly").equals("true") ? true : false;
 	}
-	
+
 	public Boolean containsSeachResult() {
 		return hasElement(SELECT_RESULT);
+	}
+
+	public Boolean searchByPatientIdResult() {
+	 List<WebElement> results = getElementsIfExisting(SELECT_RESULT_BY_PATIENT_ID);
+		if (results.size() > 0){
+			//instances where the PatientId Only appears once
+			return hasElement(SELECT_RESULT_BY_PATIENT_ID);
+		}
+		return containsSeachResult();
 	}
 	
 	public String getProviderLastNameValue() {
@@ -283,9 +309,24 @@ public class ModifyOrderPage extends Page {
 	public String getTestRequiredLabelClass() {
 		return getClass(LABEL_TEST_REQUIRED);
 	}
-	
+
+	public void clearRequestDate() {
+		clearText(FIELD_REQUEST_DATE);
+	}
+
+	public void clearReceivedDate() {
+		clearText(FIELD_RECIEVED_DATE);
+	}
+
+	public void enterSiteName(String name) {
+		setText(FIELD_SITE_NAME,name);
+	}
+
 	public void selectSiteNameFromDropDown() {
-		selectOptionFromDropDown(DROP_DOWN_SITE_NAME);
+		List<WebElement> options = findElements(SITE_NAME_OPTIONS_DROP_DOWN);
+		for (WebElement option : options) {
+			option.click();
+		}
 	}
 	
 	public Boolean siteNameDropDownHasOptions() {
@@ -303,7 +344,7 @@ public class ModifyOrderPage extends Page {
 	public Boolean deleteTestCheckBoxIsDisabled() {
 		return isDisabled(CHECKBOX_DELETE_TEST);
 	}
-	
+
 	public Boolean saveButtonIsDeactivated() {
 		return isDisabled(BUTTON_SAVE);
 	}
@@ -329,7 +370,22 @@ public class ModifyOrderPage extends Page {
 	}
 	
 	public void selectSampleType() {
-		selectOptionFromDropDown(DROP_DOWN_SAMPLE_TYPE);
+		scrollPageByElement(DROP_DOWN_SAMPLE_TYPE);
+
+		By FIELD_OPTION = By.tagName("option");
+		clickOn(DROP_DOWN_SAMPLE_TYPE);
+		List<WebElement> options = findElement(DROP_DOWN_SAMPLE_TYPE).findElements(FIELD_OPTION);
+
+		for (WebElement option : options) {
+			if (option.getText().equals("Serum")){
+				option.click();
+				break;
+			}
+		}
+	}
+
+	public  void selectSampleTypeAgain(){
+		selectOptionFromDropDown(DROP_DOWN_SAMPLE_TYPE_2);
 	}
 	
 	public Boolean ConditionsExistInDropDown() {
