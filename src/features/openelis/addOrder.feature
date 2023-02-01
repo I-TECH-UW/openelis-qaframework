@@ -59,7 +59,7 @@ Then Requester's Name is mandatory
     | firstName  | lastName  |
     | Aliou      | SADIO     |
 
-  @order @requester
+  @order
   Scenario Outline: Requester Phone/Fax/Email
     When User Enters Telephone Number "<telephone>"
     Then Validate "<status>" Telephone Number
@@ -184,6 +184,7 @@ Then Field validates "<status>" Patient Phone
 And User Enters Patient Email "<pEmail>"
 Then Field validates "<status>" Patient Email
 And User Selects Patient Health Region
+And User Selects Patient Health District from the drop down
 And User Enters Patient Date of Birth "<dateOfBirth>"
 Then Field validates "<status>" Patient Date Of Birth
 When User Enters Patient Date of Birth in future

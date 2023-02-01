@@ -1,6 +1,9 @@
 package org.openelisglobal.qaframework.automation.page;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 /**
  * This class represents the Work Plan By Test Type Page
@@ -30,7 +33,16 @@ public class WorkPlanByTestTypePage extends Page {
 	}
 	
 	public void selctTestType(String testType) {
-		selectFrom(DROP_DOWN_TEST_TYPES, testType);
+		By FIELD_OPTION = By.tagName("option");
+		clickOn(DROP_DOWN_TEST_TYPES);
+		List<WebElement> options = findElement(DROP_DOWN_TEST_TYPES).findElements(FIELD_OPTION);
+
+		for (WebElement option : options) {
+			if (option.getText().equals(testType)){
+				option.click();
+				break;
+			}
+		}
 	}
 	
 	public void clickPrintWorkPlan() {

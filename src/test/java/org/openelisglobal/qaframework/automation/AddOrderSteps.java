@@ -554,6 +554,7 @@ public class AddOrderSteps extends TestBase {
 		// innitializing data
 		addOrderPage.clickGenerateButton();
 		Thread.sleep(1000);
+		addOrderPage.enterSiteNameSuggestion("ABENGOUROU");
 		addOrderPage.selectSiteNameFromDropDown();
 		Thread.sleep(1000);
 		addOrderPage.enterRequesterLastName("SADDIO");
@@ -675,10 +676,13 @@ public class AddOrderSteps extends TestBase {
 	}
 	
 	@And("User Selects Patient Health Region")
-	public void selectPatientDistrict() {
+	public void selectPatientHealthRegion() {
 		addOrderPage.selectPatientHelathRegionFromDropDownMenu();
 	}
-	
+	@And("User Selects Patient Health District from the drop down")
+	public void userSelectsPatientHealthDistrictFromTheDropDown() {
+		addOrderPage.selectPatientHealthDistrictFromDropDownMenu();
+	}
 	@And("User Enters Patient Date of Birth {string}")
 	public void enterPatientDateOfBirth(String dob) {
 		addOrderPage.enterPatientDateofBirth(dob);
@@ -770,6 +774,7 @@ public class AddOrderSteps extends TestBase {
 		String uuidAsString = uuid.toString();
 		addOrderPage.clickGenerateButton();
 		Thread.sleep(1000);
+		addOrderPage.enterSiteNameSuggestion("ABENGOUROU");
 		addOrderPage.selectSiteNameFromDropDown();
 		Thread.sleep(1000);
 		addOrderPage.enterRequesterLastName("SADDIO");
@@ -802,7 +807,7 @@ public class AddOrderSteps extends TestBase {
 	
 	@Then("Save button is Activated when all mandatory fields are completed")
 	public void saveButtonActivated() {
-		assertFalse(addOrderPage.saveButtonActivated());
+		assertTrue(addOrderPage.saveButtonActivated());
 	}
 	
 	@When("User Clicks Cancel")
@@ -817,7 +822,7 @@ public class AddOrderSteps extends TestBase {
 	
 	@Then("Patient Information form remains on screen")
 	public void patientFormRemains() {
-		assertFalse(addOrderPage.saveButtonActivated());
+		assertTrue(addOrderPage.saveButtonActivated());
 	}
 	
 	@When("User Clicks Save")
