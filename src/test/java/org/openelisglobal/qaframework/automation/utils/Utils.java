@@ -1,17 +1,24 @@
 package org.openelisglobal.qaframework.automation.utils;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
+
 public class Utils {
-	
+
 	public static String getCurrentDate() {
 		Date date = new Date();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		return formatter.format(date);
 	}
-	
+
 	public static String getFutureDate() {
 		Date date = new Date();
 		Calendar cal = Calendar.getInstance();
@@ -20,7 +27,7 @@ public class Utils {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		return formatter.format(cal.getTime());
 	}
-	
+
 	public static String getPastDate() {
 		Date date = new Date();
 		Calendar cal = Calendar.getInstance();
@@ -29,7 +36,7 @@ public class Utils {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		return formatter.format(cal.getTime());
 	}
-	
+
 	public static String generateDobYearFromAge(String age) {
 		Date date = new Date();
 		Calendar cal = Calendar.getInstance();
@@ -39,5 +46,25 @@ public class Utils {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
 		String strYear = formatter.format(cal.getTime());
 		return strYear;
+	}
+
+	public static String getPdfContent(String url) throws IOException {
+
+		URL pdfURL = new URL(url);
+		InputStream is = pdfURL.openStream();
+		BufferedInputStream bis = new BufferedInputStream(is);
+		PDDocument doc = PDDocument.load(bis);
+		int pages = doc.getNumberOfPages();
+
+		PDFTextStripper strip = new PDFTextStripper();
+		strip.setStartPage(1);
+		strip.setEndPage(2);
+
+		String stripText = strip.getText(doc);
+
+		System.out.println(stripText);
+
+		doc.close();
+		return stripText;
 	}
 }

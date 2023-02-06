@@ -1,5 +1,8 @@
 package org.openelisglobal.qaframework.automation.page;
 
+import static org.openelisglobal.qaframework.automation.utils.Utils.getPdfContent;
+
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
@@ -70,7 +73,7 @@ public abstract class Page {
 
 			if (hasPageReadyIndicator()) {
 				return "complete".equals(readyState) && Boolean.TRUE.equals(executeScript("return (typeof "
-				        + getPageReadyIndicatorName() + "  !== 'undefined') ? " + getPageReadyIndicatorName() + " : null;"));
+						+ getPageReadyIndicatorName() + "  !== 'undefined') ? " + getPageReadyIndicatorName() + " : null;"));
 			} else {
 				return "complete".equals(readyState);
 			}
@@ -114,7 +117,7 @@ public abstract class Page {
 		}
 		Duration duration = Duration.ofSeconds(TestBase.MAX_WAIT_IN_SECONDS);
 		int seconds = (int) (duration.getSeconds() % 60);
-		waiter = new WebDriverWait(driver,  seconds);
+		waiter = new WebDriverWait(driver, seconds);
 	}
 
 	/**
@@ -203,7 +206,7 @@ public abstract class Page {
 
 	public void waitForPageToLoad() {
 		ExpectedCondition<Boolean> expectation = driver -> ((JavascriptExecutor) driver)
-		        .executeScript("return document.readyState").toString().equals("complete");
+				.executeScript("return document.readyState").toString().equals("complete");
 		try {
 			Thread.sleep(1000);
 			waiter.until(expectation);
@@ -273,10 +276,10 @@ public abstract class Page {
 		Boolean found = false;
 		Select droplist = new Select(findElement(by));
 		List<WebElement> allOptions = droplist.getOptions();
-		for (WebElement option :allOptions) {
+		for (WebElement option : allOptions) {
 			if (option.getText().equals(value)) {
-				found=true;
-                break;
+				found = true;
+				break;
 			}
 		}
 		return found;
@@ -350,7 +353,7 @@ public abstract class Page {
 			@Override
 			public Boolean apply(WebDriver driver) {
 				return ((JavascriptExecutor) driver)
-				        .executeScript("return (typeof " + varName + "  !== 'undefined') ? " + varName + " : null") != null;
+						.executeScript("return (typeof " + varName + "  !== 'undefined') ? " + varName + " : null") != null;
 			}
 		});
 	}
@@ -388,7 +391,8 @@ public abstract class Page {
 			Alert alert = driver.switchTo().alert();
 			booelan = true;
 		}
-		catch (Exception e) {}
+		catch (Exception e) {
+		}
 		return booelan;
 	}
 
@@ -437,7 +441,7 @@ public abstract class Page {
 		}
 	}
 
-	public void selectNthOptionFromDropDown(By by , int x) {
+	public void selectNthOptionFromDropDown(By by, int x) {
 		By FIELD_OPTION = By.tagName("option");
 		clickOn(by);
 		List<WebElement> options = findElement(by).findElements(FIELD_OPTION);
@@ -501,6 +505,12 @@ public abstract class Page {
 		driver.switchTo().window(browserTabs.get(1));
 		driver.close();
 		driver.switchTo().window(browserTabs.get(0));
+	}
+
+	public String readPDFReportFileGenerated(String reportUrl) throws IOException {
+		String pdfUrl = serverUrl + "" + reportUrl;
+//		getDriver().get(pdfUrl);
+		return getPdfContent(pdfUrl);
 	}
 
 	public void refreshPage() {

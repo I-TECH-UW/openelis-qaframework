@@ -63,6 +63,12 @@
 		    <artifactId>commons-lang3</artifactId>
 		    <version>3.11</version>
 	    </dependency>
+
+	    <dependency>
+		    <groupId>org.apache.pdfbox</groupId>
+		    <artifactId>pdfbox</artifactId>
+		    <version>2.0.27</version>
+	    </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -122,7 +128,7 @@
 		        <artifactId>maven-surefire-plugin</artifactId>
 		        <version>3.0.0-M8</version>
 		        <configuration>
-			        <testFailureIgnore>true</testFailureIgnore>
+			        <testFailureIgnore>false</testFailureIgnore>
 		        </configuration>
 	        </plugin>
 	        <plugin>
