@@ -35,5 +35,7 @@ public class RunTest {
 		public static final String TEST_MGT = "@testManagement";
 
 		public static final String USER_MGT = "@userManagement";
+
+		public static final String WORKPLAN = "@workplan";
 	}
 }
