@@ -112,8 +112,9 @@ public abstract class Page {
 		catch (MalformedURLException e) {
 			throw new IllegalArgumentException("webapp.url " + properties.getWebAppUrl() + " is not a valid URL", e);
 		}
-
-		waiter = new WebDriverWait(driver, Duration.ofSeconds(TestBase.MAX_WAIT_IN_SECONDS));
+		Duration duration = Duration.ofSeconds(TestBase.MAX_WAIT_IN_SECONDS);
+		int seconds = (int) (duration.getSeconds() % 60);
+		waiter = new WebDriverWait(driver,  seconds);
 	}
 
 	/**
