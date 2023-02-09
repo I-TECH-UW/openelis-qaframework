@@ -13,9 +13,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: ${{github.repository}}
-      - name:  Start the Remote web driver in docker  
+      - name:  Start the Remote web driver in docker
         run:  |
               docker-compose up -d chrome
+      - name: Sleep for 3 minutes
         run: sleep 3m
         shell: bash      
       - name: Run and Publish Openelis QA
@@ -23,4 +24,3 @@ jobs:
           echo "cucumber.publish.enabled=true" > src/test/resources/cucumber.properties
           mvn clean install -DskipTests=true 
           mvn test -Dcucumber.filter.tags='@results'    
-          
