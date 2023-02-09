@@ -154,7 +154,8 @@ public class ResultsEntrySteps extends TestBase {
 	}
 	
 	@Then("Search by Last name yields all patients with matching last name")
-	public void returnSearchResultsByLastName() {
+	public void returnSearchResultsByLastName() throws InterruptedException {
+		Thread.sleep(2000);
 		assertTrue(searchByPatientPage.noPatientLabelDisplays());
 	}
 	
@@ -166,7 +167,8 @@ public class ResultsEntrySteps extends TestBase {
 	}
 	
 	@Then("Search by First name yields all patients with matching first name")
-	public void returnSearchResultsByFirstName() {
+	public void returnSearchResultsByFirstName() throws InterruptedException {
+		Thread.sleep(2000);
 		assertTrue(searchByPatientPage.noPatientLabelDisplays());
 	}
 	
@@ -178,7 +180,8 @@ public class ResultsEntrySteps extends TestBase {
 	}
 	
 	@Then("Search by Patient Id yields all patients with matching patient id")
-	public void returnSearchResultsByPatientId() {
+	public void returnSearchResultsByPatientId() throws InterruptedException {
+		Thread.sleep(2000);
 		assertTrue(searchByPatientPage.noPatientLabelDisplays());
 	}
 	
@@ -189,7 +192,8 @@ public class ResultsEntrySteps extends TestBase {
 	}
 	
 	@Then("Search by Lab Number yields results for known accession number")
-	public void returnSearchResultsByAccesionNumber() {
+	public void returnSearchResultsByAccesionNumber() throws InterruptedException {
+		Thread.sleep(2000);
 		assertTrue(searchByOrderPage.accesionNumberNotFoundDisplays());
 		assertTrue(searchByOrderPage.containsText("Accession number not found"));
 	}
@@ -208,7 +212,7 @@ public class ResultsEntrySteps extends TestBase {
 		addOrderPage = homePage.goToAddOrderPage();
 		addOrderPage.innitialiseData("20210000000002250");
 		homePage = addOrderPage.goToHomePage();
-		
+		  Thread.sleep(1000);
 		searchByOrderPage = homePage.goToSearchResultsByOrder();
 		searchByOrderPage.enterAccesionNumber(accesionNumber);
 		searchByOrderPage.clickAccesionNumberSearch();
@@ -233,7 +237,8 @@ public class ResultsEntrySteps extends TestBase {
 	}
 	
 	@Then("Patient information display correctly by Patient details")
-	public void patienttInformationDispaysByAccesionPatientDetails() {
+	public void patienttInformationDispaysByAccesionPatientDetails() throws InterruptedException {
+		Thread.sleep(1000);
 		assertTrue(searchByPatientPage.searchResultsDisplay());
 		assertPageContainsPatientResults(searchByPatientPage);
 		homePage = searchByPatientPage.goToHomePage();
@@ -455,7 +460,7 @@ public class ResultsEntrySteps extends TestBase {
 	
 	@Then("User is returned to home page")
 	public void userReturnsToHomePage() {
-		assertFalse(resultsEntryPage.containsText("Test Date"));
+		assertFalse(resultsEntryPage.containsText("Test Date (dd/mm/yyyy)"));
 		assertFalse(resultsEntryPage.containsText("Accept as is"));
 		assertFalse(resultsEntryPage.containsText("Result from analyzer"));
 		assertFalse(resultsEntryPage.containsText("Current Result"));

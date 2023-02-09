@@ -119,7 +119,7 @@ And  User Enters the appropriate Lab Number "<accesionNumber>" and clicks Genera
 Then Results appear as reported
 Examples:
     |accesionNumber   |lastName|firstName  |         test                 |unitType         |
-    |20210000000002249|moses   | mutesasira|HEPATITIS C VIRAL LOAD(SERUM) |Molecular Biology|
+    |20210000000002249|moses   | mutesasira|HEPATITIS C VIRAL LOAD(Serum) |Molecular Biology|
 
 @results
 Scenario Outline:Accept As Is functionality

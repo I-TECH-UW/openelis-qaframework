@@ -22,7 +22,7 @@ public class ResultsEntryPage extends Page {
 	private static final By FIELD_LAB_NUMBER_SEARCH = By.id("labnoSearch");
 	
 	private static final By BUTTON_LAB_NUMBER_SEARCH = By
-	        .xpath("//*[@id='mainForm']/table/tbody/tr[4]/td/div[3]/div[1]/input[2]");
+	        .xpath("//*[@id=\"searchDiv\"]/div[3]/div[1]/input[2]");
 	
 	private static final By BUTTON_CANCEL = By.id("cancelButtonId");
 	
