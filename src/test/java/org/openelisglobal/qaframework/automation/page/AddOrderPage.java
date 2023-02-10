@@ -18,6 +18,8 @@ public class AddOrderPage extends Page {
 
 	private static final String PATH_SAMPLE_ENTRY_CONFIG = "SampleEntryConfig?ID=116&startingRecNo=1";
 
+	private static final String CONTACT_TRACING_ENABLE_CONFIG = "SampleEntryConfig?ID=110&startingRecNo=1";
+
 	private static final String PATH_PROVIDER_RESTRICT_FREE_TEXT_ENTRY_CONFIG = "SampleEntryConfig?ID=123&startingRecNo=1";
 
 	private static final String PATH_SITE_INFO_CONFIG = "SiteInformation?ID=71&startingRecNo=1";
@@ -135,7 +137,7 @@ public class AddOrderPage extends Page {
 
 	private static final By SELECT_SAMPLE = By.xpath("//*[@id=\"samplesDisplay_1\"]/table/tbody/tr[2]/td/select");
 
-	private static final By SELECT_CONDITION = By.id("asmSelect0");
+	private static final By SELECT_CONDITION = By.id("rejectedReasonId_1");
 
 	private static final By SELECT_PATIENT_REGION = By.id("healthRegionID");
 
@@ -179,7 +181,7 @@ public class AddOrderPage extends Page {
 
 	private static final By CHECK_BOX_PANNEL = By.name("panelSelect");
 
-	private static final By CHECK_BOX_REFFER_TEST = By.id("useReferral");
+	private static final By CHECK_BOX_REFFER_TEST = By.xpath("/html/body/form/table/tbody/tr[4]/td/div[1]/div[2]/table[1]/tbody/tr/td/div[1]/input[1]");
 
 	private static final By SELECT_REFFER_REASON = By.id("referralReasonId_0");
 
@@ -209,6 +211,7 @@ public class AddOrderPage extends Page {
 
 	private  static  final  By FIELD_TEST_LOCATION_CODE = By.id("testLocationCodeId");
 	private  static  final  By FIELD_TEST_LOCATION_CODE_OTHER = By.id("testLocationCodeOtherId");
+     private  static  final  By REJECT_SAMPLE_CHECKBOX = By.id("reject_1");
 
 	public AddOrderPage(Page parentPage) {
 		super(parentPage);
@@ -359,6 +362,9 @@ public class AddOrderPage extends Page {
 		}
 	}
 
+	public  void rejectSampleCheckBox(){
+		clickOn(REJECT_SAMPLE_CHECKBOX);
+	}
 	public void clickPannelCheckBox() {
 		if (panelCheckBoxExists()) {
 			clickOn(CHECK_BOX_PANNEL);
@@ -960,6 +966,16 @@ public class AddOrderPage extends Page {
 		clickOn(RADIO_BUTTON_VALIDATE_TRUE);
 		clickOn(BUTTON_SAVE_VALIDATION);
 		this.go();
+	}
+	public void turnOnContactTracingField() {
+		goToPage(CONTACT_TRACING_ENABLE_CONFIG);
+		if (this.containsText("System error")) {
+			this.go();
+		} else {
+			clickOn(RADIO_BUTTON_VALIDATE_TRUE);
+			clickOn(BUTTON_SAVE_VALIDATION);
+			this.go();
+		}
 	}
 
 	public void searchPatient() {

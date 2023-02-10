@@ -69,6 +69,7 @@ public class LoginPage extends Page {
 
 	public HomePage goToReferralHomePage() throws InterruptedException {
 		goToReferralPage();
+		acceptSelfAssignedCert();
 		enterUsername(properties.getReferralUsername());
 		enterPassword(properties.getPassword());
 		clickOn(BUTTON_SUBMIT);
