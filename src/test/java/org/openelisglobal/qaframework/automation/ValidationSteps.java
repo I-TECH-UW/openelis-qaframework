@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.UUID;
 
 import org.openelisglobal.qaframework.RunTest;
+import org.openelisglobal.qaframework.automation.page.AddOrderPage;
 import org.openelisglobal.qaframework.automation.page.HomePage;
 import org.openelisglobal.qaframework.automation.page.LoginPage;
 import org.openelisglobal.qaframework.automation.page.PatientStatusReportPage;
@@ -43,7 +44,11 @@ public class ValidationSteps extends TestBase {
 	private WorkPlanByUnitTypePage workPlanByUnitTypePage;
 
 	private ResultsUnitTypePage resultsUnitTypePage;
-	
+
+	private AddOrderPage addOrderPage;
+
+	private  String accessionNo;
+
 	@After(RunTest.HOOK.VALIDATE)
 	public void destroy() {
 		quit();
@@ -59,29 +64,37 @@ public class ValidationSteps extends TestBase {
 	public void visitLoginPage() throws Exception {
 		homePage = loginPage.goToHomePage();
 	}
-	
+
+	@Given("User has an existing order {string}")
+	public void userHasAnExistingOrderAnd(String labNo) throws InterruptedException {
+			//	intialise data
+			addOrderPage = homePage.goToAddOrderPage();
+			accessionNo = addOrderPage.accessionNumberGenerator();
+			addOrderPage.innitialiseData(labNo,accessionNo);
+			Thread.sleep(1000);
+			homePage = addOrderPage.goToHomePage();
+	}
+
 	@When("User Selects Validation --> Routine,from the main menu")
 	public void goToValiationPage() {
 		resultValidationPage = homePage.goToResultValidation();
 	}
-	
-	@Then("The Validation by Unit Type page displays")
-	public void validationPageLoads() {
+
+	@Then("The Validation by Unit Type {string} page displays")
+	public void theValidationByUnitTypePageDisplays(String unitType) {
 		assertTrue(resultValidationPage.containsText("Unit Type"));
-	}
-	
-	@When("User Selects a Unit Type {string} under which there are known tests")
-	public void goToValidationPage(String unitType) throws InterruptedException {
-		//	intialise data
-		homePage = resultValidationPage.goToHomePage();
+
 		resultsUnitTypePage = homePage.selectsResultAndClickEnterByUnit();
 		resultsUnitTypePage.selectUnitType(unitType);
 		resultsUnitTypePage.enterTestResult();
 		resultsUnitTypePage.clickSaveButton();
 		homePage = resultsUnitTypePage.goToHomePage();
+	}
+
+	@When("User Selects a Unit Type {string} under which there are known tests")
+	public void goToValidationPage(String unitType) {
 		resultValidationPage = homePage.goToResultValidation();
 		resultValidationPage.selectUnitType(unitType);
-		Thread.sleep(2000);
 	}
 	
 	@Then("Tests display with Lab order Number, Test name, result and result reference")
@@ -90,39 +103,24 @@ public class ValidationSteps extends TestBase {
 		assertTrue(resultValidationPage.containsText("Test Name"));
 		assertTrue(resultValidationPage.containsText("Result"));
 	}
-	
-	@When("User Enters lab number {string} in Lab Number search field at top right")
-	public void enterLabNumberSearch(String labNumber) {
-		resultValidationPage.enterLabNumberSearch(labNumber);
-	}
-	
-	@Then("Field Only accepts 9 characters")
-	public void acceptNineCharacter() {
-		
-	}
-	
-	@When("User Clicks Search Button")
-	public void clickSearch() {
+
+	@When("User Enters an none existing order number {string} ,then message `Accession number not found` appears")
+	public void userEntersAnNoneExistingOrderNumberThenMessageAccessionNumberNotFoundAppears(String labNo) {
+		resultValidationPage.enterLabNumberSearch(labNo);
 		resultValidationByOrderPage = resultValidationPage.clickSearch();
+		assertTrue(resultValidationByOrderPage.containsText("Accession number not found"));
 	}
-	
-	@Then("If order number exists {string} ,Page goes to order number, order is highlighted in yellow")
-	public void goToOrderNumber(String exists) {
-		if (exists.equals("true")) {
-			assertTrue(resultValidationByOrderPage.containsText("Accession Number"));
-			assertTrue(resultValidationByOrderPage.containsText("Test Name"));
-			assertTrue(resultValidationByOrderPage.containsText("Result"));
-		}
+
+	@Then("User Enters an existing order number {string} ,Page goes to order number, order is highlighted in yellow")
+	public void userEntersAnExistingOrderNumberPageGoesToOrderNumberOrderIsHighlightedInYellow(String labNo) {
+		resultValidationPage.enterRetrieveLabNumberSearch(accessionNo);
+		resultValidationByOrderPage = resultValidationPage.clickRetrieveTestsButton();
+
+		assertTrue(resultValidationByOrderPage.containsText("Accession Number"));
+		assertTrue(resultValidationByOrderPage.containsText("Test Name"));
+		assertTrue(resultValidationByOrderPage.containsText("Result"));
 	}
-	
-	@Then("If order number does not exist {string} , message `Accession number not found` appears")
-	public void accesionNotFound(String exists) {
-		if (exists.equals("false")) {
-			assertTrue(resultValidationByOrderPage.containsText("Accession number not found"));
-			resultValidationByOrderPage.goToHomePage();
-		}
-	}
-	
+
 	@Then("User Check for known non-conformity, Red flag displayed next to test")
 	public void redFlagDisplays() {
 		resultValidationPage.containsText("Sample or order is nonconforming");
@@ -209,8 +207,18 @@ public class ValidationSteps extends TestBase {
 		resultValidationPage.checkRetestCheckBox();
 		resultValidationPage.clickSave();
 		resultValidationPage.acceptAlert();
-		Thread.sleep(1000);
+		Thread.sleep(500);
 		assertTrue(resultValidationPage.containsText("A system error has occurred."));
+	}
+
+	@Then("User now saves tests with mixture of both `Save` and `Retest`")
+	public void userNowSavesTestsWithMixtureOfBothSaveAndRetest() throws InterruptedException {
+		resultValidationPage.clickPreviousPageButton();
+		resultValidationPage.checkAcceptedCheckBox();
+		resultValidationPage.checkBoxRetestAccepted();
+		resultValidationPage.clickSave();
+		resultValidationPage.acceptAlert();
+		Thread.sleep(500);
 		resultValidationPage.goToHomePage();
 	}
 	
@@ -277,7 +285,6 @@ public class ValidationSteps extends TestBase {
 	
 	@Then("Returns to Validation Unit Type search page and message in green `Save was successful` appears")
 	public void saveSuccesful() throws InterruptedException {
-		Thread.sleep(1000);
 		assertTrue(resultValidationPage.containsText("Save was successful"));
 		assertTrue(resultValidationPage.containsText("Unit Type"));
 	}
@@ -307,7 +314,7 @@ public class ValidationSteps extends TestBase {
 	public void enterLabNumber(String labNumber) throws InterruptedException {
 		patientStatusReportPage.enterLabNumber(labNumber);
 		patientStatusReportPage.clickSearchButton();
-		patientStatusReportPage.clickPrintButton();
+//		patientStatusReportPage.clickPrintButton();
 	}
 	
 	@Then("Saved results without rejection reason appear on Patient Status Report")
@@ -315,6 +322,7 @@ public class ValidationSteps extends TestBase {
 		assertPageContainsPatientResults(patientStatusReportPage);
 		homePage = patientStatusReportPage.goToHomePage();
 	}
+
 	
 	@When("User Goes to Workplan --> By Test Type")
 	public void goToWorkPlanByTestPage() {
@@ -326,10 +334,10 @@ public class ValidationSteps extends TestBase {
 		assertTrue(workPlanByTestTypePage.containsText("Workplan By Test"));
 		assertTrue(workPlanByTestTypePage.containsText("Test Type"));
 		workPlanByTestTypePage.selctTestType(testType);
-		assertTrue(workPlanByTestTypePage.containsText(testType));
+		assertTrue(workPlanByTestTypePage.containsText("COVID-19 ANTIBODY IgM(Serum)"));
 		assertTrue(workPlanByTestTypePage.containsText("Lab No"));
-		//assertTrue(workPlanByTestTypePage.containsText("Subject Number"));
-		assertTrue(workPlanByTestTypePage.containsText("Unique Health ID number"));
+		assertTrue(workPlanByTestTypePage.containsText("Print Workplan"));
+		assertTrue(workPlanByTestTypePage.containsText("Received Date"));
 		homePage = workPlanByTestTypePage.goToHomePage();
 	}
 	
@@ -345,9 +353,8 @@ public class ValidationSteps extends TestBase {
 		workPlanByPanelTypePage.selectPanelType(panelType);
 		assertTrue(workPlanByPanelTypePage.containsText(panelType));
 		assertTrue(workPlanByPanelTypePage.containsText("Lab No"));
-		//assertTrue(workPlanByPanelTypePage.containsText("Subject Number"));
-		assertTrue(workPlanByPanelTypePage.containsText("Unique Health ID number"));
-		assertTrue(workPlanByPanelTypePage.containsText("Test Name"));
+		assertTrue(workPlanByTestTypePage.containsText("Print Workplan"));
+		assertTrue(workPlanByTestTypePage.containsText("Received Date"));
 		homePage = workPlanByPanelTypePage.goToHomePage();
 	}
 	
@@ -362,8 +369,8 @@ public class ValidationSteps extends TestBase {
 		assertTrue(workPlanByUnitTypePage.containsText("Unit Type"));
 		workPlanByUnitTypePage.selectUnitType(unitType);
 		assertTrue(workPlanByUnitTypePage.containsText("Lab No"));
-		//assertTrue(workPlanByUnitTypePage.containsText("Subject Number"));
-		assertTrue(workPlanByUnitTypePage.containsText("Unique Health ID number"));
+		assertTrue(workPlanByTestTypePage.containsText("Print Workplan"));
+		assertTrue(workPlanByTestTypePage.containsText("Received Date"));
 		assertTrue(workPlanByUnitTypePage.containsText("Test Name"));
 		homePage = workPlanByUnitTypePage.goToHomePage();
 	}

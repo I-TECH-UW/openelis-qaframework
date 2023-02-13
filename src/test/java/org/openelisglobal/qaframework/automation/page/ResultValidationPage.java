@@ -30,17 +30,22 @@ public class ResultValidationPage extends Page {
 	private static final By BUTTON_CANCEL = By.id("cancelButtonId");
 	
 	private static final By BUTTON_SEARCH = By.xpath("//input[@value='Search'][@type='button']");
-	
+
+	private  static  final  By RETRIEVE_TESTS_BUTTON =By.id("retrieveTestsID");
+
+	private  static  final  By RETRIEVE_TESTS_LAN_NO_FIELD =By.id("searchAccessionID");
+
 	private static final By CHECK_BOX_ACCEPTED = By.id("accepted_0");
 	
 	private static final By CHECK_BOX_RETEST = By.id("rejected_0");
-	
+
 	private static final By CKECK_BOX_SAVE_ALL = By.id("selectAllAccept");
 	
 	private static final By CKECK_BOX_RETEST_ALL = By.id("selectAllReject");
 	
 	private static final By ICON_NOTES_EDIT = By.xpath("//img[contains(@src,'note-edit')]");
-	
+
+	private  static  final By PREVIOUS_PAGE_BUTTON = By.xpath("//*[@id=\"defaultErrorPage\"]/div[2]/div/div/div[2]/button");
 	@Override
 	public String getPageUrl() {
 		return PAGE_PATH;
@@ -70,7 +75,19 @@ public class ResultValidationPage extends Page {
 	public void checkRetestCheckBox() {
 		clickOn(CHECK_BOX_RETEST);
 	}
-	
+
+	public  void checkBoxRetestAccepted(){
+		for (int i=1;i<=5;i++){
+			By REJECT_CHECKBOX = By.id("rejected_" + i);
+			if (hasElementWithoutWait(REJECT_CHECKBOX)) {
+				if (!isChecked(REJECT_CHECKBOX)) {
+				 clickOn(REJECT_CHECKBOX);
+				}
+			}
+		}
+
+	}
+
 	public void enterNotes(String notes) {
 		setText(FIELD_NOTE, notes);
 	}
@@ -104,6 +121,10 @@ public class ResultValidationPage extends Page {
 	public void clickCancel() {
 		clickOn(BUTTON_CANCEL);
 	}
+
+	public void clickPreviousPageButton(){
+		clickOn(PREVIOUS_PAGE_BUTTON);
+	}
 	
 	public ResultValidationByOderPage clickSearch() {
 		clickOn(BUTTON_SEARCH);
@@ -113,7 +134,16 @@ public class ResultValidationPage extends Page {
 	
 	public void enterLabNumberSearch(String labNumber) {
 		setText(FIELD_LAB_NUMBER_SEARCH, labNumber);
-		;
+	}
+
+	public void enterRetrieveLabNumberSearch(String labNumber) {
+		setText(RETRIEVE_TESTS_LAN_NO_FIELD, labNumber);
+
+	}
+
+	public ResultValidationByOderPage clickRetrieveTestsButton(){
+		clickOn(RETRIEVE_TESTS_BUTTON);
+		return new ResultValidationByOderPage(this);
 	}
 	
 	public void checkSaveAll() {

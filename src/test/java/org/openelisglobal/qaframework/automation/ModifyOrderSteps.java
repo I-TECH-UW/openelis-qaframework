@@ -71,14 +71,14 @@ public class ModifyOrderSteps extends TestBase {
         //initialise data 
         homePage = modifyOrderPage.goToHomePage();
         addOrderPage = homePage.goToAddOrderPage();
-        addOrderPage.innitialiseData(ACCESION_NUMBER);
+        addOrderPage.innitialiseData(ACCESION_NUMBER,null);
         homePage = addOrderPage.goToHomePage();
 
         if (homePage.alertPresent()){
             homePage.acceptAlert();
         }
         addOrderPage = homePage.goToAddOrderPage();
-        addOrderPage.innitialiseData(ACCESION_NUMBER_2);
+        addOrderPage.innitialiseData(ACCESION_NUMBER_2,null);
         homePage = addOrderPage.goToHomePage();
 
         if (homePage.alertPresent()){
