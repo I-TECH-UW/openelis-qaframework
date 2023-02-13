@@ -1010,7 +1010,10 @@ public class AddOrderPage extends Page {
 		clickOnNextVisitDate();
 		if (alertPresent()) {
 			acceptAlert();
-			enterAccessionNumber(randomaccessionNumber);
+			if(randomaccessionNumber != null){
+				enterAccessionNumber(randomaccessionNumber);
+			}
+			return;
 		}
 		Thread.sleep(1000);
 		enterSiteNameSuggestion("ABENGOUROU");
