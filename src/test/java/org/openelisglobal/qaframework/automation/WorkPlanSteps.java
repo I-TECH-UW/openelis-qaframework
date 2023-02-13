@@ -263,7 +263,7 @@ public class WorkPlanSteps extends TestBase {
 	}
 
 	@And("User enter results for the tests")
-	public void userEnterResultsForTheTests() {
+	public void userEnterResultsForTheTests() throws InterruptedException {
 		resultsEntryPage.enterTestResult();
 		resultsEntryPage.clickSaveButton();
 	}

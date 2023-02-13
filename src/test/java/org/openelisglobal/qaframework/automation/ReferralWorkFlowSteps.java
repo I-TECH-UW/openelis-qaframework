@@ -64,7 +64,7 @@ public class ReferralWorkFlowSteps extends TestBase {
     @When("User Goes to Order tab--> Add Order")
     public void gotToAddOrder() throws InterruptedException {
         addOrderPage = homePage.goToAddOrderPage();
-        addOrderPage.innitialiseData(existingLabNumber);
+        addOrderPage.innitialiseData(existingLabNumber,null);
         homePage = addOrderPage.goToHomePage();
         addOrderPage = homePage.goToAddOrderPage();
     }

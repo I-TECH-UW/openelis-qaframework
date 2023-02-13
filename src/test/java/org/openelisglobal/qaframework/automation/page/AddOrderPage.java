@@ -998,15 +998,19 @@ public class AddOrderPage extends Page {
 		this.goToPage(PATH_HOME);
 		return new HomePage(this);
 	}
-
-	public void innitialiseData(String accesionNumber) throws InterruptedException {
+	public  String accessionNumberGenerator(){
 		UUID uuid = UUID.randomUUID();
 		String uuidAsString = uuid.toString();
+		return uuidAsString;
+	}
+
+	public void innitialiseData(String accesionNumber,String randomaccessionNumber) throws InterruptedException {
+
 		enterAccessionNumber(accesionNumber);
 		clickOnNextVisitDate();
 		if (alertPresent()) {
 			acceptAlert();
-			return;
+			enterAccessionNumber(randomaccessionNumber);
 		}
 		Thread.sleep(1000);
 		enterSiteNameSuggestion("ABENGOUROU");
@@ -1018,13 +1022,12 @@ public class AddOrderPage extends Page {
 		clickPannelCheckBox();
 		clickTestCheckBox();
 		clickNewPatientButton();
-		enterSubjectNumber("201807D9P" + uuidAsString);
-		enterNationalId("201507D35" + uuidAsString);
+		enterSubjectNumber("201807D9P" + accessionNumberGenerator());
+		enterNationalId("201507D35" + accessionNumberGenerator());
 		enterPatientLastName("moses");
 		enterPatientFirstName("mutesasira");
 		enterPatientStreet("street");
 		enterPatientCommune("commune");
-		enterPatientEmail("email@gmail.com");
 		enterPatientPhone("+225-63-45-87-88");
 		selectPatientHelathRegionFromDropDownMenu();
 		selectPatientHealthDistrictFromDropDownMenu();
@@ -1056,7 +1059,6 @@ public class AddOrderPage extends Page {
 		enterPatientFirstName("firstName");
 		enterPatientStreet("street");
 		enterPatientCommune("commune");
-		enterPatientEmail("email@gmail.com");
 		enterPatientPhone("+225-63-45-87-88");
 		selectPatientHelathRegionFromDropDownMenu();
 		selectPatientHealthDistrictFromDropDownMenu();

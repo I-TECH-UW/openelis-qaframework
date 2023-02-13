@@ -45,7 +45,11 @@ public class ResultsUnitTypePage extends Page {
 		for (int n = 1; n <= 7; n++) {
 			By FIELD_TEST_RESULT_N = By.xpath("(//input[starts-with(@id,'results')])[" + n + "]");
 			if (hasElementWithoutWait(FIELD_TEST_RESULT_N)) {
-				setText(FIELD_TEST_RESULT_N, "43");
+				if (n==1){
+					setText(FIELD_TEST_RESULT_N, "43");
+				}else{
+					setText(FIELD_TEST_RESULT_N, "4");
+				}
 			}
 		}
 		if (hasElementWithoutWait(DROP_DOWN_TEST_RESULT)) {
