@@ -51,7 +51,7 @@ public class ValidationSteps extends TestBase {
 
 	@After(RunTest.HOOK.VALIDATE)
 	public void destroy() {
-//		quit();
+		quit();
 	}
 	
 	@Before(RunTest.HOOK.VALIDATE)
@@ -224,8 +224,8 @@ public class ValidationSteps extends TestBase {
 		resultValidationPage.checkBoxRetestAccepted();
 		resultValidationPage.clickSave();
 		resultValidationPage.acceptAlert();
-//		Thread.sleep(500);
-//		resultValidationPage.goToHomePage();
+		Thread.sleep(500);
+		resultValidationPage.goToHomePage();
 	}
 	
 	@When("User Enters Validation notes {string}")
