@@ -48,7 +48,7 @@ public class ResultsUnitTypePage extends Page {
 				if (n==1){
 					setText(FIELD_TEST_RESULT_N, "43");
 				}else{
-					setText(FIELD_TEST_RESULT_N, "4");
+					setText(FIELD_TEST_RESULT_N, "3");
 				}
 			}
 		}
