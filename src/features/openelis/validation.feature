@@ -3,7 +3,7 @@ Feature: Validation
 Background:
     Given User goes to Home page
 
-@validate @test
+@validate
 Scenario Outline: Validation
 Given User has an existing order "<existingLabNumber>"
 When User Selects Validation --> Routine,from the main menu
