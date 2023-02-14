@@ -76,13 +76,16 @@ public class ValidationSteps extends TestBase {
 	}
 
 	@When("User Selects Validation --> Routine,from the main menu")
-	public void goToValiationPage() {
+	public void goToValiationPage() throws InterruptedException {
+		Thread.sleep(1000);
 		resultValidationPage = homePage.goToResultValidation();
 	}
 
 	@Then("The Validation by Unit Type {string} page displays")
-	public void theValidationByUnitTypePageDisplays(String unitType) {
+	public void theValidationByUnitTypePageDisplays(String unitType) throws InterruptedException {
 		assertTrue(resultValidationPage.containsText("Unit Type"));
+		resultValidationPage.goToHomePage();
+		Thread.sleep(1000);
 
 		resultsUnitTypePage = homePage.selectsResultAndClickEnterByUnit();
 		resultsUnitTypePage.selectUnitType(unitType);
