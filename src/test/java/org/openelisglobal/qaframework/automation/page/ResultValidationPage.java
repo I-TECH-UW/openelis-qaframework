@@ -77,11 +77,24 @@ public class ResultValidationPage extends Page {
 	}
 
 	public  void checkBoxRetestAccepted(){
-		for (int i=1;i<=5;i++){
+		clickOn(CKECK_BOX_RETEST_ALL);
+		for (int i=3; i<=4; i++){
 			By REJECT_CHECKBOX = By.id("rejected_" + i);
 			if (hasElementWithoutWait(REJECT_CHECKBOX)) {
 				if (!isChecked(REJECT_CHECKBOX)) {
-				 clickOn(REJECT_CHECKBOX);
+					clickOn(REJECT_CHECKBOX);
+				}
+			}
+		}
+
+	}
+
+	public  void checkBoxAccepted(){
+		for (int i=0; i<=2; i++){
+			By ACCEPTED_CHECKBOX = By.id("accepted_" + i);
+			if (hasElementWithoutWait(ACCEPTED_CHECKBOX)) {
+				if (!isChecked(ACCEPTED_CHECKBOX)) {
+					clickOn(ACCEPTED_CHECKBOX);
 				}
 			}
 		}
