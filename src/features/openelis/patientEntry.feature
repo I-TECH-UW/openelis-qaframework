@@ -77,4 +77,4 @@ Feature: Patient Entry
     Then Correct patient information ,patient Identification no "<patientId>",subject number "<subjectNumber>" last name "<lastName>" , first name "<firstName>", address "<address>", date of birth "<dateOfBirth>" , Age "<age>", Gender "<gender>" , maritalStatus "<maritalStatus>" and nationality "<nationality>" appears when searched for
     Examples:
       | lastName | firstName | patientId | subjectNumber | address | dateOfBirth | age | gender   | maritalStatus | nationality |
-      | seruwu   | jimmy     | ug012     | oe012         | Gayaza  | 09/02/2019  | 3   | 1 = Male | DNA           | uganda      |
+      | seruwu   | jimmy     | ug012     | oe012         | Gayaza  | 09/02/2019  | 4   | 1 = Male | DNA           | uganda      |

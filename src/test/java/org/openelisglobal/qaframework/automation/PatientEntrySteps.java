@@ -157,6 +157,7 @@ public class PatientEntrySteps extends TestBase {
 		}
 		addPatientPage.enterPatientIdSearch(subjectNumber);
 		addPatientPage.clickSearchButton();
+		Thread.sleep(1000);
 	}
 
 	@Then("Search by Subject Number yields results for known matching names")
@@ -168,7 +169,7 @@ public class PatientEntrySteps extends TestBase {
 	@When("User Selects correct patient")
 	public void selectPatient() throws InterruptedException {
 		addPatientPage.selectFirstSearchResult();
-		Thread.sleep(3000);
+		Thread.sleep(1000);
 	}
 
 	@Then("Patient Information form populates with patient information")
