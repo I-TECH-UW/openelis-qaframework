@@ -117,7 +117,7 @@ public class ValidationSteps extends TestBase {
 	@Then("User Enters an existing order number {string} ,Page goes to order number, order is highlighted in yellow")
 	public void userEntersAnExistingOrderNumberPageGoesToOrderNumberOrderIsHighlightedInYellow(String labNo)
 			throws InterruptedException {
-		resultValidationPage.enterRetrieveLabNumberSearch(accessionNo);
+		resultValidationPage.enterRetrieveLabNumberSearch(labNo);
 		resultValidationByOrderPage = resultValidationPage.clickRetrieveTestsButton();
 		Thread.sleep(1000);
 
