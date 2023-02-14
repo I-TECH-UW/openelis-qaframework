@@ -51,7 +51,7 @@ public class ValidationSteps extends TestBase {
 
 	@After(RunTest.HOOK.VALIDATE)
 	public void destroy() {
-		quit();
+//		quit();
 	}
 	
 	@Before(RunTest.HOOK.VALIDATE)
@@ -115,9 +115,11 @@ public class ValidationSteps extends TestBase {
 	}
 
 	@Then("User Enters an existing order number {string} ,Page goes to order number, order is highlighted in yellow")
-	public void userEntersAnExistingOrderNumberPageGoesToOrderNumberOrderIsHighlightedInYellow(String labNo) {
+	public void userEntersAnExistingOrderNumberPageGoesToOrderNumberOrderIsHighlightedInYellow(String labNo)
+			throws InterruptedException {
 		resultValidationPage.enterRetrieveLabNumberSearch(accessionNo);
 		resultValidationByOrderPage = resultValidationPage.clickRetrieveTestsButton();
+		Thread.sleep(1000);
 
 		assertTrue(resultValidationByOrderPage.containsText("Accession Number"));
 		assertTrue(resultValidationByOrderPage.containsText("Test Name"));
@@ -217,12 +219,13 @@ public class ValidationSteps extends TestBase {
 	@Then("User now saves tests with mixture of both `Save` and `Retest`")
 	public void userNowSavesTestsWithMixtureOfBothSaveAndRetest() throws InterruptedException {
 		resultValidationPage.clickPreviousPageButton();
-		resultValidationPage.checkAcceptedCheckBox();
+		Thread.sleep(500);
+		resultValidationPage.checkBoxAccepted();
 		resultValidationPage.checkBoxRetestAccepted();
 		resultValidationPage.clickSave();
 		resultValidationPage.acceptAlert();
-		Thread.sleep(500);
-		resultValidationPage.goToHomePage();
+//		Thread.sleep(500);
+//		resultValidationPage.goToHomePage();
 	}
 	
 	@When("User Enters Validation notes {string}")
