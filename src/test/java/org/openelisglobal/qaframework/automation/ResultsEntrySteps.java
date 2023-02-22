@@ -437,10 +437,10 @@ public class ResultsEntrySteps extends TestBase {
 	@When("User Clicks save")
 	public void clickSave() throws InterruptedException {
 		resultsEntryPage.refreshAndEnterTestResult();
-		if(resultsEntryPage.alertPresent()){
-           resultsEntryPage.acceptAlert();
-		}
 		resultsEntryPage.clickSaveButton();
+		if(resultsEntryPage.alertPresent()){
+			resultsEntryPage.acceptAlert();
+		}
 	}
 	
 	@Then("Save results in new page and green ,Save was successful, message appears")
@@ -525,8 +525,11 @@ public class ResultsEntrySteps extends TestBase {
 	}
 	
 	@When("User Goes to Validation ---> Routine")
-	public void goToValiationPage() {
+	public void goToValiationPage() throws InterruptedException {
 		resultValidationPage = homePage.goToResultValidation();
+		if (searchResultsByStatusPage.alertPresent()){
+			searchResultsByStatusPage.acceptAlert();
+		}
 	}
 	
 	@Then("Result Validation Page loads")
