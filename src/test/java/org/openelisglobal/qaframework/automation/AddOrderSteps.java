@@ -789,8 +789,7 @@ public class AddOrderSteps extends TestBase {
 		addOrderPage.enterPatientFirstName("firstName");
 		addOrderPage.enterPatientStreet("street");
 		addOrderPage.enterPatientCommune("commune");
-		addOrderPage.enterPatientEmail("email@gmail.com");
-		addOrderPage.enterPatientPhone("+23063458788");
+		enterPatientPhone("+225-63-45-87-88");
 		addOrderPage.clickOnNextVisitDate();
 		Thread.sleep(1000);
 		if(addOrderPage.alertPresent()){
