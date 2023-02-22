@@ -231,7 +231,7 @@ public class ModifyOrderPage extends Page {
 	}
 	
 	public Boolean hasPatientInfoBar() {
-		return hasElement(BAR_PATIENT_INFO);
+		return hasElementWithoutWait(BAR_PATIENT_INFO);
 	}
 	
 	public String getPatientInfo() {
