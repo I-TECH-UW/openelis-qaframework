@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="Referral Work Flow" skipped="0" tests="2" time="120.65" timestamp="2023-02-22 12:33:19"><testcase name="Register a patient's sample for Covid testing and send the lab request and sample to the Central Health Laboratory"><failure type="java.lang.AssertionError"/><system-err>null
+org.openelisglobal.qaframework.automation.ReferralWorkFlowSteps.verifyPatientDetails(ReferralWorkFlowSteps.java:316)
+✽.Order details are correct(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/referalWorkFlow.feature:46)
+</system-err></testcase><testcase name="Register test requests sent electronically from the Flu Clinic"/></testsuite>
