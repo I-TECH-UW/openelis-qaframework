@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Patient Entry","Patient Search","SUCCESS","2023-02-22T11:24:11.328Z[Etc/UTC]","0.0","27.38"
+"Patient Entry","Patient Information","SUCCESS","2023-02-22T11:24:38.789Z[Etc/UTC]","0.0","28.31"
+"Patient Entry","Overall Page","SUCCESS","2023-02-22T11:25:07.139Z[Etc/UTC]","0.0","14.1"
+"Patient Entry","Verification","SUCCESS","2023-02-22T11:25:21.275Z[Etc/UTC]","0.0","8.39"

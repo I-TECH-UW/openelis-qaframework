@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="3" name="WorkPlan Feature" skipped="0" tests="4" time="25.28" timestamp="2023-02-22 11:33:04"><testcase name="Work plan by Test"><failure type="java.lang.AssertionError"/><system-err>null
+org.openelisglobal.qaframework.automation.WorkPlanSteps.allKnownOrdersArePresentAnd(WorkPlanSteps.java:80)
+✽.All known orders are present "HIV INFANT VIRAL LOAD(Serum)" and "20210000000003761"(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/workPlan.feature:12)
+</system-err></testcase><testcase name="Work plan by Panel"><failure type="java.lang.AssertionError"/><system-err>null
+org.openelisglobal.qaframework.automation.WorkPlanSteps.workplanByPanelTotalNumberOfTestsIsCorrect(WorkPlanSteps.java:155)
+✽.Workplan by Panel Total number of tests is correct "92"(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/workPlan.feature:34)
+</system-err></testcase><testcase name="Work plan by Unit"><failure type="java.lang.AssertionError"/><system-err>null
+org.openelisglobal.qaframework.automation.WorkPlanSteps.workplanByUnitShouldShowAllKnownOrdersArePresentAndLabNo(WorkPlanSteps.java:215)
+✽.Workplan by unit should show all known orders are present "Molecular Biology" and "20210000000003761"(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/workPlan.feature:52)
+</system-err></testcase><testcase name="Verification"><error message="unexpected alert open: {Alert text : This save will overwrite previously recorded values}&#10;  (Session info: chrome=110.0.5481.100): This save will overwrite previously recorded values&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az578-222', ip: '10.1.0.64', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'&#10;Driver info: org.openqa.selenium.remote.RemoteWebDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.100, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /tmp/.com.google.Chrome.7Z3o0E}, goog:chromeOptions: {debuggerAddress: localhost:37681}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 110.0.5481.100, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}&#10;Session ID: 0c40c0f69d6f01d6bc73c9b05a1abd5c&#10;*** Element info: {Using=id, value=menu_workplan}: null&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az578-222', ip: '10.1.0.64', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.UnhandledAlertException">unexpected alert open: {Alert text : This save will overwrite previously recorded values}
+  (Session info: chrome=110.0.5481.100): This save will overwrite previously recorded values
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az578-222', ip: '10.1.0.64', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.100, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /tmp/.com.google.Chrome.7Z3o0E}, goog:chromeOptions: {debuggerAddress: localhost:37681}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 110.0.5481.100, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 0c40c0f69d6f01d6bc73c9b05a1abd5c
+*** Element info: {Using=id, value=menu_workplan}: null
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az578-222', ip: '10.1.0.64', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'
+Driver info: driver.version: unknown</error><system-err>unexpected alert open: {Alert text : This save will overwrite previously recorded values}
+  (Session info: chrome=110.0.5481.100): This save will overwrite previously recorded values
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az578-222', ip: '10.1.0.64', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.100, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /tmp/.com.google.Chrome.7Z3o0E}, goog:chromeOptions: {debuggerAddress: localhost:37681}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 110.0.5481.100, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 0c40c0f69d6f01d6bc73c9b05a1abd5c
+*** Element info: {Using=id, value=menu_workplan}: null
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az578-222', ip: '10.1.0.64', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'
+Driver info: driver.version: unknown
+org.openelisglobal.qaframework.automation.page.Page.findElement(Page.java:188)
+org.openelisglobal.qaframework.automation.page.Page.hoverOn(Page.java:290)
+org.openelisglobal.qaframework.automation.page.HomePage.goToWorkPlanByTestPage(HomePage.java:151)
+org.openelisglobal.qaframework.automation.WorkPlanSteps.goToWorkPlanByTestType(WorkPlanSteps.java:273)
+✽.Go to WorkPlan by test type "HIV INFANT VIRAL LOAD(Serum)"(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/workPlan.feature:69)
+</system-err></testcase></testsuite>
