@@ -1,4 +1,4 @@
-name: Login Feature
+name: WorkPlan Feature
 on:
   workflow_dispatch:
 jobs:
