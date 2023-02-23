@@ -1,14 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="0" name="Referral Work Flow" skipped="0" tests="2" time="417.83" timestamp="2023-02-23 10:43:01"><testcase name="Register a patient's sample for Covid testing and send the lab request and sample to the Central Health Laboratory"/><testcase name="Register test requests sent electronically from the Flu Clinic"><error type="java.lang.reflect.InvocationTargetException"/><system-err>null
-io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
-io.cucumber.java.JavaHookDefinition.execute(JavaHookDefinition.java:59)
-io.cucumber.core.runner.CoreHookDefinition.execute(CoreHookDefinition.java:46)
-io.cucumber.core.runner.HookDefinitionMatch.runStep(HookDefinitionMatch.java:21)
-io.cucumber.core.runner.TestStep.executeStep(TestStep.java:92)
-io.cucumber.core.runner.TestStep.run(TestStep.java:64)
-io.cucumber.core.runner.TestCase.run(TestCase.java:98)
-io.cucumber.core.runner.Runner.runPickle(Runner.java:73)
-io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:135)
-io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:27)
-io.cucumber.junit.CucumberSerenityRunner.runChild(CucumberSerenityRunner.java:258)
-io.cucumber.junit.CucumberSerenityRunner.runChild(CucumberSerenityRunner.java:57)
-</system-err></testcase></testsuite>
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Referral Work Flow" skipped="0" tests="2" time="111.63" timestamp="2023-02-23 11:16:56"><testcase name="Register a patient's sample for Covid testing and send the lab request and sample to the Central Health Laboratory"/><testcase name="Register test requests sent electronically from the Flu Clinic"/></testsuite>

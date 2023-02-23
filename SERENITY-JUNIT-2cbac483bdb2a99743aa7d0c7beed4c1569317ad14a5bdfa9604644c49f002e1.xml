@@ -1,14 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="0" name="Results Entry" skipped="0" tests="9" time="547.73" timestamp="2023-02-23 10:49:59"><testcase name="Accessing Results Entry"><error type="java.lang.reflect.InvocationTargetException"/><system-err>null
-io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
-io.cucumber.java.JavaHookDefinition.execute(JavaHookDefinition.java:59)
-io.cucumber.core.runner.CoreHookDefinition.execute(CoreHookDefinition.java:46)
-io.cucumber.core.runner.HookDefinitionMatch.runStep(HookDefinitionMatch.java:21)
-io.cucumber.core.runner.TestStep.executeStep(TestStep.java:92)
-io.cucumber.core.runner.TestStep.run(TestStep.java:64)
-io.cucumber.core.runner.TestCase.run(TestCase.java:98)
-io.cucumber.core.runner.Runner.runPickle(Runner.java:73)
-io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:135)
-io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:27)
-io.cucumber.junit.CucumberSerenityRunner.runChild(CucumberSerenityRunner.java:258)
-io.cucumber.junit.CucumberSerenityRunner.runChild(CucumberSerenityRunner.java:57)
-</system-err></testcase><testcase name="Searching for test result entry forms"/><testcase name="Results Entry Set-up"/><testcase name="Entering Test Results"/><testcase name="Overall Page"/><testcase name="Verification"/><testcase name="Accept As Is functionality"/><testcase name="Verification"/><testcase name="Changing Results"/></testsuite>
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Results Entry" skipped="0" tests="9" time="218.0" timestamp="2023-02-23 11:18:47"><testcase name="Accessing Results Entry"/><testcase name="Searching for test result entry forms"/><testcase name="Results Entry Set-up"/><testcase name="Entering Test Results"/><testcase name="Overall Page"/><testcase name="Verification"/><testcase name="Accept As Is functionality"/><testcase name="Verification"/><testcase name="Changing Results"/></testsuite>
