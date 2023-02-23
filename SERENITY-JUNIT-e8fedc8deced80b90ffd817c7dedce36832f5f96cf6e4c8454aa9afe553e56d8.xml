@@ -1,4 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="Referral Work Flow" skipped="0" tests="2" time="120.65" timestamp="2023-02-22 12:33:19"><testcase name="Register a patient's sample for Covid testing and send the lab request and sample to the Central Health Laboratory"><failure type="java.lang.AssertionError"/><system-err>null
-org.openelisglobal.qaframework.automation.ReferralWorkFlowSteps.verifyPatientDetails(ReferralWorkFlowSteps.java:316)
-✽.Order details are correct(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/referalWorkFlow.feature:46)
-</system-err></testcase><testcase name="Register test requests sent electronically from the Flu Clinic"/></testsuite>
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="2" failures="0" name="Referral Work Flow" skipped="0" tests="2" time="461.74" timestamp="2023-02-23 08:55:05"><testcase name="Register a patient's sample for Covid testing and send the lab request and sample to the Central Health Laboratory"><error message="Expected condition failed: waiting for visibility of element located by By.id: loading (tried for 50 second(s) with 500 milliseconds interval)&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az453-777', ip: '10.1.0.222', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'&#10;Driver info: org.openqa.selenium.remote.RemoteWebDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.100, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /tmp/.com.google.Chrome.7DRVvj}, goog:chromeOptions: {debuggerAddress: localhost:32785}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 110.0.5481.100, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}&#10;Session ID: e8f96c97f0ca49c5878799d04a92b013&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az453-777', ip: '10.1.0.222', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.TimeoutException">Expected condition failed: waiting for visibility of element located by By.id: loading (tried for 50 second(s) with 500 milliseconds interval)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az453-777', ip: '10.1.0.222', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.100, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /tmp/.com.google.Chrome.7DRVvj}, goog:chromeOptions: {debuggerAddress: localhost:32785}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 110.0.5481.100, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: e8f96c97f0ca49c5878799d04a92b013
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az453-777', ip: '10.1.0.222', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'
+Driver info: driver.version: unknown</error><system-err>Expected condition failed: waiting for visibility of element located by By.id: loading (tried for 50 second(s) with 500 milliseconds interval)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az453-777', ip: '10.1.0.222', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.100, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /tmp/.com.google.Chrome.7DRVvj}, goog:chromeOptions: {debuggerAddress: localhost:32785}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 110.0.5481.100, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: e8f96c97f0ca49c5878799d04a92b013
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az453-777', ip: '10.1.0.222', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'
+Driver info: driver.version: unknown
+org.openelisglobal.qaframework.automation.page.Page.findElement(Page.java:188)
+org.openelisglobal.qaframework.automation.page.Page.getClass(Page.java:412)
+org.openelisglobal.qaframework.automation.page.AddOrderPage.getLoaderGifClass(AddOrderPage.java:797)
+org.openelisglobal.qaframework.automation.ReferralWorkFlowSteps.loaderGifShowsGreen(ReferralWorkFlowSteps.java:232)
+✽.Patient search shows green wheel while searching internally ,OE database(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/referalWorkFlow.feature:32)
+</system-err></testcase><testcase name="Register test requests sent electronically from the Flu Clinic"><error type="java.lang.reflect.InvocationTargetException"/><system-err>null
+io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
+io.cucumber.java.JavaHookDefinition.execute(JavaHookDefinition.java:59)
+io.cucumber.core.runner.CoreHookDefinition.execute(CoreHookDefinition.java:46)
+io.cucumber.core.runner.HookDefinitionMatch.runStep(HookDefinitionMatch.java:21)
+io.cucumber.core.runner.TestStep.executeStep(TestStep.java:92)
+io.cucumber.core.runner.TestStep.run(TestStep.java:64)
+io.cucumber.core.runner.TestCase.run(TestCase.java:98)
+io.cucumber.core.runner.Runner.runPickle(Runner.java:73)
+io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:135)
+io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:27)
+io.cucumber.junit.CucumberSerenityRunner.runChild(CucumberSerenityRunner.java:258)
+io.cucumber.junit.CucumberSerenityRunner.runChild(CucumberSerenityRunner.java:57)
+</system-err></testcase></testsuite>

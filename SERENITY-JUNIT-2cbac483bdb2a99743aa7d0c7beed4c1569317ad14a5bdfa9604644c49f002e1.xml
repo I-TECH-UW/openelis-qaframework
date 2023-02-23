@@ -1,29 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="2" name="Results Entry" skipped="0" tests="9" time="186.29" timestamp="2023-02-22 12:35:20"><testcase name="Accessing Results Entry"/><testcase name="Searching for test result entry forms"/><testcase name="Results Entry Set-up"/><testcase name="Entering Test Results"/><testcase name="Overall Page"><error message="unexpected alert open: {Alert text : This save will overwrite previously recorded values}&#10;  (Session info: chrome=110.0.5481.100): This save will overwrite previously recorded values&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az589-70', ip: '10.1.0.16', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'&#10;Driver info: org.openqa.selenium.remote.RemoteWebDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.100, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /tmp/.com.google.Chrome.MzRjEr}, goog:chromeOptions: {debuggerAddress: localhost:36365}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 110.0.5481.100, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}&#10;Session ID: d1a3a3aad498ee62ea00d164bf12bb55: null&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az589-70', ip: '10.1.0.16', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.UnhandledAlertException">unexpected alert open: {Alert text : This save will overwrite previously recorded values}
-  (Session info: chrome=110.0.5481.100): This save will overwrite previously recorded values
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'fv-az589-70', ip: '10.1.0.16', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'
-Driver info: org.openqa.selenium.remote.RemoteWebDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.100, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /tmp/.com.google.Chrome.MzRjEr}, goog:chromeOptions: {debuggerAddress: localhost:36365}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 110.0.5481.100, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: d1a3a3aad498ee62ea00d164bf12bb55: null
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'fv-az589-70', ip: '10.1.0.16', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'
-Driver info: driver.version: unknown</error><system-err>unexpected alert open: {Alert text : This save will overwrite previously recorded values}
-  (Session info: chrome=110.0.5481.100): This save will overwrite previously recorded values
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'fv-az589-70', ip: '10.1.0.16', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'
-Driver info: org.openqa.selenium.remote.RemoteWebDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.100, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /tmp/.com.google.Chrome.MzRjEr}, goog:chromeOptions: {debuggerAddress: localhost:36365}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 110.0.5481.100, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: d1a3a3aad498ee62ea00d164bf12bb55: null
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'fv-az589-70', ip: '10.1.0.16', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'
-Driver info: driver.version: unknown
-org.openelisglobal.qaframework.automation.page.Page.containsText(Page.java:408)
-org.openelisglobal.qaframework.automation.ResultsEntrySteps.saveSuccesMessageAppears(ResultsEntrySteps.java:448)
-✽.Save results in new page and green ,Save was successful, message appears(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/resultEntry.feature:95)
-</system-err></testcase><testcase name="Verification"><failure type="java.lang.AssertionError"/><system-err>null
-org.openelisglobal.qaframework.automation.ResultsEntrySteps.testsWithResultsDontAppear(ResultsEntrySteps.java:524)
-✽.Tests for which results were entered no longer appear on page(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/resultEntry.feature:114)
-</system-err></testcase><testcase name="Accept As Is functionality"/><testcase name="Verification"/><testcase name="Changing Results"><failure type="java.lang.AssertionError"/><system-err>null
-org.openelisglobal.qaframework.automation.ResultsEntrySteps.saveSuccesfully(ResultsEntrySteps.java:672)
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="1" name="Results Entry" skipped="0" tests="9" time="529.02" timestamp="2023-02-23 09:02:47"><testcase name="Accessing Results Entry"><error type="java.lang.reflect.InvocationTargetException"/><system-err>null
+io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
+io.cucumber.java.JavaHookDefinition.execute(JavaHookDefinition.java:59)
+io.cucumber.core.runner.CoreHookDefinition.execute(CoreHookDefinition.java:46)
+io.cucumber.core.runner.HookDefinitionMatch.runStep(HookDefinitionMatch.java:21)
+io.cucumber.core.runner.TestStep.executeStep(TestStep.java:92)
+io.cucumber.core.runner.TestStep.run(TestStep.java:64)
+io.cucumber.core.runner.TestCase.run(TestCase.java:98)
+io.cucumber.core.runner.Runner.runPickle(Runner.java:73)
+io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:135)
+io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:27)
+io.cucumber.junit.CucumberSerenityRunner.runChild(CucumberSerenityRunner.java:258)
+io.cucumber.junit.CucumberSerenityRunner.runChild(CucumberSerenityRunner.java:57)
+</system-err></testcase><testcase name="Searching for test result entry forms"/><testcase name="Results Entry Set-up"/><testcase name="Entering Test Results"/><testcase name="Overall Page"/><testcase name="Verification"/><testcase name="Accept As Is functionality"/><testcase name="Verification"/><testcase name="Changing Results"><failure type="java.lang.AssertionError"/><system-err>null
+org.openelisglobal.qaframework.automation.ResultsEntrySteps.saveSuccesfully(ResultsEntrySteps.java:675)
 ✽.Message ,Save was successful, appears at top of page(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/resultEntry.feature:158)
 </system-err></testcase></testsuite>
