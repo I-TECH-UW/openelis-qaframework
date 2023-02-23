@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="0" name="Referral Work Flow" skipped="0" tests="2" time="419.33" timestamp="2023-02-23 09:47:41"><testcase name="Register a patient's sample for Covid testing and send the lab request and sample to the Central Health Laboratory"/><testcase name="Register test requests sent electronically from the Flu Clinic"><error type="java.lang.reflect.InvocationTargetException"/><system-err>null
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="0" name="Referral Work Flow" skipped="0" tests="2" time="417.83" timestamp="2023-02-23 10:43:01"><testcase name="Register a patient's sample for Covid testing and send the lab request and sample to the Central Health Laboratory"/><testcase name="Register test requests sent electronically from the Flu Clinic"><error type="java.lang.reflect.InvocationTargetException"/><system-err>null
 io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
 io.cucumber.java.JavaHookDefinition.execute(JavaHookDefinition.java:59)
 io.cucumber.core.runner.CoreHookDefinition.execute(CoreHookDefinition.java:46)

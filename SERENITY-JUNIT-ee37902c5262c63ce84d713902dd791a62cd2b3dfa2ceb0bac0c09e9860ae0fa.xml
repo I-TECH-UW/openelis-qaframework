@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="3" name="WorkPlan Feature" skipped="0" tests="4" time="32.25" timestamp="2023-02-23 10:06:00"><testcase name="Work plan by Test"><failure type="java.lang.AssertionError"/><system-err>null
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="3" name="WorkPlan Feature" skipped="0" tests="4" time="85.61" timestamp="2023-02-23 11:01:21"><testcase name="Work plan by Test"><failure type="java.lang.AssertionError"/><system-err>null
 org.openelisglobal.qaframework.automation.WorkPlanSteps.allKnownOrdersArePresentAnd(WorkPlanSteps.java:80)
 ✽.All known orders are present "HIV INFANT VIRAL LOAD(Serum)" and "20210000000003761"(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/workPlan.feature:12)
 </system-err></testcase><testcase name="Work plan by Panel"><failure type="java.lang.AssertionError"/><system-err>null
@@ -7,30 +7,48 @@ org.openelisglobal.qaframework.automation.WorkPlanSteps.workplanByPanelTotalNumb
 </system-err></testcase><testcase name="Work plan by Unit"><failure type="java.lang.AssertionError"/><system-err>null
 org.openelisglobal.qaframework.automation.WorkPlanSteps.workplanByUnitShouldShowAllKnownOrdersArePresentAndLabNo(WorkPlanSteps.java:215)
 ✽.Workplan by unit should show all known orders are present "Molecular Biology" and "20210000000003761"(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/workPlan.feature:52)
-</system-err></testcase><testcase name="Verification"><error message="unexpected alert open: {Alert text : This save will overwrite previously recorded values}&#10;  (Session info: chrome=110.0.5481.100): This save will overwrite previously recorded values&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az370-489', ip: '10.1.0.56', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'&#10;Driver info: org.openqa.selenium.remote.RemoteWebDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.100, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /tmp/.com.google.Chrome.pRQb5o}, goog:chromeOptions: {debuggerAddress: localhost:41373}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 110.0.5481.100, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}&#10;Session ID: de90841bd4990d7995cc102ba05b739b&#10;*** Element info: {Using=id, value=menu_workplan}: null&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az370-489', ip: '10.1.0.56', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.UnhandledAlertException">unexpected alert open: {Alert text : This save will overwrite previously recorded values}
-  (Session info: chrome=110.0.5481.100): This save will overwrite previously recorded values
+</system-err></testcase><testcase name="Verification"><error message="no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#menu_workplan&quot;}&#10;  (Session info: chrome=110.0.5481.100)&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az400-400', ip: '10.1.0.31', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'&#10;Driver info: org.openqa.selenium.remote.RemoteWebDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.100, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /tmp/.com.google.Chrome.9Hh77T}, goog:chromeOptions: {debuggerAddress: localhost:41115}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 110.0.5481.100, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}&#10;Session ID: 5f6f4524971d4cbbf9078a92a78cf510&#10;*** Element info: {Using=id, value=menu_workplan}&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az400-400', ip: '10.1.0.31', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException">no such element: Unable to locate element: {"method":"css selector","selector":"#menu_workplan"}
+  (Session info: chrome=110.0.5481.100)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'fv-az370-489', ip: '10.1.0.56', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'
+System info: host: 'fv-az400-400', ip: '10.1.0.31', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'
 Driver info: org.openqa.selenium.remote.RemoteWebDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.100, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /tmp/.com.google.Chrome.pRQb5o}, goog:chromeOptions: {debuggerAddress: localhost:41373}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 110.0.5481.100, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: de90841bd4990d7995cc102ba05b739b
-*** Element info: {Using=id, value=menu_workplan}: null
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.100, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /tmp/.com.google.Chrome.9Hh77T}, goog:chromeOptions: {debuggerAddress: localhost:41115}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 110.0.5481.100, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 5f6f4524971d4cbbf9078a92a78cf510
+*** Element info: {Using=id, value=menu_workplan}
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'fv-az370-489', ip: '10.1.0.56', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'
-Driver info: driver.version: unknown</error><system-err>unexpected alert open: {Alert text : This save will overwrite previously recorded values}
-  (Session info: chrome=110.0.5481.100): This save will overwrite previously recorded values
+System info: host: 'fv-az400-400', ip: '10.1.0.31', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'
+Driver info: driver.version: unknown</error><system-err>no such element: Unable to locate element: {"method":"css selector","selector":"#menu_workplan"}
+  (Session info: chrome=110.0.5481.100)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'fv-az370-489', ip: '10.1.0.56', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'
+System info: host: 'fv-az400-400', ip: '10.1.0.31', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'
 Driver info: org.openqa.selenium.remote.RemoteWebDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.100, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /tmp/.com.google.Chrome.pRQb5o}, goog:chromeOptions: {debuggerAddress: localhost:41373}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 110.0.5481.100, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: de90841bd4990d7995cc102ba05b739b
-*** Element info: {Using=id, value=menu_workplan}: null
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.100, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /tmp/.com.google.Chrome.9Hh77T}, goog:chromeOptions: {debuggerAddress: localhost:41115}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 110.0.5481.100, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 5f6f4524971d4cbbf9078a92a78cf510
+*** Element info: {Using=id, value=menu_workplan}
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'fv-az370-489', ip: '10.1.0.56', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'
+System info: host: 'fv-az400-400', ip: '10.1.0.31', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1033-azure', java.version: '1.8.0_362'
 Driver info: driver.version: unknown
 org.openelisglobal.qaframework.automation.page.Page.findElement(Page.java:188)
 org.openelisglobal.qaframework.automation.page.Page.hoverOn(Page.java:290)
 org.openelisglobal.qaframework.automation.page.HomePage.goToWorkPlanByTestPage(HomePage.java:151)
 org.openelisglobal.qaframework.automation.WorkPlanSteps.goToWorkPlanByTestType(WorkPlanSteps.java:273)
-✽.Go to WorkPlan by test type "HIV INFANT VIRAL LOAD(Serum)"(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/workPlan.feature:69)
+io.cucumber.java.Invoker.doInvoke(Invoker.java:66)
+io.cucumber.java.Invoker.invoke(Invoker.java:24)
+io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
+io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
+io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
+io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
+io.cucumber.core.runner.TestStep.executeStep(TestStep.java:92)
+io.cucumber.core.runner.TestStep.run(TestStep.java:64)
+io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
+io.cucumber.core.runner.TestCase.run(TestCase.java:104)
+io.cucumber.core.runner.Runner.runPickle(Runner.java:73)
+io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:135)
+io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:27)
+io.cucumber.junit.CucumberSerenityRunner.runChild(CucumberSerenityRunner.java:258)
+io.cucumber.junit.CucumberSerenityRunner.runChild(CucumberSerenityRunner.java:57)
 </system-err></testcase></testsuite>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="0" name="Results Entry" skipped="0" tests="9" time="548.93" timestamp="2023-02-23 09:54:40"><testcase name="Accessing Results Entry"><error type="java.lang.reflect.InvocationTargetException"/><system-err>null
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="0" name="Results Entry" skipped="0" tests="9" time="547.73" timestamp="2023-02-23 10:49:59"><testcase name="Accessing Results Entry"><error type="java.lang.reflect.InvocationTargetException"/><system-err>null
 io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
 io.cucumber.java.JavaHookDefinition.execute(JavaHookDefinition.java:59)
 io.cucumber.core.runner.CoreHookDefinition.execute(CoreHookDefinition.java:46)
