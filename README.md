@@ -45,6 +45,7 @@ See [Wiki](https://github.com/I-TECH-UW/openelis-qaframework/wiki) for the Proje
 | Referral Work Flow  |    @referral    | [![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/referalWorkFlow.yml/badge.svg)](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/referalWorkFlow.yml) | 
 |  EMR-LIS Work Flow  |     @emrLis     |          [![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/emrLis.yml/badge.svg)](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/emrLis.yml)          | 
 | TestNamesManagement | @testManagement |  [![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/testManagement.yml/badge.svg)](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/testManagement.yml)  | 
+|      WorkPlan       |    @workplan    |        [![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/workplan.yml/badge.svg)](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/workplan.yml)        | 
 
  <!-- ## CI Local Tests
  [![Build Status](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/test-local.yml/badge.svg)](https://github.com/I-TECH-UW/openelis-qaframework/actions/workflows/test-local.yml) -->
