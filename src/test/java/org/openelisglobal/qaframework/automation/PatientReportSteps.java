@@ -56,10 +56,10 @@ public class PatientReportSteps extends TestBase {
 	
 	@When("User Enters order on Order Entry page, Complete ALL fields, and does not enter results for this order")
 	public void enterOrderWithoutResults() throws InterruptedException {
-		addOrderPage.innitialiseData(ACCESION_WITHOUT_RESULT,null);
+		addOrderPage.innitialiseData(ACCESION_WITHOUT_RESULT);
 		homePage = addOrderPage.goToHomePage();
 		addOrderPage = homePage.goToAddOrderPage();
-		addOrderPage.innitialiseData(ACCESION_WITH_RESULT,null);
+		addOrderPage.innitialiseData(ACCESION_WITH_RESULT);
 		homePage = addOrderPage.goToHomePage();
 	}
 	

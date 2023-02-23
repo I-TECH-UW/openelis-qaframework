@@ -202,7 +202,7 @@ public class ResultsEntrySteps extends TestBase {
 	public void searchByKnownAccesionNumber(String accesionNumber) throws InterruptedException {
 		// Innitialise data
 		addOrderPage = homePage.goToAddOrderPage();
-		addOrderPage.innitialiseData(accesionNumber,null);
+		addOrderPage.innitialiseData(accesionNumber);
 		homePage = addOrderPage.goToHomePage();
 		
 		addOrderPage = homePage.goToAddOrderPage();
@@ -210,7 +210,7 @@ public class ResultsEntrySteps extends TestBase {
 		homePage = addOrderPage.goToHomePage();
 		
 		addOrderPage = homePage.goToAddOrderPage();
-		addOrderPage.innitialiseData("20210000000002250",null);
+		addOrderPage.innitialiseData("20210000000002250");
 		homePage = addOrderPage.goToHomePage();
 		  Thread.sleep(1000);
 		searchByOrderPage = homePage.goToSearchResultsByOrder();

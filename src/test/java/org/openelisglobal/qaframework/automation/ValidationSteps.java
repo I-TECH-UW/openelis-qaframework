@@ -69,8 +69,7 @@ public class ValidationSteps extends TestBase {
 	public void userHasAnExistingOrderAnd(String labNo) throws InterruptedException {
 			//	intialise data
 			addOrderPage = homePage.goToAddOrderPage();
-			accessionNo = addOrderPage.accessionNumberGenerator();
-			addOrderPage.innitialiseData(labNo,accessionNo);
+			addOrderPage.innitialiseData(labNo);
 			Thread.sleep(1000);
 			homePage = addOrderPage.goToHomePage();
 	}
@@ -91,6 +90,9 @@ public class ValidationSteps extends TestBase {
 		resultsUnitTypePage.selectUnitType(unitType);
 		resultsUnitTypePage.enterTestResult();
 		resultsUnitTypePage.clickSaveButton();
+		if (resultsUnitTypePage.alertPresent()){
+			resultsUnitTypePage.acceptAlert();
+		}
 		homePage = resultsUnitTypePage.goToHomePage();
 	}
 
