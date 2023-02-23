@@ -1004,15 +1004,12 @@ public class AddOrderPage extends Page {
 		return uuidAsString;
 	}
 
-	public void innitialiseData(String accesionNumber,String randomaccessionNumber) throws InterruptedException {
+	public void innitialiseData(String accesionNumber) throws InterruptedException {
 
 		enterAccessionNumber(accesionNumber);
 		clickOnNextVisitDate();
 		if (alertPresent()) {
 			acceptAlert();
-			if(randomaccessionNumber != null){
-				enterAccessionNumber(randomaccessionNumber);
-			}
 			return;
 		}
 		Thread.sleep(1000);

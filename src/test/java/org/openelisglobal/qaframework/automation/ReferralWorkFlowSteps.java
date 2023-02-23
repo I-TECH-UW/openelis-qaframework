@@ -42,7 +42,7 @@ public class ReferralWorkFlowSteps extends TestBase {
 
     @After(RunTest.HOOK.REFERAL_WORK_FLOW)
     public void destroy() {
-//        quit();
+        quit();
     }
 
     @Before(RunTest.HOOK.REFERAL_WORK_FLOW)
@@ -64,7 +64,7 @@ public class ReferralWorkFlowSteps extends TestBase {
     @When("User Goes to Order tab--> Add Order")
     public void gotToAddOrder() throws InterruptedException {
         addOrderPage = homePage.goToAddOrderPage();
-        addOrderPage.innitialiseData(existingLabNumber,null);
+        addOrderPage.innitialiseData(existingLabNumber);
         homePage = addOrderPage.goToHomePage();
         addOrderPage = homePage.goToAddOrderPage();
     }
