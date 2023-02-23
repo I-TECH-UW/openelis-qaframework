@@ -251,6 +251,14 @@ public abstract class Page {
 
 	private void setTextNoEnter(WebElement element, String text) {
 		element.clear();
+		try {
+			if (alertPresent()){
+				acceptAlert();
+			}
+		}
+		catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
 		element.sendKeys(text);
 	}
 

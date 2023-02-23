@@ -5,12 +5,12 @@ Feature: WorkPlan Feature
 
   @workplan
   Scenario Outline: Work plan by Test
-    Given User select workplan by test from the main menu down
+    Given User select workplan by test from the main menu down "<LabNo>"
     When user selects test type "<testType>" from the dropdown options
     Then Tests display in search drop-down list
     And Workplan select form appears
     Then All known orders are present "<testType>" and "<LabNo>"
-    Then Total number of tests is correct "<numberOfTests>"
+    Then Total number of tests is correct <numberOfTests>
     Then Lab No is displayed correctly on work plan select form
     Then Received date and reception time display correctly on work plan select form
     Then Non conformity flags appear next to correct nonconforming orders
@@ -65,7 +65,7 @@ Feature: WorkPlan Feature
   Scenario Outline: Verification
     Given User goes to Result Entry page By Unit
     When User select unit type from drop down select list "<unitType>"
-    And User enter results for the tests
+    And User enter results for the tests "<LabNo>"
     Then Go to WorkPlan by test type "<testType>"
     Then Test "<LabNo>" nolonger exists on the workplan by test type
     Then Go to WorkPlan by panel Type "<panelType>"

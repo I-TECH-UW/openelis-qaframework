@@ -19,6 +19,10 @@ public class ResultsUnitTypePage extends Page {
 
 	private static final By DROP_DOWN_TEST_RESULT = By.xpath("//select[starts-with(@id,'resultId')]");
 
+	private  static  final  By LAB_NO_SEARCH_FIELD = By.id("labnoSearch");
+
+	private  static final By SEARCH_BUTTON = By.xpath("//*[@id=\"searchDiv\"]/div[3]/div[1]/input[2]");
+
 	public ResultsUnitTypePage(Page parent) {
 		super(parent);
 	}
@@ -64,5 +68,12 @@ public class ResultsUnitTypePage extends Page {
 	public HomePage goToHomePage() {
 		this.goToPage(PATH_HOME);
 		return new HomePage(this);
+	}
+
+	public void enterLabNoFieldSearch(String labNo){
+		setText(LAB_NO_SEARCH_FIELD,labNo);
+	}
+	public void clickSearchByLabNo(){
+		clickOn(SEARCH_BUTTON);
 	}
 }
