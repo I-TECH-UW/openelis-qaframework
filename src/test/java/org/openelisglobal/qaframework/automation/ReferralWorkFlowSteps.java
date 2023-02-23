@@ -42,7 +42,7 @@ public class ReferralWorkFlowSteps extends TestBase {
 
     @After(RunTest.HOOK.REFERAL_WORK_FLOW)
     public void destroy() {
-        quit();
+//        quit();
     }
 
     @Before(RunTest.HOOK.REFERAL_WORK_FLOW)
