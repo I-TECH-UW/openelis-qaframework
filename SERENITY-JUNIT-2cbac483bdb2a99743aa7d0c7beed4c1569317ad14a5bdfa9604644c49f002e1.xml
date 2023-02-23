@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="1" name="Results Entry" skipped="0" tests="9" time="529.02" timestamp="2023-02-23 09:02:47"><testcase name="Accessing Results Entry"><error type="java.lang.reflect.InvocationTargetException"/><system-err>null
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="0" name="Results Entry" skipped="0" tests="9" time="548.93" timestamp="2023-02-23 09:54:40"><testcase name="Accessing Results Entry"><error type="java.lang.reflect.InvocationTargetException"/><system-err>null
 io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
 io.cucumber.java.JavaHookDefinition.execute(JavaHookDefinition.java:59)
 io.cucumber.core.runner.CoreHookDefinition.execute(CoreHookDefinition.java:46)
@@ -11,7 +11,4 @@ io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:135)
 io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:27)
 io.cucumber.junit.CucumberSerenityRunner.runChild(CucumberSerenityRunner.java:258)
 io.cucumber.junit.CucumberSerenityRunner.runChild(CucumberSerenityRunner.java:57)
-</system-err></testcase><testcase name="Searching for test result entry forms"/><testcase name="Results Entry Set-up"/><testcase name="Entering Test Results"/><testcase name="Overall Page"/><testcase name="Verification"/><testcase name="Accept As Is functionality"/><testcase name="Verification"/><testcase name="Changing Results"><failure type="java.lang.AssertionError"/><system-err>null
-org.openelisglobal.qaframework.automation.ResultsEntrySteps.saveSuccesfully(ResultsEntrySteps.java:675)
-✽.Message ,Save was successful, appears at top of page(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/resultEntry.feature:158)
-</system-err></testcase></testsuite>
+</system-err></testcase><testcase name="Searching for test result entry forms"/><testcase name="Results Entry Set-up"/><testcase name="Entering Test Results"/><testcase name="Overall Page"/><testcase name="Verification"/><testcase name="Accept As Is functionality"/><testcase name="Verification"/><testcase name="Changing Results"/></testsuite>
