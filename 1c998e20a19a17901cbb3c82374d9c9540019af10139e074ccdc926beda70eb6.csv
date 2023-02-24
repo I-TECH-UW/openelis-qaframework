@@ -1,4 +1,5 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"Test Management Feature","Validate list items in Test Management menu","SUCCESS","2023-02-24T12:27:44.451Z[Etc/UTC]","0.0","8.15"
-"Test Management Feature","User rejects the testName updates","SUCCESS","2023-02-24T12:29:52.481Z[Etc/UTC]","0.0","16.35"
-"Test Management Feature","User cancels the testName updates","SUCCESS","2023-02-24T12:30:08.863Z[Etc/UTC]","0.0","16.47"
+"Test Management Feature","Validate list items in Test Management menu","SUCCESS","2023-02-24T13:13:08.606Z[Etc/UTC]","0.0","7.05"
+"Test Management Feature","Open Rename Existing Test Names page","SUCCESS","2023-02-24T13:13:15.682Z[Etc/UTC]","0.0","31.56"
+"Test Management Feature","User rejects the testName updates","SUCCESS","2023-02-24T13:13:47.269Z[Etc/UTC]","0.0","15.49"
+"Test Management Feature","User cancels the testName updates","SUCCESS","2023-02-24T13:14:02.789Z[Etc/UTC]","0.0","15.36"
