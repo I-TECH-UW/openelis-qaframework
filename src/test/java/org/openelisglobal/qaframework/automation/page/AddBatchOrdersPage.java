@@ -29,6 +29,21 @@ public class AddBatchOrdersPage extends Page {
 	private static final By REQUIRED_RECEIVED_DATE = By
 			.xpath("//*[@id=\"orderDisplay\"]/table/tbody/tr/td/table/tbody/tr[2]/td[1]/span[1]");
 
+	private static final By CHECK_BOX_PANNEL = By.name("panelSelect");
+
+	private static final By CHECK_BOX_TEST = By.id("test_0");
+
+	private static final By FIELD_SITE_NAME = By.xpath(
+			"//*[@id=\"configureBarcodePage\"]/table/tbody/tr/td/table/tbody/tr[1]/td[4]/input");
+
+	private static final By SITE_NAME_OPTIONS_DROP_DOWN = By.xpath("//*[@id=\"ui-id-1\"]/li[1]/a");
+
+	private static final By NEXT_BUTTON = By.id("nextButtonId");
+
+	private static final By SAVE_BUTTON = By.id("saveButtonId");
+
+	private static final By LAB_NO_FIELD = By.id("labNo");
+
 	public AddBatchOrdersPage(Page parent) {
 		super(parent);
 	}
@@ -105,4 +120,49 @@ public class AddBatchOrdersPage extends Page {
 		return getReceivedDateField().getAttribute("class");
 	}
 
+	public boolean sampleTypesDropDownMenuContainsSampleTypesOptions() {
+		return dropDownHasOptions(DROP_DOWN_SAMPLE_TYPES);
+	}
+
+	public Boolean panelCheckBoxExists() {
+		return hasElementWithoutWait(CHECK_BOX_PANNEL);
+	}
+
+	public Boolean testCheckBoxExists() {
+		return hasElement(CHECK_BOX_TEST);
+	}
+
+	public void panelCheckBoxClick() {
+		if (panelCheckBoxExists()) {
+			clickOn(CHECK_BOX_PANNEL);
+		}
+	}
+
+	public void testCheckBoxClick() {
+		if (testCheckBoxExists()) {
+			clickOn(CHECK_BOX_TEST);
+		}
+	}
+
+	public void enterSiteNameSuggestion(String siteNameSuggestion) throws InterruptedException {
+		setText(FIELD_SITE_NAME, siteNameSuggestion);
+		Thread.sleep(100);
+		selectSiteNameFromDropDown();
+	}
+
+	private void selectSiteNameFromDropDown() {
+		clickOn(SITE_NAME_OPTIONS_DROP_DOWN);
+	}
+
+	public void clickNextButton() {
+		clickOn(NEXT_BUTTON);
+	}
+
+	public void clickSaveButton() {
+		clickOn(SAVE_BUTTON);
+	}
+
+	public String getLabNo() {
+		return getValue(LAB_NO_FIELD);
+	}
 }

@@ -4,6 +4,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import io.cucumber.java.After;
@@ -76,14 +77,17 @@ public class AddBatchOrdersSteps extends TestBase {
 	}
 
 	@And("User enters Received date in the future")
-	public void userEntersReceivedDateInTheFuture() {
+	public void userEntersReceivedDateInTheFuture() throws InterruptedException {
 		String futureDate = Utils.getFutureDate();
 		addBatchOrdersPage.enterReceivedDate(futureDate);
+		if (addBatchOrdersPage.alertPresent()) {
+			addBatchOrdersPage.acceptAlert();
+		}
+		Thread.sleep(1000);
 	}
 
 	@Then("Alert appears if the date is in the future")
 	public void alertAppearsIfTheDateIsInTheFuture() {
-		addBatchOrdersPage.acceptAlert();
 		assertEquals(addBatchOrdersPage.getReceivedDateClass(), "text required error");
 	}
 
@@ -99,12 +103,56 @@ public class AddBatchOrdersSteps extends TestBase {
 		addBatchOrdersPage.enterReceivedDate(validDate);
 	}
 
-	@Then("User Clicks on change sample type select options {string}")
-	public void userClicksOnChangeSampleTypeSelectOptions(String sampleType) {
+	@And("Sample types are displayed in drop-down list")
+	public void sampleTypesAreDisplayedInDropDownList() {
+		assertTrue(addBatchOrdersPage.sampleTypesDropDownMenuContainsSampleTypesOptions());
+	}
+
+	@Then("User Clicks on sample type dropdown list options {string}")
+	public void userClicksOnSampleTypeDropdownListOptions(String sampleType) {
 		addBatchOrdersPage.selectSampleType(sampleType);
 		assertTrue(addBatchOrdersPage.containsText("Panels"));
 		assertTrue(addBatchOrdersPage.containsText("Available Tests"));
 		assertTrue(addBatchOrdersPage.panelsTableExists());
 	}
 
+	@Then("Checklists for applicable Panels and Available Tests should appear for the sample type when that sample type is selected")
+	public void checklistsForApplicablePanelsAndAvailableTestsShouldAppearForTheSampleTypeWhenThatSampleTypeIsSelected() {
+		assertTrue(addBatchOrdersPage.panelCheckBoxExists());
+		assertTrue(addBatchOrdersPage.testCheckBoxExists());
+	}
+
+	@And("User checks the box for test or panel")
+	public void userChecksTheBoxForTestOrPanel() {
+		addBatchOrdersPage.panelCheckBoxClick();
+		addBatchOrdersPage.testCheckBoxClick();
+	}
+
+	@And("In Optional Fields: User checks Site name {string}")
+	public void inOptionalFieldsUserChecksSiteName(String siteName) throws InterruptedException {
+		addBatchOrdersPage.enterSiteNameSuggestion(siteName);
+		Thread.sleep(100);
+	}
+
+	@Then("User Clicks next button")
+	public void userClicksNextButton() {
+		addBatchOrdersPage.clickNextButton();
+	}
+
+	@And("Batch order entry screen should contain UI options elements {string}")
+	public void batchOrderEntryScreenShouldContainUIOptions(String siteName) {
+		assertTrue(addBatchOrdersPage.currentDateFieldExists());
+		assertTrue(addBatchOrdersPage.currentTimeFieldExists());
+		assertTrue(addBatchOrdersPage.containsText("Received Date:"));
+		assertTrue(addBatchOrdersPage.containsText("Received Time:"));
+		assertTrue(addBatchOrdersPage.containsText(siteName));
+		assertTrue(addBatchOrdersPage.containsText("COVID-19 ANTIBODY"));
+	}
+
+	@Then("User Clicks Generate Barcode and save button")
+	public void userClicksGenerateBarcodeAndSaveButton() throws InterruptedException {
+		addBatchOrdersPage.clickSaveButton();
+		Thread.sleep(1500);
+		assertNotEquals(addBatchOrdersPage.getLabNo(), "");
+	}
 }
