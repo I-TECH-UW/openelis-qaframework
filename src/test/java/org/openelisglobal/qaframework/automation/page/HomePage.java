@@ -63,6 +63,8 @@ public class HomePage extends Page {
 
 	private static final By ADMIN_MENU_LINK = By.id("menu_administration");
 
+	private  static  final  By SECOND_LEVEL_MENU_ADD_BATCH_ORDERS = By.id("menu_sample_batch_entry");
+
 	public HomePage(Page page) {
 		super(page);
 	}
@@ -174,5 +176,11 @@ public class HomePage extends Page {
 	public AdminPage goToAdminPage(){
 		clickOn(ADMIN_MENU_LINK);
 		return  new AdminPage(this);
+	}
+
+	public AddBatchOrdersPage goToAddBatchOrders(){
+		hoverOn(FIRST_LEVEL_MENU_ORDER);
+		clickOn(SECOND_LEVEL_MENU_ADD_BATCH_ORDERS);
+		return  new AddBatchOrdersPage(this);
 	}
 }
