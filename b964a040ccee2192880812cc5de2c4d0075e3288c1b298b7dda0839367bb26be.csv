@@ -1,4 +1,5 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"Referral Work Flow","Register a patient's sample for Covid testing and send the lab request and sample to the Central Health Laboratory","ERROR","2023-02-23T14:47:24.155Z[Etc/UTC]","0.0","165.06"
-"WorkPlan Feature","Work plan by Panel","FAILURE","2023-02-23T14:58:31.09Z[Etc/UTC]","0.0","11.43"
-"WorkPlan Feature","Verification","ERROR","2023-02-23T14:58:52.408Z[Etc/UTC]","0.0","74.48"
+"Add Batch Orders Feature","Add Batch Orders action","ERROR","2023-02-24T10:06:22.34Z[Etc/UTC]","0.0","14.5"
+"Referral Work Flow","Register a patient's sample for Covid testing and send the lab request and sample to the Central Health Laboratory","ERROR","2023-02-24T10:22:49.423Z[Etc/UTC]","0.0","162.4"
+"WorkPlan Feature","Work plan by Panel","FAILURE","2023-02-24T10:33:03.722Z[Etc/UTC]","0.0","9.48"
+"WorkPlan Feature","Verification","ERROR","2023-02-24T10:33:21.951Z[Etc/UTC]","0.0","72.45"
