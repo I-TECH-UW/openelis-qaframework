@@ -39,5 +39,7 @@ public class RunTest {
 		public static final String WORKPLAN = "@workplan";
 
 		public static  final  String ADD_BATCH_ORDERS = "@addBatchOrders";
+
+		public static  final  String NON_CONFORMITY = "@nonConformity";
 	}
 }
