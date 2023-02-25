@@ -1,3 +1,4 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"Add Batch Orders Feature","Add Batch Orders action","ERROR","2023-02-25T20:29:44.388Z[Etc/UTC]","0.0","14.23"
-"WorkPlan Feature","Verification","ERROR","2023-02-25T20:56:37.012Z[Etc/UTC]","0.0","72.78"
+"Add Batch Orders Feature","Add Batch Orders action","ERROR","2023-02-25T22:27:20.801Z[Etc/UTC]","0.0","14.86"
+"Referral Work Flow","Register a patient's sample for Covid testing and send the lab request and sample to the Central Health Laboratory","ERROR","2023-02-25T22:44:17.959Z[Etc/UTC]","0.0","163.03"
+"WorkPlan Feature","Verification","ERROR","2023-02-25T22:55:27.21Z[Etc/UTC]","0.0","73.58"

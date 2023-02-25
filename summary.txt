@@ -1,9 +1,9 @@
-Serenity report generated 25-02-2023 20:57
-57 test scenarios (75 tests in all, including 62 rows of test data)
+Serenity report generated 25-02-2023 22:56
+58 test scenarios (76 tests in all, including 63 rows of test data)
 
-Passed:             54
-Failed:             1
-Failed with errors: 2
+Passed:             53
+Failed:             2
+Failed with errors: 3
 Compromised:        0
 Pending:            0
 Ignored:            0
