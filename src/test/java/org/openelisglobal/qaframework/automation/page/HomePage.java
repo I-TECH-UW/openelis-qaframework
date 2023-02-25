@@ -65,6 +65,8 @@ public class HomePage extends Page {
 
 	private  static  final  By SECOND_LEVEL_MENU_ADD_BATCH_ORDERS = By.id("menu_sample_batch_entry");
 
+	private static final By LOG_OUT_BUTTON = By.xpath("//*[@id=\"logout-form\"]/div/input[1]");
+
 	public HomePage(Page page) {
 		super(page);
 	}
@@ -182,5 +184,10 @@ public class HomePage extends Page {
 		hoverOn(FIRST_LEVEL_MENU_ORDER);
 		clickOn(SECOND_LEVEL_MENU_ADD_BATCH_ORDERS);
 		return  new AddBatchOrdersPage(this);
+	}
+
+	public LoginPage ClickLogOut() {
+		clickOn(LOG_OUT_BUTTON);
+		return  new LoginPage(getDriver());
 	}
 }
