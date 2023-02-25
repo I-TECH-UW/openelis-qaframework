@@ -67,6 +67,9 @@ public class HomePage extends Page {
 
 	private static final By LOG_OUT_BUTTON = By.xpath("//*[@id=\"logout-form\"]/div/input[1]");
 
+	private  static  final  By FIRST_LEVEL_MENU_NON_CONFORMITY = By.id("menu_nonconformity");
+	private  static  final  By SECOND_LEVEL_MENU_NON_CONFORMITY_REPORT = By.id("menu_non_conforming_report");
+
 	public HomePage(Page page) {
 		super(page);
 	}
@@ -189,5 +192,11 @@ public class HomePage extends Page {
 	public LoginPage ClickLogOut() {
 		clickOn(LOG_OUT_BUTTON);
 		return  new LoginPage(getDriver());
+	}
+
+	public NonConformityPage goToNonConformityReport(){
+		hoverOn(FIRST_LEVEL_MENU_NON_CONFORMITY);
+		clickOn(SECOND_LEVEL_MENU_NON_CONFORMITY_REPORT);
+		return  new NonConformityPage(this);
 	}
 }
