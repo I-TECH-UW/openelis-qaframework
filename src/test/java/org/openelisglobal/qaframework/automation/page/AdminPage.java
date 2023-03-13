@@ -10,6 +10,8 @@ public class AdminPage extends Page {
 
 	private static final By USER_MGT_LINK = By.linkText("User Management");
 
+	private static final By ORDER_ENTRY_CONFIG_LINK = By.linkText("Order Entry Configuration");
+
 	public AdminPage(Page parent) {
 		super(parent);
 	}
@@ -27,5 +29,10 @@ public class AdminPage extends Page {
 	public UserManagementPage goToUserManagementPage() {
 		clickOn(USER_MGT_LINK);
 		return new UserManagementPage(this);
+	}
+
+	public ConfigurableItemsPage goToOrderEntryConfiguration() {
+		clickOn(ORDER_ENTRY_CONFIG_LINK);
+		return new ConfigurableItemsPage(this);
 	}
 }

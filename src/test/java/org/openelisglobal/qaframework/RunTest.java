@@ -41,5 +41,7 @@ public class RunTest {
 		public static  final  String ADD_BATCH_ORDERS = "@addBatchOrders";
 
 		public static  final  String NON_CONFORMITY = "@nonConformity";
+
+		public  static  final  String CONFIGURABLE_ITEMS = "@configurableItems";
 	}
 }

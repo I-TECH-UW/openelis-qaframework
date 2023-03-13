@@ -26,7 +26,7 @@ public class AddOrderPage extends Page {
 
 	private static final String LABEL_TEXT_REQUEST = "Test Request";
 
-	private  static  final By REMEMBER_SITE_AND_REQUESTER_CHECKBOX=  By.id("rememberSiteAndRequester");
+	private static final By REMEMBER_SITE_AND_REQUESTER_CHECKBOX = By.id("rememberSiteAndRequester");
 
 	private static final By FIELD_LAB_NUMBER = By.id("labNo");
 
@@ -38,9 +38,10 @@ public class AddOrderPage extends Page {
 
 	private static final By FIELD_RECIEVED_TIME = By.id("receivedTime");
 
-	private static final By FIELD_SITE_NAME = By.xpath("//*[@id=\"orderDisplay\"]/table/tbody/tr/td/table/tbody/tr[7]/td[2]/input");
+	private static final By FIELD_SITE_NAME = By.xpath(
+			"//*[@id=\"orderDisplay\"]/table/tbody/tr/td/table/tbody/tr[7]/td[2]/input");
 
-	private  static  final By SITE_NAME_OPTIONS_DROP_DOWN = By.xpath("//*[@id=\"ui-id-1\"]/li[1]/a");
+	private static final By SITE_NAME_OPTIONS_DROP_DOWN = By.xpath("//*[@id=\"ui-id-1\"]/li[1]/a");
 
 	private static final By FIELD_PROGRAM = By.id("sampleOrderItems.program");
 
@@ -164,7 +165,8 @@ public class AddOrderPage extends Page {
 	private static final By REQUIRED_SAMPLE_ADDITION = By
 			.xpath("//*[@id=\"samplesBlock\"]/table/tbody/tr/td/span");
 
-	private static final By REQUIRED_TEST = By.xpath("/html/body/form/table/tbody/tr[4]/td/div[1]/div[2]/table/tbody/tr/td/div[1]/div[7]/table/tbody/tr[1]/th[7]/span");
+	private static final By REQUIRED_TEST = By.xpath(
+			"/html/body/form/table/tbody/tr[4]/td/div[1]/div[2]/table/tbody/tr/td/div[1]/div[7]/table/tbody/tr[1]/th[7]/span");
 
 	private static final By REQUIRED_PATIENT_INFORMATION = By
 			.xpath("//td/input[@id='orderSectionId']/following-sibling::span[1]");
@@ -181,7 +183,8 @@ public class AddOrderPage extends Page {
 
 	private static final By CHECK_BOX_PANNEL = By.name("panelSelect");
 
-	private static final By CHECK_BOX_REFFER_TEST = By.xpath("/html/body/form/table/tbody/tr[4]/td/div[1]/div[2]/table[1]/tbody/tr/td/div[1]/input[1]");
+	private static final By CHECK_BOX_REFFER_TEST = By.xpath(
+			"/html/body/form/table/tbody/tr[4]/td/div[1]/div[2]/table[1]/tbody/tr/td/div[1]/input[1]");
 
 	private static final By SELECT_REFFER_REASON = By.id("referralReasonId_0");
 
@@ -205,13 +208,21 @@ public class AddOrderPage extends Page {
 
 	private static final By SELECT_RESULT = By.id("sel_1");
 
-	private  static  final  By PATIENT_SEARCH_RESULTS_TABLE = By.xpath("//*[@id=\"searchResultTable\"]");
+	private static final By PATIENT_SEARCH_RESULTS_TABLE = By.xpath("//*[@id=\"searchResultTable\"]");
 
-	private  static  final  By FIELD_PATIENT_PAYMENT_STATUS = By.id("sampleOrderItems.paymentOptionSelection");
+	private static final By FIELD_PATIENT_PAYMENT_STATUS = By.id("sampleOrderItems.paymentOptionSelection");
 
-	private  static  final  By FIELD_TEST_LOCATION_CODE = By.id("testLocationCodeId");
-	private  static  final  By FIELD_TEST_LOCATION_CODE_OTHER = By.id("testLocationCodeOtherId");
-     private  static  final  By REJECT_SAMPLE_CHECKBOX = By.id("reject_1");
+	private static final By FIELD_TEST_LOCATION_CODE = By.id("testLocationCodeId");
+
+	private static final By FIELD_TEST_LOCATION_CODE_OTHER = By.id("testLocationCodeOtherId");
+
+	private static final By REJECT_SAMPLE_CHECKBOX = By.id("reject_1");
+
+	private static final By SEARCH_TEST_NAME_FIELD = By.xpath(
+			"//*[@id=\"addTables\"]/tbody/tr[2]/td[2]/span/span[1]/span/ul/li/input");
+
+	private static final By SEARCH_TEST_NAME_RESULTS = By.xpath(
+			"//*[@id=\"addTables\"]/tbody/tr[2]/td[2]/span/span[1]/span/ul");
 
 	public AddOrderPage(Page parentPage) {
 		super(parentPage);
@@ -273,7 +284,7 @@ public class AddOrderPage extends Page {
 		return findElement(FIELD_PROGRAM);
 	}
 
-	public WebElement getSamplingPerformedAnalysisField(){
+	public WebElement getSamplingPerformedAnalysisField() {
 		return findElement(FIELD_TEST_LOCATION_CODE);
 	}
 
@@ -362,9 +373,10 @@ public class AddOrderPage extends Page {
 		}
 	}
 
-	public  void rejectSampleCheckBox(){
+	public void rejectSampleCheckBox() {
 		clickOn(REJECT_SAMPLE_CHECKBOX);
 	}
+
 	public void clickPannelCheckBox() {
 		if (panelCheckBoxExists()) {
 			clickOn(CHECK_BOX_PANNEL);
@@ -396,8 +408,9 @@ public class AddOrderPage extends Page {
 	}
 
 	public void enterSiteNameSuggestion(String siteNameSuggestion) {
-		setText(FIELD_SITE_NAME,siteNameSuggestion);
+		setText(FIELD_SITE_NAME, siteNameSuggestion);
 	}
+
 	public void selectSiteNameFromDropDown() {
 		List<WebElement> options = findElements(SITE_NAME_OPTIONS_DROP_DOWN);
 		for (WebElement option : options) {
@@ -414,26 +427,28 @@ public class AddOrderPage extends Page {
 		}
 	}
 
-	public void selectPatientPaymentStatus(){
-	  getSelectedOption(FIELD_PATIENT_PAYMENT_STATUS);
+	public void selectPatientPaymentStatus() {
+		getSelectedOption(FIELD_PATIENT_PAYMENT_STATUS);
 	}
 
-	public void selectSamplingPerformed(){
+	public void selectSamplingPerformed() {
 		clickOn(FIELD_TEST_LOCATION_CODE);
 		List<WebElement> options = getSamplingPerformedAnalysisField().findElements(FIELD_OPTION);
 		for (WebElement option : options) {
-			if (option.getText().equals("Other - specify")){
+			if (option.getText().equals("Other - specify")) {
 				option.click();
 			}
 		}
 	}
-    public  boolean IsSamplingPerformedOthersTextBoxDisplayed(){
-      return findElement(FIELD_TEST_LOCATION_CODE_OTHER).isDisplayed();
-     }
 
-	 public void enterSamplingPerformedOther(String other){
-		setText(FIELD_TEST_LOCATION_CODE_OTHER,other);
-	 }
+	public boolean IsSamplingPerformedOthersTextBoxDisplayed() {
+		return findElement(FIELD_TEST_LOCATION_CODE_OTHER).isDisplayed();
+	}
+
+	public void enterSamplingPerformedOther(String other) {
+		setText(FIELD_TEST_LOCATION_CODE_OTHER, other);
+	}
+
 	public Boolean GeneratedAccessionNumberIsDigit() {
 		if (StringUtils.isNumeric(getAccessionNumberField().getAttribute("value"))) {
 			return true;
@@ -453,10 +468,10 @@ public class AddOrderPage extends Page {
 		return getRecievedTimeField().getAttribute("value");
 	}
 
-
 	public String getLastNameValue() {
 		return getLastNameField().getAttribute("value");
 	}
+
 	public String getFistNameValue() {
 		return getFirstNameField().getAttribute("value");
 	}
@@ -480,9 +495,11 @@ public class AddOrderPage extends Page {
 	public String getPatientDateOfBirthValue() {
 		return getValue(FIELD_PATIENT_DOB);
 	}
+
 	public String getSamplingPerformedOthersValue() {
 		return getValue(FIELD_TEST_LOCATION_CODE_OTHER);
 	}
+
 	public void enterRecievedDate(String date) {
 		setText(FIELD_RECIEVED_DATE, date);
 	}
@@ -627,10 +644,10 @@ public class AddOrderPage extends Page {
 		setText(FIELD_PATIENT_PHONE, phone);
 	}
 
-	public Boolean hasPatientEmailField(){
+	public Boolean hasPatientEmailField() {
 		return hasElementWithoutWait(FIELD_PATIENT_EMAIL);
 	}
-	
+
 	public void enterPatientEmail(String email) {
 		if (hasPatientEmailField()) {
 			setText(FIELD_PATIENT_EMAIL, email);
@@ -692,19 +709,23 @@ public class AddOrderPage extends Page {
 	public String getPatientStreet() {
 		return getValue(FIELD_PATIENT_STREET);
 	}
+
 	public String getPatientAgeYears() {
 		return getValue(FIELD_PATIENT_AGE_YEARS);
 	}
-	public  String getGender(){
+
+	public String getGender() {
 		return getSelectedOption(SELECT_PATIENT_GENDER);
 	}
-	public  String getMaritalStatus(){
+
+	public String getMaritalStatus() {
 		return getSelectedOption(SELECT_PATIENT_MARITAL_STATUS);
 	}
 
 	public String getNationalityOther() {
 		return getValue(FIELD_PATIENT_NATIONALITY_OTHER);
 	}
+
 	public void clearTestsField() {
 		clearText(FIELD_TEST);
 	}
@@ -805,11 +826,11 @@ public class AddOrderPage extends Page {
 		return dropDownHasOptions(SELECT_SAMPLE);
 	}
 
-	public void selectSampleTypeFromDropDownMenu() {
-		if (dropDownHasTextOption(SELECT_SAMPLE, "SERUM")) {
-			selectFrom(SELECT_SAMPLE, "SERUM");
-		} else if (dropDownHasTextOption(SELECT_SAMPLE, "Serum")) {
-			selectFrom(SELECT_SAMPLE, "Serum");
+	public void selectSampleTypeFromDropDownMenu(String sampleType) {
+		if (dropDownHasTextOption(SELECT_SAMPLE, sampleType)) {
+			selectFrom(SELECT_SAMPLE, sampleType);
+		} else if (dropDownHasTextOption(SELECT_SAMPLE, sampleType)) {
+			selectFrom(SELECT_SAMPLE, sampleType);
 		}
 	}
 
@@ -907,6 +928,7 @@ public class AddOrderPage extends Page {
 	public void selectFirstSearchResult() {
 		clickOn(SELECT_RESULT);
 	}
+
 	public void removeAddedSampleConditionFromDropDownMenu() throws InterruptedException {
 		List<WebElement> options = getConditonSelectionField().findElements(FIELD_OPTION);
 		int n = 0;
@@ -960,13 +982,13 @@ public class AddOrderPage extends Page {
 		}
 	}
 
-
 	public void turnOnTelephoneValidation() {
 		goToPage(PATH_SITE_INFO_CONFIG);
 		clickOn(RADIO_BUTTON_VALIDATE_TRUE);
 		clickOn(BUTTON_SAVE_VALIDATION);
 		this.go();
 	}
+
 	public void turnOnContactTracingField() {
 		goToPage(CONTACT_TRACING_ENABLE_CONFIG);
 		if (this.containsText("System error")) {
@@ -998,7 +1020,8 @@ public class AddOrderPage extends Page {
 		this.goToPage(PATH_HOME);
 		return new HomePage(this);
 	}
-	public  String accessionNumberGenerator(){
+
+	public String accessionNumberGenerator() {
 		UUID uuid = UUID.randomUUID();
 		String uuidAsString = uuid.toString();
 		return uuidAsString;
@@ -1018,7 +1041,7 @@ public class AddOrderPage extends Page {
 		Thread.sleep(1000);
 		enterRequesterLastName("SADDIO");
 		clickAddSampleButton();
-		selectSampleTypeFromDropDownMenu();
+		selectSampleTypeFromDropDownMenu("Serum");
 		clickPannelCheckBox();
 		clickTestCheckBox();
 		clickNewPatientButton();
@@ -1049,7 +1072,7 @@ public class AddOrderPage extends Page {
 		Thread.sleep(1000);
 		enterRequesterLastName("SADDIO");
 		clickAddSampleButton();
-		selectSampleTypeFromDropDownMenu();
+		selectSampleTypeFromDropDownMenu("Serum");
 		clickPannelCheckBox();
 		clickTestCheckBox();
 		clickNewPatientButton();
@@ -1069,7 +1092,24 @@ public class AddOrderPage extends Page {
 		enterPatientOtherNationality("nationality");
 		clickSave();
 	}
-	public boolean patientSearchResultsTableExists(){
+
+	public boolean patientSearchResultsTableExists() {
 		return findElement(PATIENT_SEARCH_RESULTS_TABLE).isDisplayed();
 	}
+
+	public void enterSearchTestName(String testName) {
+		setText(SEARCH_TEST_NAME_FIELD, testName);
+	}
+
+	public boolean validateTestNameExists(String textName) {
+		By LIST_ELEMENTS = By.tagName("li");
+		List<WebElement> options = findElementWithoutWait(SEARCH_TEST_NAME_RESULTS).findElements(LIST_ELEMENTS);
+		for (WebElement element : options) {
+			if (element.getText().equals("×" + textName)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 }

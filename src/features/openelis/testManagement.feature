@@ -2,12 +2,12 @@ Feature: Test Management Feature
 
   Background:
     Given User logins and Visits Home Page
-    When User clicks admin menu link
-    And User clicks Test Management left menu item link
 
   @testManagement
   Scenario: Validate list items in Test Management menu
-    Given Test Management page appears with functionality links
+    Given User clicks admin menu link
+    Then User clicks Test Management left menu item link
+    And Test Management page appears with functionality links
       | Rename existing test names              |
       | Rename Existing Panels                  |
       | Rename Existing Sample Types            |
@@ -30,7 +30,9 @@ Feature: Test Management Feature
 
   @testManagement
   Scenario Outline: Open Rename Existing Test Names page
-    Given Check if rename existing test names link exists
+    Given User clicks admin menu link
+    Then User clicks Test Management left menu item link
+    And Check if rename existing test names link exists
     When User clicks rename existing test names link
     Then Laboratory test names (hyperlinked & underlined) should appear on page in three columns. All are in primary language
     When User selects an existing Test Name "<testName>"
@@ -50,7 +52,9 @@ Feature: Test Management Feature
 
   @testManagement
   Scenario: User rejects the testName updates
-    Given Check if rename existing test names link exists
+    Given User clicks admin menu link
+    Then User clicks Test Management left menu item link
+    And Check if rename existing test names link exists
     When User clicks rename existing test names link
     Then Laboratory test names (hyperlinked & underlined) should appear on page in three columns. All are in primary language
     When User selects an existing Test Name "Glucose(Plasma)"
@@ -65,7 +69,9 @@ Feature: Test Management Feature
 
   @testManagement
   Scenario: User cancels the testName updates
-    Given Check if rename existing test names link exists
+    Given User clicks admin menu link
+    Then User clicks Test Management left menu item link
+    And Check if rename existing test names link exists
     When User clicks rename existing test names link
     Then Laboratory test names (hyperlinked & underlined) should appear on page in three columns. All are in primary language
     When User selects an existing Test Name "Glucose(Plasma)"
@@ -78,7 +84,40 @@ Feature: Test Management Feature
     And User clicks on finished button
 
 
+  @testManagement
+  Scenario Outline: Add new tests
+    Given User clicks admin menu link
+    Then User clicks Test Management left menu item link
+    And User Clicks Add new test link on the test management menu
+    Then User Enters test name for English "<TestNameEng>" and French "<TestNameFrench>" into the respective text fields
+    Then From the Unit of Measure dropdown select the appropriate unit "<UnitOfMeasure>"
+    Then From the Test Section drop down select the appropriate option "<testSection>"
+    Then From the Panel dropdown select the appropriate option "<panel>"
+    Then From the Result type dropdown select the appropriate option
+    Then Under Reporting Test name, click on Copy from Test Name
+    Then User Enters Reporting test names for English and French into the respective fields if different from Test Name
+    Then With all of the *required fields completed the Next button becomes active
+    Then The tick box next to Active is auto-selected
+    Then The tick box next to Orderable is auto-selected
+    And User Clicks Next button
+    Then User selects the Type "<sampleType>" from SampleType dropdown options
+    Then User selects one more type from SampleType dropdown options
+    Then Select the new Test Name and hold the selection move it to the desired position in the Test display order
+    And User Clicks on Next button
+    And User Clicks on Accept button
+    Examples:
+      | TestNameEng            | TestNameFrench               | UnitOfMeasure | testSection       | panel             | sampleType |
+      | gastric fluid analysis | analyse du liquide gastrique | mlU/ml        | Molecular Biology | Bilan Biochimique | Serum      |
 
+  @testManagement
+  Scenario Outline: Verify Added new testName
+    Given User Clicks on the Order menu tab and select Add order
+    Then User selects sample type "<sampleType>" from the drop down
+    And User Searches TestName "<TestName>" from the available Tests
+    Examples:
+      | sampleType | TestName               |
+      | Serum      | gastric fluid analysis |
+      | Urines     | gastric fluid analysis |
 
 
 

@@ -1,11 +1,12 @@
 Feature: Non Conformity workflow
 
   Background:
-    Given User Logs in to Home Page and goes to Non Conformity Report Page
-    Then User Selects Non Conformity report from main menu
+    Given User Logins in to Home Page
+
 
   @nonConformity
   Scenario Outline: Search Non Conformity report
+    Given User Selects Non Conformity report from main menu
     When User Selects search by --> Lab No dropdown option
     Then User enters accession number "<accessionNumber>"
     And User checks the affected specimen

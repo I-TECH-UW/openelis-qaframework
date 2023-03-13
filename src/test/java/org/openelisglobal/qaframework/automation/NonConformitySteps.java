@@ -40,13 +40,13 @@ public class NonConformitySteps extends TestBase {
 		quit();
 	}
 
-	@Given("User Logs in to Home Page and goes to Non Conformity Report Page")
-	public void userLogsInToHomePageAndGoesToNonConformityReportPage() throws InterruptedException {
+	@Given("User Logins in to Home Page")
+	public void userLoginsInToHomePage() throws InterruptedException {
 		homePage = loginPage.goToHomePage();
 		Thread.sleep(100);
 	}
 
-	@Then("User Selects Non Conformity report from main menu")
+	@Given("User Selects Non Conformity report from main menu")
 	public void userSelectsNonConformityReportFromMainMenu() throws InterruptedException {
 		nonConformityPage = homePage.goToNonConformityReport();
 		assertTrue(nonConformityPage.containsText("Report Non-Conforming Event (NCE)"));
