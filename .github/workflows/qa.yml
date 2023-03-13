@@ -26,8 +26,8 @@ jobs:
       - name: Run and Publish Openelis QA
         run: |
           echo "cucumber.publish.enabled=true" > src/test/resources/cucumber.properties
-          mvn clean install -DskipTests=true -Dmaven.test.failure.ignore=true
-          mvn clean verify
+          mvn clean install -DskipTests=true
+          mvn clean verify -Dmaven.test.failure.ignore=true
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
