@@ -28,7 +28,7 @@ Feature: Test Management Feature
       | Add result select list                  |
     Then Count List menu list Items should be <18>
 
-  @testManagement
+  @testManagement @renameExistingTest
   Scenario Outline: Open Rename Existing Test Names page
     Given User clicks admin menu link
     Then User clicks Test Management left menu item link
@@ -50,7 +50,7 @@ Feature: Test Management Feature
       | GlucoseENG(Plasma) | Glucose     | Glucose    | GlucoseReport     | GlucoseReport    |
 
 
-  @testManagement
+  @testManagement @renameExistingTest
   Scenario: User rejects the testName updates
     Given User clicks admin menu link
     Then User clicks Test Management left menu item link
@@ -67,7 +67,7 @@ Feature: Test Management Feature
     Then Confirm Test name "GlucoseRejectEng" update was rejected but contains "Glucose(Plasma)"
     And User clicks on finished button
 
-  @testManagement
+  @testManagement @renameExistingTest
   Scenario: User cancels the testName updates
     Given User clicks admin menu link
     Then User clicks Test Management left menu item link
@@ -84,7 +84,7 @@ Feature: Test Management Feature
     And User clicks on finished button
 
 
-  @testManagement
+  @testManagement @addNewTestName
   Scenario Outline: Add new tests
     Given User clicks admin menu link
     Then User clicks Test Management left menu item link
@@ -109,7 +109,7 @@ Feature: Test Management Feature
       | TestNameEng            | TestNameFrench               | UnitOfMeasure | testSection       | panel             | sampleType |
       | gastric fluid analysis | analyse du liquide gastrique | mlU/ml        | Molecular Biology | Bilan Biochimique | Serum      |
 
-  @testManagement
+  @testManagement @addNewTestName
   Scenario Outline: Verify Added new testName
     Given User Clicks on the Order menu tab and select Add order
     Then User selects sample type "<sampleType>" from the drop down
@@ -118,6 +118,18 @@ Feature: Test Management Feature
       | sampleType | TestName               |
       | Serum      | gastric fluid analysis |
       | Urines     | gastric fluid analysis |
+
+  @testManagement @modifyTest
+  Scenario Outline: Modify test details
+    Given User clicks admin menu link
+    Then User clicks Test Management left menu item link
+    And User Clicks on modify tests link on the test management menu
+    Then User checks show Guide checkbox
+    Then User unchecks show Guide checkbox
+    And User clicks on one of the available tests "<testName>"
+    Examples:
+      | testName       |
+      | Amylase(Serum) |
 
 
 

@@ -185,17 +185,18 @@ public class TestManagementSteps extends TestBase {
 	}
 
 	@And("User Clicks Add new test link on the test management menu")
-	public void userClicksAddNewTestLinkOnTheTestManagementMenu() {
+	public void userClicksAddNewTestLinkOnTheTestManagementMenu() throws InterruptedException {
 		testManagementPage.clickAddNewTestsLink();
-		testManagementPage.containsText("Add new tests");
-		testManagementPage.containsText("Test Name");
-		testManagementPage.testEnglishNameFieldExists();
-		testManagementPage.testFrenchNameFieldExists();
-		testManagementPage.containsText("Test Section");
-		testManagementPage.testSectionDropDownExists();
-		testManagementPage.containsText("Panel");
-		testManagementPage.containsText("Reporting Test Name");
-		testManagementPage.containsText("Panel");
+		Thread.sleep(100);
+		assertTrue(testManagementPage.containsText("Add new tests"));
+		assertTrue(testManagementPage.containsText("Test Name"));
+		assertTrue(testManagementPage.testEnglishNameFieldExists());
+		assertTrue(testManagementPage.testFrenchNameFieldExists());
+		assertTrue(testManagementPage.containsText("Test Section"));
+		assertTrue(testManagementPage.testSectionDropDownExists());
+		assertTrue(testManagementPage.containsText("Panel"));
+		assertTrue(testManagementPage.containsText("Reporting Test Name"));
+		assertTrue(testManagementPage.containsText("Panel"));
 	}
 
 	@Then("User Enters test name for English {string} and French {string} into the respective text fields")
@@ -324,5 +325,27 @@ public class TestManagementSteps extends TestBase {
 		addOrderPage.enterSearchTestName(testName);
 		Thread.sleep(1000);
 		assertTrue(addOrderPage.validateTestNameExists(testName));
+	}
+
+	@And("User Clicks on modify tests link on the test management menu")
+	public void userClicksOnModifyTestsLinkOnTheTestManagementMenu() throws InterruptedException {
+		testManagementPage.clickModifyTestsLink();
+		Thread.sleep(100);
+	}
+
+	@Then("User checks show Guide checkbox")
+	public void userChecksShowGuideCheckbox() {
+		assertTrue(testManagementPage.containsText("Show guide"));
+		assertTrue(testManagementPage.guidanceCheckBoxExists());
+
+	}
+
+	@Then("User unchecks show Guide checkbox")
+	public void userUnchecksShowGuideCheckbox() {
+	}
+
+	@And("User clicks on one of the available tests {string}")
+	public void userClicksOnOneOfTheAvailableTests(String testName) {
+		testManagementPage.clickOnTestTestName(testName);
 	}
 }
