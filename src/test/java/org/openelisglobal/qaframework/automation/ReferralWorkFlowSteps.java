@@ -120,7 +120,7 @@ public class ReferralWorkFlowSteps extends TestBase {
     @When("User Completes the Sample section of the Order form")
     public void completeSampleSection() throws InterruptedException {
         addOrderPage.clickAddSampleButton();
-        addOrderPage.selectSampleTypeFromDropDownMenu();
+        addOrderPage.selectSampleTypeFromDropDownMenu("Serum");
         addOrderPage.clickPannelCheckBox();
         addOrderPage.clickTestCheckBox();
         addOrderPage.rejectSampleCheckBox();

@@ -305,7 +305,7 @@ public class AddOrderSteps extends TestBase {
 	
 	@And("User Selects Sample Type from Drop down menu")
 	public void selectSampleTypeFromDropDownMenu() {
-		addOrderPage.selectSampleTypeFromDropDownMenu();
+		addOrderPage.selectSampleTypeFromDropDownMenu("Serum");
 	}
 	
 	@And("User Selects Sample Conditions from Drop down menu")
@@ -559,7 +559,7 @@ public class AddOrderSteps extends TestBase {
 		Thread.sleep(1000);
 		addOrderPage.enterRequesterLastName("SADDIO");
 		addOrderPage.clickAddSampleButton();
-		addOrderPage.selectSampleTypeFromDropDownMenu();
+		addOrderPage.selectSampleTypeFromDropDownMenu("Serum");
 		addOrderPage.clickPannelCheckBox();
 		addOrderPage.clickNewPatientButton();
 	}
@@ -779,7 +779,7 @@ public class AddOrderSteps extends TestBase {
 		Thread.sleep(1000);
 		addOrderPage.enterRequesterLastName("SADDIO");
 		addOrderPage.clickAddSampleButton();
-		addOrderPage.selectSampleTypeFromDropDownMenu();
+		addOrderPage.selectSampleTypeFromDropDownMenu("Serum");
 		addOrderPage.clickPannelCheckBox();
 		addOrderPage.clickTestCheckBox();
 		addOrderPage.clickNewPatientButton();
