@@ -74,6 +74,10 @@ public class TestManagementPage extends Page {
 
 	private static By ACCEPT_TEST_NAME_BUTTON = By.xpath("//*[@id=\"mainForm\"]/div[8]/input[1]");
 
+	private static By MODIFY_TESTS_LINK = By.xpath("//*[@id=\"mainForm\"]/ul[2]/li[4]/input");
+
+	private static By GUIDANCE_CHECKBOX = By.xpath("//*[@id=\"mainForm\"]/input[5]");
+
 	public TestManagementPage(Page parent) {
 		super(parent);
 	}
@@ -294,7 +298,16 @@ public class TestManagementPage extends Page {
 		}
 		return 0;
 	}
-	public void clickAcceptTestButton(){
+
+	public void clickAcceptTestButton() {
 		clickOn(ACCEPT_TEST_NAME_BUTTON);
+	}
+
+	public void clickModifyTestsLink() {
+		clickOn(MODIFY_TESTS_LINK);
+	}
+
+	public boolean guidanceCheckBoxExists() {
+		return hasElement(GUIDANCE_CHECKBOX);
 	}
 }
