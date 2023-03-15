@@ -229,12 +229,12 @@ public class TestManagementSteps extends TestBase {
 	@Then("Under Reporting Test name, click on Copy from Test Name")
 	public void underReportingTestNameClickOnCopyFromTestName() throws InterruptedException {
 		assertEquals("", testManagementPage.getTestReportNameEnglish());
-		assertEquals("", testManagementPage.getTestReportNameEnglish());
+		assertEquals("", testManagementPage.getTestReportNameFrench());
 		testManagementPage.clickCopyTestNameButton();
 		Thread.sleep(100);
 
 		assertNotEquals("", testManagementPage.getTestReportNameEnglish());
-		assertNotEquals("", testManagementPage.getTestReportNameEnglish());
+		assertNotEquals("", testManagementPage.getTestReportNameFrench());
 	}
 
 	@Then("User Enters Reporting test names for English and French into the respective fields if different from Test Name")
@@ -334,18 +334,124 @@ public class TestManagementSteps extends TestBase {
 	}
 
 	@Then("User checks show Guide checkbox")
-	public void userChecksShowGuideCheckbox() {
+	public void userChecksShowGuideCheckbox() throws InterruptedException {
 		assertTrue(testManagementPage.containsText("Show guide"));
 		assertTrue(testManagementPage.guidanceCheckBoxExists());
-
+		testManagementPage.GuidanceChecked();
+		Thread.sleep(100);
+		assertTrue(testManagementPage.isGuidanceCheckBoxChecked());
 	}
 
 	@Then("User unchecks show Guide checkbox")
-	public void userUnchecksShowGuideCheckbox() {
+	public void userUnchecksShowGuideCheckbox() throws InterruptedException {
+		testManagementPage.GuidanceUnChecked();
+		Thread.sleep(100);
+		assertFalse(testManagementPage.isGuidanceCheckBoxChecked());
 	}
 
 	@And("User clicks on one of the available tests {string}")
 	public void userClicksOnOneOfTheAvailableTests(String testName) {
 		testManagementPage.clickOnTestTestName(testName);
+	}
+
+	@Then("Change Test Name both english and french {string}")
+	public void changeTestNameBothEnglishAndFrench(String newTestName) {
+		testManagementPage.enterEngTestName(newTestName);
+		testManagementPage.enterFRTestName(newTestName);
+	}
+
+	@And("Click on Copy from Test Name {string}")
+	public void clickOnCopyFromTestName(String newTestName) {
+		testManagementPage.clickCopyTestNameButton();
+		assertEquals(newTestName, testManagementPage.getTestReportNameEnglish());
+		assertEquals(newTestName, testManagementPage.getTestReportNameFrench());
+	}
+
+	@And("Test Name,Reporting Test Name, Test Section and Result Type are mandatory")
+	public void testNameReportingTestNameTestSectionAndResultTypeAreMandatory() {
+		assertEquals(testManagementPage.getTestNameRequiredClass(), "requiredlabel");
+		assertEquals(testManagementPage.getReportingTestNameRequiredClass(), "requiredlabel");
+		assertEquals(testManagementPage.getTestSectionRequiredClass(), "requiredlabel");
+		assertEquals(testManagementPage.getResultTypeRequiredClass(), "requiredlabel");
+	}
+
+	@And("Test Section : click on dropbox and select section")
+	public void testSectionClickOnDropboxAndSelectSection() {
+		testManagementPage.selectTestSectionDropDownOption("Virology");
+	}
+
+	@And("LOINC test field accepts text")
+	public void loincTestFieldAcceptsText() {
+		testManagementPage.enterLOINCText("82092-8");
+	}
+
+	@And("Panel : click on dropbox and select option")
+	public void panelClickOnDropboxAndSelectOption() {
+		testManagementPage.selectPanelDropDownOption("NFS");
+	}
+
+	@Then("Unit of Measure : click on dropbox and select option")
+	public void unitOfMeasureClickOnDropboxAndSelectOption() {
+		testManagementPage.selectUnitOfMeasure("mlU/ml");
+	}
+
+	@And("Result Type : click on dropbox and select option")
+	public void resultTypeClickOnDropboxAndSelectOption() {
+		testManagementPage.selectResultTypeDropDownOption("Numeric");
+	}
+
+	@Then("user clicks Click on Next")
+	public void userClicksClickOnNext() {
+		testManagementPage.ClickNextButton();
+	}
+
+	@Then("Sample Type : click on dropbox and select option")
+	public void sampleTypeClickOnDropboxAndSelectOption() {
+		testManagementPage.selectSampleTypeDropdown("Plasma");
+	}
+
+	@And("Sample Type is mandatory")
+	public void sampleTypeIsMandatory() {
+		assertEquals(testManagementPage.getSampleTypeRequiredClass(), "requiredlabel");
+	}
+
+	@Then("click on Next button")
+	public void clickOnNextButton() throws InterruptedException {
+		testManagementPage.ClickNextButton();
+		Thread.sleep(100);
+		assertTrue(testManagementPage.containsText("Sample type and test sort order"));
+	}
+
+	@Then("Click on Edit Result Ranges button")
+	public void clickOnEditResultRangesButton() {
+		testManagementPage.clickEditResultRangesButton();
+	}
+
+	@And("Enter appropriate ranges")
+	public void enterAppropriateRanges() throws InterruptedException {
+		testManagementPage.enterNormalRangeLow("6");
+		testManagementPage.enterNormalRangeHigh("7");
+		testManagementPage.enterReportingRangeLow("8");
+		testManagementPage.enterReportingRangeHigh("9");
+		if (testManagementPage.alertPresent()) {
+			testManagementPage.acceptAlert();
+		}
+	}
+
+	@Then("User clicks Click on Next button after entering Result ranges")
+	public void userClicksClickOnNextButtonAfterEnteringResultRanges() throws InterruptedException {
+		testManagementPage.ClickNextButton();
+		if (testManagementPage.alertPresent()) {
+			testManagementPage.acceptAlert();
+		}
+		assertTrue(testManagementPage.acceptButtonExists());
+	}
+
+	@Then("Click on Accept button")
+	public void clickOnAcceptButton() throws InterruptedException {
+		testManagementPage.ClickAcceptButton();
+		if (testManagementPage.alertPresent()) {
+			testManagementPage.acceptAlert();
+		}
 	}
 }

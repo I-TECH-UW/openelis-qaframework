@@ -127,9 +127,26 @@ Feature: Test Management Feature
     Then User checks show Guide checkbox
     Then User unchecks show Guide checkbox
     And User clicks on one of the available tests "<testName>"
+    Then Change Test Name both english and french "<newTestName>"
+    And Click on Copy from Test Name "<newTestName>"
+    And Test Name,Reporting Test Name, Test Section and Result Type are mandatory
+    And Test Section : click on dropbox and select section
+    And LOINC test field accepts text
+    And Panel : click on dropbox and select option
+    Then Unit of Measure : click on dropbox and select option
+    And Result Type : click on dropbox and select option
+    Then user clicks Click on Next
+#    Then Sample Type : click on dropbox and select option   // to be reviewed
+    And Sample Type is mandatory
+    Then click on Next button
+    Then Click on Edit Result Ranges button
+    And Enter appropriate ranges
+    Then User clicks Click on Next button after entering Result ranges
+    Then Click on Accept button
     Examples:
-      | testName       |
-      | Amylase(Serum) |
+      | testName | newTestName     |
+      | Amylase  | Amylase updated |
+      | Bioline  | Bioline updated |
 
 
 
