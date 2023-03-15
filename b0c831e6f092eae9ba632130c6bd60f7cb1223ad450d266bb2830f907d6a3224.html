@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>Patient Information</title>
+    <title>Modify test details</title>
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
@@ -125,7 +125,7 @@
         <span class="breadcrumbs">
             <a href="index.html" class="breadcrumbs">Home</a>
 
-        > Patient Information
+        > Modify test details
         </span>
         </div>
         <div class="rightbg"></div>
@@ -143,7 +143,7 @@
             <a href="capabilities.html"><i class="fa fa-book"></i> Requirements</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 15-03-2023 00:20</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 15-03-2023 00:46</span>
     <br style="clear:left"/>
 </div>
     <div class="clr"></div>
@@ -158,7 +158,7 @@
                                 <div>
                                     <h3 class="discreet-story-header">
                                         <i class="fa fa-2x fa-comments-o"></i>
-                                        <span class="story-header-title">Add Order</span>
+                                        <span class="story-header-title">Test Management Feature</span>
                                     </h3>
                                 </div>
 
@@ -167,7 +167,14 @@
                                 <p class="tag">
                                     <span class="badge tag-badge" style="background:default;">
                                     <i class="fa fa-tag"></i>&nbsp;<a class="tagLink" style="background:default;"
-                                                                      href="a46954327e0f7c9a92e590f48326fbeac7e453cb9f83a42df9a28e125cd19327.html">Order
+                                                                      href="da05ad756cce8c08bb33bfd68c8ff57624342ab52ce10a3f592265afb2343e87.html">Test Management
+                                    (tag)</a>
+                                </span>
+                                </p>
+                                <p class="tag">
+                                    <span class="badge tag-badge" style="background:default;">
+                                    <i class="fa fa-tag"></i>&nbsp;<a class="tagLink" style="background:default;"
+                                                                      href="131ce1a1b0c67e20708188759f07aac5a965376a60cb0ef79edd9f7c034190ce.html">Modify Test
                                     (tag)</a>
                                 </span>
                                 </p>
@@ -179,10 +186,10 @@
                 <table class="outcome-header">
                     <tr>
                         <td colspan="2" class="test-title-bar">
-                            <span class="outcome-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon fa-2x' title='SUCCESS'></i></a></span>
+                            <span class="outcome-icon"><a href='##beforetable'><i class='fa fa-exclamation-triangle error-icon fa-2x' title='ERROR'></i></a></span>
                             <span class="test-case-title">
-                                <span class="success-color">
-                                    Patient Information
+                                <span class="error-color">
+                                    Modify test details
                                         <span class="related-issue-title"></span>
                                 </span>
                             </span>
@@ -202,7 +209,7 @@
         <div class="story-title">
             <h3 class="story-header">Scenario Outline</h3>
 
-            <div class="scenario">When User Expands Patient information form by clicking the + button next to Patient<br>And User Clicks New Patient Button<br>And User Enters Subject Number "&lt;subjectNumber&gt;"<br>And User Enters National ID "&lt;nationalId&gt;"<br>And User Enters Patient Last Name "&lt;pLastName&gt;"<br>And User Enters Patient First Name "&lt;pFirstName&gt;"<br>And User Enters Contact Last Name "&lt;cLastName&gt;"<br>And User Enters Contact First Name "&lt;cFirstName&gt;"<br>And User Enters Contact Email "&lt;cEmail&gt;"<br>Then Field validates "&lt;status&gt;" Contact Email<br>And User Enters Contact Phone "&lt;cPhone&gt;"<br>And User Enters Patient Street "&lt;street&gt;"<br>And User Enters Patient Commune "&lt;commune&gt;"<br>And User Enters Patient Town "&lt;town&gt;"<br>And User Enters Patient Phone "&lt;pPhone&gt;"<br>Then Field validates "&lt;status&gt;" Patient Phone<br>And User Enters Patient Email "&lt;pEmail&gt;"<br>Then Field validates "&lt;status&gt;" Patient Email<br>And User Selects Patient Health Region<br>And User Selects Patient Health District from the drop down<br>And User Enters Patient Date of Birth "&lt;dateOfBirth&gt;"<br>Then Field validates "&lt;status&gt;" Patient Date Of Birth<br>When User Enters Patient Date of Birth in future<br>Then Alert appears if Date is in the Future<br>When Date of Birth is left blank and Age "&lt;age&gt;" is filled<br>Then Field generates Date of Birth with correct year for the Age "&lt;age&gt;"<br>And Alert Appears if Age entered is -1 , 100 and &gt;100<br>And User Selects Patient Gender<br>And User Selects Patient Education<br>And User Selects Patient Marital Status<br>And User Enters Patient Other Nationality "&lt;nationality&gt;"</div>
+            <div class="scenario">Given User clicks admin menu link<br>Then User clicks Test Management left menu item link<br>And User Clicks on modify tests link on the test management menu<br>Then User checks show Guide checkbox<br>Then User unchecks show Guide checkbox<br>And User clicks on one of the available tests "&lt;testName&gt;"<br>Then Change Test Name both english and french "&lt;newTestName&gt;"<br>And Click on Copy from Test Name "&lt;newTestName&gt;"<br>And Test Name,Reporting Test Name, Test Section and Result Type are mandatory<br>And Test Section : click on dropbox and select section<br>And LOINC test field accepts text<br>And Panel : click on dropbox and select option<br>Then Unit of Measure : click on dropbox and select option<br>And Result Type : click on dropbox and select option<br>Then user clicks Click on Next<br>And Sample Type is mandatory<br>Then click on Next button<br>Then Click on Edit Result Ranges button<br>And Enter appropriate ranges<br>Then User clicks Click on Next button after entering Result ranges<br>Then Click on Accept button</div>
 
         </div>
 
@@ -221,132 +228,27 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                            <th>Subject Number</th>
-                            <th>National</th>
-                            <th>P Last Name</th>
-                            <th>P First Name</th>
-                            <th>C Last Name</th>
-                            <th>C First Name</th>
-                            <th>C Email</th>
-                            <th>C Phone</th>
-                            <th>Street</th>
-                            <th>Commune</th>
-                            <th>Town</th>
-                            <th>P Phone</th>
-                            <th>P Email</th>
-                            <th>Date Of Birth</th>
-                            <th>Nationality</th>
-                            <th>Age</th>
-                            <th>Status</th>
+                            <th>Test Name</th>
+                            <th>New Test Name</th>
                     </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td class="test-SUCCESS"><a href="#0">1</a></td>
                                 <td class="test-SUCCESS"><a
-                                            href="#0">201807D9P</a>
+                                            href="#0">Amylase</a>
                                 </td>
                                 <td class="test-SUCCESS"><a
-                                            href="#0">201507D35</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#0">Aliou</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#0">SADIO</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#0">moses</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#0">mutes</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#0">wrongEmail</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#0">+23063458788</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#0">New York city, street 3334</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#0">Grand yoff</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#0">Dakar</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#0">ff223377</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#0">wrongEmail</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#0">09/02/dd</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#0">American</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#0">20</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#0">invalid</a>
+                                            href="#0">Amylase updated</a>
                                 </td>
                         </tr>
                         <tr>
-                            <td class="test-SUCCESS"><a href="#1">2</a></td>
-                                <td class="test-SUCCESS"><a
-                                            href="#1">201807D9P</a>
+                            <td class="test-ERROR"><a href="#1">2</a></td>
+                                <td class="test-ERROR"><a
+                                            href="#1">Bioline</a>
                                 </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#1">201507D35</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#1">Aliou</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#1">SADIO</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#1">moses</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#1">mutes</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#1">contact@gmail.com</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#1">+23063458788</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#1">New York city, street 3334</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#1">Grand yoff</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#1">Dakar</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#1">+23063458788</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#1">pat@gmail.com</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#1">09/02/2019</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#1">American</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#1">20</a>
-                                </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#1">valid</a>
+                                <td class="test-ERROR"><a
+                                            href="#1">Bioline updated</a>
                                 </td>
                         </tr>
                     </tbody>
@@ -386,7 +288,7 @@
                                 <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
                                    style="display:block;">
                                     <span class="top-level-step">
-                                                1: Patient Information ({subjectNumber=201807D9P, nationalId=201507D35, pLastName=Aliou, pFirstName=SADIO, cLastName=moses, cFirstName=mutes, cEmail=wrongEmail, cPhone=+23063458788, street=New York city, street 3334, commune=Grand yoff, town=Dakar, pPhone=ff223377, pEmail=wrongEmail, dateOfBirth=09/02/dd, nationality=American, age=20, status=invalid})
+                                                1: Modify test details ({testName=Amylase, newTestName=Amylase updated})
                                         </span>
                                 </a>
                                 <span class="evidence">
@@ -395,7 +297,7 @@
                         </td>
 
                         <td width="130"><span class="top-level-step">SUCCESS</span></td>
-                        <td width="100"><span class="top-level-step">1m 11s</span></td>
+                        <td width="100"><span class="top-level-step">27s 124ms</span></td>
                     </tr>
                         <tr>
                             <td colspan="5">
@@ -412,7 +314,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                Given User logs in and visits Home page
+                                                Given User logins and Visits Home Page
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -420,7 +322,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">5s 455ms</span></td>
+                        <td width="100"><span class="nested-group-step">5s 353ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -434,7 +336,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User clicks add order and goes to Add order Page
+                                                Given User clicks admin menu link
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -442,7 +344,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 523ms</span></td>
+                        <td width="100"><span class="nested-group-step">301ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -456,7 +358,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                When User Expands Patient information form by clicking the + button next to Patient
+                                                Then User clicks Test Management left menu item link
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -464,7 +366,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">112ms</span></td>
+                        <td width="100"><span class="nested-group-step">350ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -478,7 +380,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Clicks New Patient Button
+                                                And User Clicks on modify tests link on the test management menu
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -486,7 +388,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">8s 459ms</span></td>
+                        <td width="100"><span class="nested-group-step">2s 178ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -500,7 +402,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Subject Number "201807D9P"
+                                                Then User checks show Guide checkbox
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -508,7 +410,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 276ms</span></td>
+                        <td width="100"><span class="nested-group-step">509ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -522,7 +424,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters National ID "201507D35"
+                                                Then User unchecks show Guide checkbox
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -530,7 +432,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 247ms</span></td>
+                        <td width="100"><span class="nested-group-step">275ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -544,7 +446,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Patient Last Name "Aliou"
+                                                And User clicks on one of the available tests "Amylase"
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -552,7 +454,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 178ms</span></td>
+                        <td width="100"><span class="nested-group-step">1s 413ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -566,7 +468,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Patient First Name "SADIO"
+                                                Then Change Test Name both english and french "Amylase updated"
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -574,7 +476,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 171ms</span></td>
+                        <td width="100"><span class="nested-group-step">2s 308ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -588,7 +490,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Contact Last Name "moses"
+                                                And Click on Copy from Test Name "Amylase updated"
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -596,7 +498,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 166ms</span></td>
+                        <td width="100"><span class="nested-group-step">244ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -610,7 +512,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Contact First Name "mutes"
+                                                And Test Name,Reporting Test Name, Test Section and Result Type are mandatory
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -618,7 +520,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 187ms</span></td>
+                        <td width="100"><span class="nested-group-step">222ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -632,7 +534,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Contact Email "wrongEmail"
+                                                And Test Section : click on dropbox and select section
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -640,7 +542,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 248ms</span></td>
+                        <td width="100"><span class="nested-group-step">324ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -654,7 +556,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                Then Field validates "invalid" Contact Email
+                                                And LOINC test field accepts text
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -662,7 +564,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 253ms</span></td>
+                        <td width="100"><span class="nested-group-step">1s 158ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -676,7 +578,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Contact Phone "+23063458788"
+                                                And Panel : click on dropbox and select option
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -684,7 +586,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 186ms</span></td>
+                        <td width="100"><span class="nested-group-step">328ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -698,7 +600,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Patient Street "New York city, street 3334"
+                                                Then Unit of Measure : click on dropbox and select option
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -706,7 +608,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 220ms</span></td>
+                        <td width="100"><span class="nested-group-step">252ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -720,7 +622,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Patient Commune "Grand yoff"
+                                                And Result Type : click on dropbox and select option
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -728,7 +630,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 179ms</span></td>
+                        <td width="100"><span class="nested-group-step">166ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -742,7 +644,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Patient Town "Dakar"
+                                                Then user clicks Click on Next
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -750,7 +652,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 213ms</span></td>
+                        <td width="100"><span class="nested-group-step">102ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -764,7 +666,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Patient Phone "ff223377"
+                                                And Sample Type is mandatory
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -772,7 +674,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 156ms</span></td>
+                        <td width="100"><span class="nested-group-step">095ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -786,7 +688,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                Then Field validates "invalid" Patient Phone
+                                                Then click on Next button
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -794,7 +696,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">2s 297ms</span></td>
+                        <td width="100"><span class="nested-group-step">207ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -808,7 +710,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Patient Email "wrongEmail"
+                                                Then Click on Edit Result Ranges button
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -816,7 +718,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">10s 022ms</span></td>
+                        <td width="100"><span class="nested-group-step">089ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -830,7 +732,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                Then Field validates "invalid" Patient Email
+                                                And Enter appropriate ranges
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -838,7 +740,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">10s 018ms</span></td>
+                        <td width="100"><span class="nested-group-step">5s 815ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -852,7 +754,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Selects Patient Health Region
+                                                Then User clicks Click on Next button after entering Result ranges
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -860,7 +762,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">242ms</span></td>
+                        <td width="100"><span class="nested-group-step">1s 111ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -874,7 +776,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Selects Patient Health District from the drop down
+                                                Then Click on Accept button
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -882,261 +784,19 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">262ms</span></td>
-                    </tr>
-                    <tr class="test-SUCCESS">
-
-                        <td width="70" class="step-icon">
-                            <a name="0-22"></a>
-                                <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                        </td>
-
-                        <td class="step-description-column">
-                            <div class="step-description">
-                                    <span class="nested-group-step">
-                                                And User Enters Patient Date of Birth "09/02/dd"
-                                        </span>
-                                <span class="evidence">
-                                </span>
-                            </div>
-                        </td>
-
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 259ms</span></td>
-                    </tr>
-                    <tr class="test-SUCCESS">
-
-                        <td width="70" class="step-icon">
-                            <a name="0-23"></a>
-                                <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                        </td>
-
-                        <td class="step-description-column">
-                            <div class="step-description">
-                                    <span class="nested-group-step">
-                                                Then Field validates "invalid" Patient Date Of Birth
-                                        </span>
-                                <span class="evidence">
-                                </span>
-                            </div>
-                        </td>
-
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 171ms</span></td>
-                    </tr>
-                    <tr class="test-SUCCESS">
-
-                        <td width="70" class="step-icon">
-                            <a name="0-24"></a>
-                                <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                        </td>
-
-                        <td class="step-description-column">
-                            <div class="step-description">
-                                    <span class="nested-group-step">
-                                                When User Enters Patient Date of Birth in future
-                                        </span>
-                                <span class="evidence">
-                                </span>
-                            </div>
-                        </td>
-
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 236ms</span></td>
-                    </tr>
-                    <tr class="test-SUCCESS">
-
-                        <td width="70" class="step-icon">
-                            <a name="0-25"></a>
-                                <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                        </td>
-
-                        <td class="step-description-column">
-                            <div class="step-description">
-                                    <span class="nested-group-step">
-                                                Then Alert appears if Date is in the Future
-                                        </span>
-                                <span class="evidence">
-                                </span>
-                            </div>
-                        </td>
-
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 225ms</span></td>
-                    </tr>
-                    <tr class="test-SUCCESS">
-
-                        <td width="70" class="step-icon">
-                            <a name="0-26"></a>
-                                <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                        </td>
-
-                        <td class="step-description-column">
-                            <div class="step-description">
-                                    <span class="nested-group-step">
-                                                When Date of Birth is left blank and Age "20" is filled
-                                        </span>
-                                <span class="evidence">
-                                </span>
-                            </div>
-                        </td>
-
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 286ms</span></td>
-                    </tr>
-                    <tr class="test-SUCCESS">
-
-                        <td width="70" class="step-icon">
-                            <a name="0-27"></a>
-                                <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                        </td>
-
-                        <td class="step-description-column">
-                            <div class="step-description">
-                                    <span class="nested-group-step">
-                                                Then Field generates Date of Birth with correct year for the Age "20"
-                                        </span>
-                                <span class="evidence">
-                                </span>
-                            </div>
-                        </td>
-
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 213ms</span></td>
-                    </tr>
-                    <tr class="test-SUCCESS">
-
-                        <td width="70" class="step-icon">
-                            <a name="0-28"></a>
-                                <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                        </td>
-
-                        <td class="step-description-column">
-                            <div class="step-description">
-                                    <span class="nested-group-step">
-                                                And Alert Appears if Age entered is -1 , 100 and &gt;100
-                                        </span>
-                                <span class="evidence">
-                                </span>
-                            </div>
-                        </td>
-
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">7s 146ms</span></td>
-                    </tr>
-                    <tr class="test-SUCCESS">
-
-                        <td width="70" class="step-icon">
-                            <a name="0-29"></a>
-                                <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                        </td>
-
-                        <td class="step-description-column">
-                            <div class="step-description">
-                                    <span class="nested-group-step">
-                                                And User Selects Patient Gender
-                                        </span>
-                                <span class="evidence">
-                                </span>
-                            </div>
-                        </td>
-
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">281ms</span></td>
-                    </tr>
-                    <tr class="test-SUCCESS">
-
-                        <td width="70" class="step-icon">
-                            <a name="0-30"></a>
-                                <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                        </td>
-
-                        <td class="step-description-column">
-                            <div class="step-description">
-                                    <span class="nested-group-step">
-                                                And User Selects Patient Education
-                                        </span>
-                                <span class="evidence">
-                                </span>
-                            </div>
-                        </td>
-
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">258ms</span></td>
-                    </tr>
-                    <tr class="test-SUCCESS">
-
-                        <td width="70" class="step-icon">
-                            <a name="0-31"></a>
-                                <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                        </td>
-
-                        <td class="step-description-column">
-                            <div class="step-description">
-                                    <span class="nested-group-step">
-                                                And User Selects Patient Marital Status
-                                        </span>
-                                <span class="evidence">
-                                </span>
-                            </div>
-                        </td>
-
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">222ms</span></td>
-                    </tr>
-                    <tr class="test-SUCCESS">
-
-                        <td width="70" class="step-icon">
-                            <a name="0-32"></a>
-                                <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                        </td>
-
-                        <td class="step-description-column">
-                            <div class="step-description">
-                                    <span class="nested-group-step">
-                                                And User Enters Patient Other Nationality "American"
-                                        </span>
-                                <span class="evidence">
-                                </span>
-                            </div>
-                        </td>
-
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 189ms</span></td>
+                        <td width="100"><span class="nested-group-step">3s 769ms</span></td>
                     </tr>
 
                                 </table>
                             </td>
                         </tr>
-                    <tr class="test-SUCCESS">
+                    <tr class="test-ERROR">
 
                         <td width="50" class="step-icon">
                             <a name="1"></a>
                                 <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1')"
                                    style="display:block">
-                                    <i class="fa fa-plus-square-o imgstepSection1 success-icon"
+                                    <i class="fa fa-plus-square-o imgstepSection1 error-icon"
                                        style="margin-left: 20px; float:left; padding-right:5px"></i>
                                 </a>
                         </td>
@@ -1146,7 +806,7 @@
                                 <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1')"
                                    style="display:block;">
                                     <span class="top-level-step">
-                                                2: Patient Information ({subjectNumber=201807D9P, nationalId=201507D35, pLastName=Aliou, pFirstName=SADIO, cLastName=moses, cFirstName=mutes, cEmail=contact@gmail.com, cPhone=+23063458788, street=New York city, street 3334, commune=Grand yoff, town=Dakar, pPhone=+23063458788, pEmail=pat@gmail.com, dateOfBirth=09/02/2019, nationality=American, age=20, status=valid})
+                                                2: Modify test details ({testName=Bioline, newTestName=Bioline updated})
                                         </span>
                                 </a>
                                 <span class="evidence">
@@ -1154,8 +814,8 @@
                             </div>
                         </td>
 
-                        <td width="130"><span class="top-level-step">SUCCESS</span></td>
-                        <td width="100"><span class="top-level-step">1m 11s</span></td>
+                        <td width="130"><span class="top-level-step">ERROR</span></td>
+                        <td width="100"><span class="top-level-step">1m 14s</span></td>
                     </tr>
                         <tr>
                             <td colspan="5">
@@ -1172,7 +832,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                Given User logs in and visits Home page
+                                                Given User logins and Visits Home Page
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -1180,7 +840,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">5s 222ms</span></td>
+                        <td width="100"><span class="nested-group-step">5s 623ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -1194,7 +854,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User clicks add order and goes to Add order Page
+                                                Given User clicks admin menu link
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -1202,7 +862,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 425ms</span></td>
+                        <td width="100"><span class="nested-group-step">325ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -1216,7 +876,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                When User Expands Patient information form by clicking the + button next to Patient
+                                                Then User clicks Test Management left menu item link
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -1224,7 +884,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">052ms</span></td>
+                        <td width="100"><span class="nested-group-step">363ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -1238,7 +898,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Clicks New Patient Button
+                                                And User Clicks on modify tests link on the test management menu
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -1246,7 +906,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">8s 572ms</span></td>
+                        <td width="100"><span class="nested-group-step">2s 458ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -1260,7 +920,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Subject Number "201807D9P"
+                                                Then User checks show Guide checkbox
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -1268,7 +928,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 235ms</span></td>
+                        <td width="100"><span class="nested-group-step">416ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -1282,7 +942,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters National ID "201507D35"
+                                                Then User unchecks show Guide checkbox
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -1290,7 +950,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 218ms</span></td>
+                        <td width="100"><span class="nested-group-step">259ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -1304,7 +964,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Patient Last Name "Aliou"
+                                                And User clicks on one of the available tests "Bioline"
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -1312,7 +972,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 164ms</span></td>
+                        <td width="100"><span class="nested-group-step">1s 420ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -1326,7 +986,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Patient First Name "SADIO"
+                                                Then Change Test Name both english and french "Bioline updated"
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -1334,7 +994,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 167ms</span></td>
+                        <td width="100"><span class="nested-group-step">2s 312ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -1348,7 +1008,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Contact Last Name "moses"
+                                                And Click on Copy from Test Name "Bioline updated"
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -1356,7 +1016,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 205ms</span></td>
+                        <td width="100"><span class="nested-group-step">216ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -1370,7 +1030,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Contact First Name "mutes"
+                                                And Test Name,Reporting Test Name, Test Section and Result Type are mandatory
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -1378,7 +1038,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 184ms</span></td>
+                        <td width="100"><span class="nested-group-step">333ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -1392,7 +1052,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Contact Email "contact@gmail.com"
+                                                And Test Section : click on dropbox and select section
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -1400,7 +1060,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 186ms</span></td>
+                        <td width="100"><span class="nested-group-step">373ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -1414,7 +1074,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                Then Field validates "valid" Contact Email
+                                                And LOINC test field accepts text
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -1422,7 +1082,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 171ms</span></td>
+                        <td width="100"><span class="nested-group-step">1s 146ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -1436,7 +1096,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Contact Phone "+23063458788"
+                                                And Panel : click on dropbox and select option
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -1444,7 +1104,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 211ms</span></td>
+                        <td width="100"><span class="nested-group-step">250ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -1458,7 +1118,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Patient Street "New York city, street 3334"
+                                                Then Unit of Measure : click on dropbox and select option
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -1466,7 +1126,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 241ms</span></td>
+                        <td width="100"><span class="nested-group-step">272ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -1480,7 +1140,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Patient Commune "Grand yoff"
+                                                And Result Type : click on dropbox and select option
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -1488,7 +1148,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 214ms</span></td>
+                        <td width="100"><span class="nested-group-step">242ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -1502,7 +1162,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Patient Town "Dakar"
+                                                Then user clicks Click on Next
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -1510,7 +1170,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 192ms</span></td>
+                        <td width="100"><span class="nested-group-step">096ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -1524,7 +1184,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Patient Phone "+23063458788"
+                                                And Sample Type is mandatory
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -1532,7 +1192,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 212ms</span></td>
+                        <td width="100"><span class="nested-group-step">051ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -1546,7 +1206,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                Then Field validates "valid" Patient Phone
+                                                Then click on Next button
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -1554,7 +1214,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">2s 347ms</span></td>
+                        <td width="100"><span class="nested-group-step">502ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -1568,7 +1228,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Enters Patient Email "pat@gmail.com"
+                                                Then Click on Edit Result Ranges button
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -1576,7 +1236,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">10s 034ms</span></td>
+                        <td width="100"><span class="nested-group-step">121ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -1590,7 +1250,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                Then Field validates "valid" Patient Email
+                                                And Enter appropriate ranges
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -1598,302 +1258,98 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">10s 024ms</span></td>
+                        <td width="100"><span class="nested-group-step">5s 738ms</span></td>
                     </tr>
-                    <tr class="test-SUCCESS">
+                    <tr class="test-ERROR">
 
                         <td width="70" class="step-icon">
                             <a name="1-20"></a>
                                 <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></a>
                                 </span>
                         </td>
 
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Selects Patient Health Region
+                                                Then User clicks Click on Next button after entering Result ranges
                                         </span>
                                 <span class="evidence">
                                 </span>
                             </div>
                         </td>
 
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">198ms</span></td>
+                        <td width="130"><span class="nested-group-step">ERROR</span></td>
+                        <td width="100"><span class="nested-group-step">51s 408ms</span></td>
                     </tr>
-                    <tr class="test-SUCCESS">
+                        <tr class="test-ERROR">
+                            <td width="40">&nbsp</td>
+                            <td width="%" colspan="3" class="error-message-cell">
+
+
+    <div style="display:block">
+        <div class="table">
+            <div class="row">
+                <div class="col-sm-10" style="padding-left:1.5em; padding-top:0.5em; padding-bottom:0.5em;">
+                    <span class="error-message error-message-title">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.id: acceptButton (tried for 50 second(s) with 500 milliseconds interval)<br>Build info: version: &#39;3.141.59&#39;, revision: &#39;e82be7d358&#39;, time: &#39;2018-11-14T08:17:03&#39;<br>System info: host: &#39;fv-az587-665&#39;, ip: &#39;10.1.0.22&#39;, os.name: &#39;Linux&#39;, os.arch: &#39;amd64&#39;, os.version: &#39;5.15.0-1034-azure&#39;, java.version: &#39;1.8.0_362&#39;<br>Driver info: org.openqa.selenium.remote.RemoteWebDriver<br>Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.177, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /tmp/.com.google.Chrome.t4OsTf}, goog:chromeOptions: {debuggerAddress: localhost:44281}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 110.0.5481.177, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}<br>Session ID: 7c58f1d52659045ed3c0b0536d59c247<br>Build info: version: &#39;3.141.59&#39;, revision: &#39;e82be7d358&#39;, time: &#39;2018-11-14T08:17:03&#39;<br>System info: host: &#39;fv-az587-665&#39;, ip: &#39;10.1.0.22&#39;, os.name: &#39;Linux&#39;, os.arch: &#39;amd64&#39;, os.version: &#39;5.15.0-1034-azure&#39;, java.version: &#39;1.8.0_362&#39;<br>Driver info: driver.version: unknown</span>
+                </div>
+                <div class="col-sm-2">
+                    <a class="btn btn-warning details-button" data-toggle="collapse" href="#stacktraceModal-45""
+                       role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><i class="far fa-eye"></i> More details</a>
+                </div>
+             </div>
+        </div>
+    <div>
+
+    <!-- Details Section -->
+    <div class="row stacktrace-details">
+      <div class="col">
+        <div class="collapse multi-collapse" id="stacktraceModal-45">
+            <div class="card">
+                <div class="card-header">
+                    <h4>org.openqa.selenium.TimeoutException </h4>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <pre>org.openelisglobal.qaframework.automation.page.Page.findElement(Page.java:188)<br />org.openelisglobal.qaframework.automation.page.Page.hasElement(Page.java:474)<br />org.openelisglobal.qaframework.automation.page.TestManagementPage.acceptButtonExists(TestManagementPage.java:399)<br />org.openelisglobal.qaframework.automation.TestManagementSteps.userClicksClickOnNextButtonAfterEnteringResultRanges(TestManagementSteps.java:447)<br />✽.User clicks Click on Next button after entering Result ranges(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/testManagement.feature:144)<br /></pre>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+                            </td>
+                        </tr>
+                    <tr class="test-SKIPPED">
 
                         <td width="70" class="step-icon">
                             <a name="1-21"></a>
                                 <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-fast-forward skipped-icon ' title='SKIPPED'></i></a>
                                 </span>
                         </td>
 
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                And User Selects Patient Health District from the drop down
+                                                Then Click on Accept button
                                         </span>
                                 <span class="evidence">
                                 </span>
                             </div>
                         </td>
 
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">260ms</span></td>
-                    </tr>
-                    <tr class="test-SUCCESS">
-
-                        <td width="70" class="step-icon">
-                            <a name="1-22"></a>
-                                <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                        </td>
-
-                        <td class="step-description-column">
-                            <div class="step-description">
-                                    <span class="nested-group-step">
-                                                And User Enters Patient Date of Birth "09/02/2019"
-                                        </span>
-                                <span class="evidence">
-                                </span>
-                            </div>
-                        </td>
-
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 222ms</span></td>
-                    </tr>
-                    <tr class="test-SUCCESS">
-
-                        <td width="70" class="step-icon">
-                            <a name="1-23"></a>
-                                <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                        </td>
-
-                        <td class="step-description-column">
-                            <div class="step-description">
-                                    <span class="nested-group-step">
-                                                Then Field validates "valid" Patient Date Of Birth
-                                        </span>
-                                <span class="evidence">
-                                </span>
-                            </div>
-                        </td>
-
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 166ms</span></td>
-                    </tr>
-                    <tr class="test-SUCCESS">
-
-                        <td width="70" class="step-icon">
-                            <a name="1-24"></a>
-                                <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                        </td>
-
-                        <td class="step-description-column">
-                            <div class="step-description">
-                                    <span class="nested-group-step">
-                                                When User Enters Patient Date of Birth in future
-                                        </span>
-                                <span class="evidence">
-                                </span>
-                            </div>
-                        </td>
-
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 202ms</span></td>
-                    </tr>
-                    <tr class="test-SUCCESS">
-
-                        <td width="70" class="step-icon">
-                            <a name="1-25"></a>
-                                <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                        </td>
-
-                        <td class="step-description-column">
-                            <div class="step-description">
-                                    <span class="nested-group-step">
-                                                Then Alert appears if Date is in the Future
-                                        </span>
-                                <span class="evidence">
-                                </span>
-                            </div>
-                        </td>
-
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 206ms</span></td>
-                    </tr>
-                    <tr class="test-SUCCESS">
-
-                        <td width="70" class="step-icon">
-                            <a name="1-26"></a>
-                                <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                        </td>
-
-                        <td class="step-description-column">
-                            <div class="step-description">
-                                    <span class="nested-group-step">
-                                                When Date of Birth is left blank and Age "20" is filled
-                                        </span>
-                                <span class="evidence">
-                                </span>
-                            </div>
-                        </td>
-
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 292ms</span></td>
-                    </tr>
-                    <tr class="test-SUCCESS">
-
-                        <td width="70" class="step-icon">
-                            <a name="1-27"></a>
-                                <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                        </td>
-
-                        <td class="step-description-column">
-                            <div class="step-description">
-                                    <span class="nested-group-step">
-                                                Then Field generates Date of Birth with correct year for the Age "20"
-                                        </span>
-                                <span class="evidence">
-                                </span>
-                            </div>
-                        </td>
-
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 183ms</span></td>
-                    </tr>
-                    <tr class="test-SUCCESS">
-
-                        <td width="70" class="step-icon">
-                            <a name="1-28"></a>
-                                <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                        </td>
-
-                        <td class="step-description-column">
-                            <div class="step-description">
-                                    <span class="nested-group-step">
-                                                And Alert Appears if Age entered is -1 , 100 and &gt;100
-                                        </span>
-                                <span class="evidence">
-                                </span>
-                            </div>
-                        </td>
-
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">7s 395ms</span></td>
-                    </tr>
-                    <tr class="test-SUCCESS">
-
-                        <td width="70" class="step-icon">
-                            <a name="1-29"></a>
-                                <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                        </td>
-
-                        <td class="step-description-column">
-                            <div class="step-description">
-                                    <span class="nested-group-step">
-                                                And User Selects Patient Gender
-                                        </span>
-                                <span class="evidence">
-                                </span>
-                            </div>
-                        </td>
-
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">230ms</span></td>
-                    </tr>
-                    <tr class="test-SUCCESS">
-
-                        <td width="70" class="step-icon">
-                            <a name="1-30"></a>
-                                <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                        </td>
-
-                        <td class="step-description-column">
-                            <div class="step-description">
-                                    <span class="nested-group-step">
-                                                And User Selects Patient Education
-                                        </span>
-                                <span class="evidence">
-                                </span>
-                            </div>
-                        </td>
-
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">260ms</span></td>
-                    </tr>
-                    <tr class="test-SUCCESS">
-
-                        <td width="70" class="step-icon">
-                            <a name="1-31"></a>
-                                <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                        </td>
-
-                        <td class="step-description-column">
-                            <div class="step-description">
-                                    <span class="nested-group-step">
-                                                And User Selects Patient Marital Status
-                                        </span>
-                                <span class="evidence">
-                                </span>
-                            </div>
-                        </td>
-
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">216ms</span></td>
-                    </tr>
-                    <tr class="test-SUCCESS">
-
-                        <td width="70" class="step-icon">
-                            <a name="1-32"></a>
-                                <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                        </td>
-
-                        <td class="step-description-column">
-                            <div class="step-description">
-                                    <span class="nested-group-step">
-                                                And User Enters Patient Other Nationality "American"
-                                        </span>
-                                <span class="evidence">
-                                </span>
-                            </div>
-                        </td>
-
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 146ms</span></td>
+                        <td width="130"><span class="nested-group-step">SKIPPED</span></td>
+                        <td width="100"><span class="nested-group-step">001ms</span></td>
                     </tr>
 
                                 </table>
                             </td>
                         </tr>
-                <tr class="test-SUCCESS">
+                <tr class="test-ERROR">
                         <td colspan="2"></td>
-                    <td width="130"><span class="top-level-step"><em>SUCCESS</em></span></td>
-                    <td width="100"><span class="top-level-step"><em>142.02s</em></span></td>
+                    <td width="130"><span class="top-level-step"><em>ERROR</em></span></td>
+                    <td width="100"><span class="top-level-step"><em>101.64s</em></span></td>
                 </tr>
 
             </table>

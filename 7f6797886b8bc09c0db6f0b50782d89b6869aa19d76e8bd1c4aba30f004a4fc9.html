@@ -143,7 +143,7 @@
             <a href="capabilities.html"><i class="fa fa-book"></i> Requirements</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 13-03-2023 22:15</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 15-03-2023 00:38</span>
     <br style="clear:left"/>
 </div>
     <div class="clr"></div>
@@ -202,7 +202,7 @@
         <div class="story-title">
             <h3 class="story-header">Scenario Outline</h3>
 
-            <div class="scenario">When User Goes to Validation page for correct unit "&lt;unitType&gt;"<br>Then Result appears in Validation list</div>
+            <div class="scenario">When User Reload Results Page By Results --&gt; Search --&gt; By Patient LastName "&lt;lastName&gt;" and FirstName "&lt;firstName&gt;"<br>Then Results appear on the Search By Patient Page as entered<br>When User Reload Results Page By Results --&gt; Search --&gt; By Order Number "&lt;accesionNumber&gt;"<br>Then Results appear on Search By Order Page as entered<br>When User Reload Results Page By Results --&gt; Search --&gt; By Test "&lt;test&gt;"<br>Then Results appear on Search By Test Page as entered<br>When User Select Results --&gt; Enter by Unit from main menu drop-down and Selects a Unit Type "&lt;unitType&gt;" for which there are known tests<br>Then Tests for which results were entered no longer appear on page<br>And User Goes to Validation ---&gt; Routine<br>Then Result Validation Page loads<br>When User Goes to Reports --&gt; Routine --&gt; Patient Status Report<br>And User Enters the appropriate Lab Number "&lt;accesionNumber&gt;" and clicks Generate Printable Version<br>Then Results appear as reported</div>
 
         </div>
 
@@ -221,12 +221,28 @@
                     <thead>
                     <tr>
                         <th>#</th>
+                            <th>Accesion Number</th>
+                            <th>Last Name</th>
+                            <th>First Name</th>
+                            <th>Test</th>
                             <th>Unit Type</th>
                     </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td class="test-SUCCESS"><a href="#0">1</a></td>
+                                <td class="test-SUCCESS"><a
+                                            href="#0">20210000000002249</a>
+                                </td>
+                                <td class="test-SUCCESS"><a
+                                            href="#0">moses</a>
+                                </td>
+                                <td class="test-SUCCESS"><a
+                                            href="#0">mutesasira</a>
+                                </td>
+                                <td class="test-SUCCESS"><a
+                                            href="#0">HEPATITIS C VIRAL LOAD(Serum)</a>
+                                </td>
                                 <td class="test-SUCCESS"><a
                                             href="#0">Molecular Biology</a>
                                 </td>
@@ -268,7 +284,7 @@
                                 <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
                                    style="display:block;">
                                     <span class="top-level-step">
-                                                1: Verification ({unitType=Molecular Biology})
+                                                1: Verification ({accesionNumber=20210000000002249, lastName=moses, firstName=mutesasira, test=HEPATITIS C VIRAL LOAD(Serum), unitType=Molecular Biology})
                                         </span>
                                 </a>
                                 <span class="evidence">
@@ -277,7 +293,7 @@
                         </td>
 
                         <td width="130"><span class="top-level-step">SUCCESS</span></td>
-                        <td width="100"><span class="top-level-step">10s 267ms</span></td>
+                        <td width="100"><span class="top-level-step">1m 19s</span></td>
                     </tr>
                         <tr>
                             <td colspan="5">
@@ -302,7 +318,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">5s 800ms</span></td>
+                        <td width="100"><span class="nested-group-step">5s 417ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -316,7 +332,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                When User Goes to Validation page for correct unit "Molecular Biology"
+                                                When User Reload Results Page By Results --&gt; Search --&gt; By Patient LastName "moses" and FirstName "mutesasira"
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -324,7 +340,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">3s 474ms</span></td>
+                        <td width="100"><span class="nested-group-step">5s 025ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -338,7 +354,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                Then Result appears in Validation list
+                                                Then Results appear on the Search By Patient Page as entered
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -346,7 +362,249 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">222ms</span></td>
+                        <td width="100"><span class="nested-group-step">408ms</span></td>
+                    </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="70" class="step-icon">
+                            <a name="0-3"></a>
+                                <span style="margin-left: 40px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                When User Reload Results Page By Results --&gt; Search --&gt; By Order Number "20210000000002249"
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">2s 917ms</span></td>
+                    </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="70" class="step-icon">
+                            <a name="0-4"></a>
+                                <span style="margin-left: 40px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                Then Results appear on Search By Order Page as entered
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">183ms</span></td>
+                    </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="70" class="step-icon">
+                            <a name="0-5"></a>
+                                <span style="margin-left: 40px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                When User Reload Results Page By Results --&gt; Search --&gt; By Test "HEPATITIS C VIRAL LOAD(Serum)"
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">6s 918ms</span></td>
+                    </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="70" class="step-icon">
+                            <a name="0-6"></a>
+                                <span style="margin-left: 40px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                Then Results appear on Search By Test Page as entered
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">878ms</span></td>
+                    </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="70" class="step-icon">
+                            <a name="0-7"></a>
+                                <span style="margin-left: 40px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                When User Select Results --&gt; Enter by Unit from main menu drop-down and Selects a Unit Type "Molecular Biology" for which there are known tests
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">2s 529ms</span></td>
+                    </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="70" class="step-icon">
+                            <a name="0-8"></a>
+                                <span style="margin-left: 40px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                Then Tests for which results were entered no longer appear on page
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">50s 150ms</span></td>
+                    </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="70" class="step-icon">
+                            <a name="0-9"></a>
+                                <span style="margin-left: 40px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                And User Goes to Validation ---&gt; Routine
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">1s 307ms</span></td>
+                    </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="70" class="step-icon">
+                            <a name="0-10"></a>
+                                <span style="margin-left: 40px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                Then Result Validation Page loads
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">497ms</span></td>
+                    </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="70" class="step-icon">
+                            <a name="0-11"></a>
+                                <span style="margin-left: 40px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                When User Goes to Reports --&gt; Routine --&gt; Patient Status Report
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">752ms</span></td>
+                    </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="70" class="step-icon">
+                            <a name="0-12"></a>
+                                <span style="margin-left: 40px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                And User Enters the appropriate Lab Number "20210000000002249" and clicks Generate Printable Version
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">1s 396ms</span></td>
+                    </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="70" class="step-icon">
+                            <a name="0-13"></a>
+                                <span style="margin-left: 40px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                Then Results appear as reported
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">129ms</span></td>
                     </tr>
 
                                 </table>
@@ -355,7 +613,7 @@
                 <tr class="test-SUCCESS">
                         <td colspan="2"></td>
                     <td width="130"><span class="top-level-step"><em>SUCCESS</em></span></td>
-                    <td width="100"><span class="top-level-step"><em>10.27s</em></span></td>
+                    <td width="100"><span class="top-level-step"><em>79.07s</em></span></td>
                 </tr>
 
             </table>
