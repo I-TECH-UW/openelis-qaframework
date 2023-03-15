@@ -21,6 +21,20 @@ public class TestManagementPage extends Page {
 
 	private static final By LAB_TEST_NAMES_TABLE = By.xpath("/html/body/table/tbody/tr[3]/td/table");
 
+	private static final By REQUIRED_TEST_NAME = By.xpath(
+			"//*[@id=\"step1Div\"]/table/tbody/tr/td[1]/table/tbody/tr[1]/td/span");
+
+	private static final By REQUIRED_REPORTING_TEST_NAME = By.xpath(
+			"//*[@id=\"step1Div\"]/table/tbody/tr/td[1]/table/tbody/tr[5]/td/span");
+
+	private static final By REQUIRED_TEST_SECTION = By.xpath("//*[@id=\"step1Div\"]/table/tbody/tr/td[2]/span");
+
+	private static final By REQUIRED_RESULT_TYPE = By.xpath("//*[@id=\"step1Div\"]/table/tbody/tr/td[4]/span");
+
+	private static final By LOINC_TEXT_FIELD = By.id("loinc");
+
+	private static final By REQUIRED_SAMPLE_TYPE = By.xpath("//*[@id=\"sampleTypeSelectionDiv\"]/span");
+
 	private static By TEST_NAMES = By.cssSelector("table tbody tr td .textButton");
 
 	private static By NAME_ENG_FIELD = By.name("nameEnglish");
@@ -78,6 +92,18 @@ public class TestManagementPage extends Page {
 
 	private static By GUIDANCE_CHECKBOX = By.xpath("//*[@id=\"mainForm\"]/input[5]");
 
+	private static By EDIT_RESULT_RANGES_BTN = By.id("editResultLimitsButton");
+
+	private static By NORMAL_RANGE_LOW = By.id("lowNormal_0");
+
+	private static By NORMAL_RANGE_HIGH = By.id("highNormal_0");
+
+	private static By REPORTING_RANGE_LOW = By.id("lowReportingRange");
+
+	private static By REPORTING_RANGE_HIGH = By.id("highReportingRange");
+
+	private static By ACCEPT_CONFIRM_BTN = By.id("acceptButton");
+
 	public TestManagementPage(Page parent) {
 		super(parent);
 	}
@@ -133,7 +159,9 @@ public class TestManagementPage extends Page {
 		List<WebElement> elements = getElementsIfExisting(TEST_NAMES);
 		for (WebElement e : elements) {
 			String test = e.getAttribute("value");
-			if (test.equals(testName)) {
+			if (test.equals(testName + "(Serum)")) {
+				e.click();
+			} else if (test.equals(testName + " updated(Serum)")) {
 				e.click();
 			}
 		}
@@ -309,5 +337,69 @@ public class TestManagementPage extends Page {
 
 	public boolean guidanceCheckBoxExists() {
 		return hasElement(GUIDANCE_CHECKBOX);
+	}
+
+	public void GuidanceChecked() throws InterruptedException {
+		clickOn(GUIDANCE_CHECKBOX);
+	}
+
+	public void GuidanceUnChecked() throws InterruptedException {
+		clickOn(GUIDANCE_CHECKBOX);
+	}
+
+	public boolean isGuidanceCheckBoxChecked() {
+		return isChecked(GUIDANCE_CHECKBOX);
+	}
+
+	public String getTestNameRequiredClass() {
+		return findElement(REQUIRED_TEST_NAME).getAttribute("class");
+	}
+
+	public String getReportingTestNameRequiredClass() {
+		return findElement(REQUIRED_REPORTING_TEST_NAME).getAttribute("class");
+	}
+
+	public String getTestSectionRequiredClass() {
+		return findElement(REQUIRED_TEST_SECTION).getAttribute("class");
+	}
+
+	public String getResultTypeRequiredClass() {
+		return findElement(REQUIRED_RESULT_TYPE).getAttribute("class");
+	}
+
+	public void enterLOINCText(String loinc) {
+		setText(LOINC_TEXT_FIELD, loinc);
+	}
+
+	public String getSampleTypeRequiredClass() {
+		return findElement(REQUIRED_SAMPLE_TYPE).getAttribute("class");
+	}
+
+	public void clickEditResultRangesButton() {
+		clickOn(EDIT_RESULT_RANGES_BTN);
+	}
+
+	public void enterNormalRangeLow(String range) {
+		setText(NORMAL_RANGE_LOW, range);
+	}
+
+	public void enterNormalRangeHigh(String range) {
+		setText(NORMAL_RANGE_HIGH, range);
+	}
+
+	public void enterReportingRangeLow(String range) {
+		setText(REPORTING_RANGE_LOW, range);
+	}
+
+	public void enterReportingRangeHigh(String range) {
+		setText(REPORTING_RANGE_HIGH, range);
+	}
+
+	public boolean acceptButtonExists() {
+		return hasElement(ACCEPT_CONFIRM_BTN);
+	}
+
+	public void ClickAcceptButton() {
+		clickOn(ACCEPT_CONFIRM_BTN);
 	}
 }
