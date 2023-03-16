@@ -228,10 +228,10 @@
                                                             </div>
                                                             <script>
 
-                                                                var labels = ['5%', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '95%', ' ', ' ', ' '];
+                                                                var labels = ['10%', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '90%', ' ', ' ', ' '];
                                                                 // Our series array that contains series objects or in this case series data arrays
 
-                                                                var series = [{meta: 'Passing tests (automated)', value: 1}, {meta: 'Passing tests (manual)', value: 0}, {meta: 'Pending tests (automated)', value: 0}, {meta: 'Pending tests (manual)', value: 0}, {meta: 'Ignored tests (automated)', value: 0}, {meta: 'Ignored tests (manual)', value: 0}, {meta: 'Skipped tests (automated)', value: 0}, {meta: 'Skipped tests (manual)', value: 0}, {meta: 'Failing tests (automated)', value: 0}, {meta: 'Failing tests (manual)', value: 0}, {meta: 'Broken tests (automated)', value: 19}, {meta: 'Broken tests (manual)', value: 0}, {meta: 'Compromised tests (automated)', value: 0}, {meta: 'Compromised tests (manual)', value: 0}];
+                                                                var series = [{meta: 'Passing tests (automated)', value: 2}, {meta: 'Passing tests (manual)', value: 0}, {meta: 'Pending tests (automated)', value: 0}, {meta: 'Pending tests (manual)', value: 0}, {meta: 'Ignored tests (automated)', value: 0}, {meta: 'Ignored tests (manual)', value: 0}, {meta: 'Skipped tests (automated)', value: 0}, {meta: 'Skipped tests (manual)', value: 0}, {meta: 'Failing tests (automated)', value: 0}, {meta: 'Failing tests (manual)', value: 0}, {meta: 'Broken tests (automated)', value: 18}, {meta: 'Broken tests (manual)', value: 0}, {meta: 'Compromised tests (automated)', value: 0}, {meta: 'Compromised tests (manual)', value: 0}];
 
                                                                 // As options we currently only set a static size of 300x200 px. We can also omit this and use aspect ratio containers
                                                                 // as you saw in the previous example
@@ -288,8 +288,8 @@
                                                                         <a href="01f5288b80adbd3af52a8ed68a4a616d3164f750229f80da1ef344382d948835.html"><i
                                                                                 class='fa fa-check-circle-o success-icon'></i>&nbsp;Passing</a>
                                                                     </td>
-                                                                <td class="automated-stats">1</td>
-                                                                <td class="automated-stats">5%</td>
+                                                                <td class="automated-stats">2</td>
+                                                                <td class="automated-stats">10%</td>
                                                             </tr>
                                                             <tr>
                                                                     <td class="aggregate-result-count"><i
@@ -330,8 +330,8 @@
                                                                         <a href="c8a926210aeff57f8aa7ea799262d4b730915a909cd5ecd6a705b1fa13bc7aa8.html"><i
                                                                                 class='fa fa-exclamation-triangle error-icon'></i>&nbsp;Broken</a>
                                                                     </td>
-                                                                <td class="automated-stats">19</td>
-                                                                <td class="automated-stats">95%</td>
+                                                                <td class="automated-stats">18</td>
+                                                                <td class="automated-stats">90%</td>
                                                             <tr>
                                                                 <td class="aggregate-result-count indented-error-category">
                                                                     <i
@@ -365,7 +365,7 @@
                                                                     <a href="2b56b574d89834f6aa192f59fa6627b776a6c288e09dbc7d06c356f5bad5b3c0.html"><a href='##beforetable'><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></a> No such element exception</a>
                                                                 </td>
                                                                 <td><span
-                                                                        class="badge failure-badge">13</span>
+                                                                        class="badge failure-badge">11</span>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -373,7 +373,7 @@
                                                                     <a href="969603a654f469abaa0b1329f030558b68dfd26948a74e5667f38486a662316b.html"><a href='##beforetable'><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></a> Timeout exception</a>
                                                                 </td>
                                                                 <td><span
-                                                                        class="badge failure-badge">5</span>
+                                                                        class="badge failure-badge">6</span>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -391,6 +391,14 @@
                                                         <h4>Most Unstable Features</h4>
                                                         <table class="table">
                                                             <tbody>
+                                                                <tr>
+                                                                    <td class="failure-color top-list-title"><a
+                                                                            href="#">Referral Work Flow</a>
+                                                                    </td>
+                                                                    <td><span
+                                                                            class="badge failure-badge">100%</span>
+                                                                    </td>
+                                                                </tr>
                                                                 <tr>
                                                                     <td class="failure-color top-list-title"><a
                                                                             href="#">WorkPlan Feature</a>
@@ -412,7 +420,7 @@
                                                                             href="#">Modify Order</a>
                                                                     </td>
                                                                     <td><span
-                                                                            class="badge failure-badge">41%</span>
+                                                                            class="badge failure-badge">36%</span>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -430,7 +438,12 @@
                                                                     <a href="18520d7cd6cd0a81d37f8af427858582ca9c6a841877ed27284a2b72f1c1a068.html">
                                                                         <span class="badge"
                                                                               style="background-color:darkorange; margin:1em;padding:4px;"><i
-                                                                                class="fa fa-tag"></i> Modify Order&nbsp;&nbsp;&nbsp;12</span>
+                                                                                class="fa fa-tag"></i> Modify Order&nbsp;&nbsp;&nbsp;11</span>
+                                                                    </a>
+                                                                    <a href="d0c5f5b4a6c8a5cd054bd9e3ab4e1128a562a6fa8d34f0d8df2f2d1d68da81fb.html">
+                                                                        <span class="badge"
+                                                                              style="background-color:darkorange; margin:1em;padding:4px;"><i
+                                                                                class="fa fa-tag"></i> Referral&nbsp;&nbsp;&nbsp;1</span>
                                                                     </a>
                                                                     <a href="da05ad756cce8c08bb33bfd68c8ff57624342ab52ce10a3f592265afb2343e87.html">
                                                                         <span class="badge"
@@ -467,7 +480,12 @@
                                                                     <a href="aca08e7eb77cdb1448219bb1bb34347d4cb35b43c94bf8805073ad2f14dddf06.html">
                                                                         <span class="badge"
                                                                               style="background-color:darkorange; margin:1em;padding:4px;"><i
-                                                                                class="fa fa-tag"></i> Openelis/Modify Order&nbsp;&nbsp;&nbsp;12</span>
+                                                                                class="fa fa-tag"></i> Openelis/Modify Order&nbsp;&nbsp;&nbsp;11</span>
+                                                                    </a>
+                                                                    <a href="bcd807ca073f214b7e3df758cb5ad78222f6959a8770ba34977b165740ca7c5e.html">
+                                                                        <span class="badge"
+                                                                              style="background-color:darkorange; margin:1em;padding:4px;"><i
+                                                                                class="fa fa-tag"></i> Openelis/Referral Work Flow&nbsp;&nbsp;&nbsp;1</span>
                                                                     </a>
                                                                     <a href="77f2ac6ed609930885f1af2998f6cf32bb7d77728d32642e08d0a56416661de1.html">
                                                                         <span class="badge"
@@ -513,8 +531,8 @@
                                                                    (1 example)
                                                     </td>
                                                     <td>13</td>
-                                                    <td>22:46:43</td>
-                                                    <td>1m 23s</td>
+                                                    <td>22:51:35</td>
+                                                    <td>1m 19s</td>
                                                     <td><a href='##beforetable'><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></a> <span
                                                             style="display:none">ERROR</span></td>
                                                 </tr>
@@ -527,8 +545,8 @@
                                                                    (1 example)
                                                     </td>
                                                     <td>11</td>
-                                                    <td>22:48:35</td>
-                                                    <td>1m 1s</td>
+                                                    <td>22:53:17</td>
+                                                    <td>59s 566ms</td>
                                                     <td><a href='##beforetable'><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></a> <span
                                                             style="display:none">ERROR</span></td>
                                                 </tr>
@@ -541,8 +559,8 @@
                                                                    (4 examples)
                                                     </td>
                                                     <td>3</td>
-                                                    <td>22:49:36</td>
-                                                    <td>4m 7s</td>
+                                                    <td>22:54:16</td>
+                                                    <td>3m 59s</td>
                                                     <td><a href='##beforetable'><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></a> <span
                                                             style="display:none">ERROR</span></td>
                                                 </tr>
@@ -555,22 +573,22 @@
                                                                    (5 examples)
                                                     </td>
                                                     <td>3</td>
-                                                    <td>22:53:43</td>
-                                                    <td>5m 9s</td>
+                                                    <td>22:58:15</td>
+                                                    <td>4m 11s</td>
                                                     <td><a href='##beforetable'><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></a> <span
                                                             style="display:none">ERROR</span></td>
                                                 </tr>
                                                 <tr class="scenario-result ERROR">
                                                     <td>
-                                                            <a href="aca08e7eb77cdb1448219bb1bb34347d4cb35b43c94bf8805073ad2f14dddf06.html">Modify Order</a>
+                                                            <a href="bcd807ca073f214b7e3df758cb5ad78222f6959a8770ba34977b165740ca7c5e.html">Referral Work Flow</a>
                                                     </td>
                                                     <td>
-                                                        <a href="7bd25e0955ad8cb5ea4771849e4cbceba42c8f61981d8a1e06ad73135aba8424.html">Add Tests</a>
+                                                        <a href="e8fedc8deced80b90ffd817c7dedce36832f5f96cf6e4c8454aa9afe553e56d8.html">Register a patient's sample for Covid testing and send the lab request and sample to the Central Health Laboratory</a>
                                                                    (1 example)
                                                     </td>
-                                                    <td>16</td>
-                                                    <td>22:58:52</td>
-                                                    <td>2m 3s</td>
+                                                    <td>39</td>
+                                                    <td>23:07:18</td>
+                                                    <td>2m 41s</td>
                                                     <td><a href='##beforetable'><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></a> <span
                                                             style="display:none">ERROR</span></td>
                                                 </tr>
@@ -583,8 +601,8 @@
                                                                    (2 examples)
                                                     </td>
                                                     <td>13</td>
-                                                    <td>23:12:25</td>
-                                                    <td>2m 2s</td>
+                                                    <td>23:13:48</td>
+                                                    <td>1m 57s</td>
                                                     <td><a href='##beforetable'><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></a> <span
                                                             style="display:none">ERROR</span></td>
                                                 </tr>
@@ -596,8 +614,8 @@
                                                         <a href="de41752f7343b34bf43a00636d872488c5117b94f105d6e338eeeccaa53a0dca.html">User rejects the testName updates</a>
                                                     </td>
                                                     <td>15</td>
-                                                    <td>23:14:27</td>
-                                                    <td>1m 1s</td>
+                                                    <td>23:15:45</td>
+                                                    <td>58s 311ms</td>
                                                     <td><a href='##beforetable'><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></a> <span
                                                             style="display:none">ERROR</span></td>
                                                 </tr>
@@ -609,8 +627,8 @@
                                                         <a href="cf1e0268fd174c260b7691134f8ee97e05e157cf6ecfe04c199d0147bffee0dd.html">User cancels the testName updates</a>
                                                     </td>
                                                     <td>14</td>
-                                                    <td>23:15:28</td>
-                                                    <td>1m 1s</td>
+                                                    <td>23:16:43</td>
+                                                    <td>58s 827ms</td>
                                                     <td><a href='##beforetable'><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></a> <span
                                                             style="display:none">ERROR</span></td>
                                                 </tr>
@@ -623,8 +641,8 @@
                                                                    (1 example)
                                                     </td>
                                                     <td>19</td>
-                                                    <td>23:16:29</td>
-                                                    <td>1m 16s</td>
+                                                    <td>23:17:42</td>
+                                                    <td>1m 12s</td>
                                                     <td><a href='##beforetable'><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></a> <span
                                                             style="display:none">ERROR</span></td>
                                                 </tr>
@@ -637,8 +655,8 @@
                                                                    (2 examples)
                                                     </td>
                                                     <td>21</td>
-                                                    <td>23:18:09</td>
-                                                    <td>1m 50s</td>
+                                                    <td>23:19:13</td>
+                                                    <td>1m 36s</td>
                                                     <td><a href='##beforetable'><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></a> <span
                                                             style="display:none">ERROR</span></td>
                                                 </tr>
@@ -651,8 +669,8 @@
                                                                    (1 example)
                                                     </td>
                                                     <td>9</td>
-                                                    <td>23:23:08</td>
-                                                    <td>1m 17s</td>
+                                                    <td>23:23:31</td>
+                                                    <td>1m 12s</td>
                                                     <td><a href='##beforetable'><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></a> <span
                                                             style="display:none">ERROR</span></td>
                                                 </tr>
