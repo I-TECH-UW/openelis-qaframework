@@ -81,6 +81,7 @@ public class AddBatchOrdersSteps extends TestBase {
 	public void userEntersReceivedDateInTheFuture() throws InterruptedException {
 		String futureDate = Utils.getFutureDate();
 		addBatchOrdersPage.enterReceivedDate(futureDate);
+		Thread.sleep(1000);
 		if (addBatchOrdersPage.alertPresent()) {
 			addBatchOrdersPage.acceptAlert();
 		}
