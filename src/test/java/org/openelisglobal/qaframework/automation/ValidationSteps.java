@@ -71,6 +71,8 @@ public class ValidationSteps extends TestBase {
 			addOrderPage = homePage.goToAddOrderPage();
 			addOrderPage.innitialiseData(labNo);
 			Thread.sleep(1000);
+		    addOrderPage.turnOnAcessionValidation(false);
+			Thread.sleep(1000);
 			homePage = addOrderPage.goToHomePage();
 	}
 
@@ -93,7 +95,8 @@ public class ValidationSteps extends TestBase {
 		if (resultsUnitTypePage.alertPresent()){
 			resultsUnitTypePage.acceptAlert();
 		}
-		homePage = resultsUnitTypePage.goToHomePage();
+		Thread.sleep(1000);
+		homePage = resultsUnitTypePage.clickHomePageMenu();
 	}
 
 	@When("User Selects a Unit Type {string} under which there are known tests")

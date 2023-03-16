@@ -68,7 +68,7 @@ public class AddOrderSteps extends TestBase {
 	}
 	@When("User enters Accesion Number {string}")
 	public void enterAcessionNumber(String accesionNumber) throws Exception {
-		addOrderPage.turnOnAcessionValidation();
+		addOrderPage.turnOnAcessionValidation(true);
 		addOrderPage.enterAccessionNumber(accesionNumber);
 	}
 	

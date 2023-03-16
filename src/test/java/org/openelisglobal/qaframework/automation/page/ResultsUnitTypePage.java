@@ -23,6 +23,8 @@ public class ResultsUnitTypePage extends Page {
 
 	private  static final By SEARCH_BUTTON = By.xpath("//*[@id=\"searchDiv\"]/div[3]/div[1]/input[2]");
 
+	 private  static  final  By HOME_MENU_ICON = By.id("menu_home");
+
 	public ResultsUnitTypePage(Page parent) {
 		super(parent);
 	}
@@ -67,6 +69,11 @@ public class ResultsUnitTypePage extends Page {
 
 	public HomePage goToHomePage() {
 		this.goToPage(PATH_HOME);
+		return new HomePage(this);
+	}
+
+	public HomePage clickHomePageMenu() {
+		clickOn(HOME_MENU_ICON);
 		return new HomePage(this);
 	}
 
