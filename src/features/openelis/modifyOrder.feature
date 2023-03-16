@@ -19,10 +19,10 @@ Then Search by Lab Number yields results for all patients with matching Lab Numb
 And If there is only one patient with that Lab No, the system auto-fills all the info about that patient, bypassing the selection process
 And Patient Information form populates with patient information on the Modify Order Page
 Examples:
-    |lastName|firstName|subjectNumber|labNo            |
-    |seruwu  |jimmy    |oe012        |20210000000003761|
+    | lastName | firstName  | subjectNumber | labNo             |
+    | moses    | mutesasira | oe013         | 20210000000003761 |
 
-@modifyOrder
+    @modifyOrder
 Scenario Outline: Order Information
 When User Pulls up a known order with oder number "<labNo>"
 Then Order appears on screen
