@@ -954,12 +954,16 @@ public class AddOrderPage extends Page {
 		}
 	}
 
-	public void turnOnAcessionValidation() {
+	public void turnOnAcessionValidation(boolean turnOn) {
 		goToPage(PATH_SAMPLE_ENTRY_CONFIG);
 		if (this.containsText("System error")) {
 			this.go();
 		} else {
-			clickOn(RADIO_BUTTON_VALIDATE_TRUE);
+			if (turnOn) {
+				clickOn(RADIO_BUTTON_VALIDATE_TRUE);
+			} else {
+				clickOn(RADIO_BUTTON_VALIDATE_FALSE);
+			}
 			clickOn(BUTTON_SAVE_VALIDATION);
 			this.go();
 		}
