@@ -1,1 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Patient Report" skipped="0" tests="2" time="79.5" timestamp="2023-03-16 04:10:05"><testcase name="Patient Report With no result yet"/><testcase name="Patient Report With Partial result reported"/></testsuite>
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Patient Report" skipped="0" tests="2" time="70.51" timestamp="2023-03-16 06:05:12"><testcase name="Patient Report With no result yet"/><testcase name="Patient Report With Partial result reported"/></testsuite>

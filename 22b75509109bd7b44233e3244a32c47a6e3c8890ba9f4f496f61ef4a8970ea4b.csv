@@ -1,7 +1,2 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"Modify Order","Current Test Information","SUCCESS","2023-03-16T16:02:31.222Z[Etc/UTC]","0.0","31.83"
-"Modify Order","Available Test Information","SUCCESS","2023-03-16T16:03:03.087Z[Etc/UTC]","0.0","15.21"
-"Modify Order","Add Order","SUCCESS","2023-03-16T16:03:18.332Z[Etc/UTC]","0.0","37.59"
-"Modify Order","Collection Date","SUCCESS","2023-03-16T16:03:55.958Z[Etc/UTC]","0.0","63.29"
-"Modify Order","Collection Time","SUCCESS","2023-03-16T16:04:59.281Z[Etc/UTC]","0.0","73.89"
-"Modify Order","Verification","SUCCESS","2023-03-16T16:06:55.076Z[Etc/UTC]","0.0","11.84"
+"Modify Order","Verification","SUCCESS","2023-03-16T18:02:04.525Z[Etc/UTC]","0.0","11.1"

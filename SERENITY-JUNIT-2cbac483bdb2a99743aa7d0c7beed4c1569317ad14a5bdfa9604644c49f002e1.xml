@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="2" name="Results Entry" skipped="0" tests="9" time="227.69" timestamp="2023-03-16 04:13:46"><testcase name="Accessing Results Entry"/><testcase name="Searching for test result entry forms"/><testcase name="Results Entry Set-up"/><testcase name="Entering Test Results"/><testcase name="Overall Page"><failure type="java.lang.AssertionError"/><system-err>null
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="3" name="Results Entry" skipped="0" tests="9" time="225.24" timestamp="2023-03-16 06:08:52"><testcase name="Accessing Results Entry"/><testcase name="Searching for test result entry forms"/><testcase name="Results Entry Set-up"/><testcase name="Entering Test Results"/><testcase name="Overall Page"><failure type="java.lang.AssertionError"/><system-err>null
 org.openelisglobal.qaframework.automation.ResultsEntrySteps.saveSuccesMessageAppears(ResultsEntrySteps.java:448)
 ✽.Save results in new page and green ,Save was successful, message appears(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/resultEntry.feature:95)
 </system-err></testcase><testcase name="Verification"><failure type="java.lang.AssertionError"/><system-err>null
 org.openelisglobal.qaframework.automation.ResultsEntrySteps.testsWithResultsDontAppear(ResultsEntrySteps.java:524)
 ✽.Tests for which results were entered no longer appear on page(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/resultEntry.feature:114)
-</system-err></testcase><testcase name="Accept As Is functionality"/><testcase name="Verification"/><testcase name="Changing Results"/></testsuite>
+</system-err></testcase><testcase name="Accept As Is functionality"/><testcase name="Verification"/><testcase name="Changing Results"><failure type="java.lang.AssertionError"/><system-err>null
+org.openelisglobal.qaframework.automation.ResultsEntrySteps.saveSuccesfully(ResultsEntrySteps.java:675)
+✽.Message ,Save was successful, appears at top of page(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/resultEntry.feature:158)
+</system-err></testcase></testsuite>
