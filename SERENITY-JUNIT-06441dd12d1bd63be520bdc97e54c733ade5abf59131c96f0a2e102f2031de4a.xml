@@ -1,1 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Validation" skipped="0" tests="3" time="133.41" timestamp="2023-03-15 08:42:27"><testcase name="Validation"/><testcase name="Overall Page"/><testcase name="Verification"/></testsuite>
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="2" name="Validation" skipped="0" tests="3" time="105.09" timestamp="2023-03-16 04:25:17"><testcase name="Validation"><failure type="java.lang.AssertionError"/><system-err>null
+org.openelisglobal.qaframework.automation.ValidationSteps.testCantBeMarkedWithBothSaveAndRetest(ValidationSteps.java:218)
+✽.Tests cannot be checked both `Save` and `Retest` at the same time(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/validation.feature:33)
+</system-err></testcase><testcase name="Overall Page"><failure type="java.lang.AssertionError"/><system-err>null
+org.openelisglobal.qaframework.automation.ValidationSteps.saveSuccesful(ValidationSteps.java:296)
+✽.Returns to Validation Unit Type search page and message in green `Save was successful` appears(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/validation.feature:56)
+</system-err></testcase><testcase name="Verification"/></testsuite>
