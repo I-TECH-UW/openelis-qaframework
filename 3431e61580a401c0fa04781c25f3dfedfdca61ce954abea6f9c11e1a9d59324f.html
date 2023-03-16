@@ -143,7 +143,7 @@
             <a href="capabilities.html"><i class="fa fa-book"></i> Requirements</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 16-03-2023 21:43</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 16-03-2023 22:06</span>
     <br style="clear:left"/>
 </div>
     <div class="clr"></div>
@@ -289,7 +289,7 @@
                         </td>
 
                         <td width="130"><span class="top-level-step">ERROR</span></td>
-                        <td width="100"><span class="top-level-step">16s 629ms</span></td>
+                        <td width="100"><span class="top-level-step">18s 146ms</span></td>
                     </tr>
                         <tr>
                             <td colspan="5">
@@ -314,7 +314,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">9s 136ms</span></td>
+                        <td width="100"><span class="nested-group-step">9s 530ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -336,7 +336,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">449ms</span></td>
+                        <td width="100"><span class="nested-group-step">446ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -358,7 +358,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">172ms</span></td>
+                        <td width="100"><span class="nested-group-step">203ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -380,7 +380,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">244ms</span></td>
+                        <td width="100"><span class="nested-group-step">265ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -402,7 +402,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">3s 480ms</span></td>
+                        <td width="100"><span class="nested-group-step">4s 530ms</span></td>
                     </tr>
                     <tr class="test-ERROR">
 
@@ -424,7 +424,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">ERROR</span></td>
-                        <td width="100"><span class="nested-group-step">1s 384ms</span></td>
+                        <td width="100"><span class="nested-group-step">1s 356ms</span></td>
                     </tr>
                         <tr class="test-ERROR">
                             <td width="40">&nbsp</td>
@@ -435,7 +435,7 @@
         <div class="table">
             <div class="row">
                 <div class="col-sm-10" style="padding-left:1.5em; padding-top:0.5em; padding-bottom:0.5em;">
-                    <span class="error-message error-message-title">org.openqa.selenium.NoSuchElementException: Cannot locate an element using id=receivedTime<br>For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html<br>Build info: version: &#39;3.141.59&#39;, revision: &#39;e82be7d358&#39;, time: &#39;2018-11-14T08:17:03&#39;<br>System info: host: &#39;fv-az562-506&#39;, ip: &#39;10.1.0.5&#39;, os.name: &#39;Linux&#39;, os.arch: &#39;amd64&#39;, os.version: &#39;5.15.0-1034-azure&#39;, java.version: &#39;1.8.0_362&#39;<br>Driver info: driver.version: RemoteWebDriver<br>For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html<br>Build info: version: &#39;3.141.59&#39;, revision: &#39;e82be7d358&#39;, time: &#39;2018-11-14T08:17:03&#39;<br>System info: host: &#39;fv-az562-506&#39;, ip: &#39;10.1.0.5&#39;, os.name: &#39;Linux&#39;, os.arch: &#39;amd64&#39;, os.version: &#39;5.15.0-1034-azure&#39;, java.version: &#39;1.8.0_362&#39;<br>Driver info: driver.version: unknown</span>
+                    <span class="error-message error-message-title">java.lang.NullPointerException</span>
                 </div>
                 <div class="col-sm-2">
                     <a class="btn btn-warning details-button" data-toggle="collapse" href="#stacktraceModal-7""
@@ -451,11 +451,11 @@
         <div class="collapse multi-collapse" id="stacktraceModal-7">
             <div class="card">
                 <div class="card-header">
-                    <h4>org.openqa.selenium.NoSuchElementException </h4>
+                    <h4>java.lang.NullPointerException </h4>
                 </div>
                 <div class="card-body">
                     <div>
-                        <pre>org.openelisglobal.qaframework.automation.page.Page.findElement(Page.java:189)<br />org.openelisglobal.qaframework.automation.page.Page.clickOn(Page.java:266)<br />org.openelisglobal.qaframework.automation.page.AddBatchOrdersPage.enterReceivedDate(AddBatchOrdersPage.java:116)<br />org.openelisglobal.qaframework.automation.AddBatchOrdersSteps.userEntersReceivedDateInTheFuture(AddBatchOrdersSteps.java:83)<br />✽.User enters Received date in the future(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/addBatchOrders.feature:12)<br /></pre>
+                        <pre>org.openelisglobal.qaframework.automation.page.Page.findElement(Page.java:188)<br />org.openelisglobal.qaframework.automation.page.Page.clickOn(Page.java:266)<br />org.openelisglobal.qaframework.automation.page.AddBatchOrdersPage.enterReceivedDate(AddBatchOrdersPage.java:116)<br />org.openelisglobal.qaframework.automation.AddBatchOrdersSteps.userEntersReceivedDateInTheFuture(AddBatchOrdersSteps.java:83)<br />✽.User enters Received date in the future(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/addBatchOrders.feature:12)<br /></pre>
                     </div>
 
                 </div>
@@ -484,7 +484,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SKIPPED</span></td>
-                        <td width="100"><span class="nested-group-step">006ms</span></td>
+                        <td width="100"><span class="nested-group-step">012ms</span></td>
                     </tr>
                     <tr class="test-SKIPPED">
 
@@ -506,7 +506,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SKIPPED</span></td>
-                        <td width="100"><span class="nested-group-step">002ms</span></td>
+                        <td width="100"><span class="nested-group-step">003ms</span></td>
                     </tr>
                     <tr class="test-SKIPPED">
 
@@ -528,7 +528,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SKIPPED</span></td>
-                        <td width="100"><span class="nested-group-step">002ms</span></td>
+                        <td width="100"><span class="nested-group-step">001ms</span></td>
                     </tr>
                     <tr class="test-SKIPPED">
 
@@ -550,7 +550,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SKIPPED</span></td>
-                        <td width="100"><span class="nested-group-step">002ms</span></td>
+                        <td width="100"><span class="nested-group-step">001ms</span></td>
                     </tr>
                     <tr class="test-SKIPPED">
 
@@ -594,7 +594,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SKIPPED</span></td>
-                        <td width="100"><span class="nested-group-step">007ms</span></td>
+                        <td width="100"><span class="nested-group-step">001ms</span></td>
                     </tr>
 
                                 </table>
@@ -603,7 +603,7 @@
                 <tr class="test-ERROR">
                         <td colspan="2"></td>
                     <td width="130"><span class="top-level-step"><em>ERROR</em></span></td>
-                    <td width="100"><span class="top-level-step"><em>16.68s</em></span></td>
+                    <td width="100"><span class="top-level-step"><em>18.23s</em></span></td>
                 </tr>
 
             </table>

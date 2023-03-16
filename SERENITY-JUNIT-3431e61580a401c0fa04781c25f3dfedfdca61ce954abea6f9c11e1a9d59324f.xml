@@ -1,21 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="0" name="Add Batch Orders Feature" skipped="0" tests="2" time="32.71" timestamp="2023-03-16 09:43:32"><testcase name="Add Batch Orders action"><error message="Cannot locate an element using id=receivedTime&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az562-506', ip: '10.1.0.5', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1034-azure', java.version: '1.8.0_362'&#10;Driver info: driver.version: RemoteWebDriver&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az562-506', ip: '10.1.0.5', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1034-azure', java.version: '1.8.0_362'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException">Cannot locate an element using id=receivedTime
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'fv-az562-506', ip: '10.1.0.5', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1034-azure', java.version: '1.8.0_362'
-Driver info: driver.version: RemoteWebDriver
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'fv-az562-506', ip: '10.1.0.5', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1034-azure', java.version: '1.8.0_362'
-Driver info: driver.version: unknown</error><system-err>Cannot locate an element using id=receivedTime
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'fv-az562-506', ip: '10.1.0.5', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1034-azure', java.version: '1.8.0_362'
-Driver info: driver.version: RemoteWebDriver
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'fv-az562-506', ip: '10.1.0.5', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1034-azure', java.version: '1.8.0_362'
-Driver info: driver.version: unknown
-org.openelisglobal.qaframework.automation.page.Page.findElement(Page.java:189)
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="0" name="Add Batch Orders Feature" skipped="0" tests="2" time="33.64" timestamp="2023-03-16 10:06:44"><testcase name="Add Batch Orders action"><error type="java.lang.NullPointerException"/><system-err>null
+org.openelisglobal.qaframework.automation.page.Page.findElement(Page.java:188)
 org.openelisglobal.qaframework.automation.page.Page.clickOn(Page.java:266)
 org.openelisglobal.qaframework.automation.page.AddBatchOrdersPage.enterReceivedDate(AddBatchOrdersPage.java:116)
 org.openelisglobal.qaframework.automation.AddBatchOrdersSteps.userEntersReceivedDateInTheFuture(AddBatchOrdersSteps.java:83)
