@@ -73,6 +73,7 @@ public class AddBatchOrdersSteps extends TestBase {
 		if (addBatchOrdersPage.alertPresent()) {
 			addBatchOrdersPage.acceptAlert();
 		}
+		Thread.sleep(1000);
 		assertEquals(addBatchOrdersPage.getReceivedDateClass(), "text required error");
 	}
 
@@ -87,7 +88,10 @@ public class AddBatchOrdersSteps extends TestBase {
 	}
 
 	@Then("Alert appears if the date is in the future")
-	public void alertAppearsIfTheDateIsInTheFuture() {
+	public void alertAppearsIfTheDateIsInTheFuture() throws InterruptedException {
+		if (addBatchOrdersPage.alertPresent()){
+			addBatchOrdersPage.acceptAlert();
+		}
 		assertEquals(addBatchOrdersPage.getReceivedDateClass(), "text required error");
 	}
 
