@@ -8,8 +8,8 @@ Background:
 Scenario Outline: Order Number
     Then Order form should appear
     And Remember site and requester checkbox exists
-#    When User enters Accesion Number "<accesionNumber>"
-#    Then Validate "<status>" AccesionNumber Entered "<accesionNumber>"
+    When User enters Accesion Number "<accesionNumber>"
+    Then Validate "<status>" AccesionNumber Entered "<accesionNumber>"
     When User clicks Generate Button
     Then Generated Accesion Number should be a digit
     Examples:
@@ -84,10 +84,11 @@ When User Clicks on + Button next to Sample
 Then Sample Selection Field appears
 And Sample types display in drop-down list
 And User Selects Sample Type from Drop down menu
-#And User Selects Sample Conditions from Drop down menu
-#And User Clicks X to remove added Sample Conditions
-#And User Clicks remove button to remove added Sample
-#And User Re-adds Samples
+Then User Checks the Reject checkbox
+And User Selects Sample Conditions from Drop down menu
+And User Clicks reject checkBox to remove added Sample Conditions
+And User Clicks remove button to remove added Sample
+And User Re-adds Samples
 #And User Clicks to Remove all
 
 @order

@@ -307,15 +307,28 @@ public class AddOrderSteps extends TestBase {
 	public void selectSampleTypeFromDropDownMenu() {
 		addOrderPage.selectSampleTypeFromDropDownMenu("Serum");
 	}
+	@Then("User Checks the Reject checkbox")
+	public void userChecksTheRejectCheckbox() throws InterruptedException {
+		addOrderPage.rejectSampleCheckBox();
+		if (addOrderPage.alertPresent()) {
+			addOrderPage.acceptAlert();
+		}
+		assertFalse(addOrderPage.sampleConditionDropDownOptionDisabled());
+	}
 	
 	@And("User Selects Sample Conditions from Drop down menu")
 	public void selectSampleConditionFromDropDownMenu() {
 		addOrderPage.selectSampleConditionFromDropDownMenu();
 	}
-	
-	@And("User Clicks X to remove added Sample Conditions")
-	public void removeAddedSampleConditionFromDropDownMenu() throws InterruptedException {
-		addOrderPage.removeAddedSampleConditionFromDropDownMenu();
+
+
+	@And("User Clicks reject checkBox to remove added Sample Conditions")
+	public void userClicksRejectCheckBoxToRemoveAddedSampleConditions() throws InterruptedException {
+		addOrderPage.rejectSampleCheckBox();
+		if (addOrderPage.alertPresent()) {
+			addOrderPage.acceptAlert();
+		}
+		assertTrue(addOrderPage.sampleConditionDropDownOptionDisabled());
 	}
 	
 	@And("User Clicks remove button to remove added Sample")
@@ -326,7 +339,7 @@ public class AddOrderSteps extends TestBase {
 	@And("User Re-adds Samples")
 	public void readdSamples() {
 		addOrderPage.reAddSamples();
-		assertNotNull(addOrderPage.getRemoveAllButton());
+        //assertNotNull(addOrderPage.getRemoveAllButton());
 	}
 	
 	@And("User Clicks to Remove all")

@@ -16,7 +16,7 @@ public class AddOrderPage extends Page {
 
 	private static final String PATH_HOME = "/Dashboard";
 
-	private static final String PATH_SAMPLE_ENTRY_CONFIG = "SampleEntryConfig?ID=116&startingRecNo=1";
+	private static final String PATH_SAMPLE_ENTRY_CONFIG = "SampleEntryConfig?ID=124&startingRecNo=1";
 
 	private static final String CONTACT_TRACING_ENABLE_CONFIG = "SampleEntryConfig?ID=110&startingRecNo=1";
 
@@ -114,8 +114,6 @@ public class AddOrderPage extends Page {
 	private static final By BUTTON_GENERATE = By.id("generateAccessionButton");
 
 	private static final By BUTTON_ADD_SAMPLE = By.xpath("//*[@id=\"samplesBlock\"]/table/tbody/tr/td/input");
-
-	private static final By BUTTON_REMOVE_CONDITION = By.className("asmListItemRemove");
 
 	private static final By BUTTON_REMOVE_ALL = By.xpath("//input[@value='Remove All']");
 
@@ -223,6 +221,11 @@ public class AddOrderPage extends Page {
 
 	private static final By SEARCH_TEST_NAME_RESULTS = By.xpath(
 			"//*[@id=\"addTables\"]/tbody/tr[2]/td[2]/span/span[1]/span/ul");
+
+	private static final By ADD_SAMPLE_BUTTON_2 = By.xpath("/html/body/form/table/tbody/tr[4]/td/div[1]/button");
+
+	private static final By SAMPLE_TYPES_2 = By.xpath(
+			"/html/body/form/table/tbody/tr[4]/td/div[1]/div[2]/table[2]/tbody/tr/td/div[1]/table/tbody/tr[2]/td/select");
 
 	public AddOrderPage(Page parentPage) {
 		super(parentPage);
@@ -834,6 +837,10 @@ public class AddOrderPage extends Page {
 		}
 	}
 
+	public boolean sampleConditionDropDownOptionDisabled() {
+		return isDisabled(SELECT_CONDITION);
+	}
+
 	public void selectSampleConditionFromDropDownMenu() {
 		clickOn(SELECT_CONDITION);
 		List<WebElement> options = getConditonSelectionField().findElements(FIELD_OPTION);
@@ -929,31 +936,18 @@ public class AddOrderPage extends Page {
 		clickOn(SELECT_RESULT);
 	}
 
-	public void removeAddedSampleConditionFromDropDownMenu() throws InterruptedException {
-		List<WebElement> options = getConditonSelectionField().findElements(FIELD_OPTION);
-		int n = 0;
-		for (WebElement option : options) {
-			if (n >= 1) {
-				clickOn(BUTTON_REMOVE_CONDITION);
-			}
-			if (n == 5) {
-				break;
-			}
-			n = n + 1;
-		}
-	}
-
 	public void removeAddedSampleType() {
 		clickOn(BUTTON_REMOVE_SAMPLE);
 	}
 
 	public void reAddSamples() {
-		clickOn(SELECT_SAMPLE);
-		List<WebElement> options = getSampleSelectionField().findElements(FIELD_OPTION);
+		clickOn(ADD_SAMPLE_BUTTON_2);
+		clickOn(SAMPLE_TYPES_2);
+		List<WebElement> options = findElement(SAMPLE_TYPES_2).findElements(FIELD_OPTION);
 		int n = 0;
 		for (WebElement option : options) {
-			option.click();
 			if (n == 4) {
+				option.click();
 				break;
 			}
 			n = n + 1;
