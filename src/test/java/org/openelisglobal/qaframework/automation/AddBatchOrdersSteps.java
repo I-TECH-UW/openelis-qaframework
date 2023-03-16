@@ -92,6 +92,7 @@ public class AddBatchOrdersSteps extends TestBase {
 		if (addBatchOrdersPage.alertPresent()){
 			addBatchOrdersPage.acceptAlert();
 		}
+		Thread.sleep(1000);
 		assertEquals(addBatchOrdersPage.getReceivedDateClass(), "text required error");
 	}
 
