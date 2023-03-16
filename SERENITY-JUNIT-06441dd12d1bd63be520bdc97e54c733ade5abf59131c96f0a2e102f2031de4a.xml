@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="2" name="Validation" skipped="0" tests="3" time="101.8" timestamp="2023-03-16 09:41:46"><testcase name="Validation"><failure type="java.lang.AssertionError"/><system-err>null
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="2" name="Validation" skipped="0" tests="3" time="101.53" timestamp="2023-03-16 09:55:29"><testcase name="Validation"><failure type="java.lang.AssertionError"/><system-err>null
 org.openelisglobal.qaframework.automation.ValidationSteps.testCantBeMarkedWithBothSaveAndRetest(ValidationSteps.java:218)
 ✽.Tests cannot be checked both `Save` and `Retest` at the same time(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/validation.feature:33)
 </system-err></testcase><testcase name="Overall Page"><failure type="java.lang.AssertionError"/><system-err>null

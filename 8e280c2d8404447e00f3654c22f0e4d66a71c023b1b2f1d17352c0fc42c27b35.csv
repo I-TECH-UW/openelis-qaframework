@@ -1,4 +1,4 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"Test Management Feature","Open Rename Existing Test Names page","ERROR","2023-03-16T21:34:18.214Z[Etc/UTC]","0.0","118.45"
-"Test Management Feature","User rejects the testName updates","ERROR","2023-03-16T21:36:16.695Z[Etc/UTC]","0.0","58.44"
-"Test Management Feature","User cancels the testName updates","ERROR","2023-03-16T21:37:15.167Z[Etc/UTC]","0.0","58.85"
+"Test Management Feature","Open Rename Existing Test Names page","ERROR","2023-03-16T21:47:57.609Z[Etc/UTC]","0.0","118.16"
+"Test Management Feature","User rejects the testName updates","ERROR","2023-03-16T21:49:55.808Z[Etc/UTC]","0.0","58.62"
+"Test Management Feature","User cancels the testName updates","ERROR","2023-03-16T21:50:54.465Z[Etc/UTC]","0.0","58.81"

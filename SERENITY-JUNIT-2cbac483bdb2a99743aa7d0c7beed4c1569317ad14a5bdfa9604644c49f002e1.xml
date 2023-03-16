@@ -1,7 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="4" name="Results Entry" skipped="0" tests="9" time="219.42" timestamp="2023-03-16 09:30:31"><testcase name="Accessing Results Entry"><failure type="java.lang.AssertionError"/><system-err>null
-org.openelisglobal.qaframework.automation.ResultsEntrySteps.accesionSearchNumberSearchFormDisplays(ResultsEntrySteps.java:118)
-✽.Result accession number search form displays(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/resultEntry.feature:15)
-</system-err></testcase><testcase name="Searching for test result entry forms"/><testcase name="Results Entry Set-up"/><testcase name="Entering Test Results"/><testcase name="Overall Page"><failure type="java.lang.AssertionError"/><system-err>null
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="3" name="Results Entry" skipped="0" tests="9" time="212.49" timestamp="2023-03-16 09:44:17"><testcase name="Accessing Results Entry"/><testcase name="Searching for test result entry forms"/><testcase name="Results Entry Set-up"/><testcase name="Entering Test Results"/><testcase name="Overall Page"><failure type="java.lang.AssertionError"/><system-err>null
 org.openelisglobal.qaframework.automation.ResultsEntrySteps.saveSuccesMessageAppears(ResultsEntrySteps.java:448)
 ✽.Save results in new page and green ,Save was successful, message appears(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/resultEntry.feature:95)
 </system-err></testcase><testcase name="Verification"><failure type="java.lang.AssertionError"/><system-err>null
