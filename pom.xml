@@ -123,14 +123,14 @@
                     <target>8</target>
                 </configuration>
             </plugin>
-	        <plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-surefire-plugin</artifactId>
-		        <version>3.0.0-M8</version>
-		        <configuration>
-			        <testFailureIgnore>true</testFailureIgnore>
-		        </configuration>
-	        </plugin>
+<!--	        <plugin>-->
+<!--		        <groupId>org.apache.maven.plugins</groupId>-->
+<!--		        <artifactId>maven-surefire-plugin</artifactId>-->
+<!--		        <version>3.0.0-M8</version>-->
+<!--		        <configuration>-->
+<!--			        <testFailureIgnore>true</testFailureIgnore>-->
+<!--		        </configuration>-->
+<!--	        </plugin>-->
 	        <plugin>
 		        <groupId>net.serenity-bdd.maven.plugins</groupId>
 		        <artifactId>serenity-maven-plugin</artifactId>

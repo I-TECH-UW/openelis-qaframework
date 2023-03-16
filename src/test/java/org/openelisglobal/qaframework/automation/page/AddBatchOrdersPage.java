@@ -111,9 +111,12 @@ public class AddBatchOrdersPage extends Page {
 		return findElement(REQUIRED_RECEIVED_DATE).getAttribute("class");
 	}
 
-	public void enterReceivedDate(String date) {
+	public void enterReceivedDate(String date) throws InterruptedException {
 		setText(RECEIVED_DATE_FIELD, date);
 		clickOn(RECEPTION_TIME_FIELD);
+		if (alertPresent()){
+			acceptAlert();
+		}
 	}
 
 	public String getReceivedDateClass() {

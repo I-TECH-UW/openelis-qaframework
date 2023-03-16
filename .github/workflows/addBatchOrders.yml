@@ -23,4 +23,4 @@ jobs:
         run: |
           echo "cucumber.publish.enabled=true" > src/test/resources/cucumber.properties
           mvn clean install -DskipTests=true 
-          mvn test -Dcucumber.filter.tags='@addBatchOrders' -Dmaven.test.failure.ignore=false    
+          mvn test -Dcucumber.filter.tags='@addBatchOrders'   
