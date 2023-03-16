@@ -14,17 +14,19 @@ Feature: Patient Entry
     Then Search by First name yields all patients with matching first name on Add Patient Page
     When User enters known last name "<lastName>" and first name "<firstName>"
     Then Search by Last name and First name yields results for known matching names
+    When User Select Search by Last name "<lastName>", First name "<firstName>" but omit the comma between the parts of the name.
     When User enters known Patient national Identification Number "<patientId>"
     Then Search by Patient national Identification Number yields results for known matching names
     When User enters known Subject Number "<subjectNumber>"
     Then Search by Subject Number yields results for known matching names
+    Then Select Search by Lab No "<labNo>"
     When User Selects correct patient
     Then Patient Information form populates with patient information
     When User Clicks New Patient on the Add Patient Page
     Then Patient Information form clears
     Examples:
-      | lastName | firstName | patientId | subjectNumber | labNo             |
-      | seruwu   | jimmy     | ug012     | oe012         | 20210000000002250 |
+      | lastName | firstName  | patientId | subjectNumber | labNo             |
+      | moses    | mutesasira | ug013     | oe013         | 20210000000002250 |
 
   @patientEntry
   Scenario Outline: Patient Information
@@ -76,5 +78,5 @@ Feature: Patient Entry
     When User Searches for Patient on the Add Order Page for a known Patient with known last name "<lastName>" and first name "<firstName>"
     Then Correct patient information ,patient Identification no "<patientId>",subject number "<subjectNumber>" last name "<lastName>" , first name "<firstName>", address "<address>", date of birth "<dateOfBirth>" , Age "<age>", Gender "<gender>" , maritalStatus "<maritalStatus>" and nationality "<nationality>" appears when searched for
     Examples:
-      | lastName | firstName | patientId | subjectNumber | address | dateOfBirth | age | gender   | maritalStatus | nationality |
-      | seruwu   | jimmy     | ug012     | oe012         | Gayaza  | 09/02/2019  | 4   | 1 = Male | DNA           | uganda      |
+      | lastName | firstName  | patientId | subjectNumber | address | dateOfBirth | age | gender   | maritalStatus | nationality |
+      | moses    | mutesasira | ug013     | oe013         | Gayaza  | 09/02/2019  | 4   | 1 = Male | DNA           | uganda      |

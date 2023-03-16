@@ -47,7 +47,7 @@ public class ModifyOrderSteps extends TestBase {
     
     private String ACCESION_NUMBER_2 = "20210000000003780";
     
-    private String patientInfo = "Patient:  seruwu, jimmy  09/02/2019  M  ug012";
+    private String patientInfo = "Patient:  mutesasira, moses  09/02/2019  M  ug013";
     
     @After(RunTest.HOOK.MODIFY_ORDER)
     public void destroy() {
@@ -85,7 +85,7 @@ public class ModifyOrderSteps extends TestBase {
             homePage.acceptAlert();
         }
         addPatientPage = homePage.goToAddEditPatientPage();
-        addPatientPage.innitialisePatientData("jimmy", "seruwu", false);
+        addPatientPage.innitialisePatientData("mutesasira", "moses", false);
         homePage = addPatientPage.goToHomePage();
 
         if (homePage.alertPresent()){

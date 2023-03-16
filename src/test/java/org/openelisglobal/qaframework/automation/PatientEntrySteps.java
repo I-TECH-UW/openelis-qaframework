@@ -54,7 +54,7 @@ public class PatientEntrySteps extends TestBase {
 	@Then("Add|Modify Patient page appears with search field")
 	public void AddModifyPageAppears() throws InterruptedException {
 		//initialise data
-		addPatientPage.innitialisePatientData("jimmy", "seruwu", false);
+		addPatientPage.innitialisePatientData("mutesasira", "moses", false);
 		homePage = addPatientPage.goToHomePage();
 		if (addPatientPage.alertPresent()) {
 			addPatientPage.acceptAlert();
@@ -64,7 +64,7 @@ public class PatientEntrySteps extends TestBase {
 		//cant register patient with unaccepted character
 		homePage = addPatientPage.goToHomePage();
 		addPatientPage = homePage.goToAddEditPatientPage();
-		addPatientPage.innitialisePatientData("jimmý", "seruwu", true);
+		addPatientPage.innitialisePatientData("mutesasira~", "moses", true);
 		assertTrue(addPatientPage
 				.containsText("patientProperties.firstName: ValidName invalid name format, possibly illegal character"));
 		homePage = addPatientPage.goToHomePage();
@@ -133,6 +133,29 @@ public class PatientEntrySteps extends TestBase {
 		assertTrue(addPatientPage.patientSearchResultsTableExists());
 	}
 
+	@When("User Select Search by Last name {string}, First name {string} but omit the comma between the parts of the name.")
+	public void userSelectSearchByLastNameFirstNameButOmitTheCommaBetweenThePartsOfTheName(String lastName, String firstName)
+			throws InterruptedException {
+		addPatientPage.refreshPage();
+		if (addPatientPage.alertPresent()) {
+			addPatientPage.acceptAlert();
+		}
+		addPatientPage.enterLastNameSearch(lastName + "," + firstName);
+		addPatientPage.clickSearchButton();
+		assertTrue(addPatientPage.containsText("No patients found matching search terms"));
+		Thread.sleep(1000);
+
+		addPatientPage.refreshPage();
+		if (addPatientPage.alertPresent()) {
+			addPatientPage.acceptAlert();
+		}
+		addPatientPage.enterFirstNameSearch(firstName + "," + lastName);
+		addPatientPage.clickSearchButton();
+
+		assertTrue(addPatientPage.containsText("No patients found matching search terms"));
+
+	}
+
 	@When("User enters known Patient national Identification Number {string}")
 	public void userEntersKnownPatientNationalIdentificationNumber(String patientId) throws InterruptedException {
 		addPatientPage.refreshPage();
@@ -166,6 +189,25 @@ public class PatientEntrySteps extends TestBase {
 		assertTrue(addPatientPage.patientSearchResultsTableExists());
 	}
 
+	@Then("Select Search by Lab No {string}")
+	public void selectSearchByLabNo(String labNo) throws InterruptedException {
+		addOrderPage = homePage.goToAddOrderPage();
+		if (addPatientPage.alertPresent()){
+			addPatientPage.acceptAlert();
+		}
+
+		addOrderPage.innitialiseData(labNo);
+		homePage = addOrderPage.goToHomePage();
+		Thread.sleep(1000);
+
+		addPatientPage = homePage.goToAddEditPatientPage();
+		addPatientPage.enterLabNumberSearch(labNo);
+		addPatientPage.clickSearchButton();
+		Thread.sleep(100);
+		assertTrue(addPatientPage.containsSeachResult());
+		assertTrue(addPatientPage.patientSearchResultsTableExists());
+	}
+
 	@When("User Selects correct patient")
 	public void selectPatient() throws InterruptedException {
 		addPatientPage.selectFirstSearchResult();
@@ -174,8 +216,8 @@ public class PatientEntrySteps extends TestBase {
 
 	@Then("Patient Information form populates with patient information")
 	public void patientInformationDisplays() {
-		assertEquals("jimmy", addPatientPage.getPatientFirstName());
-		assertEquals("seruwu", addPatientPage.getPatientLastName());
+		assertEquals("mutesasira", addPatientPage.getPatientFirstName());
+		assertEquals("moses", addPatientPage.getPatientLastName());
 	}
 
 	@When("User Clicks New Patient on the Add Patient Page")
@@ -226,7 +268,7 @@ public class PatientEntrySteps extends TestBase {
 
 	@And("Alert is given if Subject Number is already in use")
 	public void alertGivenIfSubJectNumberIsAlreadyInUse() {
-		addPatientPage.enterSubjectNumber("oe012");
+		addPatientPage.enterSubjectNumber("oe013");
 		addPatientPage.clickNameField();
 		addPatientPage.acceptAlert();
 	}
@@ -238,7 +280,7 @@ public class PatientEntrySteps extends TestBase {
 
 	@And("Alert given if National Identification Number  is already in use")
 	public void alertGivenIfNationaIdIsAlreadyInUse() {
-		addPatientPage.enterNationalId("ug012");
+		addPatientPage.enterNationalId("ug013");
 		addPatientPage.clickNameField();
 		addPatientPage.acceptAlert();
 	}

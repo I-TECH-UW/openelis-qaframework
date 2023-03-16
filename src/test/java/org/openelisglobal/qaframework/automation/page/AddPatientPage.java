@@ -367,14 +367,14 @@ public class AddPatientPage extends Page {
 			enterSubjectNumber("201807D9P" + uuidAsString);
 			enterNationalId("201507D35" + uuidAsString);
 		} else {
-			enterNationalId("ug012");
+			enterNationalId("ug013");
 			clickSubJectNumber();
 			Thread.sleep(1000);
 			if (alertPresent()) {
 				acceptAlert();
 				return;
 			}
-			enterSubjectNumber("oe012");
+			enterSubjectNumber("oe013");
 		}
 		enterPatientLastName(lastName);
 		enterPatientFirstName(firstName);
