@@ -6,11 +6,11 @@ import org.openqa.selenium.By;
  * This class represents the Results, Enter By Unit Type Page
  */
 public class ResultsUnitTypePage extends Page {
-	
+
 	private static final String PAGE_PATH = "/LogbookResults";
-	
+
 	private static final By SEARCH_FORM = By.id("searchDiv");
-	
+
 	private static final By DROP_DOWN_UNIT_TYPE = By.id("testSectionId");
 
 	private static final By BUTTON_SAVE = By.id("saveButtonId");
@@ -19,42 +19,46 @@ public class ResultsUnitTypePage extends Page {
 
 	private static final By DROP_DOWN_TEST_RESULT = By.xpath("//select[starts-with(@id,'resultId')]");
 
-	private  static  final  By LAB_NO_SEARCH_FIELD = By.id("labnoSearch");
+	private static final By LAB_NO_SEARCH_FIELD = By.id("labnoSearch");
 
-	private  static final By SEARCH_BUTTON = By.xpath("//*[@id=\"searchDiv\"]/div[3]/div[1]/input[2]");
+	private static final By SEARCH_BUTTON = By.xpath("//*[@id=\"searchDiv\"]/div[3]/div[1]/input[2]");
 
-	 private  static  final  By HOME_MENU_ICON = By.id("menu_home");
+	private static final By HOME_MENU_ICON = By.id("menu_home");
 
 	public ResultsUnitTypePage(Page parent) {
 		super(parent);
 	}
-	
+
 	@Override
 	public String getPageUrl() {
 		return PAGE_PATH;
 	}
-	
+
 	public Boolean hasResultUnitTypeSearchForm() {
 		return hasElement(SEARCH_FORM);
 	}
-	
+
 	public Boolean hasUnitTypeOptions() {
 		return dropDownHasOptions(DROP_DOWN_UNIT_TYPE);
 	}
-	
+
 	public ResultsEntryPage selectUnitType(String unitType) {
 		selectFrom(DROP_DOWN_UNIT_TYPE, unitType);
 		return new ResultsEntryPage(this);
 	}
 
-	public void enterTestResult() {
+	public void enterTestResult() throws InterruptedException {
 		for (int n = 1; n <= 7; n++) {
-			By FIELD_TEST_RESULT_N = By.xpath("(//input[starts-with(@id,'results')])[" + n + "]");
+			By FIELD_TEST_RESULT_N = By.xpath("//*[@id=\"results_" + n + "\"]");
 			if (hasElementWithoutWait(FIELD_TEST_RESULT_N)) {
-				if (n==1){
-					setText(FIELD_TEST_RESULT_N, "43");
-				}else{
-					setText(FIELD_TEST_RESULT_N, "3");
+				if (n == 1) {
+					setTextToFieldNoEnter(FIELD_TEST_RESULT_N, "43");
+				} else {
+					setTextToFieldNoEnter(FIELD_TEST_RESULT_N, "43");
+					if (alertPresent()) {
+						acceptAlert();
+						setTextToFieldNoEnter(FIELD_TEST_RESULT_N, "3");
+					}
 				}
 			}
 		}
@@ -77,10 +81,11 @@ public class ResultsUnitTypePage extends Page {
 		return new HomePage(this);
 	}
 
-	public void enterLabNoFieldSearch(String labNo){
-		setText(LAB_NO_SEARCH_FIELD,labNo);
+	public void enterLabNoFieldSearch(String labNo) {
+		setText(LAB_NO_SEARCH_FIELD, labNo);
 	}
-	public void clickSearchByLabNo(){
+
+	public void clickSearchByLabNo() {
 		clickOn(SEARCH_BUTTON);
 	}
 }
