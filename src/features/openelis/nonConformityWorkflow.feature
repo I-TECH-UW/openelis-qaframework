@@ -16,5 +16,5 @@ Feature: Non Conformity workflow
 
     Examples:
       | accessionNumber   |
-      | 20210000000003761 |
+      | 20231099040004863 |
 

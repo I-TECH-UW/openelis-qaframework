@@ -21,7 +21,7 @@ Feature: WorkPlan Feature
 
     Examples:
       | testType                     | numberOfTests | LabNo             |
-      | HIV INFANT VIRAL LOAD(Serum) | 10            | 20210000000003761 |
+      | HIV INFANT VIRAL LOAD(Serum) | 10            | 20231099040004863 |
 
 
   @workplan
@@ -40,7 +40,7 @@ Feature: WorkPlan Feature
     Then Workplan by Panel workplan appears  in a new tab or window
     Examples:
       | panelType         | numberOfTests | LabNo             |
-      | Bilan Biochimique | 92            | 20210000000003761 |
+      | Bilan Biochimique | 92            | 20231099040004863 |
 
 
   @workplan
@@ -59,7 +59,7 @@ Feature: WorkPlan Feature
     Then Workplan by unit workplan appears  in a new tab or window
     Examples:
       | unitType          | numberOfTests | LabNo             |
-      | Molecular Biology | 20            | 20210000000003761 |
+      | Molecular Biology | 20            | 20231099040004863 |
 
   @workplan
   Scenario Outline: Verification
@@ -74,6 +74,6 @@ Feature: WorkPlan Feature
     Then Test "<LabNo>" nolonger exists on the workplan by unit Type
     Examples:
       | unitType          | testType                     | panelType         | LabNo             |
-      | Molecular Biology | HIV INFANT VIRAL LOAD(Serum) | Bilan Biochimique | 20210000000003761 |
+      | Molecular Biology | HIV INFANT VIRAL LOAD(Serum) | Bilan Biochimique | 20231099040004863 |
 
 

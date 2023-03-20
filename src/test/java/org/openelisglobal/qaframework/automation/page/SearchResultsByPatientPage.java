@@ -27,7 +27,7 @@ public class SearchResultsByPatientPage extends Page {
 	
 	private static final By SEARCH_RESULT_TABLE = By.id("searchResultTable");
 	
-	private static final By CHECK_BOX_PATIENT_RESULT = By.id("sel_1");
+	private static final By SELECT_RESULT_2 = By.id("sel_2");
 	
 	private static final By BUTTON_GET_PATIENT_TESTS = By.id("selectPatientButtonID");
 	
@@ -81,11 +81,12 @@ public class SearchResultsByPatientPage extends Page {
 		return hasElement(SEARCH_RESULT_TABLE);
 	}
 	
-	public void clickPatientResultCheckBox() {
-		clickOn(CHECK_BOX_PATIENT_RESULT);
+	public void selectPatientSearchResultSecondRadioBtn() {
+		clickOn(SELECT_RESULT_2);
 	}
 	
 	public void clickGetPatientTestsButon() {
 		clickOn(BUTTON_GET_PATIENT_TESTS);
 	}
+
 }

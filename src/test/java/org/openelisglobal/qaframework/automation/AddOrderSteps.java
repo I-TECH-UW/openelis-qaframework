@@ -59,6 +59,7 @@ public class AddOrderSteps extends TestBase {
 	
 	@Then("Order form should appear")
 	public void orderFormShouldAppear() throws Exception {
+		addOrderPage.turnOnAcessionValidation(false);
 		assertTrue(addOrderPage.containsTextRequest());
 	}
 	@And("Remember site and requester checkbox exists")
@@ -102,6 +103,11 @@ public class AddOrderSteps extends TestBase {
 	public void generatedAccesionNumbershouldBeDigit() throws Exception {
 		//assertTrue(addOrderPage.GeneratedAccessionNumberIsDigit());
 		assertNotNull(addOrderPage.getAccesionNumberValue());
+	}
+
+	@Then("Turn off accession number validation from the previous stage")
+	public void turnOffAccessionNumberValidationFromThePreviousStage() {
+		addOrderPage.turnOnAcessionValidation(false);
 	}
 	
 	@Then("View page Request Date and Received Date Default to the current date")
@@ -579,16 +585,12 @@ public class AddOrderSteps extends TestBase {
 	
 	@And("User Enters Subject Number {string}")
 	public void enterPatientSubjectNumber(String subJectNumber) {
-		UUID uuid = UUID.randomUUID();
-		String uuidAsString = uuid.toString();
-		addOrderPage.enterSubjectNumber(subJectNumber + uuidAsString);
+		addOrderPage.enterSubjectNumber(subJectNumber + Utils.generateRandomNumber(4));
 	}
 	
 	@And("User Enters National ID {string}")
 	public void enterPatientNationalId(String nationalID) {
-		UUID uuid = UUID.randomUUID();
-		String uuidAsString = uuid.toString();
-		addOrderPage.enterNationalId(nationalID + uuidAsString);
+		addOrderPage.enterNationalId(nationalID + Utils.generateRandomNumber(4));
 	}
 	
 	@And("User Enters Patient Last Name {string}")
@@ -783,8 +785,6 @@ public class AddOrderSteps extends TestBase {
 	@When("User Completes all mandatory fields")
 	public void completeAllMandatoryFiels() throws InterruptedException {
 		// innitializing data
-		UUID uuid = UUID.randomUUID();
-		String uuidAsString = uuid.toString();
 		addOrderPage.clickGenerateButton();
 		Thread.sleep(1000);
 		addOrderPage.enterSiteNameSuggestion("ABENGOUROU");
@@ -796,8 +796,8 @@ public class AddOrderSteps extends TestBase {
 		addOrderPage.clickPannelCheckBox();
 		addOrderPage.clickTestCheckBox();
 		addOrderPage.clickNewPatientButton();
-		addOrderPage.enterSubjectNumber("201807D9P" + uuidAsString);
-		addOrderPage.enterNationalId("201507D35" + uuidAsString);
+		addOrderPage.enterSubjectNumber("202307D9P" + Utils.generateRandomNumber(4));
+		addOrderPage.enterNationalId("201507D35" + Utils.generateRandomNumber(4));
 		addOrderPage.enterPatientLastName("lastName");
 		addOrderPage.enterPatientFirstName("firstName");
 		addOrderPage.enterPatientStreet("street");

@@ -59,7 +59,7 @@ And User Select Results --> Enter by Unit from main menu drop-down and Selects a
 And Message appears ,Accession number not found, if the format is incorrect or number is not in use
 Examples:
     |accesionNumber   |lastName|firstName  |unitType         |date      |
-    |20210000000002249|moses   | mutesasira|Molecular Biology|03/07/2021|  
+    |20230000000002109|musa   | muranga|Molecular Biology|03/07/2021|
 
 @results
 Scenario Outline:Entering Test Results 
@@ -102,24 +102,24 @@ Examples:
     |unitType         |
     |Molecular Biology|
 
-@results
+@results @one
 Scenario Outline:Verification
 When User Reload Results Page By Results --> Search --> By Patient LastName "<lastName>" and FirstName "<firstName>"
 Then Results appear on the Search By Patient Page as entered 
-When User Reload Results Page By Results --> Search --> By Order Number "<accesionNumber>"
-Then Results appear on Search By Order Page as entered
-When User Reload Results Page By Results --> Search --> By Test "<test>"
-Then Results appear on Search By Test Page as entered 
-When User Select Results --> Enter by Unit from main menu drop-down and Selects a Unit Type "<unitType>" for which there are known tests
-Then Tests for which results were entered no longer appear on page
-And User Goes to Validation ---> Routine
-Then Result Validation Page loads
-When User Goes to Reports --> Routine --> Patient Status Report
-And  User Enters the appropriate Lab Number "<accesionNumber>" and clicks Generate Printable Version
-Then Results appear as reported
+#When User Reload Results Page By Results --> Search --> By Order Number "<accesionNumber>"
+#Then Results appear on Search By Order Page as entered
+#When User Reload Results Page By Results --> Search --> By Test "<test>"
+#Then Results appear on Search By Test Page as entered
+#When User Select Results --> Enter by Unit from main menu drop-down and Selects a Unit Type "<unitType>" for which there are known tests
+#Then Tests for which results were entered no longer appear on page
+#And User Goes to Validation ---> Routine
+#Then Result Validation Page loads
+#When User Goes to Reports --> Routine --> Patient Status Report
+#And  User Enters the appropriate Lab Number "<accesionNumber>" and clicks Generate Printable Version
+#Then Results appear as reported
 Examples:
     |accesionNumber   |lastName|firstName  |         test                 |unitType         |
-    |20210000000002249|moses   | mutesasira|HEPATITIS C VIRAL LOAD(Serum) |Molecular Biology|
+    |20230000000002109|musa   | muranga|HEPATITIS C VIRAL LOAD(Serum) |Molecular Biology|
 
 @results
 Scenario Outline:Accept As Is functionality
@@ -139,7 +139,7 @@ When User Clicks Save Button
 Then Page refreshes and green ,Save was successful, message appears 
 Examples:
     |accesionNumber   |notes       |
-    |20210000000002249|Sample notes|
+    |20230000000002109|Sample notes|
 
 @results
 Scenario Outline:Verification

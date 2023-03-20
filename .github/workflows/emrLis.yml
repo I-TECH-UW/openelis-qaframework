@@ -21,14 +21,5 @@ jobs:
         shell: bash     
       - name: Run and Publish Openelis QA
         run: |
-          echo "cucumber.publish.enabled=true" > src/test/resources/cucumber.properties
           mvn clean install -DskipTests=true 
           mvn test -Dcucumber.filter.tags='@emrLis'   
-#          curl -X POST \
-#          https://studio.cucumber.io/cucumber_project/results \
-#          -F messages=@./target/cucumber.ndjson  \
-#          -H "project-access-token: ${{secrets.CUCUMBER_IO_TOKEN}}" \
-#          -H "provider: github" \
-#          -H "repo: ${{github.repository}}" \
-#          -H "branch: main" \
-#          -H "revision: ${{github.sha}}"

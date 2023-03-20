@@ -54,7 +54,7 @@ public class PatientEntrySteps extends TestBase {
 	@Then("Add|Modify Patient page appears with search field")
 	public void AddModifyPageAppears() throws InterruptedException {
 		//initialise data
-		addPatientPage.innitialisePatientData("mutesasira", "moses", false);
+		addPatientPage.innitialisePatientData("muranga", "musa", false);
 		homePage = addPatientPage.goToHomePage();
 		if (addPatientPage.alertPresent()) {
 			addPatientPage.acceptAlert();
@@ -64,7 +64,7 @@ public class PatientEntrySteps extends TestBase {
 		//cant register patient with unaccepted character
 		homePage = addPatientPage.goToHomePage();
 		addPatientPage = homePage.goToAddEditPatientPage();
-		addPatientPage.innitialisePatientData("mutesasira~", "moses", true);
+		addPatientPage.innitialisePatientData("muranga~", "musa", true);
 		assertTrue(addPatientPage
 				.containsText("patientProperties.firstName: ValidName invalid name format, possibly illegal character"));
 		homePage = addPatientPage.goToHomePage();
@@ -216,8 +216,8 @@ public class PatientEntrySteps extends TestBase {
 
 	@Then("Patient Information form populates with patient information")
 	public void patientInformationDisplays() {
-		assertEquals("mutesasira", addPatientPage.getPatientFirstName());
-		assertEquals("moses", addPatientPage.getPatientLastName());
+		assertEquals("muranga", addPatientPage.getPatientFirstName());
+		assertEquals("musa", addPatientPage.getPatientLastName());
 	}
 
 	@When("User Clicks New Patient on the Add Patient Page")
@@ -240,9 +240,8 @@ public class PatientEntrySteps extends TestBase {
 	@When("User Enters data into text fields")
 	public void enterDataIntoTextFields() {
 		addPatientPage.clickNewPatientButton();
-		UUID uuid = UUID.randomUUID();
-		addPatientPage.enterSubjectNumber("201807D9P" + uuid.toString());
-		addPatientPage.enterNationalId("201507D35" + uuid.toString());
+		addPatientPage.enterSubjectNumber("202307D9P" + Utils.generateRandomNumber(4));
+		addPatientPage.enterNationalId("201507D35" + Utils.generateRandomNumber(4));
 		addPatientPage.enterPatientLastName("John");
 		addPatientPage.enterPatientFirstName("Smith");
 		addPatientPage.enterPatientStreet("Gayaza");
@@ -252,7 +251,7 @@ public class PatientEntrySteps extends TestBase {
 
 	@Then("All text fields accept text")
 	public void fieldsAcceptText() {
-		assertTrue(addPatientPage.getSubjectNumber().contains("201807D9P"));
+		assertTrue(addPatientPage.getSubjectNumber().contains("202307D9P"));
 		assertTrue(addPatientPage.getNationalId().contains("201507D35"));
 		assertEquals("John", addPatientPage.getPatientLastName());
 		assertEquals("Smith", addPatientPage.getPatientFirstName());
@@ -268,7 +267,7 @@ public class PatientEntrySteps extends TestBase {
 
 	@And("Alert is given if Subject Number is already in use")
 	public void alertGivenIfSubJectNumberIsAlreadyInUse() {
-		addPatientPage.enterSubjectNumber("oe013");
+		addPatientPage.enterSubjectNumber("oe015");
 		addPatientPage.clickNameField();
 		addPatientPage.acceptAlert();
 	}
@@ -280,7 +279,7 @@ public class PatientEntrySteps extends TestBase {
 
 	@And("Alert given if National Identification Number  is already in use")
 	public void alertGivenIfNationaIdIsAlreadyInUse() {
-		addPatientPage.enterNationalId("ug013");
+		addPatientPage.enterNationalId("ug015");
 		addPatientPage.clickNameField();
 		addPatientPage.acceptAlert();
 	}
@@ -417,7 +416,7 @@ public class PatientEntrySteps extends TestBase {
 	public void enterTextLeavingOutMandatoryFields() {
 		addPatientPage.clickNewPatientButton();
 		//leave out National Id
-		addPatientPage.enterSubjectNumber("201807D9PXX");
+		addPatientPage.enterSubjectNumber("202307D9PXX");
 		addPatientPage.enterPatientLastName("John");
 		addPatientPage.enterPatientFirstName("Smith");
 		addPatientPage.enterPatientStreet("Gayaza");
@@ -467,7 +466,7 @@ public class PatientEntrySteps extends TestBase {
 	@Then("Patient Information form remains on Add Patient screen")
 	public void patientIformationRemains() {
 		assertEquals("201507D35XX", addPatientPage.getNationalId());
-		assertEquals("201807D9PXX", addPatientPage.getSubjectNumber());
+		assertEquals("202307D9PXX", addPatientPage.getSubjectNumber());
 	}
 
 	@When("User Clicks Save on Add Patient Page")
@@ -515,6 +514,11 @@ public class PatientEntrySteps extends TestBase {
 		assertTrue(addOrderPage.patientSearchResultsTableExists());
 		addOrderPage.selectFirstSearchResult();
 		Thread.sleep(1000);
+		if (!addOrderPage.getPatientSubjectNumber().equals(subjectNumber)){
+			addOrderPage.selectSecondSearchResult();
+		}
+		Thread.sleep(1000);
+
 
 		assertEquals(lastName, addOrderPage.getPatientLastName());
 		assertEquals(firstName, addOrderPage.getPatientFirstName());

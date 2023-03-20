@@ -380,9 +380,9 @@ public class TestManagementSteps extends TestBase {
 		testManagementPage.selectTestSectionDropDownOption("Virology");
 	}
 
-	@And("LOINC test field accepts text")
-	public void loincTestFieldAcceptsText() {
-		testManagementPage.enterLOINCText("82092-8");
+	@And("LOINC test field accepts text {string}")
+	public void loincTestFieldAcceptsText(String LOINC) {
+		testManagementPage.enterLOINCText(LOINC);
 	}
 
 	@And("Panel : click on dropbox and select option")
@@ -395,9 +395,9 @@ public class TestManagementSteps extends TestBase {
 		testManagementPage.selectUnitOfMeasure("mlU/ml");
 	}
 
-	@And("Result Type : click on dropbox and select option")
-	public void resultTypeClickOnDropboxAndSelectOption() {
-		testManagementPage.selectResultTypeDropDownOption("Numeric");
+	@And("Result Type : click on dropbox and select option {string}")
+	public void resultTypeClickOnDropboxAndSelectOption(String resultType) {
+		testManagementPage.selectResultTypeDropDownOption(resultType);
 	}
 
 	@Then("user clicks Click on Next")
@@ -422,19 +422,23 @@ public class TestManagementSteps extends TestBase {
 		assertTrue(testManagementPage.containsText("Sample type and test sort order"));
 	}
 
-	@Then("Click on Edit Result Ranges button")
-	public void clickOnEditResultRangesButton() {
-		testManagementPage.clickEditResultRangesButton();
+	@Then("Click on Edit Result Ranges button {string}")
+	public void clickOnEditResultRangesButton(String resultType) {
+		if (resultType.equals("Numeric")) {
+			testManagementPage.clickEditResultRangesButton();
+		}
 	}
 
-	@And("Enter appropriate ranges")
-	public void enterAppropriateRanges() throws InterruptedException {
-		testManagementPage.enterNormalRangeLow("6");
-		testManagementPage.enterNormalRangeHigh("7");
-		testManagementPage.enterReportingRangeLow("8");
-		testManagementPage.enterReportingRangeHigh("9");
-		if (testManagementPage.alertPresent()) {
-			testManagementPage.acceptAlert();
+	@And("Enter appropriate ranges {string}")
+	public void enterAppropriateRanges(String resultType) throws InterruptedException {
+		if (resultType.equals("Numeric")) {
+			testManagementPage.enterNormalRangeLow("6");
+			testManagementPage.enterNormalRangeHigh("7");
+			testManagementPage.enterReportingRangeLow("8");
+			testManagementPage.enterReportingRangeHigh("9");
+			if (testManagementPage.alertPresent()) {
+				testManagementPage.acceptAlert();
+			}
 		}
 	}
 

@@ -210,7 +210,7 @@ public class ResultsEntrySteps extends TestBase {
 		homePage = addOrderPage.goToHomePage();
 		
 		addOrderPage = homePage.goToAddOrderPage();
-		addOrderPage.innitialiseData("20210000000002250");
+		addOrderPage.innitialiseData("20230000000004217");
 		homePage = addOrderPage.goToHomePage();
 		  Thread.sleep(1000);
 		searchByOrderPage = homePage.goToSearchResultsByOrder();
@@ -473,7 +473,7 @@ public class ResultsEntrySteps extends TestBase {
 		searchByPatientPage.enterLastNameSearch(lastName);
 		searchByPatientPage.clickSearchButton();
 		Thread.sleep(1000);
-		//searchByPatientPage.clickPatientResultCheckBox();
+		searchByPatientPage.selectPatientSearchResultSecondRadioBtn();
 		searchByPatientPage.clickGetPatientTestsButon();
 	}
 	

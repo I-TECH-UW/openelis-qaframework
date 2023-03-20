@@ -2,6 +2,7 @@ package org.openelisglobal.qaframework.automation.page;
 
 import java.util.UUID;
 
+import org.openelisglobal.qaframework.automation.utils.Utils;
 import org.openqa.selenium.By;
 
 public class AddPatientPage extends Page {
@@ -360,21 +361,19 @@ public class AddPatientPage extends Page {
 	}
 	
 	public void innitialisePatientData(String firstName, String lastName, Boolean random) throws InterruptedException {
-		UUID uuid = UUID.randomUUID();
-		String uuidAsString = uuid.toString();
 		clickNewPatientButton();
 		if (random) {
-			enterSubjectNumber("201807D9P" + uuidAsString);
-			enterNationalId("201507D35" + uuidAsString);
+			enterSubjectNumber("202307D9P" + Utils.generateRandomNumber(4));
+			enterNationalId("201507D35" + Utils.generateRandomNumber(4));
 		} else {
-			enterNationalId("ug013");
+			enterNationalId("ug015");
 			clickSubJectNumber();
 			Thread.sleep(1000);
 			if (alertPresent()) {
 				acceptAlert();
 				return;
 			}
-			enterSubjectNumber("oe013");
+			enterSubjectNumber("oe015");
 		}
 		enterPatientLastName(lastName);
 		enterPatientFirstName(firstName);

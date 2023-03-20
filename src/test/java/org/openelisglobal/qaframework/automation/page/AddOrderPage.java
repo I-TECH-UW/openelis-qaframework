@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
+import org.openelisglobal.qaframework.automation.utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -205,6 +206,8 @@ public class AddOrderPage extends Page {
 	private static final By GIF_LOADER = By.id("loading");
 
 	private static final By SELECT_RESULT = By.id("sel_1");
+
+	private static final By SELECT_RESULT_2 = By.id("sel_2");
 
 	private static final By PATIENT_SEARCH_RESULTS_TABLE = By.xpath("//*[@id=\"searchResultTable\"]");
 
@@ -936,6 +939,10 @@ public class AddOrderPage extends Page {
 		clickOn(SELECT_RESULT);
 	}
 
+	public void selectSecondSearchResult() {
+		clickOn(SELECT_RESULT_2);
+	}
+
 	public void removeAddedSampleType() {
 		clickOn(BUTTON_REMOVE_SAMPLE);
 	}
@@ -1019,11 +1026,6 @@ public class AddOrderPage extends Page {
 		return new HomePage(this);
 	}
 
-	public String accessionNumberGenerator() {
-		UUID uuid = UUID.randomUUID();
-		String uuidAsString = uuid.toString();
-		return uuidAsString;
-	}
 
 	public void innitialiseData(String accesionNumber) throws InterruptedException {
 
@@ -1043,10 +1045,10 @@ public class AddOrderPage extends Page {
 		clickPannelCheckBox();
 		clickTestCheckBox();
 		clickNewPatientButton();
-		enterSubjectNumber("201807D9P" + accessionNumberGenerator());
-		enterNationalId("201507D35" + accessionNumberGenerator());
-		enterPatientLastName("moses");
-		enterPatientFirstName("mutesasira");
+		enterSubjectNumber("202307D9P" + Utils.generateRandomNumber(4));
+		enterNationalId("201507D35" + Utils.generateRandomNumber(4));
+		enterPatientLastName("musa");
+		enterPatientFirstName("muranga");
 		enterPatientStreet("street");
 		enterPatientCommune("commune");
 		enterPatientPhone("+225-63-45-87-88");
@@ -1061,8 +1063,6 @@ public class AddOrderPage extends Page {
 	}
 
 	public void innitialiseRandomData() throws InterruptedException {
-		UUID uuid = UUID.randomUUID();
-		String uuidAsString = uuid.toString();
 		clickGenerateButton();
 		Thread.sleep(1000);
 		enterSiteNameSuggestion("ABENGOUROU");
@@ -1074,8 +1074,8 @@ public class AddOrderPage extends Page {
 		clickPannelCheckBox();
 		clickTestCheckBox();
 		clickNewPatientButton();
-		enterSubjectNumber("201807D9P" + uuidAsString);
-		enterNationalId("201507D35" + uuidAsString);
+		enterSubjectNumber("202307D9P" + Utils.generateRandomNumber(4));
+		enterNationalId("201507D35" + Utils.generateRandomNumber(4));
 		enterPatientLastName("lastName");
 		enterPatientFirstName("firstName");
 		enterPatientStreet("street");

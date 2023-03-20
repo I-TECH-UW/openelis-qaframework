@@ -40,7 +40,7 @@ When User Closes Validation note box
 Then Validation Note field closes; triangle symbol changes to notepad symbol
 Examples:
     | unitType          | existingLabNumber | notes        | NoneExistingLabNumber |
-    | Molecular Biology | 20210000000002249 | sample Notes | 11111111111111111     |
+    | Molecular Biology | 20230000000002109 | sample Notes | 11111111111111111     |
 
     @validate
     Scenario Outline: Overall Page
@@ -76,4 +76,4 @@ When User Goes to Workplan --> By Unit
 Then Retest tests appear on workplan for that accession number By Unit Type "<unitType>"
 Examples: Returns to Validation
     | accesionNumber    | testType                     | panelType         | unitType          |
-    | 20210000000002249 | HIV INFANT VIRAL LOAD(Serum) | Bilan Biochimique | Molecular Biology |
+    | 20230000000002109 | HIV INFANT VIRAL LOAD(Serum) | Bilan Biochimique | Molecular Biology |

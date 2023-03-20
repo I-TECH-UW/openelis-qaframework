@@ -14,11 +14,12 @@ Scenario Outline: Order Number
     Then Generated Accesion Number should be a digit
     Examples:
      | accesionNumber     | status |
-     | 20210000000001004  | valid  |
+     | 20230000000001290  | valid  |
      | BETA119000047      |invalid |
 
 @order
 Scenario Outline: Request and Received Date
+   Then Turn off accession number validation from the previous stage
    Then View page Request Date and Received Date Default to the current date
    And Both request and received date should be mandatory
    When User enters incorrect Request and Received Date format "<incorrectDateValue>"
@@ -162,7 +163,7 @@ And User Searches by First Name "<firstName>"
 And User Searches by Date of Birth "<dateOfBirth>"
 Examples:
      | accesionNumber    | patientId  | lastName | firstName  | dateOfBirth |
-     | 20210000000001004 | 201507D33  |   Aliou  | SADIO      | 09/02/2019  |
+     | 20230000000001290 | 201507D33  |   Aliou  | SADIO      | 09/02/2019  |
 
 @order
 Scenario Outline: Patient Information
@@ -199,8 +200,8 @@ And User Selects Patient Marital Status
 And User Enters Patient Other Nationality "<nationality>"
 Examples:
      |subjectNumber|nationalId |pLastName|pFirstName|cLastName|cFirstName|  cEmail         | cPhone        |        street              |commune   |town  |pPhone       |pEmail        |dateOfBirth |nationality|age|status  |
-     | 201807D9P   | 201507D35 |   Aliou | SADIO    |  moses  | mutes    | wrongEmail      | +23063458788  | New York city, street 3334 |Grand yoff| Dakar|ff223377     |wrongEmail    |09/02/dd    |American   |20 |invalid |
-     | 201807D9P   | 201507D35 |   Aliou | SADIO    |  moses  | mutes    |contact@gmail.com| +23063458788  | New York city, street 3334 |Grand yoff| Dakar|+23063458788 |pat@gmail.com |09/02/2019  |American   |20 |valid   |
+     | 202307D9P   | 201507D35 |   Aliou | SADIO    |  musa  | mutes    | wrongEmail      | +23063458788  | New York city, street 3334 |Grand yoff| Dakar|ff223377     |wrongEmail    |09/02/dd    |American   |20 |invalid |
+     | 202307D9P   | 201507D35 |   Aliou | SADIO    |  musa  | mutes    |contact@gmail.com| +23063458788  | New York city, street 3334 |Grand yoff| Dakar|+23063458788 |pat@gmail.com |09/02/2019  |American   |20 |valid   |
 
 @order
 Scenario: Overall Page
