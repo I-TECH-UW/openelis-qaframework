@@ -7,6 +7,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
@@ -66,5 +67,11 @@ public class Utils {
 
 		doc.close();
 		return stripText;
+	}
+
+	public static String generateRandomNumber(int charLength) {
+		return String.valueOf(charLength < 1 ? 0 : new Random()
+				.nextInt((9 * (int) Math.pow(10, charLength - 1)) - 1)
+				+ (int) Math.pow(10, charLength - 1));
 	}
 }

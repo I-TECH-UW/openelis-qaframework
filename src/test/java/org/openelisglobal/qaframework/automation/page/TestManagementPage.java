@@ -163,6 +163,8 @@ public class TestManagementPage extends Page {
 				e.click();
 			} else if (test.equals(testName + " updated(Serum)")) {
 				e.click();
+			}else if(test.equals(testName)){
+				e.click();
 			}
 		}
 	}

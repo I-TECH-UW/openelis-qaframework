@@ -34,9 +34,9 @@ public class ReferralWorkFlowSteps extends TestBase {
 
     private ElectronicOrderPage electronicOrderPage;
 
-    private String existingLabNumber = "20210000000008888";
+    private String existingLabNumber = "20230000000008423";
 
-    private String patientInfo = "Patient:  moses, mutesasira  09/02/2019  M";
+    private String patientInfo = "Patient:  musa, muranga  09/02/2019  M";
 
     String accesionNumber;
 
@@ -242,20 +242,20 @@ public class ReferralWorkFlowSteps extends TestBase {
     @And("If correct patient is selected, their information populates the Patient section of the order form")
     public void populatePatientSection() throws InterruptedException {
         Thread.sleep(2000);
-        assertTrue(addOrderPage.getPatientSubjectNumber().contains("201807D9P"));
+        assertTrue(addOrderPage.getPatientSubjectNumber().contains("202307D9P"));
         assertTrue(addOrderPage.getPatientNationalId().contains("201507D35"));
-        assertTrue(addOrderPage.getPatientFirstName().contains("mutesasira"));
-        assertTrue(addOrderPage.getPatientLastName().contains("moses"));
+        assertTrue(addOrderPage.getPatientFirstName().contains("muranga"));
+        assertTrue(addOrderPage.getPatientLastName().contains("musa"));
         // assertTrue(addOrderPage.getPatientEmail().contains("email@gmail.com"));
     }
 
     @When("User Reviews and completes the  Patient Information section")
     public void reviewAndcompletePatientInfo() throws InterruptedException {
         Thread.sleep(1000);
-        assertTrue(addOrderPage.getPatientSubjectNumber().contains("201807D9P"));
+        assertTrue(addOrderPage.getPatientSubjectNumber().contains("202307D9P"));
         assertTrue(addOrderPage.getPatientNationalId().contains("201507D35"));
-        assertTrue(addOrderPage.getPatientFirstName().contains("mutesasira"));
-        assertTrue(addOrderPage.getPatientLastName().contains("moses"));
+        assertTrue(addOrderPage.getPatientFirstName().contains("muranga"));
+        assertTrue(addOrderPage.getPatientLastName().contains("musa"));
        // assertTrue(addOrderPage.getPatientEmail().contains("email@gmail.com"));
     }
 

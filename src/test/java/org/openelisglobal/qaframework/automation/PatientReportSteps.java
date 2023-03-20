@@ -29,9 +29,9 @@ public class PatientReportSteps extends TestBase {
 	
 	private ModifyOrderPage modifyOrderPage;
 	
-	private String ACCESION_WITHOUT_RESULT = "20210000000003712";
+	private String ACCESION_WITHOUT_RESULT = "20230000000002701";
 	
-	private String ACCESION_WITH_RESULT = "20210000000003750";
+	private String ACCESION_WITH_RESULT = "20230000000000583";
 	
 	private SearchResultsByOrderPage searchByOrderPage;
 	

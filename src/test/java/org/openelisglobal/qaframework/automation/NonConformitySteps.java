@@ -19,7 +19,7 @@ import org.openelisglobal.qaframework.automation.test.TestBase;
 
 public class NonConformitySteps extends TestBase {
 
-	private static final String ACCESSION_NUMBER = "20210000000003761";
+	private static final String ACCESSION_NUMBER = "20231099040004863";
 
 	private LoginPage loginPage;
 

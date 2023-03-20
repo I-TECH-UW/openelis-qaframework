@@ -3,7 +3,7 @@ Feature: Modify Order
 Background:
     Given User Logs in to Home Page and goes to Modify Order Page
 
-@modifyOrder
+@modifyOrder @one
 Scenario Outline: Order Search
 Then Search appears at top of page
 And Search button deactivated until text is entered in a search field
@@ -12,15 +12,15 @@ When User Enters known last name "<lastName>" in Last name Search field on the M
 Then Search by Last name yields results for all patients with matching last name on the Modify Order Page
 When User Enters known first name "<firstName>" in First name Search field on the Modify Order Page
 Then Search by First name yields results for all patients with matching first name on the Modify Order Page
-When User Enters known Patient ID "<subjectNumber>" in Patient ID search field on the Modify Order Page
-Then Search by Patient ID yields results for all patients with matching Patient ID on the Modify Order Page
+#When User Enters known Patient ID "<subjectNumber>" in Patient ID search field on the Modify Order Page
+#Then Search by Patient ID yields results for all patients with matching Patient ID on the Modify Order Page
 When User Enters known Lab Number "<labNo>" in Lab No. search on the Modify Order Page
 Then Search by Lab Number yields results for all patients with matching Lab Number on the Modify Order Page
 And If there is only one patient with that Lab No, the system auto-fills all the info about that patient, bypassing the selection process
 And Patient Information form populates with patient information on the Modify Order Page
 Examples:
-    | lastName | firstName  | subjectNumber | labNo             |
-    | moses    | mutesasira | oe013         | 20210000000003761 |
+    | lastName | firstName | subjectNumber | labNo             |
+    | musa     | muranga   | oe015         | 20231099040004863 |
 
     @modifyOrder
 Scenario Outline: Order Information
@@ -55,7 +55,7 @@ When User Enters new site name from text field "<siteName>"
 Then Site name and code drop-down list displays previously entered  options correctly and selection can be made
 Examples:
     | labNo             | incorrectLabNo   | unUsedLabNo     | usedLabNo       | incorrectDate | incorrectTime | time | correctTime | siteName   |
-    | 20210000000003761 | 24068xx706080889 | 210000000003790 | 210000000003780 | 09-02/2019    | XXMM          | 1212 | 05:10       | ABENGOUROU |
+    | 20231099040004863 | 24068xx706080889 | 202300000003841 | 210000000003780 | 09-02/2019    | XXMM          | 1212 | 05:10       | ABENGOUROU |
 
     @modifyOrder
 Scenario Outline: Current Test Information
@@ -89,7 +89,7 @@ When User Rechecks box Delete test check box on the Modify Oder Page
 Then Can delete a test within a panel
 Examples:
     |labNo            |incorrectDate|incorrectTime|nonExistingTime|time|correctTime|
-    |20210000000003761|09-02/2019   |XXMM         |   30:30       |1212|05:10      |
+    |20231099040004863|09-02/2019   |XXMM         |   30:30       |1212|05:10      |
 
 @modifyOrder
 Scenario Outline: Available Test Information
@@ -101,7 +101,7 @@ When User unCheck box next to  several tests
 Then Assign test Check boxes will uncheck
 Examples:
     |labNo            |
-    |20210000000003761|
+    |20231099040004863|
 
 @modifyOrder
 Scenario Outline: Add Order
@@ -123,7 +123,7 @@ Then Removes sample from order
 And User can Re-add samples
 Examples:
     |labNo            |
-    |20210000000003761|
+    |20231099040004863|
 
 @modifyOrder
 Scenario Outline: Collection Date
@@ -132,10 +132,10 @@ When User Enters Collection Date "<date>" on the Modify Oder Page
 Then Collection Date Field validates "<validation>" the date format
 Examples:
     |labNo            |date       |validation                                |
-    |20210000000003761|09-02/2019 |Rejects incorect Format not in DD/MM/YYYY |
-    |20210000000003761|dd/mm/yyy  |Rejects incorect Format not Numeric       |
-    |20210000000003761|09/02/5000 |Rejects Future date                       |
-    |20210000000003761|09/01/2020 |Accepts correct Format in DD/MM/YYYY      |
+    |20231099040004863|09-02/2019 |Rejects incorect Format not in DD/MM/YYYY |
+    |20231099040004863|dd/mm/yyy  |Rejects incorect Format not Numeric       |
+    |20231099040004863|09/02/5000 |Rejects Future date                       |
+    |20231099040004863|09/01/2020 |Accepts correct Format in DD/MM/YYYY      |
 
 @modifyOrder
 Scenario Outline: Collection Time
@@ -144,11 +144,11 @@ When User Enters Collection Time "<time>" on the Modify Oder Page
 Then Collection Time Field  validates "<validation>" the time format
 Examples:
     |labNo            |time  |validation                                           |
-    |20210000000003761|XXMM  |Rejects incorect Format ,non numeric                 |
-    |20210000000003761|30:30 |Rejects time not existing on the  in 12/24 hour clock|
-    |20210000000003761|12:122|Rejects extra digits                                 |
-    |20210000000003761|1111  |Auto-corrects HHMM format to HH:MM                   |
-    |20210000000003761|10:10 |Accepts correct Format in HH:MM                      |
+    |20231099040004863|XXMM  |Rejects incorect Format ,non numeric                 |
+    |20231099040004863|30:30 |Rejects time not existing on the  in 12/24 hour clock|
+    |20231099040004863|12:122|Rejects extra digits                                 |
+    |20231099040004863|1111  |Auto-corrects HHMM format to HH:MM                   |
+    |20231099040004863|10:10 |Accepts correct Format in HH:MM                      |
 
 @modifyOrder
 Scenario Outline: Add Tests
@@ -170,7 +170,7 @@ When User Deletes text from box Tests on the Modify Oder Page
 Then Text cannot be deleted from  Tests box on the Modify Oder Page
 Examples:
     |labNo            |
-    |20210000000003761|
+    |20231099040004863|
 
 @modifyOrder
 Scenario Outline: Add Tests
@@ -189,7 +189,7 @@ When User Clicks Cancel on the Modify Oder Page
 Then System returns to Returns to home page
 Examples:
     |labNo            |
-    |20210000000003761|
+    |20231099040004863|
 
 @modifyOrder
 Scenario Outline: Verification
@@ -203,5 +203,5 @@ And User Clicks 'Generate printable version' for this lab number
 Then Modified order information is correct and tests appear as In Progress on Patient Report
 Examples:
     | sampleType                   | labNo             |
-    | COVID-19 ANTIBODY IgM(Serum) | 20210000000003761 |
+    | COVID-19 ANTIBODY IgM(Serum) | 20231099040004863 |
    

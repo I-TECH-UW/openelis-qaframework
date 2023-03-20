@@ -25,8 +25,8 @@ Feature: Patient Entry
     When User Clicks New Patient on the Add Patient Page
     Then Patient Information form clears
     Examples:
-      | lastName | firstName  | patientId | subjectNumber | labNo             |
-      | moses    | mutesasira | ug013     | oe013         | 20210000000002250 |
+      | lastName | firstName | patientId | subjectNumber | labNo             |
+      | musa     | muranga   | ug015     | oe015         | 20230000000004217 |
 
   @patientEntry
   Scenario Outline: Patient Information
@@ -78,5 +78,5 @@ Feature: Patient Entry
     When User Searches for Patient on the Add Order Page for a known Patient with known last name "<lastName>" and first name "<firstName>"
     Then Correct patient information ,patient Identification no "<patientId>",subject number "<subjectNumber>" last name "<lastName>" , first name "<firstName>", address "<address>", date of birth "<dateOfBirth>" , Age "<age>", Gender "<gender>" , maritalStatus "<maritalStatus>" and nationality "<nationality>" appears when searched for
     Examples:
-      | lastName | firstName  | patientId | subjectNumber | address | dateOfBirth | age | gender   | maritalStatus | nationality |
-      | moses    | mutesasira | ug013     | oe013         | Gayaza  | 09/02/2019  | 4   | 1 = Male | DNA           | uganda      |
+      | lastName | firstName | patientId | subjectNumber | address | dateOfBirth | age | gender   | maritalStatus | nationality |
+      | musa     | muranga   | ug015     | oe015         | Gayaza  | 09/02/2019  | 4   | 1 = Male | DNA           | uganda      |

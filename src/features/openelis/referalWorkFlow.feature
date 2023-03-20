@@ -46,7 +46,7 @@ And User Enters lab number "<labNo>" from test order
 Then Order details are correct
 Examples:
     |labNo            |incorectLabNumber|existinglabNo    |patientId|lastName|firstName  |referalInstitute |
-    |20210000000008080| BETA119000047   |20210000000008888|201807D9P|moses   | mutesasira|Test referral lab|
+    |20230000000008182| BETA119000047   |20230000000008423|202307D9P|musa   | muranga|Test referral lab|
 
 @referral
 Scenario Outline: Register test requests sent electronically from the Flu Clinic
@@ -63,6 +63,6 @@ When User Enters Patient Id "<patientId>" in Search Test Requests, and Click Sea
 Then Order details appear in the table 
 Examples:
     |labNo            |lastName|firstName  |patientId|
-    |20210000000008080|moses   | mutesasira|201807D9P|
+    |20230000000008182|musa   | muranga|202307D9P|
 
 
