@@ -228,7 +228,8 @@ public class ReferralWorkFlowSteps extends TestBase {
     }
 
     @Then("Patient search shows green wheel while searching internally ,OE database")
-    public void loaderGifShowsGreen() {
+    public void loaderGifShowsGreen() throws InterruptedException {
+        Thread.sleep(200);
         assertEquals(addOrderPage.getLoaderGifClass(), "fa-2x local-search");
     }
 
