@@ -1,3 +1,3 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"Referral Work Flow","Register a patient's sample for Covid testing and send the lab request and sample to the Central Health Laboratory","ERROR","2023-03-20T09:39:35.96Z[Etc/UTC]","0.0","160.59"
-"Referral Work Flow","Register test requests sent electronically from the Flu Clinic","SUCCESS","2023-03-20T09:42:16.585Z[Etc/UTC]","0.0","11.09"
+"Referral Work Flow","Register a patient's sample for Covid testing and send the lab request and sample to the Central Health Laboratory","SUCCESS","2023-03-20T09:38:42.967Z[Etc/UTC]","0.0","124.37"
+"Referral Work Flow","Register test requests sent electronically from the Flu Clinic","SUCCESS","2023-03-20T09:40:47.368Z[Etc/UTC]","0.0","10.85"
