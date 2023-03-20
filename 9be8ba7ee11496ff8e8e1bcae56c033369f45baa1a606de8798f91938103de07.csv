@@ -1,3 +1,3 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"Test Management Feature","Add new tests","ERROR","2023-03-17T00:53:25.241Z[Etc/UTC]","0.0","73.87"
-"Test Management Feature","Verify Added new testName","FAILURE","2023-03-17T00:54:39.146Z[Etc/UTC]","0.0","23.79"
+"Test Management Feature","Add new tests","ERROR","2023-03-20T09:47:00.476Z[Etc/UTC]","0.0","72.8"
+"Test Management Feature","Verify Added new testName","FAILURE","2023-03-20T09:48:13.315Z[Etc/UTC]","0.0","20.87"
