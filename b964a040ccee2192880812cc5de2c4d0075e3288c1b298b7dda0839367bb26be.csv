@@ -1,4 +1,4 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"Referral Work Flow","Register a patient's sample for Covid testing and send the lab request and sample to the Central Health Laboratory","ERROR","2023-03-20T16:49:13.263Z[Etc/UTC]","0.0","116.83"
-"Test Management Feature","Add new tests","ERROR","2023-03-20T16:55:53.275Z[Etc/UTC]","0.0","30.87"
-"Test Management Feature","Verify Added new testName","FAILURE","2023-03-20T16:56:24.186Z[Etc/UTC]","0.0","19.44"
+"Referral Work Flow","Register a patient's sample for Covid testing and send the lab request and sample to the Central Health Laboratory","ERROR","2023-03-21T14:35:32.159Z[Etc/UTC]","0.0","116.93"
+"Test Management Feature","Add new tests","ERROR","2023-03-21T14:42:24.165Z[Etc/UTC]","0.0","31.17"
+"Test Management Feature","Verify Added new testName","FAILURE","2023-03-21T14:42:55.367Z[Etc/UTC]","0.0","21.22"
