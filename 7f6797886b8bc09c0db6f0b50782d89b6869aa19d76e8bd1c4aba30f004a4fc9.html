@@ -143,7 +143,7 @@
             <a href="capabilities.html"><i class="fa fa-book"></i> Requirements</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 15-05-2023 23:46</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 31-05-2023 09:55</span>
     <br style="clear:left"/>
 </div>
     <div class="clr"></div>
@@ -277,7 +277,7 @@
                         </td>
 
                         <td width="130"><span class="top-level-step">SUCCESS</span></td>
-                        <td width="100"><span class="top-level-step">10s 551ms</span></td>
+                        <td width="100"><span class="top-level-step">9s 808ms</span></td>
                     </tr>
                         <tr>
                             <td colspan="5">
@@ -302,7 +302,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">6s 376ms</span></td>
+                        <td width="100"><span class="nested-group-step">6s 047ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -324,7 +324,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">3s 348ms</span></td>
+                        <td width="100"><span class="nested-group-step">3s 014ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -346,7 +346,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">201ms</span></td>
+                        <td width="100"><span class="nested-group-step">202ms</span></td>
                     </tr>
 
                                 </table>
@@ -355,7 +355,127 @@
                 <tr class="test-SUCCESS">
                         <td colspan="2"></td>
                     <td width="130"><span class="top-level-step"><em>SUCCESS</em></span></td>
-                    <td width="100"><span class="top-level-step"><em>10.55s</em></span></td>
+                    <td width="100"><span class="top-level-step"><em>9.81s</em></span></td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+
+    <div id="beforefooter"></div>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <span class="version">Serenity BDD version 2.5.7</span>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function toggleDiv(divId) {
+            $("#" + divId).toggle();
+            var imgsrc = $(".img" + divId).attr('src');
+            if (imgsrc == 'images/plus.png') {
+                $(".img" + divId).attr("src", function () {
+                    return "images/minus.png";
+                });
+
+            } else {
+                $(".img" + divId).attr("src", function () {
+                    return "images/plus.png";
+                });
+            }
+        }
+    </script>
+
+
+    <script type="text/javascript">
+        //<![CDATA[
+
+        $(document).ready(function () {
+            $('img.screenshot').imgPreview({
+                imgCSS: {
+                    width: '500px'
+                },
+                distanceFromCursor: {top: 10, left: -200}
+            });
+        });
+
+        //]]>
+    </script>
+    <div id="imgPreviewContainer" style="position: absolute; top: 612px; left: 355px; display: none; " class=""><img
+                src="" style="display: none; "></div>
+    <div id="imgPreviewContainer2" style="position: absolute; top: 925px; left: 320px; display: none; " class="">
+        <img style="width: 200px; display: none; " src=""></div>
+    <div id="imgPreviewWithStyles" style="position: absolute; top: 1272px; left: 321px; display: none; " class="">
+        <img style="height: 200px; opacity: 1; display: none; " src=""></div>
+    <div id="imgPreviewWithStyles2" style="display: none; position: absolute; "><img style="height: 200px; "></div>
+    <div id="imgPreviewWithStyles3" style="display: none; position: absolute; "><img style="height: 200px; "></div>
+
+</div>
+</body>
+</html>
+sion:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}<br>Session ID: 9dfdcda9ff35f225dbf4be6d87063528<br>For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/stale_element_reference.html<br>Build info: version: &#39;3.141.59&#39;, revision: &#39;e82be7d358&#39;, time: &#39;2018-11-14T08:17:03&#39;<br>System info: host: &#39;fv-az566-532&#39;, ip: &#39;10.1.0.208&#39;, os.name: &#39;Linux&#39;, os.arch: &#39;amd64&#39;, os.version: &#39;5.15.0-1037-azure&#39;, java.version: &#39;1.8.0_372&#39;<br>Driver info: driver.version: unknown</span>
+                </div>
+                <div class="col-sm-2">
+                    <a class="btn btn-warning details-button" data-toggle="collapse" href="#stacktraceModal-3""
+                       role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><i class="far fa-eye"></i> More details</a>
+                </div>
+             </div>
+        </div>
+    <div>
+
+    <!-- Details Section -->
+    <div class="row stacktrace-details">
+      <div class="col">
+        <div class="collapse multi-collapse" id="stacktraceModal-3">
+            <div class="card">
+                <div class="card-header">
+                    <h4>org.openqa.selenium.StaleElementReferenceException </h4>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <pre>org.openelisglobal.qaframework.automation.page.Page.clickOn(Page.java:266)<br />org.openelisglobal.qaframework.automation.page.SearchResultsByPatientPage.selectPatientSearchResultSecondRadioBtn(SearchResultsByPatientPage.java:85)<br />org.openelisglobal.qaframework.automation.ResultsEntrySteps.reloadResultsByPatientNames(ResultsEntrySteps.java:476)<br />✽.User Reload Results Page By Results --> Search --> By Patient LastName "musa" and FirstName "muranga"(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/resultEntry.feature:107)<br /></pre>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+                            </td>
+                        </tr>
+                    <tr class="test-SKIPPED">
+
+                        <td width="70" class="step-icon">
+                            <a name="0-2"></a>
+                                <span style="margin-left: 40px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-fast-forward skipped-icon ' title='SKIPPED'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                Then Results appear on the Search By Patient Page as entered
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                        <td width="130"><span class="nested-group-step">SKIPPED</span></td>
+                        <td width="100"><span class="nested-group-step">002ms</span></td>
+                    </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+                <tr class="test-ERROR">
+                        <td colspan="2"></td>
+                    <td width="130"><span class="top-level-step"><em>ERROR</em></span></td>
+                    <td width="100"><span class="top-level-step"><em>11.32s</em></span></td>
                 </tr>
 
             </table>
