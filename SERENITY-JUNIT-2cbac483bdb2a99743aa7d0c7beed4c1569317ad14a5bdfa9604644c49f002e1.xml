@@ -1,28 +1,142 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="0" name="Results Entry" skipped="0" tests="9" time="218.66" timestamp="2023-05-31 09:51:59"><testcase name="Accessing Results Entry"/><testcase name="Searching for test result entry forms"/><testcase name="Results Entry Set-up"/><testcase name="Entering Test Results"/><testcase name="Overall Page"/><testcase name="Verification"><error message="stale element reference: stale element not found&#10;  (Session info: chrome=113.0.5672.63)&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/stale_element_reference.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az566-532', ip: '10.1.0.208', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1037-azure', java.version: '1.8.0_372'&#10;Driver info: org.openqa.selenium.remote.RemoteWebDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 113.0.5672.63, chrome: {chromedriverVersion: 113.0.5672.63 (0e1a4471d5ae..., userDataDir: /tmp/.com.google.Chrome.P3ZY75}, goog:chromeOptions: {debuggerAddress: localhost:34553}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 113.0.5672.63, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}&#10;Session ID: 9dfdcda9ff35f225dbf4be6d87063528&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/stale_element_reference.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az566-532', ip: '10.1.0.208', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1037-azure', java.version: '1.8.0_372'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.StaleElementReferenceException">stale element reference: stale element not found
-  (Session info: chrome=113.0.5672.63)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/stale_element_reference.html
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="5" failures="4" name="Results Entry" skipped="0" tests="9" time="279.14" timestamp="2023-06-26 06:35:01"><testcase name="Accessing Results Entry"><failure type="java.lang.AssertionError"/><system-err>null
+org.openelisglobal.qaframework.automation.ResultsEntrySteps.serchUnitTypeAppears(ResultsEntrySteps.java:77)
+✽.Results Unit Type search form displays(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/resultEntry.feature:9)
+</system-err></testcase><testcase name="Searching for test result entry forms"><failure type="java.lang.AssertionError"/><system-err>null
+org.openelisglobal.qaframework.automation.ResultsEntrySteps.accesionSearchNumberSearchFormDisplays(ResultsEntrySteps.java:118)
+✽.Result accession number search form displays(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/resultEntry.feature:34)
+</system-err></testcase><testcase name="Results Entry Set-up"><error message="no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//input[@value='New Patient']&quot;}&#10;  (Session info: chrome=114.0.5735.133)&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'&#10;Driver info: org.openqa.selenium.remote.RemoteWebDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.133, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: /tmp/.com.google.Chrome.z68Z7t}, goog:chromeOptions: {debuggerAddress: localhost:33585}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 114.0.5735.133, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}&#10;Session ID: 21e5bf7aefd5cfcee4b7c45094d59b55&#10;*** Element info: {Using=xpath, value=//input[@value='New Patient']}&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException">no such element: Unable to locate element: {"method":"xpath","selector":"//input[@value='New Patient']"}
+  (Session info: chrome=114.0.5735.133)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'fv-az566-532', ip: '10.1.0.208', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1037-azure', java.version: '1.8.0_372'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
 Driver info: org.openqa.selenium.remote.RemoteWebDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 113.0.5672.63, chrome: {chromedriverVersion: 113.0.5672.63 (0e1a4471d5ae..., userDataDir: /tmp/.com.google.Chrome.P3ZY75}, goog:chromeOptions: {debuggerAddress: localhost:34553}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 113.0.5672.63, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 9dfdcda9ff35f225dbf4be6d87063528
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/stale_element_reference.html
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.133, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: /tmp/.com.google.Chrome.z68Z7t}, goog:chromeOptions: {debuggerAddress: localhost:33585}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 114.0.5735.133, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 21e5bf7aefd5cfcee4b7c45094d59b55
+*** Element info: {Using=xpath, value=//input[@value='New Patient']}
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'fv-az566-532', ip: '10.1.0.208', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1037-azure', java.version: '1.8.0_372'
-Driver info: driver.version: unknown</error><system-err>stale element reference: stale element not found
-  (Session info: chrome=113.0.5672.63)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/stale_element_reference.html
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown</error><system-err>no such element: Unable to locate element: {"method":"xpath","selector":"//input[@value='New Patient']"}
+  (Session info: chrome=114.0.5735.133)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'fv-az566-532', ip: '10.1.0.208', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1037-azure', java.version: '1.8.0_372'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
 Driver info: org.openqa.selenium.remote.RemoteWebDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 113.0.5672.63, chrome: {chromedriverVersion: 113.0.5672.63 (0e1a4471d5ae..., userDataDir: /tmp/.com.google.Chrome.P3ZY75}, goog:chromeOptions: {debuggerAddress: localhost:34553}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 113.0.5672.63, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 9dfdcda9ff35f225dbf4be6d87063528
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/stale_element_reference.html
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.133, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: /tmp/.com.google.Chrome.z68Z7t}, goog:chromeOptions: {debuggerAddress: localhost:33585}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 114.0.5735.133, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 21e5bf7aefd5cfcee4b7c45094d59b55
+*** Element info: {Using=xpath, value=//input[@value='New Patient']}
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'fv-az566-532', ip: '10.1.0.208', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1037-azure', java.version: '1.8.0_372'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
 Driver info: driver.version: unknown
+org.openelisglobal.qaframework.automation.page.Page.findElement(Page.java:188)
 org.openelisglobal.qaframework.automation.page.Page.clickOn(Page.java:266)
-org.openelisglobal.qaframework.automation.page.SearchResultsByPatientPage.selectPatientSearchResultSecondRadioBtn(SearchResultsByPatientPage.java:85)
-org.openelisglobal.qaframework.automation.ResultsEntrySteps.reloadResultsByPatientNames(ResultsEntrySteps.java:476)
-✽.User Reload Results Page By Results --&gt; Search --&gt; By Patient LastName "musa" and FirstName "muranga"(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/resultEntry.feature:107)
-</system-err></testcase><testcase name="Accept As Is functionality"/><testcase name="Verification"/><testcase name="Changing Results"/></testsuite>
+org.openelisglobal.qaframework.automation.page.AddOrderPage.clickNewPatientButton(AddOrderPage.java:393)
+org.openelisglobal.qaframework.automation.page.AddOrderPage.innitialiseRandomData(AddOrderPage.java:1076)
+org.openelisglobal.qaframework.automation.ResultsEntrySteps.searchByKnownAccesionNumber(ResultsEntrySteps.java:209)
+io.cucumber.java.Invoker.doInvoke(Invoker.java:66)
+io.cucumber.java.Invoker.invoke(Invoker.java:24)
+io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
+io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
+io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
+io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
+io.cucumber.core.runner.TestStep.executeStep(TestStep.java:92)
+io.cucumber.core.runner.TestStep.run(TestStep.java:64)
+io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
+io.cucumber.core.runner.TestCase.run(TestCase.java:104)
+io.cucumber.core.runner.Runner.runPickle(Runner.java:73)
+io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:135)
+io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:27)
+io.cucumber.junit.CucumberSerenityRunner.runChild(CucumberSerenityRunner.java:258)
+io.cucumber.junit.CucumberSerenityRunner.runChild(CucumberSerenityRunner.java:57)
+</system-err></testcase><testcase name="Entering Test Results"><error message="Cannot locate element with text: Molecular Biology&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'&#10;Driver info: driver.version: unknown&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException">Cannot locate element with text: Molecular Biology
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown</error><system-err>Cannot locate element with text: Molecular Biology
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown
+org.openelisglobal.qaframework.automation.page.Page.selectFrom(Page.java:275)
+org.openelisglobal.qaframework.automation.page.ResultsUnitTypePage.selectUnitType(ResultsUnitTypePage.java:46)
+org.openelisglobal.qaframework.automation.ResultsEntrySteps.searchByUnitType(ResultsEntrySteps.java:250)
+✽.User Select Results --&gt; Enter by Unit from main menu drop-down and Selects a Unit Type "Molecular Biology" for which there are known tests(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/resultEntry.feature:66)
+</system-err></testcase><testcase name="Overall Page"><error message="Cannot locate element with text: Molecular Biology&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'&#10;Driver info: driver.version: unknown&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException">Cannot locate element with text: Molecular Biology
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown</error><system-err>Cannot locate element with text: Molecular Biology
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown
+org.openelisglobal.qaframework.automation.page.Page.selectFrom(Page.java:275)
+org.openelisglobal.qaframework.automation.page.ResultsUnitTypePage.selectUnitType(ResultsUnitTypePage.java:46)
+org.openelisglobal.qaframework.automation.ResultsEntrySteps.searchByUnitType(ResultsEntrySteps.java:250)
+✽.User Select Results --&gt; Enter by Unit from main menu drop-down and Selects a Unit Type "Molecular Biology" for which there are known tests(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/resultEntry.feature:90)
+</system-err></testcase><testcase name="Verification"><failure type="java.lang.AssertionError"/><system-err>null
+org.openelisglobal.qaframework.automation.ResultsEntrySteps.resultsAppearOnThePatientsResultsPageAsEntered(ResultsEntrySteps.java:482)
+✽.Results appear on the Search By Patient Page as entered(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/resultEntry.feature:108)
+</system-err></testcase><testcase name="Accept As Is functionality"><failure type="java.lang.AssertionError"/><system-err>null
+org.openelisglobal.qaframework.automation.ResultsEntrySteps.displaySuccesfulSaveMessage(ResultsEntrySteps.java:636)
+✽.Page refreshes and green ,Save was successful, message appears(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/resultEntry.feature:139)
+</system-err></testcase><testcase name="Verification"><error message="Cannot locate element with text: Molecular Biology&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'&#10;Driver info: driver.version: unknown&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException">Cannot locate element with text: Molecular Biology
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown</error><system-err>Cannot locate element with text: Molecular Biology
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown
+org.openelisglobal.qaframework.automation.page.Page.selectFrom(Page.java:275)
+org.openelisglobal.qaframework.automation.page.ResultValidationPage.selectUnitType(ResultValidationPage.java:60)
+org.openelisglobal.qaframework.automation.ResultsEntrySteps.goToValidationPage(ResultsEntrySteps.java:642)
+✽.User Goes to Validation page for correct unit "Molecular Biology"(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/resultEntry.feature:146)
+</system-err></testcase><testcase name="Changing Results"><error message="Cannot locate element with text: Molecular Biology&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'&#10;Driver info: driver.version: unknown&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException">Cannot locate element with text: Molecular Biology
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown</error><system-err>Cannot locate element with text: Molecular Biology
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown
+org.openelisglobal.qaframework.automation.page.Page.selectFrom(Page.java:275)
+org.openelisglobal.qaframework.automation.page.ResultValidationPage.selectUnitType(ResultValidationPage.java:60)
+org.openelisglobal.qaframework.automation.ResultsEntrySteps.goToValidationPage(ResultsEntrySteps.java:642)
+✽.User Goes to Validation page for correct unit "Molecular Biology"(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/resultEntry.feature:154)
+</system-err></testcase></testsuite>

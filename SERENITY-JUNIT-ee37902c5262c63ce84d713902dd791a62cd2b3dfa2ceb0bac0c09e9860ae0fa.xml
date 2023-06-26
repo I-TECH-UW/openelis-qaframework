@@ -1,1 +1,89 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="WorkPlan Feature" skipped="0" tests="4" time="103.82" timestamp="2023-05-31 10:00:53"><testcase name="Work plan by Test"/><testcase name="Work plan by Panel"/><testcase name="Work plan by Unit"/><testcase name="Verification"/></testsuite>
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="3" failures="1" name="WorkPlan Feature" skipped="0" tests="4" time="88.94" timestamp="2023-06-26 06:43:41"><testcase name="Work plan by Test"><error message="no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@id=&quot;resultsDiv&quot;]/table&quot;}&#10;  (Session info: chrome=114.0.5735.133)&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'&#10;Driver info: org.openqa.selenium.remote.RemoteWebDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.133, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: /tmp/.com.google.Chrome.7tnUA5}, goog:chromeOptions: {debuggerAddress: localhost:44895}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 114.0.5735.133, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}&#10;Session ID: d005222a78d5dbff5f3a6feb62412ae7&#10;*** Element info: {Using=xpath, value=//*[@id=&quot;resultsDiv&quot;]/table}&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException">no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="resultsDiv"]/table"}
+  (Session info: chrome=114.0.5735.133)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.133, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: /tmp/.com.google.Chrome.7tnUA5}, goog:chromeOptions: {debuggerAddress: localhost:44895}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 114.0.5735.133, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d005222a78d5dbff5f3a6feb62412ae7
+*** Element info: {Using=xpath, value=//*[@id="resultsDiv"]/table}
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown</error><system-err>no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="resultsDiv"]/table"}
+  (Session info: chrome=114.0.5735.133)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.133, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: /tmp/.com.google.Chrome.7tnUA5}, goog:chromeOptions: {debuggerAddress: localhost:44895}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 114.0.5735.133, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d005222a78d5dbff5f3a6feb62412ae7
+*** Element info: {Using=xpath, value=//*[@id="resultsDiv"]/table}
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown
+org.openelisglobal.qaframework.automation.page.Page.findElement(Page.java:188)
+org.openelisglobal.qaframework.automation.page.WorkPlanByTestTypePage.workplanResultsTableDisplayed(WorkPlanByTestTypePage.java:63)
+org.openelisglobal.qaframework.automation.WorkPlanSteps.workplanSelectFormAppears(WorkPlanSteps.java:82)
+io.cucumber.java.Invoker.doInvoke(Invoker.java:66)
+io.cucumber.java.Invoker.invoke(Invoker.java:24)
+io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
+io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
+io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
+io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
+io.cucumber.core.runner.TestStep.executeStep(TestStep.java:92)
+io.cucumber.core.runner.TestStep.run(TestStep.java:64)
+io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
+io.cucumber.core.runner.TestCase.run(TestCase.java:104)
+io.cucumber.core.runner.Runner.runPickle(Runner.java:73)
+io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:135)
+io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:27)
+io.cucumber.junit.CucumberSerenityRunner.runChild(CucumberSerenityRunner.java:258)
+io.cucumber.junit.CucumberSerenityRunner.runChild(CucumberSerenityRunner.java:57)
+</system-err></testcase><testcase name="Work plan by Panel"><failure type="java.lang.AssertionError"/><system-err>null
+org.openelisglobal.qaframework.automation.WorkPlanSteps.workplanByPanelTotalNumberOfTestsIsCorrect(WorkPlanSteps.java:169)
+✽.Workplan by Panel Total number of tests is correct "92"(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/workPlan.feature:34)
+</system-err></testcase><testcase name="Work plan by Unit"><error message="Cannot locate element with text: Molecular Biology&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'&#10;Driver info: driver.version: unknown&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException">Cannot locate element with text: Molecular Biology
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown</error><system-err>Cannot locate element with text: Molecular Biology
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown
+org.openelisglobal.qaframework.automation.page.Page.selectFrom(Page.java:275)
+org.openelisglobal.qaframework.automation.page.WorkPlanByUnitTypePage.selectUnitType(WorkPlanByUnitTypePage.java:39)
+org.openelisglobal.qaframework.automation.WorkPlanSteps.userSelectsUnitTypeFromTheDropdownOptions(WorkPlanSteps.java:212)
+✽.user selects Unit type "Molecular Biology" from the dropdown options(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/workPlan.feature:49)
+</system-err></testcase><testcase name="Verification"><error message="Cannot locate element with text: Molecular Biology&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'&#10;Driver info: driver.version: unknown&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException">Cannot locate element with text: Molecular Biology
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown</error><system-err>Cannot locate element with text: Molecular Biology
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az592-477', ip: '10.1.1.27', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1040-azure', java.version: '1.8.0_372'
+Driver info: driver.version: unknown
+org.openelisglobal.qaframework.automation.page.Page.selectFrom(Page.java:275)
+org.openelisglobal.qaframework.automation.page.ResultsUnitTypePage.selectUnitType(ResultsUnitTypePage.java:46)
+org.openelisglobal.qaframework.automation.WorkPlanSteps.userSelectUnitTypeFromDropDownSelectList(WorkPlanSteps.java:281)
+✽.User select unit type from drop down select list "Molecular Biology"(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/workPlan.feature:67)
+</system-err></testcase></testsuite>
