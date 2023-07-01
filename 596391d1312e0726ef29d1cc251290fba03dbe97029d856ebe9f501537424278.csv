@@ -1,5 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"WorkPlan Feature","Work plan by Test","ERROR","2023-06-26T18:43:41.54Z[Etc/UTC]","0.0","24.25"
-"WorkPlan Feature","Work plan by Panel","FAILURE","2023-06-26T18:44:05.827Z[Etc/UTC]","0.0","9.84"
-"WorkPlan Feature","Work plan by Unit","ERROR","2023-06-26T18:44:15.697Z[Etc/UTC]","0.0","27.17"
-"WorkPlan Feature","Verification","ERROR","2023-06-26T18:44:42.904Z[Etc/UTC]","0.0","27.68"

@@ -1,4 +1,4 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"Validation","Validation","FAILURE","2023-06-26T18:42:46.007Z[Etc/UTC]","0.0","17.87"
-"Validation","Overall Page","ERROR","2023-06-26T18:43:03.916Z[Etc/UTC]","0.0","28.97"
-"Validation","Verification","FAILURE","2023-06-26T18:43:32.92Z[Etc/UTC]","0.0","8.59"
+"Validation","Validation","SUCCESS","2023-07-01T07:35:23.419Z[Etc/UTC]","0.0","81.22"
+"Validation","Overall Page","SUCCESS","2023-07-01T07:36:44.672Z[Etc/UTC]","0.0","16.56"
+"Validation","Verification","SUCCESS","2023-07-01T07:37:01.262Z[Etc/UTC]","0.0","12.39"

@@ -1,4 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="Non Conformity workflow" skipped="0" tests="1" time="8.14" timestamp="2023-06-26 06:30:14"><testcase name="Search Non Conformity report"><failure type="java.lang.AssertionError"/><system-err>null
-org.openelisglobal.qaframework.automation.NonConformitySteps.userSelectsNonConformityReportFromMainMenu(NonConformitySteps.java:52)
-✽.User Selects Non Conformity report from main menu(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/nonConformityWorkflow.feature:9)
-</system-err></testcase></testsuite>
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Non Conformity workflow" skipped="0" tests="1" time="16.07" timestamp="2023-07-01 07:23:11"><testcase name="Search Non Conformity report"/></testsuite>
