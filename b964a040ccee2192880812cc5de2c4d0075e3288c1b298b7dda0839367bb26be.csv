@@ -1,2 +1,4 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"Test Management Feature","Add new tests","FAILURE","2023-07-01T07:33:43.056Z[Etc/UTC]","0.0","15.05"
+"Referral Work Flow","Register a patient's sample for Covid testing and send the lab request and sample to the Central Health Laboratory","ERROR","2023-07-17T15:41:21.889Z[Etc/UTC]","0.0","118.51"
+"Results Entry","Results Entry Set-up","ERROR","2023-07-17T15:44:08.547Z[Etc/UTC]","0.0","26.75"
+"Test Management Feature","Add new tests","FAILURE","2023-07-17T15:47:40.502Z[Etc/UTC]","0.0","16.4"
