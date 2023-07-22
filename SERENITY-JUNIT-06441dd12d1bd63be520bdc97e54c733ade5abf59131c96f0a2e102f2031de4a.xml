@@ -1,1 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Validation" skipped="0" tests="3" time="117.15" timestamp="2023-07-22 08:32:10"><testcase name="Validation"/><testcase name="Overall Page"/><testcase name="Verification"/></testsuite>
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="Validation" skipped="0" tests="3" time="118.32" timestamp="2023-07-22 09:07:11"><testcase name="Validation"><failure type="java.lang.AssertionError"/><system-err>null
+org.openelisglobal.qaframework.automation.ValidationSteps.userEntersAnExistingOrderNumberPageGoesToOrderNumberOrderIsHighlightedInYellow(ValidationSteps.java:130)
+✽.User Enters an existing order number "20230000000002109" ,Page goes to order number, order is highlighted in yellow(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/validation.feature:14)
+</system-err></testcase><testcase name="Overall Page"/><testcase name="Verification"/></testsuite>
