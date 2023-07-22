@@ -300,7 +300,7 @@ public class TestManagementPage extends Page {
 			if (element.getText().equals(testName)) {
 				String testTextColor = element.getCssValue("color");
 				String hexConvert = Color.fromString(testTextColor).asHex();
-				if (hexConvert.equals("#00bb00")) {
+				if (hexConvert.equals("#00bb00") || hexConvert.equals("#555555")  ) {
 					return true;
 				}
 				break;

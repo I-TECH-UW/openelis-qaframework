@@ -270,10 +270,10 @@ public class TestManagementSteps extends TestBase {
 		assertFalse(testManagementPage.nextButtonDisabled());
 	}
 
-	@Then("User selects one more type from SampleType dropdown options")
-	public void userSelectsOneMoreTypeFromSampleTypeDropdownOptions() {
-		testManagementPage.selectSampleTypeDropdown("Urines");
-		assertTrue(testManagementPage.testNameHasGreenMarking(test_Name));
+	@Then("User selects one more type from SampleType {string} dropdown options and testName {string} should be displayed")
+	public void userSelectsOneMoreTypeFromSampleTypeDropdownOptionsAndTestNameShouldBeDisplayed(String anotherSampleType, String testName) {
+		testManagementPage.selectSampleTypeDropdown(anotherSampleType);
+		assertTrue(testManagementPage.testNameHasGreenMarking(testName));
 	}
 
 	@Then("Select the new Test Name and hold the selection move it to the desired position in the Test display order")

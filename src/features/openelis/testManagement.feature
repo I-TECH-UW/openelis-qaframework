@@ -101,13 +101,13 @@ Feature: Test Management Feature
     Then The tick box next to Orderable is auto-selected
     And User Clicks Next button
     Then User selects the Type "<sampleType>" from SampleType dropdown options
-    Then User selects one more type from SampleType dropdown options
+    Then User selects one more type from SampleType "<anotherSampleType>" dropdown options and testName "<TestNameEng>" should be displayed
     Then Select the new Test Name and hold the selection move it to the desired position in the Test display order
     And User Clicks on Next button
     And User Clicks on Accept button
     Examples:
-      | TestNameEng            | TestNameFrench               | UnitOfMeasure | testSection       | panel             | sampleType |
-      | gastric fluid analysis | analyse du liquide gastrique | mlU/ml        | Molecular Biology | Bilan Biochimique | Serum      |
+      | TestNameEng            | TestNameFrench               | UnitOfMeasure | testSection       | panel             | sampleType | anotherSampleType |
+      | gastric fluid analysis | analyse du liquide gastrique | mlU/ml        | Molecular Biology | Bilan Biochimique | Serum      | Urines            |
 
   @testManagement @addNewTestName
   Scenario Outline: Verify Added new testName

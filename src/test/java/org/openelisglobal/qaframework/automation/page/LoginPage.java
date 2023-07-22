@@ -78,10 +78,10 @@ public class LoginPage extends Page {
 
 	private void acceptSelfAssignedCert() {
 		By BUTTON_ADVANCED = By.id("details-button");
-		By LINK_PROEED = By.id("proceed-link");
+		By LINK_PROCEED = By.id("proceed-link");
 		if (hasElementWithoutWait(BUTTON_ADVANCED)) {			
 			clickOn(BUTTON_ADVANCED);
-			clickOn(LINK_PROEED);
+			clickOn(LINK_PROCEED);
 		}
 	}
 }
