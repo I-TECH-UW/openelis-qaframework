@@ -1,2 +1,2 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"Referral Work Flow","Register a patient's sample for Covid testing and send the lab request and sample to the Central Health Laboratory","ERROR","2023-07-17T15:41:21.889Z[Etc/UTC]","0.0","118.51"
+"Referral Work Flow","Register a patient's sample for Covid testing and send the lab request and sample to the Central Health Laboratory","FAILURE","2023-07-22T08:23:52.206Z[Etc/UTC]","0.0","101.04"

@@ -143,7 +143,7 @@
             <a href="capabilities.html"><i class="fa fa-book"></i> Requirements</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 17-07-2023 15:47</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 22-07-2023 08:30</span>
     <br style="clear:left"/>
 </div>
     <div class="clr"></div>
@@ -186,9 +186,9 @@
                 <table class="outcome-header">
                     <tr>
                         <td colspan="2" class="test-title-bar">
-                            <span class="outcome-icon"><a href='##beforetable'><i class='fa fa-times-circle failure-icon fa-2x' title='FAILURE'></i></a></span>
+                            <span class="outcome-icon"><a href='##beforetable'><i class='fa fa-exclamation-triangle error-icon fa-2x' title='ERROR'></i></a></span>
                             <span class="test-case-title">
-                                <span class="failing-color">
+                                <span class="error-color">
                                     Add new tests
                                         <span class="related-issue-title"></span>
                                 </span>
@@ -209,7 +209,7 @@
         <div class="story-title">
             <h3 class="story-header">Scenario Outline</h3>
 
-            <div class="scenario">Given User clicks admin menu link<br>Then User clicks Test Management left menu item link<br>And User Clicks Add new test link on the test management menu<br>Then User Enters test name for English "&lt;TestNameEng&gt;" and French "&lt;TestNameFrench&gt;" into the respective text fields<br>Then From the Unit of Measure dropdown select the appropriate unit "&lt;UnitOfMeasure&gt;"<br>Then From the Test Section drop down select the appropriate option "&lt;testSection&gt;"<br>Then From the Panel dropdown select the appropriate option "&lt;panel&gt;"<br>Then From the Result type dropdown select the appropriate option<br>Then Under Reporting Test name, click on Copy from Test Name<br>Then User Enters Reporting test names for English and French into the respective fields if different from Test Name<br>Then With all of the *required fields completed the Next button becomes active<br>Then The tick box next to Active is auto-selected<br>Then The tick box next to Orderable is auto-selected<br>And User Clicks Next button<br>Then User selects the Type "&lt;sampleType&gt;" from SampleType dropdown options<br>Then User selects one more type from SampleType dropdown options<br>Then Select the new Test Name and hold the selection move it to the desired position in the Test display order<br>And User Clicks on Next button<br>And User Clicks on Accept button</div>
+            <div class="scenario">Given User clicks admin menu link<br>Then User clicks Test Management left menu item link<br>And User Clicks Add new test link on the test management menu<br>Then User Enters test name for English "&lt;TestNameEng&gt;" and French "&lt;TestNameFrench&gt;" into the respective text fields<br>Then From the Unit of Measure dropdown select the appropriate unit "&lt;UnitOfMeasure&gt;"<br>Then From the Test Section drop down select the appropriate option "&lt;testSection&gt;"<br>Then From the Panel dropdown select the appropriate option "&lt;panel&gt;"<br>Then From the Result type dropdown select the appropriate option<br>Then Under Reporting Test name, click on Copy from Test Name<br>Then User Enters Reporting test names for English and French into the respective fields if different from Test Name<br>Then With all of the *required fields completed the Next button becomes active<br>Then The tick box next to Active is auto-selected<br>Then The tick box next to Orderable is auto-selected<br>And User Clicks Next button<br>Then User selects the Type "&lt;sampleType&gt;" from SampleType dropdown options<br>Then User selects one more type from SampleType "&lt;anotherSampleType&gt;" dropdown options and testName "&lt;TestNameEng&gt;" should be displayed<br>Then Select the new Test Name and hold the selection move it to the desired position in the Test display order<br>And User Clicks on Next button<br>And User Clicks on Accept button</div>
 
         </div>
 
@@ -234,28 +234,32 @@
                             <th>Test Section</th>
                             <th>Panel</th>
                             <th>Sample Type</th>
+                            <th>Another Sample Type</th>
                     </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="test-FAILURE"><a href="#0">1</a></td>
-                                <td class="test-FAILURE"><a
+                            <td class="test-ERROR"><a href="#0">1</a></td>
+                                <td class="test-ERROR"><a
                                             href="#0">gastric fluid analysis</a>
                                 </td>
-                                <td class="test-FAILURE"><a
+                                <td class="test-ERROR"><a
                                             href="#0">analyse du liquide gastrique</a>
                                 </td>
-                                <td class="test-FAILURE"><a
+                                <td class="test-ERROR"><a
                                             href="#0">mlU/ml</a>
                                 </td>
-                                <td class="test-FAILURE"><a
+                                <td class="test-ERROR"><a
                                             href="#0">Molecular Biology</a>
                                 </td>
-                                <td class="test-FAILURE"><a
+                                <td class="test-ERROR"><a
                                             href="#0">Bilan Biochimique</a>
                                 </td>
-                                <td class="test-FAILURE"><a
+                                <td class="test-ERROR"><a
                                             href="#0">Serum</a>
+                                </td>
+                                <td class="test-ERROR"><a
+                                            href="#0">Urines</a>
                                 </td>
                         </tr>
                     </tbody>
@@ -279,13 +283,13 @@
                     <td colspan="5"></td>
                 </tr>
 
-                    <tr class="test-FAILURE">
+                    <tr class="test-ERROR">
 
                         <td width="50" class="step-icon">
                             <a name="0"></a>
                                 <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
                                    style="display:block">
-                                    <i class="fa fa-plus-square-o imgstepSection0 failure-icon"
+                                    <i class="fa fa-plus-square-o imgstepSection0 error-icon"
                                        style="margin-left: 20px; float:left; padding-right:5px"></i>
                                 </a>
                         </td>
@@ -295,7 +299,7 @@
                                 <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
                                    style="display:block;">
                                     <span class="top-level-step">
-                                                1: Add new tests ({TestNameEng=gastric fluid analysis, TestNameFrench=analyse du liquide gastrique, UnitOfMeasure=mlU/ml, testSection=Molecular Biology, panel=Bilan Biochimique, sampleType=Serum})
+                                                1: Add new tests ({TestNameEng=gastric fluid analysis, TestNameFrench=analyse du liquide gastrique, UnitOfMeasure=mlU/ml, testSection=Molecular Biology, panel=Bilan Biochimique, sampleType=Serum, anotherSampleType=Urines})
                                         </span>
                                 </a>
                                 <span class="evidence">
@@ -303,8 +307,8 @@
                             </div>
                         </td>
 
-                        <td width="130"><span class="top-level-step">FAILURE</span></td>
-                        <td width="100"><span class="top-level-step">16s 392ms</span></td>
+                        <td width="130"><span class="top-level-step">ERROR</span></td>
+                        <td width="100"><span class="top-level-step">30s 034ms</span></td>
                     </tr>
                         <tr>
                             <td colspan="5">
@@ -329,7 +333,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">4s 634ms</span></td>
+                        <td width="100"><span class="nested-group-step">4s 670ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -373,7 +377,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">368ms</span></td>
+                        <td width="100"><span class="nested-group-step">301ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -395,7 +399,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">1s 387ms</span></td>
+                        <td width="100"><span class="nested-group-step">1s 226ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -417,7 +421,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">2s 469ms</span></td>
+                        <td width="100"><span class="nested-group-step">2s 392ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -439,7 +443,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">326ms</span></td>
+                        <td width="100"><span class="nested-group-step">320ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -461,7 +465,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">378ms</span></td>
+                        <td width="100"><span class="nested-group-step">215ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -483,7 +487,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">349ms</span></td>
+                        <td width="100"><span class="nested-group-step">234ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -505,7 +509,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">352ms</span></td>
+                        <td width="100"><span class="nested-group-step">242ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -527,7 +531,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">614ms</span></td>
+                        <td width="100"><span class="nested-group-step">474ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -549,7 +553,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">2s 539ms</span></td>
+                        <td width="100"><span class="nested-group-step">2s 480ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -571,7 +575,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">119ms</span></td>
+                        <td width="100"><span class="nested-group-step">041ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -593,7 +597,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">127ms</span></td>
+                        <td width="100"><span class="nested-group-step">104ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -615,7 +619,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">115ms</span></td>
+                        <td width="100"><span class="nested-group-step">096ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -637,7 +641,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">273ms</span></td>
+                        <td width="100"><span class="nested-group-step">312ms</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -659,74 +663,36 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">465ms</span></td>
+                        <td width="100"><span class="nested-group-step">516ms</span></td>
                     </tr>
-                    <tr class="test-FAILURE">
+                    <tr class="test-SUCCESS">
 
                         <td width="70" class="step-icon">
                             <a name="0-16"></a>
                                 <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-times-circle failure-icon ' title='FAILURE'></i></a>
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
                                 </span>
                         </td>
 
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                Then User selects one more type from SampleType dropdown options
+                                                Then User selects one more type from SampleType "Urines" dropdown options and testName "gastric fluid analysis" should be displayed
                                         </span>
                                 <span class="evidence">
                                 </span>
                             </div>
                         </td>
 
-                        <td width="130"><span class="nested-group-step">FAILURE</span></td>
-                        <td width="100"><span class="nested-group-step">866ms</span></td>
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">701ms</span></td>
                     </tr>
-                        <tr class="test-FAILURE">
-                            <td width="40">&nbsp</td>
-                            <td width="%" colspan="3" class="error-message-cell">
-
-
-    <div style="display:block">
-        <div class="table">
-            <div class="row">
-                <div class="col-sm-10" style="padding-left:1.5em; padding-top:0.5em; padding-bottom:0.5em;">
-                    <span class="error-message error-message-title">java.lang.AssertionError</span>
-                </div>
-                <div class="col-sm-2">
-                    <a class="btn btn-warning details-button" data-toggle="collapse" href="#stacktraceModal-18""
-                       role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><i class="far fa-eye"></i> More details</a>
-                </div>
-             </div>
-        </div>
-    <div>
-
-    <!-- Details Section -->
-    <div class="row stacktrace-details">
-      <div class="col">
-        <div class="collapse multi-collapse" id="stacktraceModal-18">
-            <div class="card">
-                <div class="card-header">
-                    <h4>java.lang.AssertionError </h4>
-                </div>
-                <div class="card-body">
-                    <div>
-                        <pre>org.openelisglobal.qaframework.automation.TestManagementSteps.userSelectsOneMoreTypeFromSampleTypeDropdownOptions(TestManagementSteps.java:276)<br />✽.User selects one more type from SampleType dropdown options(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/testManagement.feature:104)<br /></pre>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-                            </td>
-                        </tr>
-                    <tr class="test-SKIPPED">
+                    <tr class="test-SUCCESS">
 
                         <td width="70" class="step-icon">
                             <a name="0-17"></a>
                                 <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-fast-forward skipped-icon ' title='SKIPPED'></i></a>
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
                                 </span>
                         </td>
 
@@ -740,15 +706,15 @@
                             </div>
                         </td>
 
-                        <td width="130"><span class="nested-group-step">SKIPPED</span></td>
-                        <td width="100"><span class="nested-group-step">001ms</span></td>
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">2s 045ms</span></td>
                     </tr>
-                    <tr class="test-SKIPPED">
+                    <tr class="test-SUCCESS">
 
                         <td width="70" class="step-icon">
                             <a name="0-18"></a>
                                 <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-fast-forward skipped-icon ' title='SKIPPED'></i></a>
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
                                 </span>
                         </td>
 
@@ -762,15 +728,15 @@
                             </div>
                         </td>
 
-                        <td width="130"><span class="nested-group-step">SKIPPED</span></td>
-                        <td width="100"><span class="nested-group-step">001ms</span></td>
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">1s 357ms</span></td>
                     </tr>
-                    <tr class="test-SKIPPED">
+                    <tr class="test-ERROR">
 
                         <td width="70" class="step-icon">
                             <a name="0-19"></a>
                                 <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-fast-forward skipped-icon ' title='SKIPPED'></i></a>
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></a>
                                 </span>
                         </td>
 
@@ -784,17 +750,55 @@
                             </div>
                         </td>
 
-                        <td width="130"><span class="nested-group-step">SKIPPED</span></td>
-                        <td width="100"><span class="nested-group-step">001ms</span></td>
+                        <td width="130"><span class="nested-group-step">ERROR</span></td>
+                        <td width="100"><span class="nested-group-step">11s 348ms</span></td>
                     </tr>
+                        <tr class="test-ERROR">
+                            <td width="40">&nbsp</td>
+                            <td width="%" colspan="3" class="error-message-cell">
+
+
+    <div style="display:block">
+        <div class="table">
+            <div class="row">
+                <div class="col-sm-10" style="padding-left:1.5em; padding-top:0.5em; padding-bottom:0.5em;">
+                    <span class="error-message error-message-title">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#testNameEnglish&quot;}<br>  (Session info: chrome=114.0.5735.133)<br>For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html<br>Build info: version: &#39;3.141.59&#39;, revision: &#39;e82be7d358&#39;, time: &#39;2018-11-14T08:17:03&#39;<br>System info: host: &#39;fv-az1111-454&#39;, ip: &#39;10.1.0.14&#39;, os.name: &#39;Linux&#39;, os.arch: &#39;amd64&#39;, os.version: &#39;5.15.0-1041-azure&#39;, java.version: &#39;1.8.0_382&#39;<br>Driver info: org.openqa.selenium.remote.RemoteWebDriver<br>Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.133, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: /tmp/.com.google.Chrome.8moOYH}, goog:chromeOptions: {debuggerAddress: localhost:42417}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 114.0.5735.133, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}<br>Session ID: be63d6eebdfdd3825875240ef6131eea<br>*** Element info: {Using=id, value=testNameEnglish}<br>For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html<br>Build info: version: &#39;3.141.59&#39;, revision: &#39;e82be7d358&#39;, time: &#39;2018-11-14T08:17:03&#39;<br>System info: host: &#39;fv-az1111-454&#39;, ip: &#39;10.1.0.14&#39;, os.name: &#39;Linux&#39;, os.arch: &#39;amd64&#39;, os.version: &#39;5.15.0-1041-azure&#39;, java.version: &#39;1.8.0_382&#39;<br>Driver info: driver.version: unknown</span>
+                </div>
+                <div class="col-sm-2">
+                    <a class="btn btn-warning details-button" data-toggle="collapse" href="#stacktraceModal-21""
+                       role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><i class="far fa-eye"></i> More details</a>
+                </div>
+             </div>
+        </div>
+    <div>
+
+    <!-- Details Section -->
+    <div class="row stacktrace-details">
+      <div class="col">
+        <div class="collapse multi-collapse" id="stacktraceModal-21">
+            <div class="card">
+                <div class="card-header">
+                    <h4>org.openqa.selenium.NoSuchElementException </h4>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <pre>org.openelisglobal.qaframework.automation.page.Page.findElement(Page.java:188)<br />org.openelisglobal.qaframework.automation.page.Page.hasElement(Page.java:474)<br />org.openelisglobal.qaframework.automation.page.TestManagementPage.testEnglishNameFieldExists(TestManagementPage.java:226)<br />org.openelisglobal.qaframework.automation.TestManagementSteps.userClicksOnAcceptButton(TestManagementSteps.java:304)<br />io.cucumber.java.Invoker.doInvoke(Invoker.java:66)<br />io.cucumber.java.Invoker.invoke(Invoker.java:24)<br />io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)<br />io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)<br />io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)<br />io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)<br />io.cucumber.core.runner.TestStep.executeStep(TestStep.java:92)<br />io.cucumber.core.runner.TestStep.run(TestStep.java:64)<br />io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)<br />io.cucumber.core.runner.TestCase.run(TestCase.java:104)<br />io.cucumber.core.runner.Runner.runPickle(Runner.java:73)<br />io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:135)<br />io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:27)<br />io.cucumber.junit.CucumberSerenityRunner.runChild(CucumberSerenityRunner.java:258)<br />io.cucumber.junit.CucumberSerenityRunner.runChild(CucumberSerenityRunner.java:57)<br /></pre>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+                            </td>
+                        </tr>
 
                                 </table>
                             </td>
                         </tr>
-                <tr class="test-FAILURE">
+                <tr class="test-ERROR">
                         <td colspan="2"></td>
-                    <td width="130"><span class="top-level-step"><em>FAILURE</em></span></td>
-                    <td width="100"><span class="top-level-step"><em>16.4s</em></span></td>
+                    <td width="130"><span class="top-level-step"><em>ERROR</em></span></td>
+                    <td width="100"><span class="top-level-step"><em>30.04s</em></span></td>
                 </tr>
 
             </table>

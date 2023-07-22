@@ -1,4 +1,45 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="Test Management Feature" skipped="0" tests="10" time="159.34" timestamp="2023-07-17 03:46:30"><testcase name="Validate list items in Test Management menu"/><testcase name="Open Rename Existing Test Names page"/><testcase name="User rejects the testName updates"/><testcase name="User cancels the testName updates"/><testcase name="Add new tests"><failure type="java.lang.AssertionError"/><system-err>null
-org.openelisglobal.qaframework.automation.TestManagementSteps.userSelectsOneMoreTypeFromSampleTypeDropdownOptions(TestManagementSteps.java:276)
-✽.User selects one more type from SampleType dropdown options(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/testManagement.feature:104)
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="0" name="Test Management Feature" skipped="0" tests="10" time="169.16" timestamp="2023-07-22 08:29:01"><testcase name="Validate list items in Test Management menu"/><testcase name="Open Rename Existing Test Names page"/><testcase name="User rejects the testName updates"/><testcase name="User cancels the testName updates"/><testcase name="Add new tests"><error message="no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#testNameEnglish&quot;}&#10;  (Session info: chrome=114.0.5735.133)&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az1111-454', ip: '10.1.0.14', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1041-azure', java.version: '1.8.0_382'&#10;Driver info: org.openqa.selenium.remote.RemoteWebDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.133, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: /tmp/.com.google.Chrome.8moOYH}, goog:chromeOptions: {debuggerAddress: localhost:42417}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 114.0.5735.133, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}&#10;Session ID: be63d6eebdfdd3825875240ef6131eea&#10;*** Element info: {Using=id, value=testNameEnglish}&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'fv-az1111-454', ip: '10.1.0.14', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1041-azure', java.version: '1.8.0_382'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException">no such element: Unable to locate element: {"method":"css selector","selector":"#testNameEnglish"}
+  (Session info: chrome=114.0.5735.133)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az1111-454', ip: '10.1.0.14', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1041-azure', java.version: '1.8.0_382'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.133, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: /tmp/.com.google.Chrome.8moOYH}, goog:chromeOptions: {debuggerAddress: localhost:42417}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 114.0.5735.133, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: be63d6eebdfdd3825875240ef6131eea
+*** Element info: {Using=id, value=testNameEnglish}
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az1111-454', ip: '10.1.0.14', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1041-azure', java.version: '1.8.0_382'
+Driver info: driver.version: unknown</error><system-err>no such element: Unable to locate element: {"method":"css selector","selector":"#testNameEnglish"}
+  (Session info: chrome=114.0.5735.133)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az1111-454', ip: '10.1.0.14', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1041-azure', java.version: '1.8.0_382'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.133, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: /tmp/.com.google.Chrome.8moOYH}, goog:chromeOptions: {debuggerAddress: localhost:42417}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://172.18.0.2:4444/sessio..., se:cdpVersion: 114.0.5735.133, se:vnc: ws://172.18.0.2:4444/sessio..., se:vncEnabled: true, se:vncLocalAddress: ws://172.18.0.2:7900, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: be63d6eebdfdd3825875240ef6131eea
+*** Element info: {Using=id, value=testNameEnglish}
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'fv-az1111-454', ip: '10.1.0.14', os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.0-1041-azure', java.version: '1.8.0_382'
+Driver info: driver.version: unknown
+org.openelisglobal.qaframework.automation.page.Page.findElement(Page.java:188)
+org.openelisglobal.qaframework.automation.page.Page.hasElement(Page.java:474)
+org.openelisglobal.qaframework.automation.page.TestManagementPage.testEnglishNameFieldExists(TestManagementPage.java:226)
+org.openelisglobal.qaframework.automation.TestManagementSteps.userClicksOnAcceptButton(TestManagementSteps.java:304)
+io.cucumber.java.Invoker.doInvoke(Invoker.java:66)
+io.cucumber.java.Invoker.invoke(Invoker.java:24)
+io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
+io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
+io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
+io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
+io.cucumber.core.runner.TestStep.executeStep(TestStep.java:92)
+io.cucumber.core.runner.TestStep.run(TestStep.java:64)
+io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
+io.cucumber.core.runner.TestCase.run(TestCase.java:104)
+io.cucumber.core.runner.Runner.runPickle(Runner.java:73)
+io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:135)
+io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:27)
+io.cucumber.junit.CucumberSerenityRunner.runChild(CucumberSerenityRunner.java:258)
+io.cucumber.junit.CucumberSerenityRunner.runChild(CucumberSerenityRunner.java:57)
 </system-err></testcase><testcase name="Verify Added new testName"/><testcase name="Modify test details"/></testsuite>
