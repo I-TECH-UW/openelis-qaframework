@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="Referral Work Flow" skipped="0" tests="2" time="115.9" timestamp="2023-07-22 08:58:17"><testcase name="Register a patient's sample for Covid testing and send the lab request and sample to the Central Health Laboratory"><failure type="java.lang.AssertionError"/><system-err>null
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="Referral Work Flow" skipped="0" tests="2" time="117.22" timestamp="2023-07-24 08:54:14"><testcase name="Register a patient's sample for Covid testing and send the lab request and sample to the Central Health Laboratory"><failure type="java.lang.AssertionError"/><system-err>null
 org.openelisglobal.qaframework.automation.ReferralWorkFlowSteps.testNameDefaultsToOriginalTest(ReferralWorkFlowSteps.java:196)
 ✽.Test Name defaults to original test requested for sample above(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/referalWorkFlow.feature:24)
 </system-err></testcase><testcase name="Register test requests sent electronically from the Flu Clinic"/></testsuite>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="Add Batch Orders Feature" skipped="0" tests="2" time="39.71" timestamp="2023-07-22 08:38:52"><testcase name="Add Batch Orders action"/><testcase name="Batch Order Entry Screen"><failure type="java.lang.AssertionError"/><system-err>null
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="Add Batch Orders Feature" skipped="0" tests="2" time="38.67" timestamp="2023-07-24 08:35:04"><testcase name="Add Batch Orders action"/><testcase name="Batch Order Entry Screen"><failure type="java.lang.AssertionError"/><system-err>null
 org.openelisglobal.qaframework.automation.AddBatchOrdersSteps.batchOrderEntryScreenShouldContainUIOptions(AddBatchOrdersSteps.java:154)
 ✽.Batch order entry screen should contain UI options elements "CSU KONAHIRI"(file:///home/runner/work/openelis-qaframework/openelis-qaframework/src/features/openelis/addBatchOrders.feature:29)
 </system-err></testcase></testsuite>
