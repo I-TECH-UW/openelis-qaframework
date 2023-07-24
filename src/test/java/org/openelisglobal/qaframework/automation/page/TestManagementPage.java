@@ -37,13 +37,13 @@ public class TestManagementPage extends Page {
 
 	private static By TEST_NAMES = By.cssSelector("table tbody tr td .textButton");
 
-	private static By NAME_ENG_FIELD = By.name("nameEnglish");
+	private static By NAME_ENG_FIELD = By.cssSelector("input#nameEnglish");
 
-	private static By NAME_FR_FIELD = By.name("nameFrench");
+	private static By NAME_FR_FIELD = By.cssSelector("input#nameFrench");
 
-	private static By REPORT_NAME_ENG_FIELD = By.name("reportNameEnglish");
+	private static By REPORT_NAME_ENG_FIELD = By.cssSelector("input#reportNameEnglish");
 
-	private static By REPORT_NAME_FR_FIELD = By.name("reportNameFrench");
+	private static By REPORT_NAME_FR_FIELD = By.cssSelector("input#reportNameFrench");
 
 	private static By SAVE_BUTTON = By.xpath("//*[@id=\"editButtons\"]/input[1]");
 
